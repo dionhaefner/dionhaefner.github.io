@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dion Häfner's Blog</title><link href="dionhaefner.github.io/" rel="alternate"></link><link href="dionhaefner.github.io/feeds/all.atom.xml" rel="self"></link><id>dionhaefner.github.io/</id><updated>2016-03-26T00:00:00+01:00</updated><entry><title>Hello, world</title><link href="dionhaefner.github.io/hello-world.html" rel="alternate"></link><updated>2016-03-26T00:00:00+01:00</updated><author><name>Dion</name></author><id>tag:,2016-03-26:dionhaefner.github.io/hello-world.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/.ansibold{font-weight:700}.ansiblack{}.ansired{color:#8b0000}.ansigreen{6400}.ansiyellow{color:#c4a000}.ansiblue{8b}.ansipurple{color:#9400d3}.ansicyan{color:#4682b4}.ansigray{color:gray}.ansibgblack{background-}.ansibgred{background-color:red}.ansibggreen{background-color:green}.ansibgyellow{background-color:#ff0}.ansibgblue{background-f}.ansibgpurple{background-color:#ff00ff}.ansibgcyan{background-ff}.ansibggray{background-color:gray}div.cell{border:1px solid transparent;display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;border-radius:2px;box-sizing:border-box;-moz-box-sizing:border-box;border-width:thin;border-style:solid;width:100%;padding:5px;margin:0;outline:0}div.cell.selected{border-color:#ababab}@media print{div.cell.selected{border-color:transparent}}.edit_mode div.cell.selected{border-color:green}.prompt{min-width:14ex;padding:.4em;margin:0;font-family:monospace;text-align:right;line-height:1.21429em}div.inner_cell{display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1}@-moz-document url-prefix(){div.inner_cell{overflow-x:hidden}}div.input_area{border:1px solid #cfcfcf;border-radius:2px;background:#f7f7f7;line-height:1.21429em}div.prompt:empty{padding-top:0;padding-bottom:0}div.unrecognized_cell{padding:5px 5px 5px 0;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}div.unrecognized_cell .inner_cell{border-radius:2px;padding:5px;font-weight:700;color:red;border:1px solid #cfcfcf;background:#eaeaea}div.unrecognized_cell .inner_cell a,div.unrecognized_cell .inner_cell a:hover{color:inherit;text-decoration:none}@media (max-width:540px){.prompt{text-align:left}div.unrecognized_cell&gt;div.prompt{display:none}}div.code_cell{}div.input{page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}@media (max-width:540px){div.input{-webkit-box-orient:vertical;-moz-box-orient:vertical;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}}div.input_prompt{color:navy;border-top:1px solid transparent}div.input_area&gt;div.highlight{margin:.4em;border:none;padding:0;background-color:transparent}div.input_area&gt;div.highlight&gt;pre{margin:0;border:none;padding:0;background-color:transparent}.CodeMirror{line-height:1.21429em;font-size:14px;height:auto;background:0 0}.CodeMirror-scroll{overflow-y:hidden;overflow-x:auto}.CodeMirror-lines{padding:.4em}.CodeMirror-linenumber{padding:0 8px 0 4px}.CodeMirror-gutters{border-bottom-left-radius:2px;border-top-left-radius:2px}.CodeMirror pre{padding:0;border:0;border-radius:0}.highlight-base,.highlight-variable{}.highlight-variable-2{color:#1a1a1a}.highlight-variable-3{color:#333}.highlight-string{color:#BA2121}.highlight-comment{color:#408080;font-style:italic}.highlight-number{80}.highlight-atom{color:#88F}.highlight-keyword{color:green;font-weight:700}.highlight-builtin{color:green}.highlight-error{color:red}.highlight-operator{color:#A2F;font-weight:700}.highlight-meta{color:#A2F}.highlight-def{f}.highlight-string-2{color:#f50}.highlight-qualifier{color:#555}.highlight-bracket{color:#997}.highlight-tag{color:#170}.highlight-attribute{c}.highlight-header{f}.highlight-quote{90}.highlight-link{c}.cm-s-ipython span.cm-keyword{color:green;font-weight:700}.cm-s-ipython span.cm-atom{color:#88F}.cm-s-ipython span.cm-number{80}.cm-s-ipython span.cm-def{f}.cm-s-ipython span.cm-variable{}.cm-s-ipython span.cm-operator{color:#A2F;font-weight:700}.cm-s-ipython span.cm-variable-2{color:#1a1a1a}.cm-s-ipython span.cm-variable-3{color:#333}.cm-s-ipython span.cm-comment{color:#408080;font-style:italic}.cm-s-ipython span.cm-string{color:#BA2121}.cm-s-ipython span.cm-string-2{color:#f50}.cm-s-ipython span.cm-meta{color:#A2F}.cm-s-ipython span.cm-qualifier{color:#555}.cm-s-ipython span.cm-builtin{color:green}.cm-s-ipython span.cm-bracket{color:#997}.cm-s-ipython span.cm-tag{color:#170}.cm-s-ipython span.cm-attribute{c}.cm-s-ipython span.cm-header{f}.cm-s-ipython span.cm-quote{90}.cm-s-ipython span.cm-link{c}.cm-s-ipython span.cm-error{color:red}.cm-s-ipython span.cm-tab{background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=')right no-repeat}div.output_wrapper{display:-webkit-box;-webkit-box-align:stretch;display:-moz-box;-moz-box-align:stretch;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch;z-index:1}div.output_scroll{height:24em;width:100%;overflow:auto;border-radius:2px;-webkit-box-shadow:inset 0 2px 8px rgba(0,0,0,.8);box-shadow:inset 0 2px 8px rgba(0,0,0,.8);display:block}div.output_collapsed{margin:0;padding:0;display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}div.out_prompt_overlay{height:100%;padding:0 .4em;position:absolute;border-radius:2px}div.out_prompt_overlay:hover{-webkit-box-shadow:inset 0 0 1px #000;box-shadow:inset 0 0 1px #000;background:rgba(240,240,240,.5)}div.output_prompt{color:#8b0000}div.output_area{padding:0;page-break-inside:avoid;display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}div.output_area .MathJax_Display{text-align:left!important}div.output_area div.output_area img,div.output_area svg{max-width:100%;height:auto}div.output_area img.unconfined,div.output_area svg.unconfined{max-width:none}.output{display:-webkit-box;-webkit-box-orient:vertical;display:-moz-box;-moz-box-orient:vertical;display:box;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}@media (max-width:540px){div.output_area{-webkit-box-orient:vertical;-moz-box-orient:vertical;box-orient:vertical;box-align:stretch;display:flex;flex-direction:column;align-items:stretch}}div.output_area pre{margin:0;padding:0;border:0;vertical-align:baseline;background-color:transparent;border-radius:0}div.output_subarea{overflow-x:auto;padding:.4em;-webkit-box-flex:1;-moz-box-flex:1;box-flex:1;flex:1;max-width:calc(100% - 14ex)}div.output_text{text-align:left;line-height:1.21429em}div.output_stderr{background:#fdd}div.output_latex{text-align:left}div.output_javascript:empty{padding:0}.js-error{color:#8b0000}div.raw_input_container{font-family:monospace;padding-top:5px}span.raw_input_prompt{}input.raw_input{font-family:inherit;font-size:inherit;color:inherit;width:auto;vertical-align:baseline;padding:0 .25em;margin:0 .25em}input.raw_input:focus{box-shadow:none}p.p-space{margin-bottom:10px}div.output_unrecognized{padding:5px;font-weight:700;color:red}div.output_unrecognized a,div.output_unrecognized a:hover{color:inherit;text-decoration:none}.rendered_html{}.rendered_html :link,.rendered_html :visited,.rendered_html h1:first-child{margin-top:.538em}.rendered_html h2:first-child{margin-top:.636em}.rendered_html h3:first-child{margin-top:.777em}.rendered_html h4:first-child,.rendered_html h5:first-child,.rendered_html h6:first-child{margin-top:1em}.rendered_html *+ol,.rendered_html *+ul{margin-top:1em}.rendered_html *+table{margin-top:1em}.rendered_html *+p{margin-top:1em}.rendered_html *+img{margin-top:1em}div.text_cell{display:-webkit-box;-webkit-box-orient:horizontal;display:-moz-box;-moz-box-orient:horizontal;display:box;box-orient:horizontal;box-align:stretch;display:flex;flex-direction:row;align-items:stretch}@media (max-width:540px){div.text_cell&gt;div.prompt{display:none}}div.text_cell_render{outline:0;resize:none;width:inherit;border-style:none;padding:.5em .5em .5em .4em;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}a.anchor-link:link{text-decoration:none;padding:0 20px;visibility:hidden}h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anchor-link,h5:hover .anchor-link,h6:hover .anchor-link{visibility:visible}.text_cell.rendered .input_area{display:none}.text_cell.rendered .text_cell.unrendered .text_cell_render{display:none}.cm-header-1,.cm-header-2,.cm-header-3,.cm-header-4,.cm-header-5,.cm-header-6{font-weight:700;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.cm-header-1{font-size:185.7%}.cm-header-2{font-size:157.1%}.cm-header-3{font-size:128.6%}.cm-header-4{font-size:110%}.cm-header-5,.cm-header-6{font-size:100%;font-style:italic}&lt;/style&gt;
+&lt;style type="text/css"&gt;.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;
+&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Hello,-world!"&gt;Hello, world!&lt;a class="anchor-link" href="#Hello,-world!"&gt;¶&lt;/a&gt;&lt;/h1&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"hello, world"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area"&gt;&lt;div class="prompt"&gt;&lt;/div&gt;
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;hello, world
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [ ]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</summary><category term="hi"></category></entry><entry><title>Why you should not be afraid of terrorism</title><link href="dionhaefner.github.io/why-you-should-not-be-afraid-of-terrorism.html" rel="alternate"></link><updated>2016-03-26T00:00:00+01:00</updated><author><name>Dion</name></author><id>tag:,2016-03-26:dionhaefner.github.io/why-you-should-not-be-afraid-of-terrorism.html</id><summary type="html">&lt;p&gt;In the wake of the recent terror attacks in Western Europe (Jan 2015 and Nov 2015 in Paris; Mar 2016 in Brussels), I started observing the dynamics of the European society's reaction to events of this kind. I find it remarkable how impactful these events seem on both the general public, including political decisions, the rise and fall of political parties, and mass-media coverage, and people in my personal social circles. One of the oldest, most important emotions in the whole animal kingdom seems to be the prime reason behind the vehement, sometimes even violent, reactions: fear.&lt;/p&gt;
+&lt;p&gt;In this blog post, I will examine where this fear comes from and why it is absolutely understandable - but most importantly, I will show my reasoning as to why it is both &lt;strong&gt;irrational and dangerous to be afraid of terrorism in Western Europe&lt;/strong&gt;.
+&lt;!-- PELICAN_END_SUMMARY --&gt;&lt;/p&gt;
+&lt;h2&gt;General human risk-assessment mechanisms&lt;/h2&gt;
+&lt;p&gt;Human intuition is without a doubt one of the greatest achievements in the history of evolution. Paired with some strategical thinking, it helps us to quickly make decisions without having to consider every possible action. Intuition allows us to play the game of Go nearly as well as &lt;a href="http://googleresearch.blogspot.se/2016/01/alphago-mastering-ancient-game-of-go.html"&gt;a computer network consisting of 1202 processors and 176 graphics cards&lt;/a&gt;, to learn and speak languages fluently (even those with a highly complicated underlying grammatical structure), or to evaluate risks the second they manifest. However, despite its usefulness, human intuition is definitely not flawless, especially in situations that are relatively new to mankind (i.e., that have not been around for thousands of years). Luckily, we have reason to deal with these cases, but this requires some more work.&lt;/p&gt;
+&lt;p&gt;One particular thing that humans are generally pretty bad at is making decisions that may have a life-changing impact when small probabilities are involved. When using simple intuition, the actual probability (whether given or estimated from a frequency of events) becomes less and less important the more extreme it gets, and the outcome of the decision becomes dominated by all kinds of &lt;a href="https://en.wikipedia.org/wiki/Bias"&gt;biases&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One example where (biased) intuition is present is gambling. Any commercial gambling operator has to be sustainable and thus make money, so every gamble of pure chance will be designed in a way that favors the operator. The most popular lottery in Germany, &lt;em&gt;Lotto 6 aus 49&lt;/em&gt; (comparable to the US-American &lt;em&gt;Powerball&lt;/em&gt;), with around 21 million weekly players, offers a chance of 139,838,160 to 1 to win the jackpot of averagely 9 million Euro. One lottery ticket is currently priced at 1€, but the mean winning money (including all winning categories) lies at only 50ct. To make this clear: instead of buying a lot of lottery tickets, you might as well shove half of your money out of the window (with the possible side effect of making some homeless people's day)&lt;sup&gt;1&lt;/sup&gt;. So, why are people even playing the lottery (or even worse, slot machines and alike)? The answer is biases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Outcome bias&lt;/strong&gt;: the notion to only take into account the possible outcomes of the decision (i.e., buying a lottery ticket), while disregarding or misjudging their corresponding likelihood. &lt;em&gt;Either you win, or you lose&lt;/em&gt;, or also: &lt;em&gt;winning the jackpot makes my life much better, while spending 1€ on the ticket barely affects me&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Some sort of &lt;strong&gt;selection bias&lt;/strong&gt;: Someone winning the lottery will be reported on the news (or will at least be talked about in their social environment), and winning the lottery has a huge emotional impact. This is why we tend to ignore the millions of losers while focusing on a few winners, and put ourselves in their shoes.&lt;/li&gt;
+&lt;li&gt;(Non-)&lt;strong&gt;zero-risk bias&lt;/strong&gt;: If one doesn't play the lottery, there is no way they can win - buying a ticket will give them a chance at the jackpot, how slim it may be (even though the money could be spent better). &lt;em&gt;Someone is going to win the lottery, so it could as well be me&lt;/em&gt;. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Both biases are naturally strongest when considering low-probability, high-impact events.&lt;/p&gt;
+&lt;h2&gt;The reasons behind a fear of terrorism&lt;/h2&gt;
+&lt;p&gt;I have chosen playing the lottery as an example for a simple intuitive risk-assessment because most people can relate to it; but of course, the exact same analysis can be applied to events that are very unlikely, but have a huge &lt;em&gt;negative&lt;/em&gt; impact, such as a terroristic attack. All that is needed is to re-label some terms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;winning the lottery becomes being killed or injured in an attack (low probability)&lt;/li&gt;&lt;/li&gt;
+&lt;li&gt;not winning the lottery becomes not being involved in an attack (high probability)&lt;/li&gt;&lt;/li&gt;
+&lt;li&gt;buying a lottery ticket becomes leaving the house (assuming you are safe at home, and putting yourself at risk in public spaces) &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Applying the exact same analysis as before:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Outcome bias&lt;/strong&gt;: Going outside can get you killed, while staying at home seems safe, whatever the chances are.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Selection bias&lt;/strong&gt;: Without a doubt, terrorist attacks and their victims receive massive media attention, triggering human empathy, and making terrorist attacks seem like something that could happen to anyone, anytime.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Zero-risk bias&lt;/strong&gt;: People would rather reduce the risk of being killed in an attack to zero (by staying at home) than taking this slim risk and, e.g., quit smoking (which increases life expectancy by a much larger amount, but does not eliminate the risk of falling ill with lung cancer entirely).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Of course, these cognitive biases are by far not the whole truth why terrorist attacks are scary. One very important aspect is also the lack of feeling in charge or being familiar with the situation. This is also the main reason why people tend to be much more scared of crashes with an airplane compared to crashes with a car. In an airplane, or a terrorist attack, there is nothing much you can do apart from praying or running for your life, while in a dangerous situation involving a car you have the &lt;em&gt;illusion&lt;/em&gt; of being in charge (obviously, there are many car accidents that no one saw coming, or were able to prevent).&lt;/p&gt;
+&lt;p&gt;It is very human to not be afraid in everyday situations where you have some way to react, or where one has the feeling that fate lies in their own hands (&lt;em&gt;I am not going to get cancer, since I've never smoked in my life&lt;/em&gt;). This feeling of safety is obviously false, but it is what gets us out of bed every day, and there is no evolutionary need to be afraid.
+&lt;h3&gt;A more rational risk analysis&lt;sup&gt;2&lt;/sup&gt;&lt;/h3&gt;
+Well, let's have a look at some numbers. The statistics portal &lt;a href="http://www.statista.com/"&gt;Statista&lt;/a&gt; has created a really nice diagram (using the &lt;a href="https://www.start.umd.edu/gtd/" target="_blank"&gt;global terrorism database&lt;/a&gt;), putting terrorism into perspective:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.statista.com/chart/4093/people-killed-by-terrorist-attacks-in-western-europe-since-1970/" title="Infographic: Victims Of Terrorist Attacks In Western Europe | Statista" target="_blank"&gt;&lt;img src="https://d28wbuch0jlv7v.cloudfront.net/images/infografik/normal/chartoftheday_4093_people_killed_by_terrorist_attacks_in_western_europe_since_1970_n.jpg" alt="Infographic: Victims Of Terrorist Attacks In Western Europe | Statista" class="aligncenter size-medium wp-image-126" style="max-width: 710px"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, the death toll from terrorism in Europe has been way higher in the 70s and 80s than today. Another very interesting diagram is the deaths through terrorism outside the EU:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.statista.com/chart/4094/number-of-persons-killed-by-terrorist-attacks-in-iraq-afghanistan-pakistan-et-al/" title="Infographic: Victims Of Terrorist Attacks outside Western Europe | Statista" target="_blank"&gt;&lt;img src="https://d28wbuch0jlv7v.cloudfront.net/images/infografik/normal/chartoftheday_4094_number_of_persons_killed_by_terrorist_attacks_in_iraq_afghanistan_pakistan_et_al_n.jpg" alt="Infographic: Victims Of Terrorist Attacks outside Western Europe | Statista" class="aligncenter size-medium wp-image-126" style="max-width: 710px"/&gt;&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Yep, that's 420 deaths in Western Europe vs. over 100,000 in the rest of the world. So, obviously, terrorism is a much bigger threat in the rest of the world, and terrorism death tolls have been way higher in the past. But these are only relative statements; it doesn't tell us how large the absolute danger of terrorism is today. To put things into perspective, I have made the following diagram with &lt;a href="http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_cd_asdr2&amp;lang=en" target="_blank"&gt;data from Eurostat&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.dionhaefner.de/wp-content/uploads/2016/03/deaths-bar.png" rel="attachment wp-att-149"&gt;&lt;img src="https://www.dionhaefner.de/wp-content/uploads/2016/03/deaths-bar-1024x1024.png" alt="deaths-bar" width="960" height="960" class="aligncenter size-large wp-image-149" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This diagram shows how irrational a fear of terrorism really is - it causes an absolute minor contribution to the total deaths in Western Europe, of about 1 in 10 Million people&lt;sup&gt;3&lt;/sup&gt;. In comparison, lung cancer accounts for over 5000 times as many fatalities. Smoking increases the risk to fall ill with lung cancer &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/7895211"&gt;by about 1000%&lt;/a&gt;. If everyone stopped smoking, &lt;a href="http://www.euro.who.int/en/health-topics/disease-prevention/tobacco/data-and-statistics" target="_blank"&gt;about 16% of all deaths&lt;/a&gt; could be prevented - in contrast to the 0.00001% of deaths that could be prevented by if no terroristic attacks were taking place.&lt;/p&gt;
+&lt;p&gt;This huge disparity shows the power of cognitive biases at work. Because terroristic attacks receive immense media coverage, because they create so much empathy with their victims, and because none of us is familiar with this kind of threat, they are perceived as unproportionally dangerous to each and every one of us, while their real threat is far less severe.&lt;/p&gt;
+&lt;h3&gt;Wrapup: Don't be afraid, or you are supporting the terrorists&lt;/h3&gt;
+
+&lt;p&gt;I'm sorry, but I just have to quote Star Wars here:&lt;/p&gt;
+&lt;blockquote&gt;“Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. Hate leads to suffering.”
+– Yoda&lt;/blockquote&gt;
+
+&lt;p&gt;Fear of terrorism is not only dangerous because you could be missing out on some fun if you're staying at home. It causes overreactions, irrational behavior, blaming innocent people as scapegoats. It blurs people's view, de-empathizes, and radicalizes them. It is also the main reason why these terroristic crimes are committed in the first place.&lt;/p&gt;
+&lt;p&gt;A terrorist probably has the immediate goal to kill as many people has possible. The actual goals with this action are diverse; on one hand, they may want to fulfill some kind of sacred mission and become a hero by killing non-believers. On the other hand, they want to create awareness for their cause and provoke the western society into making mistakes. The more violent the West's reaction on a terroristic attack is, the more people the terrorists will be able to recruit. The main goal behind a terroristic attack is to cause fear, chaos, and mayhem. Don't let them win.
+&lt;hr /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;1&lt;/sup&gt; Of course, there are indeed situations where playing the lottery can be a quite a good idea. For example, if you happen to live by the credo "get rich or die trying", i.e., you consider your life a complete failure in case you don't have six figures on your account by the time you die. In this case, playing the lottery might be an appropriate - though a little desperate - strategy.&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;2&lt;/sup&gt; I won't call my analysis unbiased, since there is no such thing when humans are involved.&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;3&lt;/sup&gt; If you are not convinced yet - I have made a pie chart, too, showing the proportions of the data:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.dionhaefner.de/wp-content/uploads/2016/03/deaths-pie.png" rel="attachment wp-att-150"&gt;&lt;img src="https://www.dionhaefner.de/wp-content/uploads/2016/03/deaths-pie-472x1024.png" alt="deaths-pie" width="472" height="1024" class="aligncenter size-large wp-image-150" /&gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="hi"></category></entry><entry><title>Creating a Science Conference Poster with Inkscape</title><link href="dionhaefner.github.io/creating-a-science-conference-poster-with-inkscape.html" rel="alternate"></link><updated>2015-07-17T00:00:00+02:00</updated><author><name>Dion Häfner</name></author><id>tag:,2015-07-17:dionhaefner.github.io/creating-a-science-conference-poster-with-inkscape.html</id><summary type="html">&lt;h2&gt;First things first&lt;/h2&gt;
+&lt;p&gt;This poster design is heavily based on the poster template provided by &lt;a href="http://blog.felixbreuer.net/2010/10/24/poster.html"&gt;Felix Breuer&lt;/a&gt;. Many thanks to him for creating such a beautiful and unusual poster from scratch, and even publishing the template for others to use. Accordingly, this modification is published under the &lt;a href="http://creativecommons.org/licenses/by-sa/3.0/"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt; as well, which means that you are free to use and modify this template in any fashion you would like, as long as you give credit to the original authors and publish your modification as a template, too.&lt;/p&gt;
+&lt;h2&gt;Our poster&lt;/h2&gt;
+&lt;p&gt;This poster was created during a MSc level physics course on climate at Heidelberg University as final project. We were given a paper (that we are in no way affiliated with) from climate research and told to create a poster that would be well-suited to represent the contents of the paper at a conference. Our goal was to create a poster that stands out in the mass of standard, blocky posters that physicists tend to create. Additionally, we wanted the poster layout to tell a story, so you would not have to read the whole poster to understand what was going on - we wanted the plots and figures and some short summary to convey the most important ideas at a glance.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://inkscape.org/"&gt;Inkscape&lt;/a&gt; seemed to be the perfect tool for this task, since it is free, has powerful vector tools, and is based on visuals rather than code. So, this is what we came up with: &lt;a href="https://www.dionhaefner.de/wp-content/uploads/2015/07/low-res.png"&gt;&lt;img class="aligncenter size-large wp-image-48" src="https://www.dionhaefner.de/wp-content/uploads/2015/07/low-res-1024x738.png" alt="" width="960" height="692" /&gt;&lt;/a&gt; (you can download the SVG version of the poster below)&lt;/p&gt;
+&lt;h3&gt;Design choices&lt;/h3&gt;
+
+&lt;p&gt;We took over most of the basic ideas from Felix Breuer's poster. However, his poster was clearly a math poster: little text, many formulae, rather sketches and drawings than plots. The design he chose fitted the 'math style' exceptionally well, but did not really seem suitable for a poster from environmental physics, since we had completely different requirements. So we made the following changes to the original design:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The color scheme was changed. The original blue-and-grey scheme was pretty, but we wanted to use somewhat lighter colors, and match the color scheme used by our faculty (red and white). However, the original idea of applying a color gradient to any surface remains unchanged, and leads to a nice illusion of depth.&lt;/li&gt;
+&lt;li&gt;Our poster would be much more text-heavy, so we needed more space for the text boxes around the edges of the poster. We chose a larger font than Felix Breuer did (28 instead of 24) to make the wall of text seem less intimidating (and to prevent ourselves from writing too much text).&lt;/li&gt;
+&lt;li&gt;Probably the most notable difference is the different tile structure in the middle of the poster. A circular pattern did not seem reasonable in our case: We would have to include quite a few rectangular figures, so a circle would take away too much usable space. Instead, we decided on a flattened U-shape, which still had the original spirit of Felix Breuer's poster (explain everything with the plots in the center).&lt;/li&gt;
+&lt;li&gt;As the poster's structure is highly unusual, many readers were confused as of where to begin to read, and where to continue. We tried to make this intuitively clear by adding as many arrows and visual hints as possible. This way, only very few people tried to read downwards from the block at the upper-left corner, and pretty much everyone found their way towards the right hand side of the poster.&lt;/li&gt;
+&lt;li&gt;The summary block was moved from the middle to the top of the poster. This spot is definitely not perfect, since it distorts the reading flow of a reader that starts at the upper-left of the poster as the arrows indicate. After reading the first block, the reader will arrive at the summary block instead of the block at the upper-right. Other ideas would be to move the summary to the middle of the poster again, or put it as a first block right above the title of the poster (or omit it entirely).&lt;/li&gt;
+&lt;li&gt;We added a QR code created &lt;a href="http://www.qrdesign.net/en/generate/url"&gt;here&lt;/a&gt; (which features some short text/advertisement while redirecting when using their free plan - we did not find this particularly annoying, but if it bothers you, just pay for it, create the code yourself, or create a code without a background image) linking to the paper our work was based on. We found this a nice gimmick, especially with the logo in the background, since one could immediately tell where they would end up after scanning the code. However, I doubt many people would actually scan it on a conference, and you could just omit it.&lt;/li&gt;
+&lt;li&gt;We were experimenting with different effects on the poster's title and our names. At first, we used a much larger drop shadow, but we found the contrast at these places to be quite low. This certainly got better by using a sharper shadow, but you could consider removing it entirely.&lt;/li&gt;
+&lt;li&gt;We typeset all texts directly in inkscape and created hidden boxes that we flowed the text into. There might be a more elegant way to do this, but it did the trick. They are all in their own hidden layer, so if you want to change the shape of the flowing text, just show that layer and edit the boxes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Printing&lt;/h3&gt;
+
+&lt;p&gt;Following Felix Breuer's suggestion, we exported the poster as a 500-dpi png (i.e., raster image), and printing worked like a charm, although the resulting image was about 40 MB large. Later, we also tried to export the poster as pdf using inkscape's export function, and this seemed to work well, too. Text turned out to be crisp, and all vector plots printed very well - only the QR code and two of the plots, which we did not have in vectorized form, turned out a little blurry, so make sure you get your hands on vectorized versions of anything you want to include.&lt;/p&gt;
+
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Creating our poster in inkscape was highly rewarding and a lot of fun, even though we had never used the program before. I honestly don't think that the poster creation would have been much faster using LaTeX or any other common tool, and the result would definitely have been more boring. We are pretty happy with the result, and it received positive criticism during our private poster session - everyone agreed, that they were immediately curious to read the poster, just by having a glance at the unusual design.&lt;/p&gt;
+
+&lt;h3&gt;Download the poster template&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="https://www.dionhaefner.de/wp-content/uploads/2015/07/poster-fpsac2010.svg"&gt;Inkscape SVG file&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Make sure to use right click - Save Link As.. and open the file in inkscape instead of viewing it in your browser, where it will probably not render correctly.&lt;/p&gt;</summary></entry></feed>
