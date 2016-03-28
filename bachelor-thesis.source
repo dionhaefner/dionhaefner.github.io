@@ -1,0 +1,6 @@
+Title: Bachelor Thesis
+Slug: bachelor-thesis
+Date: 27-03-2016
+Author: Dion
+Summary: In my Bachelor's thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also [my code projects page](/category/code-projects.html).
+
