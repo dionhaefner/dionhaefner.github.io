@@ -6,29 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Introduction¶In this post, I want to show you how to create the diagrams I made for my post on terrorism. I used Python 3.4 with the following packages: IPython Notebook (Jupyter) Matplotlib ...">
         <meta name="keywords" content="Python, Technology, Visualization">
-        <link rel="icon" href="//dionhaefner.github.io/favicon.ico">
+        <link rel="icon" href="//dionhaefner.de/favicon.ico">
 
         <title>Beautiful data visualization in Python with&nbsp;Matplotlib - Dion Häfner</title>
 
         <!-- Stylesheets -->
-        <link href="//dionhaefner.github.io/theme/css/bootstrap.css" rel="stylesheet">
-        <link href="//dionhaefner.github.io/theme/css/fonts.css" rel="stylesheet">
-        <link href="//dionhaefner.github.io/theme/css/nest.css" rel="stylesheet">
-        <link href="//dionhaefner.github.io/theme/css/pygment.css" rel="stylesheet">
-        <link href="//dionhaefner.github.io/theme/css/font-awesome.css" rel="stylesheet">
+        <link href="//dionhaefner.de/theme/css/bootstrap.css" rel="stylesheet">
+        <link href="//dionhaefner.de/theme/css/fonts.css" rel="stylesheet">
+        <link href="//dionhaefner.de/theme/css/nest.css" rel="stylesheet">
+        <link href="//dionhaefner.de/theme/css/pygment.css" rel="stylesheet">
+        <link href="//dionhaefner.de/theme/css/font-awesome.css" rel="stylesheet">
         <!-- /Stylesheets -->
 
         <!-- JQuery / JS -->
-        <script src="//dionhaefner.github.io/theme/jquery/jquery.min.js"></script>
-        <script src="//dionhaefner.github.io/theme/jquery/jquery.smoothScroll.js"></script>
-        <script src="//dionhaefner.github.io/theme/jquery/nest.js"></script>
-        <script src="//dionhaefner.github.io/theme/js/bootstrap.min.js"></script>
-        <script src="//dionhaefner.github.io/theme/js/nest.js"></script>
+        <script src="//dionhaefner.de/theme/jquery/jquery.min.js"></script>
+        <script src="//dionhaefner.de/theme/jquery/jquery.smoothScroll.js"></script>
+        <script src="//dionhaefner.de/theme/jquery/nest.js"></script>
+        <script src="//dionhaefner.de/theme/js/bootstrap.min.js"></script>
+        <script src="//dionhaefner.de/theme/js/nest.js"></script>
         <!-- /JQuery / JS -->
 
         <!-- RSS Feeds -->
-        <link href="//dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Full Atom Feed" />
-        <link href="//dionhaefner.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Categories Atom Feed" />
+        <link href="//dionhaefner.de/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Full Atom Feed" />
+        <link href="//dionhaefner.de/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Categories Atom Feed" />
         <!-- /RSS Feeds -->
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -59,14 +59,14 @@
     <body>
 
         <!-- Header -->
-    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('//dionhaefner.github.io/images/headers/blog.jpeg'); background-position: center; background-size: cover; ">
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('//dionhaefner.de/images/headers/blog.jpeg'); background-position: center; background-size: cover; ">
 
             <!-- Static navbar -->
           <div class="row">
 <nav class="navbar navbar-static navbar-default header-nav">
               <div class="container">
                       <div class="header-logo">
-                          <a class="pull-left" href="//dionhaefner.github.io/">
+                          <a class="pull-left" href="//dionhaefner.de/">
                             Dion Häfner
                           </a>
                       </div>
@@ -80,11 +80,11 @@
                       </div>
                       <div class="nav pull-right collapse navbar-collapse" id="navbar-collapse">
                         <ul class="nav navbar-nav navigate">
-                                  <li><a href="//dionhaefner.github.io/index.html#">Home</a></li>
-                                  <li><a href="//dionhaefner.github.io/blog/">Blog</a></li>
-                              <li><a  href="//dionhaefner.github.io/index.html#about-me">About&nbsp;Me</a></li>
-                              <li><a  href="//dionhaefner.github.io/index.html#code-projects">Code&nbsp;Projects</a></li>
-                              <li><a  href="//dionhaefner.github.io/index.html#research">Research</a></li>
+                                  <li><a href="//dionhaefner.de/index.html#">Home</a></li>
+                                  <li><a href="//dionhaefner.de/blog/">Blog</a></li>
+                              <li><a  href="//dionhaefner.de/index.html#about-me">About&nbsp;Me</a></li>
+                              <li><a  href="//dionhaefner.de/index.html#code-projects">Code&nbsp;Projects</a></li>
+                              <li><a  href="//dionhaefner.de/index.html#research">Research</a></li>
                         </ul>
                       </div>
               </div>
@@ -99,12 +99,12 @@
               <div class="col-lg-12">
                   <div class="header-content">
                       <h1 class="header-title">Beautiful data visualization in Python with&nbsp;Matplotlib</h1>
-                      <p class="header-date">By <a href="//dionhaefner.github.io/author/dion.html">Dion</a>, So 27 März 2016, in category <a href="//dionhaefner.github.io/category/blog.html">Blog</a></p>
+                      <p class="header-date">By <a href="//dionhaefner.de/author/dion.html">Dion</a>, So 27 März 2016, in category <a href="//dionhaefner.de/category/blog.html">Blog</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
                           <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
-<a href="//dionhaefner.github.io/tag/python.html">Python</a>, <a href="//dionhaefner.github.io/tag/technology.html">Technology</a>, <a href="//dionhaefner.github.io/tag/visualization.html">Visualization</a>                      </p>
+<a href="//dionhaefner.de/tag/python.html">Python</a>, <a href="//dionhaefner.de/tag/technology.html">Technology</a>, <a href="//dionhaefner.de/tag/visualization.html">Visualization</a>                      </p>
                   </div>
               </div>
         </div>
@@ -124,7 +124,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>In this post, I want to show you how to create the diagrams I made for <a href="//dionhaefner.github.io/blog/2016/03/26/why-you-should-not-be-afraid-of-terrorism/">my post on terrorism</a>. I used Python 3.4 with the following&nbsp;packages:</p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>In this post, I want to show you how to create the diagrams I made for <a href="//dionhaefner.de/blog/2016/03/26/why-you-should-not-be-afraid-of-terrorism/">my post on terrorism</a>. I used Python 3.4 with the following&nbsp;packages:</p>
 <ul>
 <li>IPython Notebook&nbsp;(Jupyter)</li>
 <li>Matplotlib</li>
@@ -165,7 +165,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I have downloaded the data I want to use from <a href="http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_cd_asdr2&amp;lang=en">Eurostat</a>. You can go ahead, change the contents of the data, and download it yourself, or <a href="//dionhaefner.github.io/downloads/hlth_cd_asdr2_1_Data.csv">use the data I used</a>. Either way, let&#8217;s read it into pandas and have a look at the first 5 entries, and the data that is contained in the&nbsp;columns:</p>
+<p>I have downloaded the data I want to use from <a href="http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_cd_asdr2&amp;lang=en">Eurostat</a>. You can go ahead, change the contents of the data, and download it yourself, or <a href="//dionhaefner.de/downloads/hlth_cd_asdr2_1_Data.csv">use the data I used</a>. Either way, let&#8217;s read it into pandas and have a look at the first 5 entries, and the data that is contained in the&nbsp;columns:</p>
 </div>
 </div>
 </div>
@@ -11054,14 +11054,14 @@ AABgIMQdAACAgfwXQVDD1O8II7sAAAAASUVORK5CYII=
                 <p id="post-share-links">
                     Share via:
                     <ul class="list-inline">
-                        <li> <a href="http://twitter.com/home?status=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib%20//dionhaefner.github.io/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Twitter"><span class="fa fa-twitter fa-2x"></span></a> </li>
-                        <li> <a href="http://www.facebook.com/sharer/sharer.php?u=//dionhaefner.github.io/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Facebook"><span class="fa fa-facebook fa-2x"></span></a> </li>
-                        <li> <a href="mailto:?subject=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib&amp;body=//dionhaefner.github.io/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via E-Mail"><span class="fa fa-send fa-2x"></span></a> </li>
+                        <li> <a href="http://twitter.com/home?status=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib%20//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Twitter"><span class="fa fa-twitter fa-2x"></span></a> </li>
+                        <li> <a href="http://www.facebook.com/sharer/sharer.php?u=//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Facebook"><span class="fa fa-facebook fa-2x"></span></a> </li>
+                        <li> <a href="mailto:?subject=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib&amp;body=//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via E-Mail"><span class="fa fa-send fa-2x"></span></a> </li>
                     </ul>
                 </p>
               </div>
             <div style="float: right">
-                  <a href="//dionhaefner.github.io/beautiful-data-visualization-in-python-with-matplotlib.source"> Download source </a>
+                  <a href="//dionhaefner.de/beautiful-data-visualization-in-python-with-matplotlib.source"> Download source </a>
             </div>
         </div>
     <div class="comments">
@@ -11069,7 +11069,7 @@ AABgIMQdAACAgfwXQVDD1O8II7sAAAAASUVORK5CYII=
             <script type="text/javascript">
                 var disqus_shortname = 'dionhaefner';
                 var disqus_identifier = 'blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/';
-                var disqus_url = '//dionhaefner.github.io/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/';
+                var disqus_url = '//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/';
                 (function() {
                     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -11088,10 +11088,10 @@ AABgIMQdAACAgfwXQVDD1O8II7sAAAAASUVORK5CYII=
                     <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
                         <div class="footer-title">Sitemap</div>
                         <ul class="list-unstyled">
-                            <li><a href="//dionhaefner.github.io/archives.html">Archives</a></li>
-                            <li><a href="//dionhaefner.github.io/categories.html">Categories</a></li>
-                            <li><a href="//dionhaefner.github.io/tags.html">Tags</a></li>
-                            <li><a href="//dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+                            <li><a href="//dionhaefner.de/archives.html">Archives</a></li>
+                            <li><a href="//dionhaefner.de/categories.html">Categories</a></li>
+                            <li><a href="//dionhaefner.de/tags.html">Tags</a></li>
+                            <li><a href="//dionhaefner.de/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
