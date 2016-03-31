@@ -11,12 +11,20 @@
         <title>Creating a Science Conference Poster with&nbsp;Inkscape - Dion Häfner</title>
 
         <!-- Stylesheets -->
-        <link href="http://dionhaefner.github.io/theme/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://dionhaefner.github.io/theme/css/bootstrap.css" rel="stylesheet">
         <link href="http://dionhaefner.github.io/theme/css/fonts.css" rel="stylesheet">
         <link href="http://dionhaefner.github.io/theme/css/nest.css" rel="stylesheet">
         <link href="http://dionhaefner.github.io/theme/css/pygment.css" rel="stylesheet">
         <link href="http://dionhaefner.github.io/theme/css/font-awesome.css" rel="stylesheet">
         <!-- /Stylesheets -->
+
+        <!-- JQuery / JS -->
+        <script src="http://dionhaefner.github.io/theme/jquery/jquery.min.js"></script>
+        <script src="http://dionhaefner.github.io/theme/jquery/jquery.smoothScroll.js"></script>
+        <script src="http://dionhaefner.github.io/theme/jquery/nest.js"></script>
+        <script src="http://dionhaefner.github.io/theme/js/bootstrap.min.js"></script>
+        <script src="http://dionhaefner.github.io/theme/js/nest.js"></script>
+        <!-- /JQuery / JS -->
 
         <!-- RSS Feeds -->
         <link href="http://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Full Atom Feed" />
@@ -51,26 +59,38 @@
     <body>
 
         <!-- Header -->
-    <div class="header-container gradient" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('http://dionhaefner.github.io/images/headers/blog.jpeg'); background-position: center; background-size: cover; ">
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('http://dionhaefner.github.io/images/headers/blog.jpeg'); background-position: center; background-size: cover; ">
 
             <!-- Static navbar -->
-            <div class="container">
-                <div class="header-nav">
-                    <div class="header-logo">
-                        <a class="pull-left" href="http://dionhaefner.github.io/">
-                          Dion Häfner
-                        </a>
-                    </div>
-                    <div class="nav pull-right">
-                                <a href="http://dionhaefner.github.io/">Home</a>
-                                <a href="http://dionhaefner.github.io/category/blog.html">Blog</a>
-                                <a href="http://dionhaefner.github.io/category/code-projects.html">Code Projects</a>
-                                <a href="http://dionhaefner.github.io/category/research.html">Research</a>
-                            <a  href="http://dionhaefner.github.io/pages/about-me.html">About&nbsp;Me</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /Static navbar -->
+          <div class="row">
+<nav class="navbar navbar-static navbar-default header-nav">
+              <div class="container">
+                      <div class="header-logo">
+                          <a class="pull-left" href="http://dionhaefner.github.io/">
+                            Dion Häfner
+                          </a>
+                      </div>
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                      </div>
+                      <div class="nav pull-right collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav navigate">
+                                  <li><a href="http://dionhaefner.github.io/index.html#">Home</a></li>
+                                  <li><a href="http://dionhaefner.github.io/blog/">Blog</a></li>
+                              <li><a  href="http://dionhaefner.github.io/index.html#about-me">About&nbsp;Me</a></li>
+                              <li><a  href="http://dionhaefner.github.io/index.html#code-projects">Code&nbsp;Projects</a></li>
+                              <li><a  href="http://dionhaefner.github.io/index.html#research">Research</a></li>
+                        </ul>
+                      </div>
+              </div>
+            </nav>
+          </div>
+          <!-- /Static navbar -->
 
             <!-- Header -->
     <!-- Header -->
@@ -133,9 +153,9 @@ This poster was created during a MSc level physics course on climate at Heidelbe
                 <p id="post-share-links">
                     Share via:
                     <ul class="list-inline">
-                        <li> <a href="http://twitter.com/home?status=Creating%20a%20Science%20Conference%20Poster%20with%C2%A0Inkscape%20http%3A//dionhaefner.github.io/creating-a-science-conference-poster-with-inkscape.html" target="_blank" title="Share via Twitter"><span class="fa fa-twitter fa-2x"></span></a> </li>
-                        <li> <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//dionhaefner.github.io/creating-a-science-conference-poster-with-inkscape.html" target="_blank" title="Share via Facebook"><span class="fa fa-facebook fa-2x"></span></a> </li>
-                        <li> <a href="mailto:?subject=Creating%20a%20Science%20Conference%20Poster%20with%C2%A0Inkscape&amp;body=http%3A//dionhaefner.github.io/creating-a-science-conference-poster-with-inkscape.html" target="_blank" title="Share via E-Mail"><span class="fa fa-send fa-2x"></span></a> </li>
+                        <li> <a href="http://twitter.com/home?status=Creating%20a%20Science%20Conference%20Poster%20with%C2%A0Inkscape%20http%3A//dionhaefner.github.io/blog/2015/Jul/17/creating-a-science-conference-poster-with-inkscape/" target="_blank" title="Share via Twitter"><span class="fa fa-twitter fa-2x"></span></a> </li>
+                        <li> <a href="http://www.facebook.com/sharer/sharer.php?u=http%3A//dionhaefner.github.io/blog/2015/Jul/17/creating-a-science-conference-poster-with-inkscape/" target="_blank" title="Share via Facebook"><span class="fa fa-facebook fa-2x"></span></a> </li>
+                        <li> <a href="mailto:?subject=Creating%20a%20Science%20Conference%20Poster%20with%C2%A0Inkscape&amp;body=http%3A//dionhaefner.github.io/blog/2015/Jul/17/creating-a-science-conference-poster-with-inkscape/" target="_blank" title="Share via E-Mail"><span class="fa fa-send fa-2x"></span></a> </li>
                     </ul>
                 </p>
               </div>
@@ -147,8 +167,8 @@ This poster was created during a MSc level physics course on climate at Heidelbe
         <div id="disqus_thread"></div>
             <script type="text/javascript">
                 var disqus_shortname = 'dionhaefner';
-                var disqus_identifier = 'creating-a-science-conference-poster-with-inkscape.html';
-                var disqus_url = 'http://dionhaefner.github.io/creating-a-science-conference-poster-with-inkscape.html';
+                var disqus_identifier = 'blog/2015/Jul/17/creating-a-science-conference-poster-with-inkscape/';
+                var disqus_url = 'http://dionhaefner.github.io/blog/2015/Jul/17/creating-a-science-conference-poster-with-inkscape/';
                 (function() {
                     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -176,7 +196,7 @@ This poster was created during a MSc level physics course on climate at Heidelbe
                     <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
                         <div class="footer-title">Visit Me</div>
                         <ul class="list-inline">
-                            <li><a href="https://github.com/dionhaefner/" target="_blank"><span class="fa fa-github fa-3x"></span></a></li>
+                            <li><a href="https://github.com/dionhaefner/" target="_blank"><span class="fa fa-github fa-3x fade"></span></a></li>
                         </ul>
                     </div>
                     <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
@@ -188,7 +208,8 @@ This poster was created during a MSc level physics course on climate at Heidelbe
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <p class="pull-right text-right">
                             <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
-                            <small><em>Theme by <a href="https://github.com/molivier" target="_blank">molivier</a>, modified by Dion H&auml;fner</em></small><br/>
+                            <small><em>Theme by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br />
+                            <small><em>Modified by Dion H&auml;fner</em></small><br/>
                             <small>&copy; Dion Häfner 2015</small>
                         </p>
                     </div>

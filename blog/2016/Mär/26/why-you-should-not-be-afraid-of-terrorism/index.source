@@ -51,7 +51,7 @@ Well, let's have a look at some numbers. The statistics portal [Statista](http:/
 
 As you can see, the death toll from terrorism in Europe has been way higher in the 70s and 80s than today. Another very interesting diagram is the deaths through terrorism outside the EU:
 
-[<img src="https://d28wbuch0jlv7v.cloudfront.net/images/infografik/normal/chartoftheday_4094_number_of_persons_killed_by_terrorist_attacks_in_iraq_afghanistan_pakistan_et_al_n.jpg" alt="Infographic: Victims Of Terrorist Attacks outside Western Europe | Statista" style="max-width: 710px">](https://www.statista.com/chart/4094/number-of-persons-killed-by-terrorist-attacks-in-iraq-afghanistan-pakistan-et-al/)
+[<img src="https://d28wbuch0jlv7v.cloudfront.net/images/infografik/normal/chartoftheday_4094_number_of_persons_killed_by_terrorist_attacks_in_iraq_afghanistan_pakistan_et_al_n.jpg" alt="Infographic: Victims Of Terrorist Attacks outside Western Europe | Statista">](https://www.statista.com/chart/4094/number-of-persons-killed-by-terrorist-attacks-in-iraq-afghanistan-pakistan-et-al/)
 
 Yep, that's 420 deaths in Western Europe vs. over 100,000 in the rest of the world. So, obviously, terrorism is a much bigger threat in the rest of the world, and terrorism death tolls have been way higher in the past. But these are only relative statements; it doesn't tell us how large the absolute danger of terrorism is today. To put things into perspective, I have made the following diagram with [data from Eurostat](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_cd_asdr2&lang=en):
 
@@ -79,4 +79,4 @@ A terrorist probably has the immediate goal to kill as many people has possible.
 
 <sup>3</sup> If you are not convinced yet - I have made a pie chart, too, showing the proportions of the data:
 
-<img src="{filename}/images/deaths-pie.png" alt="The most common ways to die in the west - pie plot" style="max-width: 600px;"/>
+<img src="{filename}/images/deaths-pie.png" alt="The most common ways to die in the west - pie plot"/>

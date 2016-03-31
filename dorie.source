@@ -1,7 +1,0 @@
-Title: DORiE
-Slug: dorie
-Date: 27-03-2016
-Author: Dion
-Illustration: headers/dorie.png
-Summary: A numerical solver for the Richards equation (soil water flow in unsaturated media), based on the [DUNE](http://www.dune-project.org) framework, and developed at the Institute of Environmental Phyics, Heidelberg (unreleased). ![A simulation of soil water flow with DORiE](http://dionhaefner.github.io/images/dorie.png)
-
