@@ -26,8 +26,8 @@ DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'home']
 DISPLAY_PAGES_ON_MENU = True
 INDEX_SAVE_AS = "blog/index.html"
 HOME_SAVE_AS = "index.html"
-ARTICLE_URL = 'blog/{date:%Y}/{date:%b}/{date:%d}/{slug}/'
-ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%b}/{date:%d}/{slug}/index.html'
+ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 PAGE_URL = 'index.html#{slug}'
 
 # Feed generation is usually not desired when developing
@@ -161,8 +161,9 @@ NEST_TAGS_HEADER_SUBTITLE = u'Tags List'
 NEST_TAGS_CONTENT_TITLE = u'Tags List'
 NEST_TAGS_CONTENT_LIST = u'tagged'
 # Static files
-STATIC_PATHS = ['images', 'downloads', 'extra/robots.txt', 'extra/README']
+STATIC_PATHS = ['images', 'downloads', 'extra/robots.txt', 'extra/README', 'extra/CNAME']
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/README': {'path': 'README.md'}
+    'extra/README': {'path': 'README.md'},
+    'extra/CNAME': {'path': 'CNAME'}
 }
