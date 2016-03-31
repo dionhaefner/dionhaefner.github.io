@@ -1,0 +1,9 @@
+/*/
+!/content/
+!/nest-custom/
+!/plugins/
+
+*~
+*.pyc
+__pycache__/
+.ipynb-checkpoints/
