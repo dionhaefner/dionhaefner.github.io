@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}{{ NEST_INDEX_HEAD_TITLE }}  &verbar; {{ NEST_INDEX_HEAD_SUBTITLE }}{% endblock title %}
+{% block description %}{{ SITENAME }} &verbar; {{ SITESUBTITLE }}{% endblock description %}
+
+{% block headerstyle %}
+    {% if NEST_HEADER_IMAGES %}
+    <div class="index-header-container" style="background-image: url('{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}'); background-position: center; background-size: cover; height: 100vh;">
+    {% else %}
+    <div class="index-header-container gradient">
+    {% endif %}
+{% endblock headerstyle %}
+
+{% block navstyle %}
+<nav class="navbar navbar-fixed-top navbar-default header-nav">
+{% endblock navstyle %}
+
+{% block header %}
+    <div class="container header-wrapper image-wrapper vertical-align" style="padding-top: 50px;">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content">
+                      <h1 class="header-title">{{ NEST_INDEX_HEADER_TITLE }}</h1>
+                      <div class="header-underline"></div>
+                      {% if NEST_INDEX_HEADER_SUBTITLE %}
+                      <p class="header-subtitle header-subtitle-homepage">{{ NEST_INDEX_HEADER_SUBTITLE }}</p>
+                      {% endif %}
+                  </div>
+              </div>
+        </div>
+    </div>
+    <div class="container scroll-icon">
+      <a href="#0"><span class="fa fa-angle-double-down fa-3x fade"></span></a>
+    </div>
+{% endblock header %}
+
+{% block content %}
+
+  <div id="0" class="index-container vertical-align">
+    {% for page in hidden_pages %}
+      {% if page.title | capitalize == NEST_INTRODUCTION_PAGE | capitalize %}
+        <div class="container">{{ page.content }}</div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% for page in pages | sort(attribute='slug') %}
+    {% if page.illustration %}
+    <div id="{{ page.slug }}" class="image-container" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{{ SITEURL }}/images/{{ page.illustration }}'); background-position: center; background-size: cover;">
+    {% else %}
+    <div id="{{ page.slug }}" class="image-container gradient">
+    {% endif %}
+      <div class="container image-wrapper vertical-align">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="image-content">
+                    <h1 class="image-title">{{ page.title }}</h1>
+                    <div class="image-underline"></div>
+                    {% if page.subtitle %}
+                    <p class="image-subtitle image-subtitle-homepage">{{ page.subtitle }}</p>
+                    {% endif %}
+                  </div>
+              </div>
+        </div>
+      </div>
+      <div class="container scroll-icon">
+          <a href="#{{ page.slug }}-content"><span class="fa fa-angle-double-down fa-3x fade"></span></a>
+      </div>
+    </div>
+    <div id="{{ page.slug }}-content" class="index-container">
+      <div class="container">
+        {{ page.content }}
+      </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

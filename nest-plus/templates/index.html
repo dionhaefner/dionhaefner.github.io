@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}{{ NEST_BLOG_HEAD_TITLE }} {{ category|capitalize }} &verbar; {{ super() }}{% endblock title %}
+{% block description %}{{ NEST_BLOG_HEAD_DESCRIPTION }} {% endblock description %}
+
+{% block headerstyle %}
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/{{ NEST_BLOG_HEADER_IMAGE }}'); background-position: center; background-size: cover; ">
+{% endblock headerstyle %}
+
+{% block navstyle %}
+<nav class="navbar navbar-static navbar-default header-nav">
+{% endblock navstyle %}
+
+{% block header %}
+    <div class="container header-wrapper">
+        <div class="row">
+              <div class="col-lg-12">
+                  <div class="header-content">
+                      <h1 class="header-title text-uppercase">{{ NEST_BLOG_HEADER_TITLE }}</h1>
+                      <div class="header-underline"></div>
+                      <p class="header-subtitle header-subtitle-homepage">{{ NEST_BLOG_HEADER_SUBTITLE }}</p>
+                  </div>
+              </div>
+        </div>
+    </div>
+{% endblock header %}
+
+{% block content %}
+{% if DEFAULT_PAGINATION %}
+  {% for article in articles_page.object_list %}
+    <div class="archive-container">
+      <div class="container content archive">
+        <h1 class="text-uppercase">
+          {% if article.content | trim | length > 0 %}
+            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+          {% else %}
+            {{ article.title }}
+          {% endif %}
+        </h1>
+        {{ article._summary }}
+        {% if article.content | trim | length > 0 %}
+          <p> <a href="{{ SITEURL }}/{{ article.url }}"> Read more </a> </p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% include 'pagination.html' %}
+{% else %}
+  {% for article in articles %}
+    <div class="archive-container">
+      <div class="container content archive">
+        <h1 class="text-uppercase">
+          {% if article.content | trim | length > 0 %}
+          <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+          {% else %}
+          {{ article.title }}
+          {% endif %}
+        </h1>
+        {{ article._summary }}
+        {% if article.content | trim | length > 0 %}
+        <p> <a href="{{ SITEURL }}/{{ article.url }}"> Read more </a> </p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+{% endblock content %}
