@@ -6,5 +6,26 @@ $(document).ready(function(e) {
         }, 1000);
     }
 
-    $('a').smoothScroll();
+    $('a').smoothScroll({offset: -100});
+
+
+
+    /* Every time the window is scrolled ... */
+    $(window).scroll( function(){
+    
+        /* Check the location of each desired element */
+        $('.hideme').each( function(i){
+            
+            var top_of_object = $(this).offset().top;
+            var middle_of_window = $(window).scrollTop() + $(window).height() / 2;
+            
+            if( middle_of_window > top_of_object ){    
+                $(this).animate({'opacity':'1'},500);
+                    
+            }
+            
+        }); 
+    
+    });
 });
+

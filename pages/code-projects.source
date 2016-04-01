@@ -5,9 +5,8 @@
         <meta name="illustration" content="headers/code-projects.jpeg" />
     </head>
     <body>
-      <div class="container-fluid">
           <div class="row">
-            <div class="col-sm-6 nopadding">
+            <div class="col-sm-6 nopadding hideme">
               <div class="image-block" style="background: url(/images/dorie.png) no-repeat center top;background-size:cover;">
                 <div class="block-content">
                   <h4>DORiE</h4>
@@ -19,7 +18,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 nopadding">
+            <div class="col-sm-6 nopadding hideme">
               <div class="image-block" style="background: url(/images/botero.png) no-repeat center top;background-size:cover;">
                 <div class="block-content">
                   <h4>Enhanced Botero Model</h4>
@@ -30,7 +29,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 nopadding">
+            <div class="col-sm-6 nopadding hideme">
               <div class="image-block" style="background: url(/images/homepage.png) no-repeat center top;background-size:cover;">
                 <div class="block-content">
                   <h4>This homepage</h4>
@@ -48,6 +47,5 @@
               </div>
             </div>
           </div>
-      </div>
     </body>
 </html>

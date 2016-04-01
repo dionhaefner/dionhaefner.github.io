@@ -6,29 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Introduction¶In this post, I want to show you how to create the diagrams I made for my post on terrorism. I used Python 3.4 with the following packages: IPython Notebook (Jupyter) Matplotlib ...">
         <meta name="keywords" content="Python, Technology, Visualization">
-        <link rel="icon" href="//dionhaefner.de/favicon.ico">
+        <link rel="icon" href="//www.dionhaefner.de/favicon.ico">
 
         <title>Beautiful data visualization in Python with&nbsp;Matplotlib - Dion Häfner</title>
 
         <!-- Stylesheets -->
-        <link href="//dionhaefner.de/theme/css/bootstrap.css" rel="stylesheet">
-        <link href="//dionhaefner.de/theme/css/fonts.css" rel="stylesheet">
-        <link href="//dionhaefner.de/theme/css/nest.css" rel="stylesheet">
-        <link href="//dionhaefner.de/theme/css/pygment.css" rel="stylesheet">
-        <link href="//dionhaefner.de/theme/css/font-awesome.css" rel="stylesheet">
+        <link href="//www.dionhaefner.de/theme/css/bootstrap.css" rel="stylesheet">
+        <link href="//www.dionhaefner.de/theme/css/fonts.css" rel="stylesheet">
+        <link href="//www.dionhaefner.de/theme/css/nest.css" rel="stylesheet">
+        <link href="//www.dionhaefner.de/theme/css/pygment.css" rel="stylesheet">
+        <link href="//www.dionhaefner.de/theme/css/font-awesome.css" rel="stylesheet">
         <!-- /Stylesheets -->
 
         <!-- JQuery / JS -->
-        <script src="//dionhaefner.de/theme/jquery/jquery.min.js"></script>
-        <script src="//dionhaefner.de/theme/jquery/jquery.smoothScroll.js"></script>
-        <script src="//dionhaefner.de/theme/jquery/nest.js"></script>
-        <script src="//dionhaefner.de/theme/js/bootstrap.min.js"></script>
-        <script src="//dionhaefner.de/theme/js/nest.js"></script>
+        <script src="//www.dionhaefner.de/theme/jquery/jquery.min.js"></script>
+        <script src="//www.dionhaefner.de/theme/jquery/jquery.smoothScroll.js"></script>
+        <script src="//www.dionhaefner.de/theme/jquery/nest.js"></script>
+        <script src="//www.dionhaefner.de/theme/js/bootstrap.min.js"></script>
+        <script src="//www.dionhaefner.de/theme/js/nest.js"></script>
         <!-- /JQuery / JS -->
 
         <!-- RSS Feeds -->
-        <link href="//dionhaefner.de/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Full Atom Feed" />
-        <link href="//dionhaefner.de/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Categories Atom Feed" />
+        <link href="//www.dionhaefner.de/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Full Atom Feed" />
+        <link href="//www.dionhaefner.de/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Categories Atom Feed" />
         <!-- /RSS Feeds -->
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -44,14 +44,14 @@
           _paq.push(['trackPageView']);
           _paq.push(['enableLinkTracking']);
           (function() {
-            var u="https://www.dionhaefner.de/analytics/";
+            var u="https://vps.dionhaefner.de/analytics/";
             _paq.push(['setTrackerUrl', u+'piwik.php']);
             _paq.push(['setSiteId', 3]);
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
             g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
           })();
         </script>
-          <noscript><p><img src="https://www.dionhaefner.de/analytics//piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+          <noscript><p><img src="https://vps.dionhaefner.de/analytics//piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
         <!-- /Piwik Analytics -->
 
     </head>
@@ -59,14 +59,14 @@
     <body>
 
         <!-- Header -->
-    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('//dionhaefner.de/images/headers/blog.jpeg'); background-position: center; background-size: cover; ">
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('//www.dionhaefner.de/images/headers/blog.jpeg'); background-position: center; background-size: cover; ">
 
             <!-- Static navbar -->
           <div class="row">
 <nav class="navbar navbar-static navbar-default header-nav">
               <div class="container">
                       <div class="header-logo">
-                          <a class="pull-left" href="//dionhaefner.de/">
+                          <a class="pull-left" href="//www.dionhaefner.de/">
                             Dion Häfner
                           </a>
                       </div>
@@ -80,11 +80,11 @@
                       </div>
                       <div class="nav pull-right collapse navbar-collapse" id="navbar-collapse">
                         <ul class="nav navbar-nav navigate">
-                                  <li><a href="//dionhaefner.de/index.html#">Home</a></li>
-                                  <li><a href="//dionhaefner.de/blog/">Blog</a></li>
-                              <li><a  href="//dionhaefner.de/index.html#about-me">About&nbsp;Me</a></li>
-                              <li><a  href="//dionhaefner.de/index.html#code-projects">Code&nbsp;Projects</a></li>
-                              <li><a  href="//dionhaefner.de/index.html#research">Research</a></li>
+                                  <li><a href="//www.dionhaefner.de/index.html#top">Home</a></li>
+                                  <li><a href="//www.dionhaefner.de/blog/">Blog</a></li>
+                              <li><a  href="//www.dionhaefner.de/index.html#about-me">About&nbsp;Me</a></li>
+                              <li><a  href="//www.dionhaefner.de/index.html#code-projects">Code&nbsp;Projects</a></li>
+                              <li><a  href="//www.dionhaefner.de/index.html#research">Research</a></li>
                         </ul>
                       </div>
               </div>
@@ -99,12 +99,12 @@
               <div class="col-lg-12">
                   <div class="header-content">
                       <h1 class="header-title">Beautiful data visualization in Python with&nbsp;Matplotlib</h1>
-                      <p class="header-date">By <a href="//dionhaefner.de/author/dion.html">Dion</a>, So 27 März 2016, in category <a href="//dionhaefner.de/category/blog.html">Blog</a></p>
+                      <p class="header-date">By <a href="//www.dionhaefner.de/author/dion.html">Dion</a>, So 27 März 2016, in category <a href="//www.dionhaefner.de/category/blog.html">Blog</a></p>
                       <div class="header-underline"></div>
                       <div class="clearfix"></div>
                       <p class="pull-right header-tags">
                           <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
-<a href="//dionhaefner.de/tag/python.html">Python</a>, <a href="//dionhaefner.de/tag/technology.html">Technology</a>, <a href="//dionhaefner.de/tag/visualization.html">Visualization</a>                      </p>
+<a href="//www.dionhaefner.de/tag/python.html">Python</a>, <a href="//www.dionhaefner.de/tag/technology.html">Technology</a>, <a href="//www.dionhaefner.de/tag/visualization.html">Visualization</a>                      </p>
                   </div>
               </div>
         </div>
@@ -124,7 +124,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>In this post, I want to show you how to create the diagrams I made for <a href="//dionhaefner.de/blog/2016/03/26/why-you-should-not-be-afraid-of-terrorism/">my post on terrorism</a>. I used Python 3.4 with the following&nbsp;packages:</p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">¶</a></h2><p>In this post, I want to show you how to create the diagrams I made for <a href="//www.dionhaefner.de/blog/2016/03/why-you-should-not-be-afraid-of-terrorism/">my post on terrorism</a>. I used Python 3.4 with the following&nbsp;packages:</p>
 <ul>
 <li>IPython Notebook&nbsp;(Jupyter)</li>
 <li>Matplotlib</li>
@@ -165,7 +165,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I have downloaded the data I want to use from <a href="http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_cd_asdr2&amp;lang=en">Eurostat</a>. You can go ahead, change the contents of the data, and download it yourself, or <a href="//dionhaefner.de/downloads/hlth_cd_asdr2_1_Data.csv">use the data I used</a>. Either way, let&#8217;s read it into pandas and have a look at the first 5 entries, and the data that is contained in the&nbsp;columns:</p>
+<p>I have downloaded the data I want to use from <a href="http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_cd_asdr2&amp;lang=en">Eurostat</a>. You can go ahead, change the contents of the data, and download it yourself, or <a href="//www.dionhaefner.de/downloads/hlth_cd_asdr2_1_Data.csv">use the data I used</a>. Either way, let&#8217;s read it into pandas and have a look at the first 5 entries, and the data that is contained in the&nbsp;columns:</p>
 </div>
 </div>
 </div>
@@ -217,11 +217,11 @@
 
 Time range: 2011, 2012, 2013
 
-Countries: Austria, Finland, Denmark, Spain, Switzerland, Malta, Portugal, France, United Kingdom, Germany (until 1990 former territory of the FRG), Belgium, Netherlands, Norway, Sweden, Liechtenstein, Italy, Ireland, Luxembourg
+Countries: United Kingdom, Netherlands, Germany (until 1990 former territory of the FRG), Spain, Ireland, France, Sweden, Denmark, Liechtenstein, Austria, Malta, Portugal, Luxembourg, Belgium, Italy, Norway, Switzerland, Finland
 
-Ages: Total, Less than 65 years
+Ages: Less than 65 years, Total
 
-Causes of death: Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99), Other diseases of the digestive system (remainder of K00-K93), Other ischaemic heart diseases, Malignant neoplasm of oesophagus, Influenza (including swine flu), Intentional self-harm, Pregnancy, childbirth and the puerperium (O00-O99), Accidental drowning and submersion, Ill-defined and unknown causes of mortality, Non-malignant neoplasms (benign and uncertain), Falls, Other infectious and parasitic diseases (remainder of A00-B99), Diseases of the genitourinary system (N00-N99), Malignant neoplasm of colon, rectosigmoid junction, rectum, anus and anal canal, Mental and behavioural disorders due to use of alcohol, Chronic liver disease, Other malignant neoplasms (remainder of C00-C97), Malignant neoplasm of thyroid gland, Malignant neoplasm of stomach, Malignant neoplasm of kidney, except renal pelvis, Diseases of the circulatory system (I00-I99), External causes of morbidity and mortality (V01-Y89), Hodgkin disease and lymphomas, Other external causes of morbidity and mortality (remainder of V01-Y89), Diabetes mellitus, Malignant neoplasm of lip, oral cavity, pharynx, Malignant neoplasm of cervix uteri, Rheumatoid arthritis and arthrosis (M05-M06,M15-M19), Tuberculosis, Other endocrine, nutritional and metabolic diseases (remainder of E00-E90), Other diseases of the genitourinary system (remainder of N00-N99), Transport accidents (V01-V99, Y85), Diseases of the nervous system and the sense organs (G00-H95), Parkinson disease, Pneumonia, Diseases of the skin and subcutaneous tissue (L00-L99), Diseases of kidney and ureter, Malignant neoplasms (C00-C97), Malignant melanoma of skin, Certain infectious and parasitic diseases (A00-B99), Malignant neoplasm of trachea, bronchus and lung, Mental and behavioural disorders (F00-F99), Dementia, Malignant neoplasm of larynx, Other accidents (W20-W64, W75-X39, X50-X59, Y86), Malignant neoplasm of ovary, Other diseases of the nervous system and the sense organs (remainder of G00-H95), Malignant neoplasm of pancreas, All causes of death (A00-Y89) excluding S00-T98, Other diseases of the circulatory system (remainder of I00-I99), Cerebrovascular diseases, Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism, Malignant neoplasm of other parts of uterus, Other diseases of the respiratory system (remainder of J00-J99), Accidental poisoning by and exposure to noxious substances, Other heart diseases, Neoplasms, Malignant neoplasm of bladder, Malignant neoplasm of liver and intrahepatic bile ducts, Sudden infant death syndrome, Certain conditions originating in the perinatal period (P00-P96), Malignant neoplasm of prostate, Ulcer of stomach, duodenum and jejunum, Chronic lower respiratory diseases, Diseases of the musculoskeletal system and connective tissue (M00-M99), Human immunodeficiency virus [HIV] disease, Other symptoms, signs and abnormal clinical and laboratory findings (remainder of R00-R99), Asthma and status asthmaticus, Other diseases of the musculoskeletal system and connective tissue (remainder of M00-M99), Other mental and behavioural disorders (remainder of F00-F99), Alzheimer disease, Diseases of the respiratory system (J00-J99), Other lower respiratory diseases, Other malignant neoplasm of lymphoid, haematopoietic and related tissue, Diseases of the digestive system (K00-K93), Event of undetermined intent, Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified (R00-R99), Acute myocardial infarction including subsequent myocardial infarction, Ischaemic heart diseases, Leukaemia, Accidents (V01-X59, Y85, Y86), Drug dependence, toxicomania (F11-F16, F18-F19), Malignant neoplasm of brain and central nervous system, Endocrine, nutritional and metabolic diseases (E00-E90), Assault, Malignant neoplasm of breast, Viral hepatitis and sequelae of viral hepatitis
+Causes of death: Diseases of the skin and subcutaneous tissue (L00-L99), Diseases of the circulatory system (I00-I99), Intentional self-harm, Leukaemia, Parkinson disease, Pregnancy, childbirth and the puerperium (O00-O99), Accidents (V01-X59, Y85, Y86), Tuberculosis, Diseases of the musculoskeletal system and connective tissue (M00-M99), Malignant neoplasm of prostate, Other diseases of the nervous system and the sense organs (remainder of G00-H95), Other accidents (W20-W64, W75-X39, X50-X59, Y86), Cerebrovascular diseases, Malignant neoplasm of colon, rectosigmoid junction, rectum, anus and anal canal, Other diseases of the genitourinary system (remainder of N00-N99), Accidental drowning and submersion, Diseases of kidney and ureter, Chronic liver disease, Accidental poisoning by and exposure to noxious substances, Malignant neoplasm of oesophagus, Malignant neoplasm of kidney, except renal pelvis, Ulcer of stomach, duodenum and jejunum, Malignant neoplasm of lip, oral cavity, pharynx, Other infectious and parasitic diseases (remainder of A00-B99), Diseases of the digestive system (K00-K93), Rheumatoid arthritis and arthrosis (M05-M06,M15-M19), Malignant neoplasm of liver and intrahepatic bile ducts, Ill-defined and unknown causes of mortality, Malignant neoplasms (C00-C97), Chronic lower respiratory diseases, Diseases of the genitourinary system (N00-N99), Certain infectious and parasitic diseases (A00-B99), Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified (R00-R99), Diseases of the respiratory system (J00-J99), Malignant neoplasm of trachea, bronchus and lung, Malignant neoplasm of breast, Malignant neoplasm of larynx, Malignant melanoma of skin, Acute myocardial infarction including subsequent myocardial infarction, External causes of morbidity and mortality (V01-Y89), Malignant neoplasm of stomach, Viral hepatitis and sequelae of viral hepatitis, Other lower respiratory diseases, Malignant neoplasm of brain and central nervous system, Other diseases of the digestive system (remainder of K00-K93), All causes of death (A00-Y89) excluding S00-T98, Other endocrine, nutritional and metabolic diseases (remainder of E00-E90), Transport accidents (V01-V99, Y85), Diabetes mellitus, Mental and behavioural disorders due to use of alcohol, Other diseases of the musculoskeletal system and connective tissue (remainder of M00-M99), Other symptoms, signs and abnormal clinical and laboratory findings (remainder of R00-R99), Other malignant neoplasm of lymphoid, haematopoietic and related tissue, Sudden infant death syndrome, Assault, Other external causes of morbidity and mortality (remainder of V01-Y89), Hodgkin disease and lymphomas, Drug dependence, toxicomania (F11-F16, F18-F19), Diseases of the nervous system and the sense organs (G00-H95), Congenital malformations, deformations and chromosomal abnormalities (Q00-Q99), Ischaemic heart diseases, Certain conditions originating in the perinatal period (P00-P96), Influenza (including swine flu), Non-malignant neoplasms (benign and uncertain), Human immunodeficiency virus [HIV] disease, Alzheimer disease, Other heart diseases, Event of undetermined intent, Mental and behavioural disorders (F00-F99), Falls, Malignant neoplasm of cervix uteri, Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism, Other diseases of the circulatory system (remainder of I00-I99), Malignant neoplasm of pancreas, Other malignant neoplasms (remainder of C00-C97), Malignant neoplasm of bladder, Neoplasms, Other diseases of the respiratory system (remainder of J00-J99), Other mental and behavioural disorders (remainder of F00-F99), Malignant neoplasm of other parts of uterus, Dementia, Malignant neoplasm of ovary, Malignant neoplasm of thyroid gland, Other ischaemic heart diseases, Pneumonia, Endocrine, nutritional and metabolic diseases (E00-E90), Asthma and status asthmaticus
 </pre>
 </div>
 </div>
@@ -11007,17 +11007,6 @@ AABgIMQdAACAgfwXQVDD1O8II7sAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -11054,22 +11043,22 @@ AABgIMQdAACAgfwXQVDD1O8II7sAAAAASUVORK5CYII=
                 <p id="post-share-links">
                     Share via:
                     <ul class="list-inline">
-                        <li> <a href="http://twitter.com/home?status=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib%20//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Twitter"><span class="fa fa-twitter fa-2x"></span></a> </li>
-                        <li> <a href="http://www.facebook.com/sharer/sharer.php?u=//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Facebook"><span class="fa fa-facebook fa-2x"></span></a> </li>
-                        <li> <a href="mailto:?subject=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib&amp;body=//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via E-Mail"><span class="fa fa-send fa-2x"></span></a> </li>
+                        <li> <a href="http://twitter.com/home?status=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib%20//www.dionhaefner.de/blog/2016/03/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Twitter"><span class="fa fa-twitter fa-2x"></span></a> </li>
+                        <li> <a href="http://www.facebook.com/sharer/sharer.php?u=//www.dionhaefner.de/blog/2016/03/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Facebook"><span class="fa fa-facebook fa-2x"></span></a> </li>
+                        <li> <a href="mailto:?subject=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib&amp;body=//www.dionhaefner.de/blog/2016/03/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via E-Mail"><span class="fa fa-send fa-2x"></span></a> </li>
                     </ul>
                 </p>
               </div>
             <div style="float: right">
-                  <a href="//dionhaefner.de/beautiful-data-visualization-in-python-with-matplotlib.source"> Download source </a>
+                  <a href="//www.dionhaefner.de/beautiful-data-visualization-in-python-with-matplotlib.source"> Download source </a>
             </div>
         </div>
     <div class="comments">
         <div id="disqus_thread"></div>
             <script type="text/javascript">
                 var disqus_shortname = 'dionhaefner';
-                var disqus_identifier = 'blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/';
-                var disqus_url = '//dionhaefner.de/blog/2016/03/27/beautiful-data-visualization-in-python-with-matplotlib/';
+                var disqus_identifier = 'blog/2016/03/beautiful-data-visualization-in-python-with-matplotlib/';
+                var disqus_url = '//www.dionhaefner.de/blog/2016/03/beautiful-data-visualization-in-python-with-matplotlib/';
                 (function() {
                     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -11088,16 +11077,16 @@ AABgIMQdAACAgfwXQVDD1O8II7sAAAAASUVORK5CYII=
                     <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
                         <div class="footer-title">Sitemap</div>
                         <ul class="list-unstyled">
-                            <li><a href="//dionhaefner.de/archives.html">Archives</a></li>
-                            <li><a href="//dionhaefner.de/categories.html">Categories</a></li>
-                            <li><a href="//dionhaefner.de/tags.html">Tags</a></li>
-                            <li><a href="//dionhaefner.de/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
+                            <li><a href="//www.dionhaefner.de/archives.html">Archives</a></li>
+                            <li><a href="//www.dionhaefner.de/categories.html">Categories</a></li>
+                            <li><a href="//www.dionhaefner.de/tags.html">Tags</a></li>
+                            <li><a href="//www.dionhaefner.de/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
                         <div class="footer-title">Visit Me</div>
                         <ul class="list-inline">
-                            <li><a href="https://github.com/dionhaefner/" target="_blank"><span class="fa fa-github fa-3x fade"></span></a></li>
+                            <li><a href="https://github.com/dionhaefner/" target="_blank"><span class="fa fa-github fa-3x"></span></a></li>
                         </ul>
                     </div>
                     <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
