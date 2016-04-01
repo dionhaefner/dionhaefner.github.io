@@ -93,9 +93,9 @@
           })();
         </script>
         {% if PIWIK_SSL_URL %}
-          <noscript><p><img src="{{ PIWIK_SSL_URL }}//piwik.php?idsite={{ PIWIK_SITE_ID }}" style="border:0;" alt="" /></p></noscript>
+          <noscript><img src="{{ PIWIK_SSL_URL }}//piwik.php?idsite={{ PIWIK_SITE_ID }}" style="border:0;" alt="" /></noscript>
         {% else %}
-          <noscript><p><img src="{{ PIWIK_URL }}/piwik.php?idsite={{ PIWIK_SITE_ID }}" style="border:0;" alt="" /></p></noscript>
+          <noscript><img src="{{ PIWIK_URL }}/piwik.php?idsite={{ PIWIK_SITE_ID }}" style="border:0;" alt="" /></noscript>
         {% endif %}
         <!-- /Piwik Analytics -->
         {% endif %}
