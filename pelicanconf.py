@@ -26,8 +26,8 @@ DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'home']
 DISPLAY_PAGES_ON_MENU = True
 INDEX_SAVE_AS = "blog/index.html"
 HOME_SAVE_AS = "index.html"
-ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
-ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{slug}/'
+ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{slug}/index.html'
 PAGE_URL = 'index.html#{slug}'
 
 # Feed generation is usually not desired when developing
@@ -46,13 +46,6 @@ LINKS = (
 SOCIAL = (('github fa-3x', 'https://github.com/dionhaefner/'),)
 
 DEFAULT_PAGINATION = 10
-
-#
-# custom filters
-#
-def category_header(category):
-    return "-".join(category.name.lower().split()) + ".jpeg"
-JINJA_FILTERS = {'category_header': category_header}
 
 #
 # SOCIAL SHARE
@@ -82,7 +75,7 @@ SUMMARY_USE_FIRST_PARAGRAPH = True
 SITESUBTITLE = u'Home'
 NEST_INTRODUCTION_PAGE = u'introduction'
 # Add items to top menu before pages
-MENUITEMS = [('Home', '/index.html#'), ('Blog', '/blog/')]
+MENUITEMS = [('Home', '/index.html#top'), ('Blog', '/blog/')]
 # Add header background image from content/images : 'background.jpg'
 NEST_HEADER_IMAGES = 'headers/index.jpeg'
 NEST_HEADER_LOGO = ''
@@ -108,6 +101,7 @@ NEST_ARCHIVES_HEAD_DESCRIPTION = u'Posts Archives'
 NEST_ARCHIVES_HEADER_TITLE = u'Archives'
 NEST_ARCHIVES_HEADER_SUBTITLE = u'Archives for all posts'
 NEST_ARCHIVES_CONTENT_TITLE = u'Archives'
+NEST_ARCHIVES_HEADER_IMAGE = u'headers/archive.jpeg'
 # article.html
 NEST_ARTICLE_HEADER_BY = u'By'
 NEST_ARTICLE_HEADER_MODIFIED = u'modified'
