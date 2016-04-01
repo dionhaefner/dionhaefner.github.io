@@ -3,6 +3,7 @@
 {% block title %}{{ article.title }} - {{ super() }}{% endblock title %}
 {% block description %}{{ article.content|striptags|truncate(200)|escape }}{% endblock description %}
 {% block keywords %}{% for tag in article.tags|sort %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}{% endblock keywords %}
+{% block header_extra %} <meta property="og:image" content="{{ article.illustration }}"/> {% endblock header_extra %}
 
 {% block headerstyle %}
     {% if article.illustration %}
@@ -69,9 +70,14 @@
                 </p>
               </div>
             {% endif %}
+            {% if OUTPUT_SOURCES %}
             <div style="float: right">
-                  <a href="{{ SITEURL }}/{{ article.slug }}.source"> Download source </a>
+                  {% set source_path = "/".join(article.save_as.split("/")[:-1]) %}
+                  {% set source_file = ".".join(article.save_as.split("/")[-1].split(".")[:-1]) %}
+                  {% set source_ext = article.source_path.split("/")[-1].split(".")[-1] %}
+                  <a href="{{ SITEURL }}/{{ source_path }}/{{ source_file }}{{ OUTPUT_SOURCES_EXTENSION }}" download="{{ article.slug }}.{{ source_ext }}"> Download source </a>
             </div>
+            {% endif %}
         </div>
         {% include "disqus_script.html" %}
     </div>

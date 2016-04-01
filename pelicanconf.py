@@ -24,10 +24,10 @@ FORMATTED_FIELDS = ['summary','_summary']
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'home']
 
 DISPLAY_PAGES_ON_MENU = True
-INDEX_SAVE_AS = "blog/index.html"
+INDEX_SAVE_AS = "blog.html"
 HOME_SAVE_AS = "index.html"
-ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{slug}/'
-ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{slug}/index.html'
+ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}/'
+ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}/index.html'
 PAGE_URL = 'index.html#{slug}'
 
 # Feed generation is usually not desired when developing
@@ -75,7 +75,7 @@ SUMMARY_USE_FIRST_PARAGRAPH = True
 SITESUBTITLE = u'Home'
 NEST_INTRODUCTION_PAGE = u'introduction'
 # Add items to top menu before pages
-MENUITEMS = [('Home', '/index.html#top'), ('Blog', '/blog/')]
+MENUITEMS = [('Home', '/index.html#top'), ('Blog', '/blog.html')]
 # Add header background image from content/images : 'background.jpg'
 NEST_HEADER_IMAGES = 'headers/index.jpeg'
 NEST_HEADER_LOGO = ''
