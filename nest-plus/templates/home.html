@@ -2,12 +2,13 @@
 
 {% block title %}{{ NEST_INDEX_HEAD_TITLE }}  &verbar; {{ NEST_INDEX_HEAD_SUBTITLE }}{% endblock title %}
 {% block description %}{{ SITENAME }} &verbar; {{ SITESUBTITLE }}{% endblock description %}
+{% block head_extra %} <link href="{{ SITEURL }}/theme/css/nest-dark.css" rel="stylesheet">  {% endblock head_extra %}
 
 {% block headerstyle %}
     {% if NEST_HEADER_IMAGES %}
-    <div class="index-header-container" style="background-image: url('{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}'); background-position: center; background-size: cover; height: 100vh;">
+    <div id="top" class="image-container fullheight" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}'); background-position: center; background-size: cover;">
     {% else %}
-    <div class="index-header-container gradient">
+    <div id="top" class="image-container fullheight gradient">
     {% endif %}
 {% endblock headerstyle %}
 
@@ -16,7 +17,9 @@
 {% endblock navstyle %}
 
 {% block header %}
-    <div class="container header-wrapper image-wrapper vertical-align" style="padding-top: 50px;">
+  <div class="container" style="height: 100vh">
+    <div class="image-container" style="height: 100%">
+      <div class="image-wrapper" style="padding-top: 50px;">
         <div class="row">
               <div class="col-lg-12">
                   <div class="header-content">
@@ -28,29 +31,31 @@
                   </div>
               </div>
         </div>
+      </div>
+    <div class="scroll-icon">
+      <a href="#introduction"><span class="fa fa-angle-double-down fa-3x"></span></a>
     </div>
-    <div class="container scroll-icon">
-      <a href="#0"><span class="fa fa-angle-double-down fa-3x fade"></span></a>
-    </div>
+  </div>
+</div>
 {% endblock header %}
 
 {% block content %}
 
-  <div id="0" class="index-container vertical-align">
     {% for page in hidden_pages %}
       {% if page.title | capitalize == NEST_INTRODUCTION_PAGE | capitalize %}
-        <div class="container">{{ page.content }}</div>
+        <div class="container">
+          <div id="introduction" class="hideme">{{ page.content }}</div>
+        </div>
       {% endif %}
     {% endfor %}
-  </div>
 
   {% for page in pages | sort(attribute='slug') %}
     {% if page.illustration %}
-    <div id="{{ page.slug }}" class="image-container" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{{ SITEURL }}/images/{{ page.illustration }}'); background-position: center; background-size: cover;">
+    <div id="{{ page.slug }}" class="image-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ SITEURL }}/images/{{ page.illustration }}'); background-position: center; background-size: cover;">
     {% else %}
     <div id="{{ page.slug }}" class="image-container gradient">
     {% endif %}
-      <div class="container image-wrapper vertical-align">
+      <div class="image-wrapper container">
         <div class="row">
               <div class="col-lg-12">
                   <div class="image-content">
@@ -63,12 +68,12 @@
               </div>
         </div>
       </div>
-      <div class="container scroll-icon">
-          <a href="#{{ page.slug }}-content"><span class="fa fa-angle-double-down fa-3x fade"></span></a>
+      <div class="scroll-icon">
+          <a href="#{{ page.slug }}-content"><span class="fa fa-angle-double-down fa-3x"></span></a>
       </div>
     </div>
-    <div id="{{ page.slug }}-content" class="index-container">
-      <div class="container">
+    <div class="container">
+      <div id="{{ page.slug }}-content" class="hideme">
         {{ page.content }}
       </div>
     </div>

@@ -8,7 +8,9 @@
     {% if article.illustration %}
     <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/{{ article.illustration }}'); background-position: center; background-size: cover; ">
     {% elif NEST_ARTICLE_DEFAULT_HEADER_IMAGE %}
-    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/headers/{{ article.category | category_header }}'); background-position: center; background-size: cover; ">
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/{{ NEST_ARTICLE_DEFAULT_HEADER_IMAGE }}'); background-position: center; background-size: cover; ">
+    {% elif NEST_BLOG_HEADER_IMAGE %}
+    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/{{ NEST_BLOG_HEADER_IMAGE }}'); background-position: center; background-size: cover; ">
     {% else %}
     <div class="header-container gradient">
     {% endif %}
