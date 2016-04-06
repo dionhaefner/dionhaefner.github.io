@@ -13,4 +13,9 @@
             </script>
         <noscript>Please enable JavaScript to view the comments.</noscript>
     </div>
+{% elif ISSO_URL and SITEURL and article.status != "draft" %}
+    <div class="comments">
+      <script data-isso="{{ ISSO_URL }}" src="{{ ISSO_URL }}/js/embed.min.js"></script>
+      <section id="isso-thread"></section>
+    </div>
 {% endif %}

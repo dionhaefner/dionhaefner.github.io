@@ -20,8 +20,8 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-DISQUS_SITENAME = "dionhaefner"
+ISSO_URL = "//vps.dionhaefner.de/isso"
 #GOOGLE_ANALYTICS = ""
-PIWIK_URL = "https://vps.dionhaefner.de/analytics"
+PIWIK_URL = "http://vps.dionhaefner.de/analytics"
 PIWIK_SSL_URL = "https://vps.dionhaefner.de/analytics"
-PIWIK_SITE_ID = "3"
+PIWIK_SITE_ID = "1"
