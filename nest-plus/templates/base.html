@@ -143,7 +143,7 @@
                               {% endif %}
                           {% endfor %}
                           {% if DISPLAY_PAGES_ON_MENU %}
-                          {% for pg in PAGES %}
+                          {% for pg in PAGES | sort(attribute='slug') %}
                               <li><a {% if pg == page %} class="active"{% endif %} href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
                           {% endfor %}
                           {% endif %}

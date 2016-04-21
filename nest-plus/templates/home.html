@@ -51,7 +51,7 @@
 
   {% for page in pages | sort(attribute='slug') %}
     {% if page.illustration %}
-    <div id="{{ page.slug }}" class="image-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ SITEURL }}/images/{{ page.illustration }}'); background-position: center; background-size: cover;">
+    <div class="image-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ SITEURL }}/images/{{ page.illustration }}'); background-position: center; background-size: cover;">
     {% else %}
     <div id="{{ page.slug }}" class="image-container gradient">
     {% endif %}
@@ -69,13 +69,13 @@
         </div>
       </div>
       <div class="scroll-icon">
-          <a href="#{{ page.slug }}-content"><span class="fa fa-angle-double-down fa-3x"></span></a>
+          <a href="#{{ page.slug }}"><span class="fa fa-angle-double-down fa-3x"></span></a>
       </div>
     </div>
     <div class="container">
-      <div id="{{ page.slug }}-content" class="hideme">
+      <div class="hideme" id="{{ page.slug }}">
         {{ page.content }}
       </div>
     </div>
-    {% endfor %}
+  {% endfor %}
 {% endblock content %}

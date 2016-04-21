@@ -122,7 +122,7 @@ NEST_BLOG_HEADER_IMAGE = u'headers/blog.jpeg'
 NEST_BLOG_HEAD_TITLE = u'Blog'
 NEST_BLOG_HEAD_DESCRIPTION = u'Blog'
 NEST_BLOG_HEADER_TITLE = u'Blog'
-NEST_BLOG_HEADER_SUBTITLE = u'Welcome to the bright side of this website'
+NEST_BLOG_HEADER_SUBTITLE = u'The bright side of this website'
 # categories.html
 NEST_CATEGORIES_HEAD_TITLE = u'Categories'
 NEST_CATEGORIES_HEAD_DESCRIPTION = u'Archives listed by category'

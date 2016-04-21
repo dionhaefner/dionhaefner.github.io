@@ -1,13 +1,33 @@
 $(document).ready(function(e) {
+
+    var scrollToCenter = function(e) {
+      var el = $( e.prop('hash') );
+      if (e.prop('hash')) {
+          var elHeight = el.height();
+          var windowHeight = $(window).height();
+          var offset;
+
+          if (elHeight < windowHeight) {
+            offset = ((elHeight / 2) - (windowHeight / 2));
+          }
+          else {
+            offset = 0;
+          }
+          $.smoothScroll({offset: offset, speed: "auto", scrollTarget: el});
+          return false;
+       }
+    };
+
+    /* If current URL contains a hash: scroll to anchor */
     if (window.location.hash) {
         $(window).scrollTop(0,0);
-        $('html,body').animate({
-          scrollTop: $(window.location.hash).offset().top
-        }, 1000);
+        scrollToCenter($(window.location));
     }
 
-    $('a').smoothScroll({offset: -100});
-
+    /* Animate anchor scrolling */
+    $('a').on('click', function(e) {
+        scrollToCenter($(this));
+    });
 
 
     /* Every time the window is scrolled ... */

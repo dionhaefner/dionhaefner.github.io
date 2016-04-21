@@ -15,15 +15,7 @@ During my Bachelor’s at Heidelberg University, I specialized on computational 
 Although I have been doing Environmental Physics for a while now, I mostly see myself as a 'computer guy'. I have a passion for software, modelling, and visualization.
 
 My personal interests cover a wide range between Coding and Technology, Art and Design, Science, and Pop Culture (and so does my [blog](/blog/)). My tools of choice are Ubuntu, Python, IPython notebooks, InkScape, some LaTeX, and some C++.
-
 </div>
-
-You may **contact** me via e-mail at <noscript>
-my address "mail" inside domain "dionhaefner" ending in ".de"
-</noscript> <script>
-  y = "znvy@qvbaunrsare.qr";
-  document.write("<a href=mailto:" + decode(y) + ">" + decode(y) + "</a>");
-</script> (encrypted via [Protonmail](http://www.protonmail.com)).
 
 <p>
 <span class="text-muted">
