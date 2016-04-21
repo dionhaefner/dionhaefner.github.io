@@ -20,8 +20,8 @@ body > .container {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .fullheight {
