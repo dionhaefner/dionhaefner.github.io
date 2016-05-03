@@ -7,11 +7,11 @@
 
 {% block headerstyle %}
     {% if article.illustration %}
-    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/{{ article.illustration }}'); background-position: center; background-size: cover; ">
+    <div class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ article.illustration }}">
     {% elif NEST_ARTICLE_DEFAULT_HEADER_IMAGE %}
-    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/{{ NEST_ARTICLE_DEFAULT_HEADER_IMAGE }}'); background-position: center; background-size: cover; ">
+    <div class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{NEST_ARTICLE_DEFAULT_HEADER_IMAGE }}">
     {% elif NEST_BLOG_HEADER_IMAGE %}
-    <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ SITEURL }}/images/{{ NEST_BLOG_HEADER_IMAGE }}'); background-position: center; background-size: cover; ">
+    <div class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_BLOG_HEADER_IMAGE }}">
     {% else %}
     <div class="header-container gradient">
     {% endif %}

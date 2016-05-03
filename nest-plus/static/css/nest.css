@@ -253,13 +253,12 @@ nav.navbar-fixed-top {
 /* Header */
 
 .header-container {
-    background: #f5f5f5;
     padding-top: 0;
     padding-bottom: 0;
-    min-height: 360px;
+    min-height: 460px;
 }
 .header-wrapper{
-    padding-top: 60px;
+    padding-top: 120px;
     padding-left: 40px;
     padding-right: 40px;
 }

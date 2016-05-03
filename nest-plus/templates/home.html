@@ -6,7 +6,7 @@
 
 {% block headerstyle %}
     {% if NEST_HEADER_IMAGES %}
-    <div id="top" class="image-container fullheight" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}'); background-position: center; background-size: cover;">
+    <div id="top" class="image-container fullheight" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}">
     {% else %}
     <div id="top" class="image-container fullheight gradient">
     {% endif %}
@@ -51,7 +51,7 @@
 
   {% for page in pages | sort(attribute='slug') %}
     {% if page.illustration %}
-    <div class="image-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('{{ SITEURL }}/images/{{ page.illustration }}'); background-position: center; background-size: cover;">
+    <div class="image-container" data-parallax="scroll" data-speed="0.5" data-naturalWidth="1920" data-image-src="{{ SITEURL }}/images/{{ page.illustration }}">
     {% else %}
     <div id="{{ page.slug }}" class="image-container gradient">
     {% endif %}

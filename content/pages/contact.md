@@ -1,6 +1,6 @@
 Title: Contact
 Slug: zContact
-Illustration: headers/bron.jpg
+Illustration: headers/contact.jpeg
 
 <div class="row text-center">
 <p class="lead">
