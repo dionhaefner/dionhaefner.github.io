@@ -1,5 +1,5 @@
-/* 
-Dark version of the nest-plus Pelican theme 
+/*
+Dark version of the nest-plus Pelican theme
 Also provides some extra styles for the one-page landing page.
 
 Intended for inclusion AFTER nest.css
@@ -51,7 +51,7 @@ h3:after {
     display: flex;
     flex-flow: column;
     padding: 0;
-    min-height: 300px;
+    min-height: 400px;
     width: 100%;
 }
 
