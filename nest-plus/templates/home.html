@@ -44,7 +44,7 @@
     {% for page in hidden_pages %}
       {% if page.title | capitalize == NEST_INTRODUCTION_PAGE | capitalize %}
         <div class="container">
-          <div id="introduction" class="hideme">{{ page.content }}</div>
+          <div id="introduction">{{ page.content }}</div>
         </div>
       {% endif %}
     {% endfor %}
@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="container">
-      <div class="hideme" id="{{ page.slug }}">
+      <div id="{{ page.slug }}">
         {{ page.content }}
       </div>
     </div>
