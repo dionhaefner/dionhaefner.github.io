@@ -53,19 +53,17 @@
     {% if page.illustration %}
     <div class="image-container" data-parallax="scroll" data-speed="0.5" data-naturalWidth="1920" data-image-src="{{ SITEURL }}/images/{{ page.illustration }}">
     {% else %}
-    <div id="{{ page.slug }}" class="image-container gradient">
+    <div class="image-container gradient">
     {% endif %}
       <div class="image-wrapper container">
         <div class="row">
-              <div class="col-lg-12">
-                  <div class="image-content">
-                    <h1 class="image-title">{{ page.title }}</h1>
-                    <div class="image-underline"></div>
-                    {% if page.subtitle %}
-                    <p class="image-subtitle image-subtitle-homepage">{{ page.subtitle }}</p>
-                    {% endif %}
-                  </div>
-              </div>
+          <div class="image-content">
+            <h1 class="image-title">{{ page.title }}</h1>
+            <div class="image-underline"></div>
+            {% if page.subtitle %}
+            <p class="image-subtitle image-subtitle-homepage">{{ page.subtitle }}</p>
+            {% endif %}
+          </div>
         </div>
       </div>
       <div class="scroll-icon">
