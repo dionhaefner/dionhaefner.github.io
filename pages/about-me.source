@@ -2,7 +2,7 @@ Title: About Me
 Slug: about-me
 Date: 26-03-2016
 Author: Dion
-Illustration: headers/bron.jpg
+Illustration: headers/about-me.jpeg
 
 ## Let me introduce myself
 <div class="clearfix">
@@ -16,9 +16,3 @@ Although I have been doing Environmental Physics for a while now, I mostly see m
 
 My personal interests cover a wide range between Coding and Technology, Art and Design, Science, and Pop Culture (and so does my [blog](/blog)). My tools of choice are Ubuntu, Python, Jupyter notebooks, InkScape, some LaTeX, and some C++.
 </div>
-
-<p>
-<span class="text-muted">
-Header: <a href="(https://commons.wikimedia.org/wiki/User:Nick-D">Nick-D</a> | CC-SA-4.0
-</span>
-</p>
