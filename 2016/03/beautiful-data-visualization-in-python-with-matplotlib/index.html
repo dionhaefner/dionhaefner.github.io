@@ -144,10 +144,10 @@
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -176,18 +176,18 @@
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../downloads/hlth_cd_asdr2_1_Data.csv"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../downloads/hlth_cd_asdr2_1_Data.csv"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 
 <span class="n">time_range</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">TIME</span><span class="p">)</span>
 <span class="n">countries</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">GEO</span><span class="p">)</span>
 <span class="n">ages</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">AGE</span><span class="p">)</span>
 <span class="n">death_causes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ICD10</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Time range: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">time_range</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Countries: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Ages: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Causes of death: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">death_causes</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Time range: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">time_range</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Countries: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Ages: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Causes of death: "</span> <span class="o">+</span> <span class="s2">", "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">death_causes</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -244,10 +244,10 @@ Causes of death: Diseases of the skin and subcutaneous tissue (L00-L99), Disease
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../downloads/hlth_cd_asdr2_1_Data.csv"</span><span class="p">,</span> 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../downloads/hlth_cd_asdr2_1_Data.csv"</span><span class="p">,</span> 
                    <span class="n">na_values</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">thousands</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span> 
                    <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">"TIME"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="s2">"Value"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Value</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Value</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -282,13 +282,13 @@ Name: Value, dtype: float64
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"AGE"</span><span class="p">,</span><span class="s2">"ICD10"</span><span class="p">])[</span><span class="s2">"Value"</span><span class="p">]</span> \
-            <span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Total:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">[</span><span class="s2">"Total"</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"AGE"</span><span class="p">,</span><span class="s2">"ICD10"</span><span class="p">])[</span><span class="s2">"Value"</span><span class="p">]</span> \
+            <span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">"Total:"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">[</span><span class="s2">"Total"</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Young people:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">[</span><span class="s2">"Less than 65 years"</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Young people:"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">[</span><span class="s2">"Less than 65 years"</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -344,7 +344,7 @@ Name: Value, dtype: float64
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rename_keys</span> <span class="o">=</span> <span class="p">{</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">rename_keys</span> <span class="o">=</span> <span class="p">{</span>
               <span class="s2">"Diseases of the circulatory system (I00-I99)"</span><span class="p">:</span> 
                     <span class="s2">"Heart disease"</span><span class="p">,</span>
               <span class="s2">"Neoplasms"</span><span class="p">:</span> <span class="s2">"Cancer"</span><span class="p">,</span>
@@ -373,7 +373,7 @@ Name: Value, dtype: float64
                           <span class="c1"># choose only causes of death from rename_keys dictionary</span>
                           <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">rename_keys</span><span class="p">)</span>         
                           <span class="c1"># do the renaming</span>
-                          <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>     
+                          <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>     
                           <span class="c1"># re-sort, order might change</span>
                           <span class="o">*</span> <span class="mi">100</span>                             
                           <span class="c1"># convert from death rate per 100,000 to per 10 Mio. people</span>
@@ -398,15 +398,15 @@ Name: Value, dtype: float64
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">terrorism_deaths</span> <span class="o">=</span> <span class="mi">567</span> <span class="o">/</span> <span class="mi">15</span> <span class="c1"># fatalities per year</span>
-<span class="n">w_e_inhabitants</span> <span class="o">=</span> <span class="mi">450</span><span class="n">E6</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">terrorism_deaths</span> <span class="o">=</span> <span class="mi">567</span> <span class="o">/</span> <span class="mi">15</span> <span class="c1"># fatalities per year</span>
+<span class="n">w_e_inhabitants</span> <span class="o">=</span> <span class="mf">450E6</span>
 <span class="n">w_e_inhabitants_under_65</span> <span class="o">=</span> <span class="n">w_e_inhabitants</span> <span class="o">*</span> <span class="o">.</span><span class="mi">915</span>
 
 <span class="k">def</span> <span class="nf">add_terror</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">rate</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">rate</span><span class="p">],</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Terrorism"</span><span class="p">]))</span>
 
-<span class="n">total_data</span> <span class="o">=</span> <span class="n">add_terror</span><span class="p">(</span><span class="n">total_data</span><span class="p">,</span> <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants</span> <span class="o">*</span> <span class="mi">1</span><span class="n">E7</span><span class="p">)</span>
-<span class="n">young_data</span> <span class="o">=</span> <span class="n">add_terror</span><span class="p">(</span><span class="n">young_data</span><span class="p">,</span> <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants_under_65</span> <span class="o">*</span> <span class="mi">1</span><span class="n">E7</span><span class="p">)</span>
+<span class="n">total_data</span> <span class="o">=</span> <span class="n">add_terror</span><span class="p">(</span><span class="n">total_data</span><span class="p">,</span> <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants</span> <span class="o">*</span> <span class="mf">1E7</span><span class="p">)</span>
+<span class="n">young_data</span> <span class="o">=</span> <span class="n">add_terror</span><span class="p">(</span><span class="n">young_data</span><span class="p">,</span> <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants_under_65</span> <span class="o">*</span> <span class="mf">1E7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -426,7 +426,7 @@ Name: Value, dtype: float64
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">add_other</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">add_other</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">total</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"Other"</span><span class="p">]))</span>
 
 <span class="n">total_deaths</span> <span class="o">=</span> <span class="s2">"All causes of death (A00-Y89) excluding S00-T98"</span>
@@ -462,7 +462,7 @@ Name: Value, dtype: float64
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">total_data</span><span class="p">))</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">total_data</span><span class="p">)</span>
@@ -697,7 +697,7 @@ GgkVkagAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"Standardized death rate per 10 Mio. people "</span>
          <span class="s2">"in Western Europe, 2011-2013, average per year"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -1346,7 +1346,7 @@ fC342vRJ4Oz+ToSIyBqguN8xxX3pMfWwi4iIiIg0mHrYRUREREQaTA12EREREZEGU4NdRERERKTB
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"Standardized death rate per 10 Mio. people "</span>
          <span class="s2">"in Western Europe, 2011-2013, average per year"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -2350,7 +2350,7 @@ ctxIMjMzMzMzy3EjyczMzMzMLOf/A7MBmlWkw5drAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"Standardized death rate per 10 Mio. people "</span>
          <span class="s2">"in Western Europe, 2011-2013, average per year"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -3182,7 +3182,7 @@ EZEQKeAWEREREQmRAm4RERERkRD9f4RM2uWngWeCAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"talk"</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s2">"white"</span><span class="p">)</span>
 <span class="n">bar_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">"Paired"</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="n">desat</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
@@ -3195,7 +3195,7 @@ EZEQKeAWEREREQmRAm4RERERkRD9f4RM2uWngWeCAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># same code as before, now with seaborn and a color palette!</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># same code as before, now with seaborn and a color palette!</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"Standardized death rate per 10 Mio. people "</span>
@@ -4486,7 +4486,7 @@ KTCEEEIIIYQQDeZ/AKIY/PpAHRPDAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"Standardized death rate per 10 Mio. people "</span>
          <span class="s2">"in Western Europe, 2011-2013, average per year"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -5769,14 +5769,14 @@ MIiIiIiISG9YYBARERERkd6wwCAiIiIiIr1hgUFERERERHrzf6QNmqoIh3WuAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">autolabel</span><span class="p">(</span><span class="n">rects</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">autolabel</span><span class="p">(</span><span class="n">rects</span><span class="p">):</span>
     <span class="sd">""" Attach some text labels to a horizontal bar plot """</span>
     <span class="c1"># determine maximum width of the bars, and offset labels by 2% of that</span>
-    <span class="n">offset</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">])</span> <span class="o">*</span> <span class="o">.</span><span class="mi">02</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">])</span> <span class="o">*</span> <span class="o">.</span><span class="mo">02</span>
     <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
         <span class="n">width</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">width</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_y</span><span class="p">()</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span>
-                <span class="s2">"</span><span class="si">{:d}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">width</span><span class="p">)),</span> <span class="c1"># display rounded bar width</span>
+                <span class="s2">"{:d}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">width</span><span class="p">)),</span> <span class="c1"># display rounded bar width</span>
                 <span class="n">ha</span><span class="o">=</span><span class="s1">'left'</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">'center'</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="s2">"x-small"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5797,7 +5797,7 @@ MIiIiIiISG9YYBARERERkd6wwCAiIiIiIr1hgUFERERERHrzf6QNmqoIh3WuAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"Standardized death rate per 10 Mio. people"</span>
          <span class="s2">"in Western Europe, 2011-2013, average per year"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -5816,8 +5816,8 @@ MIiIiIiISG9YYBARERERkd6wwCAiIiIiIr1hgUFERERERHrzf6QNmqoIh3WuAAAAAElFTkSuQmCC
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'left'</span><span class="p">]</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">"#AAAAAA"</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'bottom'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'bottom'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="n">autolabel</span><span class="p">([</span><span class="n">rect</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">bar1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">rect</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">bar2</span><span class="p">])</span>
@@ -7277,7 +7277,7 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
          <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"Standardized death rate per 10 Mio. people, 2011-2013, average per year"</span><span class="p">,</span>
@@ -7297,17 +7297,17 @@ RU5ErkJggg==
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'left'</span><span class="p">]</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">"#AAAAAA"</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'bottom'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'bottom'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">pos1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">autolabel</span><span class="p">([</span><span class="n">rect</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">bar1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">rect</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">bar2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"Data: Eurostat"</span><span class="p">,</span> <span class="p">(</span><span class="o">.</span><span class="mi">01</span><span class="p">,</span><span class="o">.</span><span class="mi">03</span><span class="p">),</span> <span class="n">xycoords</span> <span class="o">=</span> <span class="s2">"figure fraction"</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"Data: Eurostat"</span><span class="p">,</span> <span class="p">(</span><span class="o">.</span><span class="mo">01</span><span class="p">,</span><span class="o">.</span><span class="mo">03</span><span class="p">),</span> <span class="n">xycoords</span> <span class="o">=</span> <span class="s2">"figure fraction"</span><span class="p">,</span>
              <span class="n">fontsize</span><span class="o">=</span><span class="s2">"small"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#444444"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=.</span><span class="mi">94</span><span class="p">)</span>
 <span class="c1"># create a figure that has about 700px in width</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"deaths-bar.png"</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s2">"tight"</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">700</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"deaths-bar.png"</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s2">"tight"</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">700</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8742,13 +8742,13 @@ AAAASUVORK5CYII=
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># re-assemble data, can't plot as many causes of death in a pie plot</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># re-assemble data, can't plot as many causes of death in a pie plot</span>
 <span class="n">total_data</span> <span class="o">=</span> <span class="n">data_mean</span><span class="p">[</span><span class="s2">"Total"</span><span class="p">]</span>
 <span class="n">total_data</span> <span class="o">=</span> <span class="n">total_data</span><span class="p">[</span><span class="n">rename_keys</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>\
             <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">rename_keys</span><span class="p">)</span>\
-            <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
 <span class="n">total_data</span> <span class="o">=</span> <span class="n">add_terror</span><span class="p">(</span><span class="n">total_data</span><span class="p">,</span> 
-                    <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants</span> <span class="o">*</span> <span class="mi">1</span><span class="n">E5</span><span class="p">)</span>
+                    <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants</span> <span class="o">*</span> <span class="mf">1E5</span><span class="p">)</span>
 <span class="n">total_data</span> <span class="o">=</span> <span class="n">add_other</span><span class="p">(</span><span class="n">total_data</span><span class="p">,</span> 
                     <span class="n">data_mean</span><span class="p">[</span><span class="s2">"Total"</span><span class="p">][</span><span class="n">total_deaths</span><span class="p">])</span>
 <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">total_data</span><span class="p">)</span>
@@ -8756,9 +8756,9 @@ AAAASUVORK5CYII=
 <span class="n">young_data</span> <span class="o">=</span> <span class="n">data_mean</span><span class="p">[</span><span class="s2">"Less than 65 years"</span><span class="p">]</span>
 <span class="n">young_data</span> <span class="o">=</span> <span class="n">young_data</span><span class="p">[</span><span class="n">rename_keys</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>\
             <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">rename_keys</span><span class="p">)</span>\
-            <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">young_data</span> <span class="o">=</span> <span class="n">add_terror</span><span class="p">(</span><span class="n">young_data</span><span class="p">,</span> 
-                    <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants_under_65</span> <span class="o">*</span> <span class="mi">1</span><span class="n">E5</span><span class="p">)</span>
+                    <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants_under_65</span> <span class="o">*</span> <span class="mf">1E5</span><span class="p">)</span>
 <span class="n">young_data</span> <span class="o">=</span> <span class="n">add_other</span><span class="p">(</span><span class="n">young_data</span><span class="p">,</span> 
                     <span class="n">data_mean</span><span class="p">[</span><span class="s2">"Less than 65 years"</span><span class="p">][</span><span class="n">total_deaths</span><span class="p">])</span>
 </pre></div>
@@ -8771,7 +8771,7 @@ AAAASUVORK5CYII=
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pie_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">'Set3'</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pie_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">'Set3'</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">19</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">"The most common ways to die in the West"</span><span class="p">,</span>
@@ -8780,27 +8780,27 @@ AAAASUVORK5CYII=
             <span class="n">x</span><span class="o">=.</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mf">0.96</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">"#444444"</span><span class="p">)</span>
 
 <span class="c1"># first pie</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="o">.</span><span class="mi">05</span><span class="p">,</span><span class="o">.</span><span class="mi">36</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="o">.</span><span class="mi">48</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">1.45</span><span class="p">,</span><span class="mf">1.95</span><span class="p">],[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#CCCCCC"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">36</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="o">.</span><span class="mi">48</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">1.45</span><span class="p">,</span><span class="mf">1.95</span><span class="p">],[</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#CCCCCC"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"All Western Europeans"</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">"#444444"</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="p">[</span><span class="s2">""</span><span class="p">]</span>
 <span class="n">pie1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">total_data</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
-              <span class="n">colors</span><span class="o">=</span><span class="n">pie_palette</span><span class="p">,</span><span class="n">explode</span><span class="o">=</span><span class="n">N</span><span class="o">*</span><span class="p">[</span><span class="o">.</span><span class="mi">04</span><span class="p">],</span><span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s2">"linewidth"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+              <span class="n">colors</span><span class="o">=</span><span class="n">pie_palette</span><span class="p">,</span><span class="n">explode</span><span class="o">=</span><span class="n">N</span><span class="o">*</span><span class="p">[</span><span class="o">.</span><span class="mo">04</span><span class="p">],</span><span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s2">"linewidth"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
               <span class="n">autopct</span><span class="o">=</span><span class="s2">"</span><span class="si">%.2f%%</span><span class="s2">"</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">labeldistance</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span>
               <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s2">"fontsize"</span><span class="p">:</span><span class="s2">"x-small"</span><span class="p">})</span>
 
 <span class="c1"># second pie</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="o">.</span><span class="mi">05</span><span class="p">,</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="o">.</span><span class="mi">48</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="o">.</span><span class="mo">05</span><span class="p">,</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">,</span><span class="o">.</span><span class="mi">48</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Western Europeans aged 65 and under"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">"#444444"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">"equal"</span><span class="p">)</span>
 <span class="n">pie2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">young_data</span><span class="p">[</span><span class="n">total_data</span><span class="o">.</span><span class="n">index</span><span class="p">],</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
-              <span class="n">colors</span><span class="o">=</span><span class="n">pie_palette</span><span class="p">,</span><span class="n">explode</span><span class="o">=</span><span class="n">N</span><span class="o">*</span><span class="p">[</span><span class="o">.</span><span class="mi">04</span><span class="p">],</span><span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s2">"linewidth"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+              <span class="n">colors</span><span class="o">=</span><span class="n">pie_palette</span><span class="p">,</span><span class="n">explode</span><span class="o">=</span><span class="n">N</span><span class="o">*</span><span class="p">[</span><span class="o">.</span><span class="mo">04</span><span class="p">],</span><span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s2">"linewidth"</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
               <span class="n">autopct</span><span class="o">=</span><span class="s2">"</span><span class="si">%.2f%%</span><span class="s2">"</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="p">{</span><span class="s2">"fontsize"</span><span class="p">:</span> <span class="s2">"x-small"</span><span class="p">})</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"Data: Eurostat"</span><span class="p">,</span> <span class="p">(</span><span class="o">.</span><span class="mi">01</span><span class="p">,</span><span class="o">.</span><span class="mi">03</span><span class="p">),</span> <span class="n">xycoords</span> <span class="o">=</span> <span class="s2">"figure fraction"</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">"Data: Eurostat"</span><span class="p">,</span> <span class="p">(</span><span class="o">.</span><span class="mo">01</span><span class="p">,</span><span class="o">.</span><span class="mo">03</span><span class="p">),</span> <span class="n">xycoords</span> <span class="o">=</span> <span class="s2">"figure fraction"</span><span class="p">,</span>
              <span class="n">fontsize</span><span class="o">=</span><span class="s2">"small"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#444444"</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">pie1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">total_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mi">02</span><span class="p">,</span><span class="o">.</span><span class="mi">81</span><span class="p">],</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"deaths-pie.png"</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">700</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">pie1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">total_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="p">[</span><span class="o">.</span><span class="mo">02</span><span class="p">,</span><span class="o">.</span><span class="mi">81</span><span class="p">],</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"deaths-pie.png"</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">700</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -11038,6 +11038,11 @@ AABgIMQdAACAgfwXQVDD1O8II7sAAAAASUVORK5CYII=
 </script>
 
 
+            <h4>Related posts</h4>
+            <dl class="dl-horizontal">
+                <dt>Sat 26 March 2016</dt>
+                <dd><a href="//www.dionhaefner.de/2016/03/why-you-should-not-be-afraid-of-terrorism/">Why you should not be afraid of&nbsp;terrorism</a></dd>
+            </dl>
 
         <hr />
         <div style="width: 100%" class="clearfix">

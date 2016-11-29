@@ -476,6 +476,10 @@ div.prompt.input_prompt {
     display: none;
 }
 
+div.prompt.output_prompt {
+    display: none;
+}
+
 /* Hide anchor links */
 a.anchor-link {
     opacity: .0;
@@ -495,6 +499,14 @@ a.anchor-link {
 .input pre {
     margin-top: 25px;
     margin-bottom: 25px;
+}
+
+.rendered table {
+    margin: 20px auto;
+}
+
+.rendered td, .rendered th {
+    padding: 5px 5px;
 }
 
 /* MISC */

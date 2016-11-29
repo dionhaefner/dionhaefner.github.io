@@ -4,10 +4,17 @@ Date: 27-03-2016
 Author: Dion
 Illustration: headers/research.jpeg
 
-## Master's thesis
+<div class="clearfix">
+<a href="https://github.com/dionhaefner/dionsthesis" target="_blank">
+<img class="pull-right" style="padding: 20px;" src="images/msc-thesis-cover.png" alt="My Master's thesis" height="300">
+</a>
 
-I run ocean simulations using the [CESM](http://www2.cesm.ucar.edu/) climate model in order to examine the dependence of the meridional overturning current (MOC) on friction against the western ocean boundary. My work consists of some modelling, and a lot of data evaluation.
+<h2> Master's thesis </h2>
 
+During my Master's thesis in <a href="http://climate-geophysics.nbi.ku.dk/research/oceanography/">Physical Oceanography at NBI Copenhagen</a>, I ran ocean simulations using the <a href="http://www2.cesm.ucar.edu/">CESM</a> climate model. I examined the dependence of cross-equatorial flow and the meridional overturning circulation (MOC) on viscosity close to the western ocean boundaries. My work at NBI was an interesting mixture of modeling, data evaluation, and theory.
+
+My finished thesis, along with the LaTeX sources, can be found on <a href="https://github.com/dionhaefner/dionsthesis">GitHub</a>.
+</div>
 ## Bachelor's thesis
 
-In my Bachelor's thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at [my code projects](#code-projects-content).
+In my Bachelor's thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at [my code projects](#code-projects-content), or on the [TS-CCES group homepage](http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/).
