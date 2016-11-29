@@ -4,6 +4,7 @@ Date: 26-03-2016
 Tags: Thoughts, Psychology
 Author: Dion
 Illustration: headers/terrorism.jpeg
+related_posts: beautiful-data-visualization-in-python-with-matplotlib
 
 ## Introduction
 <!-- PELICAN_BEGIN_SUMMARY -->
@@ -22,8 +23,8 @@ One example where (biased) intuition is present is gambling. Any commercial gamb
 
  - **Outcome bias**: the notion to only take into account the possible outcomes of the decision (i.e., buying a lottery ticket), while disregarding or misjudging their corresponding likelihood. *Either you win, or you lose*, or also: *winning the jackpot makes my life much better, while spending 1€ on the ticket barely affects me*.
  - Some sort of **selection bias**: Someone winning the lottery will be reported on the news (or will at least be talked about in their social environment), and winning the lottery has a huge emotional impact. This is why we tend to ignore the millions of losers while focusing on a few winners, and put ourselves in their shoes.
- - (Non-)**zero-risk bias**: If one doesn't play the lottery, there is no way they can win - buying a ticket will give them a chance at the jackpot, how slim it may be (even though the money could be spent better). *Someone is going to win the lottery, so it could as well be me*. 
- 
+ - (Non-)**zero-risk bias**: If one doesn't play the lottery, there is no way they can win - buying a ticket will give them a chance at the jackpot, how slim it may be (even though the money could be spent better). *Someone is going to win the lottery, so it could as well be me*.
+
 Both biases are naturally strongest when considering low-probability, high-impact events.
 
 ## The reasons behind a fear of terrorism
@@ -32,7 +33,7 @@ I have chosen playing the lottery as an example for a simple intuitive risk-asse
 
  - winning the lottery becomes being killed or injured in an attack (low probability)
  - not winning the lottery becomes not being involved in an attack (high probability)
- - buying a lottery ticket becomes leaving the house (assuming you are safe at home, and putting yourself at risk in public spaces) 
+ - buying a lottery ticket becomes leaving the house (assuming you are safe at home, and putting yourself at risk in public spaces)
 
 Applying the exact same analysis as before:
 

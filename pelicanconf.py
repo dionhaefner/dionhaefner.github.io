@@ -18,7 +18,7 @@ OUTPUT_SOURCES_EXTENSION = ".source"
 DEFAULT_LANG = 'en'
 
 TYPOGRIFY = True
-TYPOGRIFY_IGNORE_TAGS = ["style", "script"]
+TYPOGRIFY_IGNORE_TAGS = ["style", "script", "title"]
 
 FORMATTED_FIELDS = ['summary','_summary']
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'home']
@@ -59,7 +59,7 @@ SOCIAL_SHARE = (("twitter", "twitter fa-2x", "Twitter"),
 #
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATH = './plugins'
-PLUGINS = ['ipynb.markup','share_post','summary']
+PLUGINS = ['ipynb.markup','share_post','summary','related_posts']
 IPYNB_USE_META_SUMMARY = True
 IPYNB_STRIP_CSS = True
 
