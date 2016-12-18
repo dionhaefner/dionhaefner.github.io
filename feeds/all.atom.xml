@@ -20148,7 +20148,7 @@ bwAAAB1kYXRhAAAAAQAAAABMYXZmNTcuMjUuMTAw
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Preface"&gt;Preface&lt;a class="anchor-link" href="#Preface"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;This series of posts is based on a talk I held for the &lt;span class="caps"&gt;TS&lt;/span&gt;-&lt;span class="caps"&gt;CCES&lt;/span&gt; group at the Institute of Environmental Physics, Heidelberg in November 2016. I presented this Jupyter notebook directly using &lt;a href="https://github.com/damianavila/RISE"&gt;&lt;span class="caps"&gt;RISE&lt;/span&gt;&lt;/a&gt;, a Reveal.js plugin for Jupyter. This allowed me to demonstrate my code in action, and play around with it to clarify things or answer&amp;nbsp;questions.&lt;/p&gt;
+&lt;h2 id="Preface"&gt;Preface&lt;a class="anchor-link" href="#Preface"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;This series of posts is based on a talk I held for the &lt;span class="caps"&gt;TS&lt;/span&gt;-&lt;span class="caps"&gt;CCEES&lt;/span&gt; group at the Institute of Environmental Physics, Heidelberg in November 2016. I presented this Jupyter notebook directly using &lt;a href="https://github.com/damianavila/RISE"&gt;&lt;span class="caps"&gt;RISE&lt;/span&gt;&lt;/a&gt;, a Reveal.js plugin for Jupyter. This allowed me to demonstrate my code in action, and play around with it to clarify things or answer&amp;nbsp;questions.&lt;/p&gt;
 &lt;p&gt;This talk was supposed&amp;nbsp;to&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;give examples how to efficiently use Python in a scientific context;&amp;nbsp;and&lt;/li&gt;

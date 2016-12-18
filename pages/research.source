@@ -17,4 +17,4 @@ My finished thesis, along with the LaTeX sources, can be found on <a href="https
 </div>
 ## Bachelor's thesis
 
-In my Bachelor's thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at [my code projects](#code-projects-content), or on the [TS-CCES group homepage](http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/).
+In my Bachelor's thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at [my code projects](#code-projects-content), or on the [TS-CCEES group homepage](http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/).
