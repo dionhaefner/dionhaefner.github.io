@@ -10,7 +10,7 @@
    "source": [
     "## Preface\n",
     "\n",
-    "This series of posts is based on a talk I held for the TS-CCEES group at the Institute of Environmental Physics, Heidelberg in November 2016. I presented this Jupyter notebook directly using [RISE](https://github.com/damianavila/RISE), a Reveal.js plugin for Jupyter. This allowed me to demonstrate my code in action, and play around with it to clarify things or answer questions.\n",
+    "This series of posts is based on a talk I held for the TS-CCES group at the Institute of Environmental Physics, Heidelberg in November 2016. I presented this Jupyter notebook directly using [RISE](https://github.com/damianavila/RISE), a Reveal.js plugin for Jupyter. This allowed me to demonstrate my code in action, and play around with it to clarify things or answer questions.\n",
     "\n",
     "This talk was supposed to\n",
     "1. give examples how to efficiently use Python in a scientific context; and\n",

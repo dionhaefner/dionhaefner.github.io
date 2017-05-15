@@ -20,9 +20,7 @@
 
         <!-- JQuery / JS -->
         <script src="//www.dionhaefner.de/theme/jquery/jquery.min.js"></script>
-        <script src="//www.dionhaefner.de/theme/jquery/jquery.smoothScroll.js"></script>
         <script src="//www.dionhaefner.de/theme/jquery/parallax.js"></script>
-        <script src="//www.dionhaefner.de/theme/jquery/nest.js"></script>
         <script src="//www.dionhaefner.de/theme/js/bootstrap.min.js"></script>
         <script src="//www.dionhaefner.de/theme/js/nest.js"></script>
         <!-- /JQuery / JS -->
@@ -54,7 +52,10 @@
           <noscript><img src="https://vps.dionhaefner.de/analytics//piwik.php?idsite=1" style="border:0;" alt="" /></noscript>
         <!-- /Piwik Analytics -->
 
- <link href="//www.dionhaefner.de/theme/css/nest-dark.css" rel="stylesheet">      </head>
+  <link href="//www.dionhaefner.de/theme/css/nest-dark.css" rel="stylesheet">
+  <script src="//www.dionhaefner.de/theme/jquery/jquery.smoothScroll.js"></script>
+  <script src="//www.dionhaefner.de/theme/jquery/scroll.js"></script> 
+    </head>
 
     <body>
 
@@ -144,9 +145,9 @@ or <a href="/blog">my thoughts</a>, you&#8217;ve come to the right&nbsp;place.
         <h2>Let me introduce&nbsp;myself</h2>
 <p><div class="clearfix">
   <img class="img-circle pull-right" style="padding: 20px;" src="images/dion.jpg" alt="That's me!" height="200"></p>
-<p>I am a German living in Malmö, Sweden, and I&#8217;m currently finishing my studies as a Master’s student in Physics at Heidelberg University, Germany. I have conducted my Master’s project at Niels Bohr Institute, Copenhagen, as a part of <a href="http://climate-geophysics.nbi.ku.dk/research/oceanography/">Team Ocean</a> (check out my <a href="#research">research</a> for&nbsp;more).</p>
-<p>During my Bachelor’s at Heidelberg University, I specialized on computational physics, and conducted my thesis project as a member of the <a href="http://ts.iup.uni-heidelberg.de/">Terrestrial Systems</a> group at <span class="caps">IUP</span>,&nbsp;Heidelberg.</p>
-<p>Although I have been doing Environmental Physics for a while now, I mostly see myself as a &#8216;computer guy&#8217;. I have a passion for software, modeling, and effective communication <span class="amp">&amp;</span>&nbsp;visualization.</p>
+<p>I currently work as a Scientific Assistant at Niels Bohr Institute (Copenhagen University), living in Malmö, Sweden. At <span class="caps">NBI</span>, I am responsible for the development of <a href="#code-projects">Veros</a>, a high-performance ocean model with a special focus on&nbsp;usability.</p>
+<p>I have recently graduated with an MSc in Physics from Heidelberg University, Germany. I have conducted <a href="#research">my Master&#8217;s project</a> as a part of <a href="http://climate-geophysics.nbi.ku.dk/research/oceanography/">Team Ocean</a> at <span class="caps">NBI</span>, and my Bachelor&#8217;s thesis project as a member of the <a href="http://ts.iup.uni-heidelberg.de/">Terrestrial Systems</a> group at the Institute of Environmental Physics,&nbsp;Heidelberg.</p>
+<p>Although I have been doing geophysics for a while now, I mostly see myself as a &#8220;computer guy&#8221;. I have a passion for scientific software, modeling, and effective communication <span class="amp">&amp;</span>&nbsp;visualization.</p>
 <p>My personal interests cover a wide range between Coding and Technology, Science, Art and Design, and Pop Culture (and so does my <a href="/blog">blog</a>). My tools of choice are Ubuntu, Python, Jupyter notebooks, InkScape, LaTeX, and C++.
 </div></p>
       </div>
@@ -169,13 +170,27 @@ or <a href="/blog">my thoughts</a>, you&#8217;ve come to the right&nbsp;place.
         
           <div class="row">
             <div class="col-sm-6 nopadding">
+              <div class="image-block" style="background: url(/images/veros.png) no-repeat center top;background-size:cover;">
+                <div class="block-content">
+                  <h4>Veros</h4>
+                  <p>
+                    The versatile ocean simulator: a full-blown, high performance ocean circulation model in pure Python. Fully parallelized
+                    on <span class="caps">CPU</span> and <span class="caps">GPU</span> through coupling to <a href="https://github.com/bh107/bohrium" target="_blank">Bohrium</a> - without
+                    compromising on readability. Developed at Niels Bohr Institute (Copenhagen University).
+                     <a href="https://github.com/dionhaefner/veros" target="_blank">View on GitHub</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 nopadding">
               <div class="image-block" style="background: url(/images/dorie.png) no-repeat center top;background-size:cover;">
                 <div class="block-content">
                   <h4>DORiE</h4>
                   <p>
                     A numerical solver for the Richards equation (soil water flow in unsaturated media), based on the
-                    <a href="http://www.dune-project.org"><span class="caps">DUNE</span></a> framework, and developed at the Institute of Environmental
-                    Phyics, Heidelberg&nbsp;(unreleased).
+                    <a href="http://www.dune-project.org" target="_blank"><span class="caps">DUNE</span></a> framework, and developed at the Institute of Environmental
+                    Phyics (Heidelberg University). <a href="http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/" target="_blank">More
+                    information</a>.
                   </p>
                 </div>
               </div>
@@ -186,7 +201,7 @@ or <a href="/blog">my thoughts</a>, you&#8217;ve come to the right&nbsp;place.
                   <h4>Enhanced Botero&nbsp;Model</h4>
                   <p>
                       An open source package for simulations of animal species based on a model proposed by Botero et al., 2015.
-                      <a href="http://github.com/dionhaefner/cces-sem-botero">View on GitHub</a>.
+                      <a href="http://github.com/dionhaefner/cces-sem-botero" target="_blank">View on GitHub</a>.
                   </p>
                 </div>
               </div>
@@ -197,13 +212,13 @@ or <a href="/blog">my thoughts</a>, you&#8217;ve come to the right&nbsp;place.
                   <h4>This&nbsp;homepage</h4>
                   <p>
                   This homepage (including the blog) is entirely static and hosted on GitHub Pages.
-                  It is created using <a href="http://docs.getpelican.com/">Pelican</a>, a static site
-                  creator based on Python. The theme of this homepage is based on <a href="https://github.com/molivier">molivier</a>&#8216;s
+                  It is created using <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>, a static site
+                  creator based on Python. The theme of this homepage is based on <a href="https://github.com/molivier" target="_blank">molivier</a>&#8216;s
                   &#8220;Nest&#8221;, but was heavily altered and extended by myself to fit my&nbsp;needs.
                   </p>
 
                   <p>
-                  If you like, you can have a look at the sources <a href="http://github.com/dionhaefner/dionhaefner.github.io">at GitHub</a>.
+                  If you like, you can have a look at the sources <a href="http://github.com/dionhaefner/dionhaefner.github.io" target="_blank">at GitHub</a>.
                   Everything you see here is open-source, so feel free to use it for your own project!
                 </div>
               </div>
@@ -234,13 +249,13 @@ or <a href="/blog">my thoughts</a>, you&#8217;ve come to the right&nbsp;place.
 
 <h2> Master&#8217;s&nbsp;thesis </h2>
 
-During my Master&#8217;s thesis in <a href="http://climate-geophysics.nbi.ku.dk/research/oceanography/">Physical Oceanography at <span class="caps">NBI</span> Copenhagen</a>, I ran ocean simulations using the <a href="http://www2.cesm.ucar.edu/"><span class="caps">CESM</span></a> climate model. I examined the dependence of cross-equatorial flow and the meridional overturning circulation (<span class="caps">MOC</span>) on viscosity close to the western ocean boundaries. My work at <span class="caps">NBI</span> was an interesting mixture of modeling, data evaluation, and theory.
+During my Master&#8217;s thesis in <a href="http://climate-geophysics.nbi.ku.dk/research/oceanography/" target="_blank">Physical Oceanography at <span class="caps">NBI</span> Copenhagen</a>, I ran ocean simulations using the <a href="http://www2.cesm.ucar.edu/" target="_blank"><span class="caps">CESM</span></a> climate model. I examined the dependence of cross-equatorial flow and the meridional overturning circulation (<span class="caps">MOC</span>) on viscosity close to the western ocean boundaries. My work at <span class="caps">NBI</span> was an interesting mixture of modeling, data evaluation, and theory.
 
-My finished thesis, along with the LaTeX sources, can be found on <a href="https://github.com/dionhaefner/dionsthesis">GitHub</a>.
+My finished thesis, along with the LaTeX sources, can be found on <a href="https://github.com/dionhaefner/dionsthesis" target="_blank">GitHub</a>.
 </div>
 
 <h2>Bachelor&#8217;s&nbsp;thesis</h2>
-<p>In my Bachelor&#8217;s thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at <a href="#code-projects-content">my code projects</a>, or on the <a href="http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/"><span class="caps">TS</span>-<span class="caps">CCEES</span> group homepage</a>.</p>
+<p>In my Bachelor&#8217;s thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at <a href="#code-projects">my code projects</a>, or on the <a href="http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/"><span class="caps">TS</span>-<span class="caps">CCES</span> group homepage</a>.</p>
       </div>
     </div>
     <div class="image-container" data-parallax="scroll" data-speed="0.5" data-naturalWidth="1920" data-image-src="//www.dionhaefner.de/images/headers/contact.jpeg">
@@ -303,7 +318,7 @@ my address &#8220;mail&#8221; inside domain &#8220;dionhaefner&#8221; ending in 
                             <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
                             <small><em>Theme by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br />
                             <small><em>Modified by Dion H&auml;fner</em></small><br/>
-                            <small>&copy; Dion Häfner 2015</small>
+                            <small>&copy; Dion Häfner 2017</small>
                         </p>
                     </div>
                 </div>
