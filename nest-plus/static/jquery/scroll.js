@@ -25,9 +25,9 @@ $(document).ready(function(e) {
     }
 
     /* Animate anchor scrolling */
-    $('a').on('click', function(e) {
+    $('a[href*="\\#"]').on('click', function(e) {
+        e.preventDefault();
         scrollToCenter($(this));
     });
 
 });
-

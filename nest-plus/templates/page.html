@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }} - {{ super() }}{% endblock title %}
+{% block title %}{{ page.title }} &verbar; {{ super() }}{% endblock title %}
 {% block description %}{{ page.content|striptags|truncate(200)|escape }}{% endblock description %}
 
 {% block headerstyle %}
