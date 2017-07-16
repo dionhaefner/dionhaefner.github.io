@@ -6,7 +6,7 @@ Illustration: headers/about-me.jpeg
 
 ## Let me introduce myself
 <div class="clearfix">
-  <img class="img-circle pull-right" style="padding: 20px;" src="images/dion.jpg" alt="That's me!" height="200">
+  <img class="img-circle pull-right" style="margin: 20px; height: 200px;" src="images/dion.jpg" alt="That's me!">
 
 I currently work as a Scientific Assistant at Niels Bohr Institute (Copenhagen University), living in Malmö, Sweden. At NBI, I am responsible for the development of [Veros](#code-projects), a high-performance ocean model with a special focus on usability.
 
@@ -16,3 +16,7 @@ Although I have been doing geophysics for a while now, I mostly see myself as a 
 
 My personal interests cover a wide range between Coding and Technology, Science, Art and Design, and Pop Culture (and so does my [blog](/blog)). My tools of choice are Ubuntu, Python, Jupyter notebooks, InkScape, LaTeX, and C++.
 </div>
+
+---
+
+![Project Euler](https://projecteuler.net/profile/dhaefner.png)

@@ -3,16 +3,15 @@
 {% block title %}{{ NEST_INDEX_HEAD_TITLE }}  &verbar; {{ NEST_INDEX_HEAD_SUBTITLE }}{% endblock title %}
 {% block description %}{{ SITENAME }} &verbar; {{ SITESUBTITLE }}{% endblock description %}
 {% block head_extra %}
-  <link href="{{ SITEURL }}/theme/css/nest-dark.css" rel="stylesheet">
   <script src="{{ SITEURL }}/theme/jquery/jquery.smoothScroll.js"></script>
-  <script src="{{ SITEURL }}/theme/jquery/scroll.js"></script> 
+  <script src="{{ SITEURL }}/theme/jquery/scroll.js"></script>
 {% endblock head_extra %}
 
 {% block headerstyle %}
     {% if NEST_HEADER_IMAGES %}
-    <div id="top" class="image-container fullheight" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}">
+    <div id="top" class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}">
     {% else %}
-    <div id="top" class="image-container fullheight gradient">
+    <div id="top" class="header-container gradient">
     {% endif %}
 {% endblock headerstyle %}
 
@@ -21,61 +20,40 @@
 {% endblock navstyle %}
 
 {% block header %}
-  <div class="container" style="height: 100vh">
-    <div class="image-container" style="height: 100%">
-      <div class="image-wrapper" style="padding-top: 50px;">
-        <div class="row">
-              <div class="col-lg-12">
-                  <div class="header-content">
-                      <h1 class="header-title">{{ NEST_INDEX_HEADER_TITLE }}</h1>
-                      <div class="header-underline"></div>
-                      {% if NEST_INDEX_HEADER_SUBTITLE %}
-                      <p class="header-subtitle header-subtitle-homepage">{{ NEST_INDEX_HEADER_SUBTITLE }}</p>
-                      {% endif %}
-                  </div>
+<div class="container header-wrapper">
+    <div class="row">
+          <div class="col-lg-12">
+              <div class="header-content">
+                  <h1 class="header-title">{{ NEST_INDEX_HEADER_TITLE }}</h1>
+                  <div class="header-underline"></div>
+                  <p class="header-subtitle header-subtitle-homepage">{{ NEST_INDEX_HEADER_SUBTITLE }}</p>
               </div>
-        </div>
-      </div>
-    <div class="scroll-icon">
-      <a href="#introduction"><span class="fa fa-angle-double-down fa-3x"></span></a>
+          </div>
     </div>
-  </div>
 </div>
 {% endblock header %}
 
 {% block content %}
-
-    {% for page in hidden_pages %}
-      {% if page.title | capitalize == NEST_INTRODUCTION_PAGE | capitalize %}
-        <div class="container">
-          <div id="introduction">{{ page.content }}</div>
-        </div>
-      {% endif %}
-    {% endfor %}
-
   {% for page in pages | sort(attribute='slug') %}
-    {% if page.illustration %}
-    <div class="image-container" data-parallax="scroll" data-speed="0.5" data-naturalWidth="1920" data-image-src="{{ SITEURL }}/images/{{ page.illustration }}">
-    {% else %}
-    <div class="image-container gradient">
-    {% endif %}
-      <div class="image-wrapper container">
-        <div class="row">
-          <div class="image-content">
-            <h1 class="image-title">{{ page.title }}</h1>
-            <div class="image-underline"></div>
-            {% if page.subtitle %}
-            <p class="image-subtitle image-subtitle-homepage">{{ page.subtitle }}</p>
-            {% endif %}
+    <div class="article-container" id="{{ page.slug }}">
+      {% if page.illustration %}
+      <div class="image-container container" style="background-image: url({{ SITEURL }}/images/{{ page.illustration }}); background-size: cover;">
+      {% else %}
+      <div class="image-container gradient container">
+      {% endif %}
+        <div class="image-wrapper">
+          <div class="row">
+            <div class="image-content">
+              <h1 class="image-title">{{ page.title }}</h1>
+              <div class="image-underline"></div>
+              {% if page.subtitle %}
+              <p class="image-subtitle image-subtitle-homepage">{{ page.subtitle }}</p>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
-      <div class="scroll-icon">
-          <a href="#{{ page.slug }}"><span class="fa fa-angle-double-down fa-3x"></span></a>
-      </div>
-    </div>
-    <div class="container">
-      <div id="{{ page.slug }}">
+      <div class="container content article">
         {{ page.content }}
       </div>
     </div>

@@ -134,6 +134,7 @@ h2 {
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
 h2:after {
     display: block;
     content: " ";
@@ -165,6 +166,7 @@ h4 {
     margin-bottom: 30px;
     text-transform: uppercase;
 }
+
 h4:after {
     display: block;
     content: " ";
@@ -255,7 +257,7 @@ nav.navbar-fixed-top {
 .header-container {
     padding-top: 0;
     padding-bottom: 0;
-    min-height: 460px;
+    min-height: 360px;
 }
 .header-wrapper{
     padding-top: 120px;
@@ -372,12 +374,65 @@ nav.navbar-fixed-top {
   opacity: 0.6;
 }
 
+/* Inline image containers */
+
+.image-container {
+    display: flex;
+    flex-flow: column;
+    padding: 0;
+    min-height: 200px;
+}
+
+.image-wrapper{
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    flex: 1;
+    flex-flow: row;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-content {
+    text-align: center;
+    padding: 10px 30px;
+}
+
+.image-title {
+    text-transform: uppercase;
+    font-size: 38px;
+    color: #f6f1ed;
+    font-weight: 700;
+}
+
+.image-underline {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 70px;
+    border-bottom: 3px solid #eb2344;
+}
+
+.image-subtitle {
+    font-size: 14px;
+    line-height: 24px;
+    color: #f6f1ed;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.image-subtitle-homepage {
+    text-align: center;
+    font-style: italic;
+}
+
 /* Article */
 .article-container{
     margin-top: 40px;
 }
 .article {
-    font-size: 14px;
+    /*font-size: 14px;*/
     line-height: 24px;
     margin-bottom: 20px;
     padding-top: 20px;
@@ -405,7 +460,7 @@ nav.navbar-fixed-top {
     margin-bottom: 40px;
 }
 .archive {
-    font-size: 14px;
+    /*font-size: 14px;*/
     line-height: 24px;
     padding-top: 20px;
     padding-bottom: 40px;
@@ -542,7 +597,7 @@ img.img-responsive {
 .image-block {
     border: none;
     padding: 0px;
-    margin: 3px;
+    margin: 5px;
     height:400px;
 }
 
@@ -550,6 +605,7 @@ img.img-responsive {
     height: 100%;
     padding: 10px;
     margin: 0px;
+    color: #f6f1ed;
     background-color: rgba(3,3,3,0.6);
     display: none;
     flex-flow: column;
@@ -558,7 +614,12 @@ img.img-responsive {
 }
 
 .image-block .block-content > h4 {
-    margin: 0;
+    margin: 0px;
+}
+
+.image-block .block-content > h4:after {
+    width: 0px;
+    border-bottom: none;
 }
 
 .image-block:hover .block-content {

@@ -6,7 +6,7 @@ Illustration: headers/research.jpeg
 
 <div class="clearfix">
 <a href="https://github.com/dionhaefner/dionsthesis" target="_blank">
-<img class="pull-right" style="padding: 20px;" src="images/msc-thesis-cover.png" alt="My Master's thesis" height="300">
+<img class="pull-right" style="margin: 20px; height: 300px;" src="images/msc-thesis-cover.png" alt="My Master's thesis">
 </a>
 
 <h2> Master's thesis </h2>
@@ -15,6 +15,7 @@ During my Master's thesis in <a href="http://climate-geophysics.nbi.ku.dk/resear
 
 My finished thesis, along with the LaTeX sources, can be found on <a href="https://github.com/dionhaefner/dionsthesis" target="_blank">GitHub</a>.
 </div>
+
 ## Bachelor's thesis
 
 In my Bachelor's thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at [my code projects](#code-projects), or on the [TS-CCES group homepage](http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/).
