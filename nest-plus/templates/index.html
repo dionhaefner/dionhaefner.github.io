@@ -17,33 +17,31 @@
 
 {% block header %}
     <div class="container header-wrapper">
-        <div class="row">
-              <div class="col-lg-12">
+
                   <div class="header-content">
                       <h1 class="header-title text-uppercase">{{ NEST_BLOG_HEADER_TITLE }}</h1>
                       <div class="header-underline"></div>
                       <p class="header-subtitle header-subtitle-homepage">{{ NEST_BLOG_HEADER_SUBTITLE }}</p>
                   </div>
-              </div>
-        </div>
+
     </div>
 {% endblock header %}
 
 {% block content %}
-<div class="archive-container">
-    <div class="container content archive">
-        <h2><a href="{{ SITEURL }}/archives.html">{{ NEST_BLOG_LATESTPOSTS_TITLE }}</a></h2>
-        <dl class="dl-horizontal">
-          {% for article in articles[:5] %}
-          <dt>{{ article.locale_date}}</dt>
-          <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
-          {% endfor %}
-        </dl>
-    </div>
-</div>
+<div class="container">
+  <div class="archive-container">
+      <div class="content archive">
+          <h2><a href="{{ SITEURL }}/archives.html">{{ NEST_BLOG_LATESTPOSTS_TITLE }}</a></h2>
+          <dl class="dl-horizontal">
+            {% for article in articles[:5] %}
+            <dt>{{ article.locale_date}}</dt>
+            <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }} {% if article.subtitle %} &mdash; {{ article.subtitle }} {% endif %}</a></dd>
+            {% endfor %}
+          </dl>
+      </div>
+  </div>
 
 {% if DEFAULT_PAGINATION %}
-<div class="container">
   {% for article in articles_page.object_list %}
     {% if not loop.index0 % 2 %}
       <div class="article-container">
@@ -57,33 +55,26 @@
       {% else %}
       <div class="image-container gradient">
       {% endif %}
-        <!-- <div class="image-wrapper">
+        <div class="image-wrapper">
           <div class="row">
             <div class="image-content">
-              <h1 class="image-title">
+              <h2 class="image-title">
                 {% if article.content | trim | length > 0 %}
                   <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
                 {% else %}
                   {{ article.title }}
                 {% endif %}
-              </h1>
-              <div class="image-underline"></div>
+              </h2>
               {% if article.subtitle %}
               <p class="image-subtitle image-subtitle-homepage">{{ article.subtitle }}</p>
               {% endif %}
+              <div class="image-underline"></div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="content article">
-        <h1>
-          {% if article.content | trim | length > 0 %}
-            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-          {% else %}
-            {{ article.title }}
-          {% endif %}
-        </h1>
-        {{ article.subtitle }} - {{ article.locale_date }}
+        <p class="date">Posted on {{ article.locale_date }} by {{ article.author }}</p>
         {{ article._summary }}
         {% if article.content | trim | length > 0 %}
           <p>
@@ -97,7 +88,6 @@
     </div>
     {% endif %}
   {% endfor %}
-</div>
 {% include 'pagination.html' %}
 {% else %}
   {% for article in articles %}
@@ -118,4 +108,5 @@
     </div>
   {% endfor %}
 {% endif %}
+</div>
 {% endblock content %}

@@ -19,7 +19,7 @@
   .container {
     width: 750px;
   }
-  body{font-size: 16px;}
+  body{font-size: 14px;}
   .header-title{font-size: 48px;}
   h1 {font-size: 28px;}
   h2 {font-size: 22px;}
@@ -260,7 +260,7 @@ nav.navbar-fixed-top {
     min-height: 360px;
 }
 .header-wrapper{
-    padding-top: 120px;
+    padding-top: 100px;
     padding-left: 40px;
     padding-right: 40px;
 }
@@ -380,7 +380,7 @@ nav.navbar-fixed-top {
     display: flex;
     flex-flow: column;
     padding: 0;
-    min-height: 200px;
+    min-height: 150px;
 }
 
 .image-wrapper{
@@ -399,11 +399,32 @@ nav.navbar-fixed-top {
     padding: 10px 30px;
 }
 
-.image-title {
+h1.image-title {
     text-transform: uppercase;
     font-size: 38px;
     color: #f6f1ed;
     font-weight: 700;
+}
+
+h2.image-title {
+    font-size: 24px;
+    color: #f6f1ed;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+h2.image-title:after {
+    display: block;
+    content: " ";
+    margin-top: 10px;
+    width: 40px;
+    border-bottom: none;
+}
+
+.image-title a {
+    color: #f6f1ed;
+    text-decoration: none;
 }
 
 .image-underline {
@@ -435,18 +456,16 @@ nav.navbar-fixed-top {
     /*font-size: 14px;*/
     line-height: 24px;
     margin-bottom: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 .article h2{
-    margin-top: 0px;
-    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 .article h2 a{
     color: #4b505a;
-    text-decoration: None;
+    text-decoration: none;
 }
 .article .date{
     font-size: 12px;
@@ -480,8 +499,14 @@ nav.navbar-fixed-top {
     font-weight: 400;
     line-height: 24px;
 }
-/* Styling */
 
+/* Home page */
+.home-container{
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+/* Styling */
 blockquote{
     font-size: 15px;
     opacity: 0.65;
@@ -598,7 +623,7 @@ img.img-responsive {
     border: none;
     padding: 0px;
     margin: 5px;
-    height:400px;
+    height: 300px;
 }
 
 .image-block .block-content {
