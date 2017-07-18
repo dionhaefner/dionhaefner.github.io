@@ -75,7 +75,7 @@ SUMMARY_USE_FIRST_PARAGRAPH = True
 SITESUBTITLE = u'Home'
 NEST_INTRODUCTION_PAGE = u'introduction'
 # Add items to top menu before pages
-MENUITEMS = [('Home', '/index.html#top'), ('Blog', '/blog.html')]
+MENUITEMS = [('Blog', '/blog.html')]
 # Add header background image from content/images : 'background.jpg'
 NEST_HEADER_IMAGES = 'headers/index.jpeg'
 NEST_HEADER_LOGO = ''

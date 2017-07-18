@@ -5,7 +5,7 @@ Author: Dion
 Illustration: headers/about-me.jpeg
 
 ## Let me introduce myself
-<div class="clearfix">
+<div class="clearfix"></div>
   <img class="img-circle pull-right" style="margin: 20px; height: 200px;" src="images/dion.jpg" alt="That's me!">
 
 I currently work as a Scientific Assistant at Niels Bohr Institute (Copenhagen University), living in Malmö, Sweden. At NBI, I am responsible for the development of [Veros](#code-projects), a high-performance ocean model with a special focus on usability.
@@ -15,7 +15,7 @@ I have recently graduated with an MSc in Physics from Heidelberg University, Ger
 Although I have been doing geophysics for a while now, I mostly see myself as a "computer guy". I have a passion for scientific software, modeling, and effective communication & visualization.
 
 My personal interests cover a wide range between Coding and Technology, Science, Art and Design, and Pop Culture (and so does my [blog](/blog)). My tools of choice are Ubuntu, Python, Jupyter notebooks, InkScape, LaTeX, and C++.
-</div>
+
 
 ---
 

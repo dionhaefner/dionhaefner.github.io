@@ -14,14 +14,25 @@ body {
     color: #f6f1ed;
 }
 
-body > .container {
-  min-height: 1000px;
-  min-height: 140vh;
+.home-container {
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
-  padding-top: 150px;
-  padding-bottom: 150px;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.homepage-section {
+  min-height: 1000px;
+  min-height: 100vh;
+}
+
+.content {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .fullheight {
@@ -72,7 +83,7 @@ h3:after {
 }
 
 .image-title {
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-size: 38px;
     color: #f6f1ed;
     font-weight: 700;
