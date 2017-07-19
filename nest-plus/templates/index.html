@@ -27,6 +27,7 @@
 
 {% block content %}
 <div class="container">
+  {% if not DEFAULT_PAGINATION or not articles_previous_page %}
   <div class="archive-container">
       <div class="content archive">
           <h2><a href="{{ SITEURL }}/archives.html">{{ NEST_BLOG_LATESTPOSTS_TITLE }}</a></h2>
@@ -38,6 +39,7 @@
           </dl>
       </div>
   </div>
+  {% endif %}
 
   {% if DEFAULT_PAGINATION %}
     {% set article_list = articles_page.object_list %}
@@ -89,6 +91,7 @@
     </div>
     {% endif %}
   {% endfor %}
+  </div>
 </div>
 
 {% if DEFAULT_PAGINATION %}

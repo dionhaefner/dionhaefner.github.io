@@ -43,9 +43,10 @@ LINKS = (
         )
 
 # Social widget
-SOCIAL = (('github fa-3x', 'https://github.com/dionhaefner/'),)
+SOCIAL = (('github fa-2x', 'https://github.com/dionhaefner/'),
+          ('linkedin fa-2x', 'https://www.linkedin.com/in/dion-h%C3%A4fner-763821121/'))
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 6
 
 #
 # SOCIAL SHARE
@@ -92,7 +93,7 @@ NEST_FOOTER_HTML = ''
 # index.html
 NEST_INDEX_HEAD_TITLE = u'Home'
 NEST_INDEX_HEAD_SUBTITLE = u'Dion Häfner'
-NEST_INDEX_HEADER_TITLE = u'Welcome to my personal homepage!'
+NEST_INDEX_HEADER_TITLE = u'Meet the snake charmer'
 NEST_INDEX_HEADER_SUBTITLE = u""
 NEST_INDEX_CONTENT_TITLE = u'Latest Content'
 # archives.html
@@ -119,9 +120,9 @@ NEST_AUTHORS_HEADER_TITLE = u'Author list'
 NEST_AUTHORS_HEADER_SUBTITLE = u'Archives listed by author'
 # blog.html
 NEST_BLOG_HEADER_IMAGE = u'headers/blog.jpeg'
-NEST_BLOG_HEAD_TITLE = u'Blog'
-NEST_BLOG_HEAD_DESCRIPTION = u'Blog'
-NEST_BLOG_HEADER_TITLE = u'Blog'
+NEST_BLOG_HEAD_TITLE = u'The Terrarium'
+NEST_BLOG_HEAD_DESCRIPTION = u'The Terrarium'
+NEST_BLOG_HEADER_TITLE = u'The Terrarium'
 NEST_BLOG_HEADER_SUBTITLE = u''
 NEST_BLOG_LATESTPOSTS_TITLE = u'Latest Posts'
 # categories.html
