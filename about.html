@@ -4,25 +4,25 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Let me introduce myself I am an aspiring scientist living in Malmö, Sweden. Although I have been doing geophysics for a while now, I mostly see myself as a “computer guy”. I have a passion for...">
+        <meta name="description" content="Dion Häfner &verbar; Home">
         <link rel="icon" href="//dionhaefner.github.io/favicon.ico">
 
         <!-- Open Graph -->
-        <meta property="og:title" content="About&nbsp;Me &verbar; Dion Häfner" />
-        <meta property="og:url" content="//dionhaefner.github.io/pages/about-me.html" />
+        <meta property="og:title" content="About Me &verbar; Dion Häfner" />
+        <meta property="og:url" content="//dionhaefner.github.io/about.html" />
         <meta property="og:image" content="content/images/headers/index.jpeg" />
           <meta property="og:type" content="website" />
         <!-- /Open Graph -->
 
         <!-- Twitter Card -->
-        <meta name="twitter:card" content="About&nbsp;Me &verbar; Dion Häfner" />
+        <meta name="twitter:card" content="About Me &verbar; Dion Häfner" />
           <meta name="twitter:site" content="@dionhaefner" />
-        <meta name="twitter:title" content="About&nbsp;Me &verbar; Dion Häfner" />
-        <meta name="twitter:description" content="Let me introduce myself I am an aspiring scientist living in Malmö, Sweden. Although I have been doing geophysics for a while now, I mostly see myself as a “computer guy”. I have a passion for..." />
+        <meta name="twitter:title" content="About Me &verbar; Dion Häfner" />
+        <meta name="twitter:description" content="Dion Häfner &verbar; Home" />
         <meta name="twitter:image" content="content/images/headers/index.jpeg" />
         <!-- /Twitter Card -->
 
-        <title>About&nbsp;Me &verbar; Dion Häfner</title>
+        <title>About Me &verbar; Dion Häfner</title>
 
         <!-- Stylesheets -->
         <link href="//dionhaefner.github.io/theme/css/bootstrap.css" rel="stylesheet">
@@ -66,16 +66,18 @@
           <noscript><img src="https://home.dionhaefner.de:60000/piwik//piwik.php?idsite=1" style="border:0;" alt="" /></noscript>
         <!-- /Piwik Analytics -->
 
+  <script src="//dionhaefner.github.io/theme/jquery/jquery.smoothScroll.js"></script>
+  <script src="//dionhaefner.github.io/theme/jquery/scroll.js"></script>
     </head>
 
     <body>
 
         <!-- Header -->
-    <div class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="//dionhaefner.github.io/images/headers/about-me.jpeg">
+    <div id="top" class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="//dionhaefner.github.io/images/headers/index.jpeg">
 
           <!-- Static navbar -->
           <div class="row">
-<nav class="navbar navbar-static navbar-default header-nav">
+<nav class="navbar navbar-fixed-top navbar-default header-nav">
               <div class="container">
                       <div class="header-logo">
                             <a class="pull-left" href="/about.html">
@@ -93,7 +95,7 @@
                       <div class="nav pull-right collapse navbar-collapse" id="navbar-collapse">
                         <ul class="nav navbar-nav navigate">
                                   <li><a href="//dionhaefner.github.io/index.html">Blog</a></li>
-                                <li><a  class="active" href="//dionhaefner.github.io/about.html#about-me">About&nbsp;Me</a></li>
+                                <li><a  href="//dionhaefner.github.io/about.html#about-me">About&nbsp;Me</a></li>
                                 <li><a  href="//dionhaefner.github.io/about.html#code-projects">Code&nbsp;Projects</a></li>
                                 <li><a  href="//dionhaefner.github.io/about.html#research">Research</a></li>
                         </ul>
@@ -104,10 +106,11 @@
           <!-- /Static navbar -->
 
             <!-- Header -->
-    <div class="container header-content">
-        <h1 class="header-title text-uppercase">About&nbsp;Me</h1>
-        <div class="header-underline"></div>
-    </div>
+<div class="container header-content">
+    <h1 class="header-title">Meet the snake charmer</h1>
+    <div class="header-underline"></div>
+    <p class="header-subtitle header-subtitle-homepage"></p>
+</div>
             <!-- /Header -->
 
         </div>
@@ -115,10 +118,11 @@
 
 
         <!-- Content -->
-      <div class="container page-container">
-        <div class="page content">
-          <div class="spacer"></div>
-          <h2>Let me introduce&nbsp;myself</h2>
+  <article class="homepage-section" id="about-me">
+    <div class="container page-container">
+      <div class="page content">
+        <div class="spacer"></div>
+        <h2>Let me introduce&nbsp;myself</h2>
 <p><img class="img-circle pull-right" style="margin: 20px; max-height: 300px;" src="images/dion.jpg" alt="That's me!"></p>
 <p>I am an aspiring scientist living in Malmö, Sweden. Although I have been doing geophysics for a while now, I mostly see myself as a &#8220;computer guy&#8221;. I have a passion for scientific software, modeling, and effective communication <span class="amp">&amp;</span>&nbsp;visualization.</p>
 <p>I currently work as a Scientific Assistant at Niels Bohr Institute (Copenhagen University). At <span class="caps">NBI</span>, I am responsible for the development of <a href="#code-projects">Veros</a>, a high-performance ocean model with a special focus on&nbsp;usability.</p>
@@ -137,8 +141,110 @@ my address &#8220;mail&#8221; inside domain &#8220;dionhaefner&#8221; ending in 
 
 <h4>Badges</h4>
 <p><img alt="Project Euler" src="https://projecteuler.net/profile/dhaefner.png"></p>
+        <div class="spacer"></div>
+      </div>
+    </div>
+  </article>
+  <article class="homepage-section" id="code-projects">
+    <div class="image-container-homepage" data-parallax="scroll" data-speed="0.4" data-image-src="//dionhaefner.github.io/images/headers/code-projects.jpeg">
+      <div class="image-content">
+          <h1 class="image-title">Code&nbsp;Projects</h1>
+          <div class="image-underline"></div>
+      </div>
+    </div>
+    <div class="container page-container">
+      <div class="page content">
+        <div class="spacer"></div>
+        
+      <div class="negative-spacer"></div>
+      <div class="row">
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/veros.png);">
+            <div class="block-content">
+              <h4>Veros</h4>
+              <p>
+                The versatile ocean simulator: a full-blown, high performance ocean circulation model in pure Python. Fully parallelized
+                on <span class="caps">CPU</span> and <span class="caps">GPU</span> through coupling to <a href="https://github.com/bh107/bohrium" target="_blank">Bohrium</a> - without
+                compromising on readability. Developed at Niels Bohr Institute (Copenhagen University).
+                 <a href="https://github.com/dionhaefner/veros" target="_blank">View on GitHub</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/dorie.png);">
+            <div class="block-content">
+              <h4>DORiE</h4>
+              <p>
+                A numerical solver for the Richards equation (soil water flow in unsaturated media), based on the
+                <a href="http://www.dune-project.org" target="_blank"><span class="caps">DUNE</span></a> framework, and developed at the Institute of Environmental
+                Phyics (Heidelberg University). <a href="http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/" target="_blank">More
+                information</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/botero.png);">
+            <div class="block-content">
+              <h4>Enhanced Botero&nbsp;Model</h4>
+              <p>
+                  An open source package for simulations of animal species based on a model proposed by Botero et al., 2015.
+                  <a href="http://github.com/dionhaefner/cces-sem-botero" target="_blank">View on GitHub</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/homepage.png);">
+            <div class="block-content">
+              <h4>This&nbsp;homepage</h4>
+              <p>
+              This homepage (including the blog) is entirely static (created using
+              <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>) and hosted on GitHub Pages.
+              My theme is based on <a href="https://github.com/molivier" target="_blank">molivier</a>&#8216;s
+              &#8220;Nest&#8221;, but is heavily altered to fit my&nbsp;needs.
+              </p>
+
+              <p>
+              If you like, you can have a look at the sources <a href="http://github.com/dionhaefner/dionhaefner.github.io" target="_blank">at GitHub</a>.
+              Everything you see here is open-source, so feel free to use it for your own project!
+            </div>
+          </div>
         </div>
       </div>
+      <div class="negative-spacer"></div>
+    
+        <div class="spacer"></div>
+      </div>
+    </div>
+  </article>
+  <article class="homepage-section" id="research">
+    <div class="image-container-homepage" data-parallax="scroll" data-speed="0.4" data-image-src="//dionhaefner.github.io/images/headers/research.jpeg">
+      <div class="image-content">
+          <h1 class="image-title">Research</h1>
+          <div class="image-underline"></div>
+      </div>
+    </div>
+    <div class="container page-container">
+      <div class="page content">
+        <div class="spacer"></div>
+        <div class="negative-spacer"></div>
+
+<div class="clearfix"></div>
+
+<p><a href="https://github.com/dionhaefner/dionsthesis" target="_blank">
+<img class="pull-right" style="margin: 20px;" src="images/msc-thesis-cover.png" alt="My Master's thesis">
+</a></p>
+<h2>Master&#8217;s&nbsp;thesis</h2>
+<p>During my Master&#8217;s thesis in <a href="http://climate-geophysics.nbi.ku.dk/research/oceanography/" target="_blank">Physical Oceanography at <span class="caps">NBI</span> Copenhagen</a>, I ran ocean simulations using the <a href="http://www2.cesm.ucar.edu/" target="_blank"><span class="caps">CESM</span></a> climate model. I examined the dependence of cross-equatorial flow and the meridional overturning circulation (<span class="caps">MOC</span>) on viscosity close to the western ocean boundaries. My work at <span class="caps">NBI</span> was an interesting mixture of modeling, data evaluation, and&nbsp;theory.</p>
+<p>My finished thesis, along with the LaTeX sources, can be found on <a href="https://github.com/dionhaefner/dionsthesis" target="_blank">GitHub</a>.</p>
+<h2>Bachelor&#8217;s&nbsp;thesis</h2>
+<p>In my Bachelor&#8217;s thesis, I implemented and benchmarked adaptive grid refinement in a numerical solver for the Richards equation, a partial differential equation describing soil water flow. See also DORiE at <a href="#code-projects">my code projects</a>, or on the <a href="http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/"><span class="caps">TS</span>-<span class="caps">CCES</span> group homepage</a>.</p>
+        <div class="spacer"></div>
+      </div>
+    </div>
+  </article>
         <!-- /Content -->
 
         <!-- Footer -->

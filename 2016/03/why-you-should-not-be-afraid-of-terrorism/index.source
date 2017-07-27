@@ -58,7 +58,7 @@ Yep, that's 420 deaths in Western Europe vs. over 100,000 in the rest of the wor
 
 ![The most common ways to die in the west]({filename}/images/deaths-bar.png)
 
-This diagram shows how irrational a fear of terrorism really is - it causes an absolute minor contribution to the total deaths in Western Europe, of about 1 in 10 Million people<sup>3</sup>. In comparison, lung cancer accounts for over 5000 times as many fatalities. Smoking increases the risk to fall ill with lung cancer <a href="http://www.ncbi.nlm.nih.gov/pubmed/7895211">by about 1000%</a>. If everyone stopped smoking, [about 16% of all deaths](http://www.euro.who.int/en/health-topics/disease-prevention/tobacco/data-and-statistics) could be prevented - in contrast to the 0.001% of deaths that could be prevented by if no terroristic attacks were taking place.
+This diagram shows how irrational a fear of terrorism really is - it causes an absolute minor contribution to the total deaths in Western Europe, of about 1 in 10 Million people. In comparison, lung cancer accounts for over 5000 times as many fatalities. Smoking increases the risk to fall ill with lung cancer <a href="http://www.ncbi.nlm.nih.gov/pubmed/7895211">by about 1000%</a>. If everyone stopped smoking, [about 16% of all deaths](http://www.euro.who.int/en/health-topics/disease-prevention/tobacco/data-and-statistics) could be prevented - in contrast to the 0.001% of deaths that could be prevented by if no terroristic attacks were taking place.
 
 This huge disparity shows the power of cognitive biases at work. Because terroristic attacks receive immense media coverage, because they create so much empathy with their victims, and because none of us is familiar with this kind of threat, they are perceived as unproportionally dangerous to each and every one of us, while their real threat is far less severe.
 
@@ -77,7 +77,3 @@ A terrorist probably has the immediate goal to kill as many people has possible.
 <sup>1</sup> Of course, there are indeed situations where playing the lottery can be a quite a good idea. For example, if you happen to live by the credo "get rich or die trying", i.e., you consider your life a complete failure in case you don't have six figures on your account by the time you die. In this case, playing the lottery might be an appropriate - though a little desperate - strategy.
 
 <sup>2</sup> I won't call my analysis unbiased, since there is no such thing when humans are involved.
-
-<sup>3</sup> If you are not convinced yet - I have made a pie chart, too, showing the proportions of the data:
-
-<img src="{filename}/images/deaths-pie.png" alt="The most common ways to die in the west - pie plot"/>

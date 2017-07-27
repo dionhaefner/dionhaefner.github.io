@@ -5,61 +5,63 @@
         <meta name="illustration" content="headers/code-projects.jpeg" />
     </head>
     <body>
-          <div class="row">
-            <div class="col-sm-6 nopadding">
-              <div class="image-block" style="background: url(/images/veros.png) no-repeat center top;background-size:cover;">
-                <div class="block-content">
-                  <h4>Veros</h4>
-                  <p>
-                    The versatile ocean simulator: a full-blown, high performance ocean circulation model in pure Python. Fully parallelized
-                    on CPU and GPU through coupling to <a href="https://github.com/bh107/bohrium" target="_blank">Bohrium</a> - without
-                    compromising on readability. Developed at Niels Bohr Institute (Copenhagen University).
-                     <a href="https://github.com/dionhaefner/veros" target="_blank">View on GitHub</a>.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 nopadding">
-              <div class="image-block" style="background: url(/images/dorie.png) no-repeat center top;background-size:cover;">
-                <div class="block-content">
-                  <h4>DORiE</h4>
-                  <p>
-                    A numerical solver for the Richards equation (soil water flow in unsaturated media), based on the
-                    <a href="http://www.dune-project.org" target="_blank">DUNE</a> framework, and developed at the Institute of Environmental
-                    Phyics (Heidelberg University). <a href="http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/" target="_blank">More
-                    information</a>.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 nopadding">
-              <div class="image-block" style="background: url(/images/botero.png) no-repeat center top;background-size:cover;">
-                <div class="block-content">
-                  <h4>Enhanced Botero Model</h4>
-                  <p>
-                      An open source package for simulations of animal species based on a model proposed by Botero et al., 2015.
-                      <a href="http://github.com/dionhaefner/cces-sem-botero" target="_blank">View on GitHub</a>.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 nopadding">
-              <div class="image-block" style="background: url(/images/homepage.png) no-repeat center top;background-size:cover;">
-                <div class="block-content">
-                  <h4>This homepage</h4>
-                  <p>
-                  This homepage (including the blog) is entirely static and hosted on GitHub Pages.
-                  It is created using <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>, a static site
-                  creator based on Python. The theme of this homepage is based on <a href="https://github.com/molivier" target="_blank">molivier</a>'s
-                  "Nest", but was heavily altered and extended by myself to fit my needs.
-                  </p>
-
-                  <p>
-                  If you like, you can have a look at the sources <a href="http://github.com/dionhaefner/dionhaefner.github.io" target="_blank">at GitHub</a>.
-                  Everything you see here is open-source, so feel free to use it for your own project!
-                </div>
-              </div>
+      <div class="negative-spacer"></div>
+      <div class="row">
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/veros.png);">
+            <div class="block-content">
+              <h4>Veros</h4>
+              <p>
+                The versatile ocean simulator: a full-blown, high performance ocean circulation model in pure Python. Fully parallelized
+                on CPU and GPU through coupling to <a href="https://github.com/bh107/bohrium" target="_blank">Bohrium</a> - without
+                compromising on readability. Developed at Niels Bohr Institute (Copenhagen University).
+                 <a href="https://github.com/dionhaefner/veros" target="_blank">View on GitHub</a>.
+              </p>
             </div>
           </div>
+        </div>
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/dorie.png);">
+            <div class="block-content">
+              <h4>DORiE</h4>
+              <p>
+                A numerical solver for the Richards equation (soil water flow in unsaturated media), based on the
+                <a href="http://www.dune-project.org" target="_blank">DUNE</a> framework, and developed at the Institute of Environmental
+                Phyics (Heidelberg University). <a href="http://ts.iup.uni-heidelberg.de/research/terrestrial-systems/dorie/" target="_blank">More
+                information</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/botero.png);">
+            <div class="block-content">
+              <h4>Enhanced Botero Model</h4>
+              <p>
+                  An open source package for simulations of animal species based on a model proposed by Botero et al., 2015.
+                  <a href="http://github.com/dionhaefner/cces-sem-botero" target="_blank">View on GitHub</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 nopadding">
+          <div class="image-block" style="background-image: url(/images/homepage.png);">
+            <div class="block-content">
+              <h4>This homepage</h4>
+              <p>
+              This homepage (including the blog) is entirely static (created using
+              <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>) and hosted on GitHub Pages.
+              My theme is based on <a href="https://github.com/molivier" target="_blank">molivier</a>'s
+              "Nest", but is heavily altered to fit my needs.
+              </p>
+
+              <p>
+              If you like, you can have a look at the sources <a href="http://github.com/dionhaefner/dionhaefner.github.io" target="_blank">at GitHub</a>.
+              Everything you see here is open-source, so feel free to use it for your own project!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="negative-spacer"></div>
     </body>
 </html>
