@@ -6,8 +6,24 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="{% block description %}{% endblock description %}">
-        <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
         <link rel="icon" href="{{ SITEURL }}/favicon.ico">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="{% block title %}{{ SITENAME }}{% endblock title %}" />
+        <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
+        {% block opengraph %}
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+        {% endblock opengraph %}
+        <!-- /Open Graph -->
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@dionhaefner" />
+        <meta name="twitter:title" content="{% block title %}{{ SITENAME }}{% endblock title %}" />
+        <meta name="twitter:description" content="{% block description %}{% endblock description %}" />
+        <meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
+        <!-- /Twitter Card -->
 
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 
@@ -110,19 +126,23 @@
         {% block headerstyle %}
         {% endblock headerstyle %}
 
-            <!-- Static navbar -->
+          <!-- Static navbar -->
           <div class="row">
             {% block navstyle %}
               <nav class="navbar navbar-static navbar-default header-nav">
             {% endblock navstyle %}
               <div class="container">
                       <div class="header-logo">
-                          <a class="pull-left" href="{{ SITEURL }}/">
-                            {% if NEST_HEADER_LOGO %}
-                              <img class="mr20" src="{{ SITEURL }}{{ NEST_HEADER_LOGO }}" alt="logo">
-                            {% endif %}
-                            {{ SITENAME }}
-                          </a>
+                          {% if NEST_LOGO_TARGET %}
+                            <a class="pull-left" href="{{ NEST_LOGO_TARGET }}">
+                          {% else %}
+                            <a class="pull-left" href="{{ SITEURL }}/">
+                          {% endif %}
+                              {% if NEST_HEADER_LOGO %}
+                                <img class="mr20" src="{{ SITEURL }}{{ NEST_HEADER_LOGO }}" alt="logo">
+                              {% endif %}
+                              {{ SITENAME }}
+                            </a>
                       </div>
                       <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
@@ -142,9 +162,9 @@
                               {% endif %}
                           {% endfor %}
                           {% if DISPLAY_PAGES_ON_MENU %}
-                          {% for pg in PAGES | sort(attribute='slug') %}
-                              <li><a {% if pg == page %} class="active"{% endif %} href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
-                          {% endfor %}
+                            {% for pg in pages | sort(attribute='slug') %}
+                                <li><a {% if pg == page %} class="active"{% endif %} href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
+                            {% endfor %}
                           {% endif %}
                         </ul>
                       </div>

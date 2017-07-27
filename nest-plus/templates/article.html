@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ article.title }} &verbar; {{ super() }}{% endblock title %}
-{% block description %}{{ article.content|striptags|truncate(200)|escape }}{% endblock description %}
-{% block keywords %}{% for tag in article.tags|sort %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}{% endblock keywords %}
+{% block description %}{% if article.summary %} {{ article.summary }} {% else %} {{ article.content|striptags|truncate(200)|escape }} {% endif %}{% endblock description %}
 {% block header_extra %} <meta property="og:image" content="{{ article.illustration }}"/> {% endblock header_extra %}
 
 {% block headerstyle %}
@@ -21,63 +20,60 @@
 
 {% block header %}
     <!-- Header -->
-    <div class="container header-wrapper">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="header-content">
-            <h1 class="header-title">{{ article.title }}</h1>
-            {% if article.subtitle %}<p class="header-subtitle">{{ article.subtitle }}</h2>{% endif %}
-            <p class="header-date">{{ NEST_ARTICLE_HEADER_BY }} {% for author in article.authors %}<a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}{% endfor %}, {{ article.locale_date }}{% if article.modified %}, {{ NEST_ARTICLE_HEADER_MODIFIED }} {{ article.locale_modified }}{% endif %}, {{ NEST_ARTICLE_HEADER_IN }} <a href="{{ SITEURL }}/{{ category.url }}">{{ article.category|capitalize }}</a></p>
-            <div class="header-underline"></div>
-            <div class="clearfix"></div>
-            <p class="pull-right header-tags">
-              <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
-              {% for tag in article.tags|sort %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
-            </p>
-          </div>
+        <div class="container header-content">
+          <h1 class="header-title">{{ article.title }}</h1>
+          {% if article.subtitle %}<p class="header-subtitle">{{ article.subtitle }}</p>{% endif %}
+          <div class="header-underline"></div>
+          <p class="header-date">{{ NEST_ARTICLE_HEADER_BY }} {% for author in article.authors %}<a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}{% endfor %}, {{ article.locale_date }}{% if article.modified %}, {{ NEST_ARTICLE_HEADER_MODIFIED }} {{ article.locale_modified }}{% endif %}, {{ NEST_ARTICLE_HEADER_IN }} <a href="{{ SITEURL }}/{{ category.url }}">{{ article.category|capitalize }}</a></p>
         </div>
-      </div>
-    </div>
+        <div class="container header-subcontent">
+          <div class="clearfix"></div>
+          <p class="pull-right header-tags">
+            <span class="glyphicon glyphicon-tags mr5" aria-hidden="true"></span>
+            {% for tag in article.tags|sort %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+          </p>
+        </div>
     <!-- /Header -->
 {% endblock header %}
 
 {% block content %}
-    <div class="container content">
+    <div class="container article-container">
+      <div class="article content">
+        <div class="spacer"></div>
+
         {{ article.content }}
 
-        {% if article.related_posts %}
-            <h4>Related posts</h4>
-            <dl class="dl-horizontal">
-            {% for related_post in article.related_posts %}
-                <dt>{{ related_post.locale_date}}</dt>
-                <dd><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }} {% if related_post.subtitle %} &mdash; {{ related_post.subtitle }} {% endif %}</a></dd>
-            {% endfor %}
-            </dl>
-        {% endif %}
-
-        <hr />
-        <div style="width: 100%" class="clearfix">
-            {% if article.share_post and article.status != 'draft' %}
-              <div style="float: left">
-                <p id="post-share-links">
-                    Share via:
-                    <ul class="list-inline">
-                      {% for key, icon, name in SOCIAL_SHARE %}
-                        <li> <a href="{{ article.share_post[key] }}" target="_blank" title="Share via {{ name }}"><span class="fa fa-{{ icon }}"></span></a> </li>
-                      {% endfor %}
-                    </ul>
-                </p>
-              </div>
-            {% endif %}
-            {% if OUTPUT_SOURCES %}
-            <div style="float: right">
-                  {% set source_path = "/".join(article.save_as.split("/")[:-1]) %}
-                  {% set source_file = ".".join(article.save_as.split("/")[-1].split(".")[:-1]) %}
-                  {% set source_ext = article.source_path.split("/")[-1].split(".")[-1] %}
-                  <a href="{{ SITEURL }}/{{ source_path }}/{{ source_file }}{{ OUTPUT_SOURCES_EXTENSION }}" download="{{ article.slug }}.{{ source_ext }}"> Download source </a>
+        <div class="postmatter">
+          <hr />
+          {% if article.related_posts %}
+              <h4>Related posts</h4>
+              <dl class="dl-horizontal">
+              {% for related_post in article.related_posts %}
+                  <dt>{{ related_post.locale_date}}</dt>
+                  <dd><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }} {% if related_post.subtitle %} &mdash; {{ related_post.subtitle }} {% endif %}</a></dd>
+              {% endfor %}
+              </dl>
+          {% endif %}
+          {% if OUTPUT_SOURCES %}
+            <div class="pull-right">
+              {% set source_path = "/".join(article.save_as.split("/")[:-1]) %}
+              {% set source_file = ".".join(article.save_as.split("/")[-1].split(".")[:-1]) %}
+              {% set source_ext = article.source_path.split("/")[-1].split(".")[-1] %}
+              <a href="{{ SITEURL }}/{{ source_path }}/{{ source_file }}{{ OUTPUT_SOURCES_EXTENSION }}" download="{{ article.slug }}.{{ source_ext }}">Download source</a>
             </div>
-            {% endif %}
+          {% endif %}
+          {% if article.share_post and article.status != 'draft' %}
+              <p id="post-share-links">
+                  Share via:
+                  <ul class="list-inline">
+                    {% for key, icon, name in SOCIAL_SHARE %}
+                      <li> <a href="{{ article.share_post[key] }}" target="_blank" title="Share via {{ name }}"><span class="fa fa-{{ icon }}"></span></a> </li>
+                    {% endfor %}
+                  </ul>
+              </p>
+          {% endif %}
         </div>
         {% include "comments.html" %}
+      </div>
     </div>
 {% endblock %}

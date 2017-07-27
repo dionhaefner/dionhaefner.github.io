@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{{ NEST_ONEPAGE_HEAD_TITLE }} &verbar; {{ super() }}{% endblock title %}
+{% block description %}{{ SITENAME }} &verbar; {{ SITESUBTITLE }}{% endblock description %}
+{% block head_extra %}
+  <script src="{{ SITEURL }}/theme/jquery/jquery.smoothScroll.js"></script>
+  <script src="{{ SITEURL }}/theme/jquery/scroll.js"></script>
+{% endblock head_extra %}
+
+{% block headerstyle %}
+    {% if NEST_HEADER_IMAGES %}
+    <div id="top" class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}">
+    {% else %}
+    <div id="top" class="header-container gradient">
+    {% endif %}
+{% endblock headerstyle %}
+
+{% block navstyle %}
+<nav class="navbar navbar-fixed-top navbar-default header-nav">
+{% endblock navstyle %}
+
+{% block header %}
+<div class="container header-content">
+    <h1 class="header-title">{{ NEST_ONEPAGE_HEADER_TITLE }}</h1>
+    <div class="header-underline"></div>
+    <p class="header-subtitle header-subtitle-homepage">{{ NEST_ONEPAGE_HEADER_SUBTITLE }}</p>
+</div>
+{% endblock header %}
+
+{% block content %}
+  {% for page in pages | sort(attribute='slug') %}
+  <article class="homepage-section" id="{{ page.slug }}">
+  {% if not loop.first %}
+    {% if page.illustration %}
+    <div class="image-container-homepage" data-parallax="scroll" data-speed="0.4" data-image-src="{{ SITEURL }}/images/{{ page.illustration }}">
+    {% else %}
+    <div class="image-container-homepage gradient">
+    {% endif %}
+      <div class="image-content">
+          <h1 class="image-title">{{ page.title }}</h1>
+          <div class="image-underline"></div>
+          {% if page.subtitle %}<p class="image-subtitle image-subtitle-homepage">{{ page.subtitle }}</p>{% endif %}
+      </div>
+    </div>
+    {% endif %}
+    <div class="container page-container">
+      <div class="page content">
+        <div class="spacer"></div>
+        {{ page.content }}
+        <div class="spacer"></div>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+{% endblock content %}

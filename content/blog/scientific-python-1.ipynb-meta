@@ -4,6 +4,6 @@ Slug: suck-less-scientific-python-part-1-reading-and-writing-data
 Date: 28-11-2016
 Tags: Python, Science
 Author: Dion
-Illustration: headers/code-projects.jpeg
+Illustration: headers/snek.jpeg
 related_posts: suck-less-scientific-python-part-2-efficient-number-crunching, suck-less-scientific-python-part-3-efficient-evolution-models
 summary: Part 1 in a series on efficient scientific Python. In this example, we will explore how to read messy data files with regular expressions, and how to save them in a more appropriate binary format (HDF5).

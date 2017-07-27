@@ -4,6 +4,6 @@ Slug: suck-less-scientific-python-part-3-efficient-evolution-models
 Date: 30-11-2016
 Tags: Python, Science
 Author: Dion
-Illustration: headers/code-projects.jpeg
+Illustration: headers/snek.jpeg
 related_posts: suck-less-scientific-python-part-1-reading-and-writing-data, suck-less-scientific-python-part-2-efficient-number-crunching
 summary: Part 3 in a series on efficient scientific Python, concerning how to implement an evolution model efficiently. I explore different ways to make object-oriented code faster (Cython and wrapped C++ code), and show how to solve the problem in a Pythonic way.

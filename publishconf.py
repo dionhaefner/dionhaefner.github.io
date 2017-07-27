@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = '//www.dionhaefner.de'
+SITEURL = '//dionhaefner.github.io'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
@@ -20,8 +20,8 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-ISSO_URL = "//vps.dionhaefner.de/isso"
+#ISSO_URL = "//vps.dionhaefner.de/isso"
 #GOOGLE_ANALYTICS = ""
-PIWIK_URL = "http://vps.dionhaefner.de/analytics"
-PIWIK_SSL_URL = "https://vps.dionhaefner.de/analytics"
+PIWIK_URL = "https://home.dionhaefner.de:60000/piwik"
+PIWIK_SSL_URL = "https://home.dionhaefner.de:60000/piwik"
 PIWIK_SITE_ID = "1"

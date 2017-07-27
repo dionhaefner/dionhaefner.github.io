@@ -1,6 +1,0 @@
-Title: How to create an interactive travel map with Plotly and Basemap
-Slug: how-to-create-an-interactive-travel-map
-Author: Dion
-Date: 02-04-2016
-Status: draft
-Summary: With plot.ly, you can create awesome, interactive plots with Python. As an application, I am showing how to create an interactive map that shows the internet, how much of the world you have seen.

@@ -21,14 +21,13 @@ TYPOGRIFY = True
 TYPOGRIFY_IGNORE_TAGS = ["style", "script", "title"]
 
 FORMATTED_FIELDS = ['summary','_summary']
-DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'home']
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'onepage']
 
 DISPLAY_PAGES_ON_MENU = True
-INDEX_SAVE_AS = "blog.html"
-HOME_SAVE_AS = "index.html"
+ONEPAGE_SAVE_AS = "about.html"
 ARTICLE_URL = '{date:%Y}/{date:%m}/{slug}/'
 ARTICLE_SAVE_AS = '{date:%Y}/{date:%m}/{slug}/index.html'
-PAGE_URL = 'index.html#{slug}'
+PAGE_URL = 'about.html#{slug}'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -44,7 +43,8 @@ LINKS = (
 
 # Social widget
 SOCIAL = (('github fa-2x', 'https://github.com/dionhaefner/'),
-          ('linkedin fa-2x', 'https://www.linkedin.com/in/dion-h%C3%A4fner-763821121/'))
+          ('linkedin fa-2x', 'https://www.linkedin.com/in/dion-h%C3%A4fner-763821121/'),
+          ('twitter fa-2x', 'https://twitter.com/dionhaefner'))
 
 DEFAULT_PAGINATION = 6
 
@@ -76,10 +76,11 @@ SUMMARY_USE_FIRST_PARAGRAPH = True
 SITESUBTITLE = u'Home'
 NEST_INTRODUCTION_PAGE = u'introduction'
 # Add items to top menu before pages
-MENUITEMS = [('Blog', '/blog.html')]
+MENUITEMS = [('Blog', '/index.html')]
 # Add header background image from content/images : 'background.jpg'
 NEST_HEADER_IMAGES = 'headers/index.jpeg'
 NEST_HEADER_LOGO = ''
+NEST_LOGO_TARGET = '/about.html'
 # Footer
 NEST_SITEMAP_COLUMN_TITLE = u'Sitemap'
 NEST_SITEMAP_MENU = [('Archives', '/archives.html'),('Categories', '/categories.html'), ('Tags','/tags.html')]
@@ -90,12 +91,12 @@ NEST_LINKS_COLUMN_TITLE = u'Links'
 NEST_COPYRIGHT = u'&copy; Dion Häfner 2017'
 # Footer optional
 NEST_FOOTER_HTML = ''
-# index.html
-NEST_INDEX_HEAD_TITLE = u'Home'
-NEST_INDEX_HEAD_SUBTITLE = u'Dion Häfner'
-NEST_INDEX_HEADER_TITLE = u'Meet the snake charmer'
-NEST_INDEX_HEADER_SUBTITLE = u""
-NEST_INDEX_CONTENT_TITLE = u'Latest Content'
+# onepage.html
+NEST_ONEPAGE_HEAD_TITLE = u'About Me'
+NEST_ONEPAGE_HEAD_SUBTITLE = u'Dion Häfner'
+NEST_ONEPAGE_HEADER_TITLE = u'Meet the snake charmer'
+NEST_ONEPAGE_HEADER_SUBTITLE = u""
+NEST_ONEPAGE_CONTENT_TITLE = u'Latest Content'
 # archives.html
 NEST_ARCHIVES_HEAD_TITLE = u'Archives'
 NEST_ARCHIVES_HEAD_DESCRIPTION = u'Posts Archives'
@@ -107,7 +108,7 @@ NEST_ARCHIVES_HEADER_IMAGE = u'headers/archive.jpeg'
 NEST_ARTICLE_HEADER_BY = u'By'
 NEST_ARTICLE_HEADER_MODIFIED = u'modified'
 NEST_ARTICLE_HEADER_IN = u'in category'
-NEST_ARTICLE_DEFAULT_HEADER_IMAGE = "headers/blog.jpeg"
+NEST_ARTICLE_DEFAULT_HEADER_IMAGE = "headers/plant.jpeg"
 # author.html
 NEST_AUTHOR_HEAD_TITLE = u'Posts by'
 NEST_AUTHOR_HEAD_DESCRIPTION = u'Posts by'
@@ -118,13 +119,6 @@ NEST_AUTHORS_HEAD_TITLE = u'Author list'
 NEST_AUTHORS_HEAD_DESCRIPTION = u'Author list'
 NEST_AUTHORS_HEADER_TITLE = u'Author list'
 NEST_AUTHORS_HEADER_SUBTITLE = u'Archives listed by author'
-# blog.html
-NEST_BLOG_HEADER_IMAGE = u'headers/blog.jpeg'
-NEST_BLOG_HEAD_TITLE = u'The Terrarium'
-NEST_BLOG_HEAD_DESCRIPTION = u'The Terrarium'
-NEST_BLOG_HEADER_TITLE = u'The Terrarium'
-NEST_BLOG_HEADER_SUBTITLE = u''
-NEST_BLOG_LATESTPOSTS_TITLE = u'Latest Posts'
 # categories.html
 NEST_CATEGORIES_HEAD_TITLE = u'Categories'
 NEST_CATEGORIES_HEAD_DESCRIPTION = u'Archives listed by category'
@@ -135,6 +129,14 @@ NEST_CATEGORY_HEAD_TITLE = u'Category Archive'
 NEST_CATEGORY_HEAD_DESCRIPTION = u'Category Archive'
 NEST_CATEGORY_HEADER_TITLE = u'Category'
 NEST_CATEGORY_HEADER_SUBTITLE = u'Category Archive'
+# index.html
+NEST_BLOG_HEADER_IMAGE = u'headers/plant.jpeg'
+NEST_BLOG_DEFAULT_HEADER_IMAGE = u''
+NEST_BLOG_HEAD_TITLE = u'The Terrarium'
+NEST_BLOG_HEAD_DESCRIPTION = u'The Terrarium'
+NEST_BLOG_HEADER_TITLE = u'The Terrarium'
+NEST_BLOG_HEADER_SUBTITLE = u'A Blog in wild growth.'
+NEST_BLOG_LATESTPOSTS_TITLE = u'Latest Posts'
 # pagination.html
 NEST_PAGINATION_PREVIOUS = u'Previous'
 NEST_PAGINATION_NEXT = u'Next'
