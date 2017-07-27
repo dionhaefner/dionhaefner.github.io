@@ -58,7 +58,7 @@ SOCIAL_SHARE = (("twitter", "twitter fa-2x", "Twitter"),
 #
 # Meta data
 #
-NEST_META_IMAGE = "content/images/headers/index.jpeg"
+NEST_META_IMAGE = "images/dion.jpg"
 NEST_TWITTER_CARD_TAG = "dionhaefner"
 
 #
@@ -102,6 +102,7 @@ NEST_ONEPAGE_HEAD_TITLE = u'About Me'
 NEST_ONEPAGE_HEAD_SUBTITLE = u'Dion Häfner'
 NEST_ONEPAGE_HEADER_TITLE = u'Meet the snake charmer'
 NEST_ONEPAGE_HEADER_SUBTITLE = u""
+NEST_ONEPAGE_META_DESCRIPTION = "Learn more about me, my work, and my reasearch."
 NEST_ONEPAGE_CONTENT_TITLE = u'Latest Content'
 # archives.html
 NEST_ARCHIVES_HEAD_TITLE = u'Archives'

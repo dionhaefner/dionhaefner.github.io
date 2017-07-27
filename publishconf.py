@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = '//dionhaefner.github.io'
+SITEURL = 'https://dionhaefner.github.io'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
@@ -22,6 +22,6 @@ DELETE_OUTPUT_DIRECTORY = True
 
 #ISSO_URL = "//vps.dionhaefner.de/isso"
 #GOOGLE_ANALYTICS = ""
-PIWIK_URL = "https://home.dionhaefner.de:60000/piwik"
+PIWIK_URL = "http://home.dionhaefner.de:60000/piwik"
 PIWIK_SSL_URL = "https://home.dionhaefner.de:60000/piwik"
 PIWIK_SITE_ID = "1"

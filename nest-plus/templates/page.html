@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page.title }} &verbar; {{ super() }}{% endblock title %}
+{% block title %}{{ page.title }} | {{ super() }}{% endblock title %}
 {% block description %}{{ page.content|striptags|truncate(200)|escape }}{% endblock description %}
 
 {% block headerstyle %}
@@ -19,7 +19,7 @@
 
 {% block header %}
     <div class="container header-content">
-        <h1 class="header-title text-uppercase">{{ page.title }}</h1>
+        <h1 class="header-title">{{ page.title }}</h1>
         <div class="header-underline"></div>
         {% if page.subtitle %}
           <p class="header-subtitle header-subtitle-homepage">{{ page.subtitle }}</p>

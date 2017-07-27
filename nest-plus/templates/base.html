@@ -11,9 +11,10 @@
         <!-- Open Graph -->
         <meta property="og:title" content="{{ self.title() }}" />
         <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}" />
-        <meta property="og:image" content="{% block metaimage %}{{ NEST_META_IMAGE }}{% endblock metaimage %}" />
+        <meta property="og:image" content="{% block metaimage %}{{ SITEURL }}/{{ NEST_META_IMAGE }}{% endblock metaimage %}" />
         {% block opengraph %}
           <meta property="og:type" content="website" />
+          <meta property="og:description" content="{{ self.description() }}" />
         {% endblock opengraph %}
         <!-- /Open Graph -->
 

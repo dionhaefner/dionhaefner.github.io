@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ NEST_PERIOD_ARCHIVES_HEAD_TITLE }} {{ period | reverse | join(' ') }} &verbar; {{ super() }}{% endblock title %}
+{% block title %}{{ NEST_PERIOD_ARCHIVES_HEAD_TITLE }} {{ period | reverse | join(' ') }} | {{ super() }}{% endblock title %}
 {% block description %}{{ NEST_PERIOD_ARCHIVES_HEAD_DESCRIPTION }} {{ period | reverse | join(' ') }}{% endblock description %}
 
 {% block headerstyle %}

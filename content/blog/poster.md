@@ -12,7 +12,7 @@ This poster design is heavily based on the poster template provided by [Felix Br
 <!-- PELICAN_BEGIN_SUMMARY -->
 This poster was created during a MSc level physics course on climate at Heidelberg University as final project. We were given a paper (that we are in no way affiliated with) from climate research and told to create a poster that would be well-suited to represent the contents of the paper at a conference. Our goal was to create a poster that stands out in the mass of standard, blocky posters that physicists tend to create. Additionally, we wanted the poster layout to tell a story, so you would not have to read the whole poster to understand what was going on - we wanted the plots and figures and some short summary to convey the most important ideas at a glance.
 
-[Inkscape](https://inkscape.org/) seemed to be the perfect tool for this task, since it is free, has powerful vector tools, and is based on visuals rather than code. So, this is what we came up with: !["Our poster, created in InkScape"](http://dionhaefner.github.io/images/poster-lowres.png)
+[Inkscape](https://inkscape.org/) seemed to be the perfect tool for this task, since it is free, has powerful vector tools, and is based on visuals rather than code. So, this is what we came up with: ![Our poster, created in InkScape](/images/poster-lowres.png)
 <!-- PELICAN_END_SUMMARY -->
 (you can download the SVG version of the poster below)
 
@@ -43,4 +43,3 @@ Creating our poster in inkscape was highly rewarding and a lot of fun, even thou
 [Inkscape SVG file]({filename}/downloads/poc-poster-2015.svg)
 
 Make sure to use right click - Save Link As.. and open the file in inkscape instead of viewing it in your browser, where it will probably not render correctly.
-

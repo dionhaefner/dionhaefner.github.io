@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ NEST_ONEPAGE_HEAD_TITLE }} &verbar; {{ super() }}{% endblock title %}
-{% block description %}{{ SITENAME }} &verbar; {{ SITESUBTITLE }}{% endblock description %}
+{% block title %}{{ NEST_ONEPAGE_HEAD_TITLE }} | {{ super() }}{% endblock title %}
+{% block description %}{{ NEST_ONEPAGE_META_DESCRIPTION}}{% endblock description %}
 {% block head_extra %}
   <script src="{{ SITEURL }}/theme/jquery/jquery.smoothScroll.js"></script>
   <script src="{{ SITEURL }}/theme/jquery/scroll.js"></script>

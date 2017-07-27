@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ NEST_BLOG_HEAD_TITLE }} &verbar; {{ super() }}{% endblock title %}
+{% block title %}{{ NEST_BLOG_HEAD_TITLE }} | {{ super() }}{% endblock title %}
 {% block description %}{{ NEST_BLOG_HEAD_DESCRIPTION }} {% endblock description %}
 
 {% block headerstyle %}
@@ -67,7 +67,6 @@
                   <a href="{{ SITEURL }}/{{ article.url }}">{{ article.subtitle }}</a>
                 </p>
                 {% endif %}
-                </a>
                 <div class="image-underline"></div>
               </div>
             </div>
@@ -86,7 +85,6 @@
     </div>
     {% endif %}
   {% endfor %}
-  </div>
 </div>
 
 {% if DEFAULT_PAGINATION %}

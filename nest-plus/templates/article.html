@@ -1,27 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}{{ article.title }} {% if article.subtitle %} &mdash; {{ article.subtitle }} {% endif %} &verbar; {{ super() }}{% endblock title %}
+{% block title %}{{ article.title }}{% if article.subtitle %} &mdash; {{ article.subtitle }}{% endif %} | {{ super() }}{% endblock title %}
 {% block description %}{% if article.summary %} {{ article.summary|striptags|escape }} {% else %} {{ article.content|striptags|truncate(200)|escape }} {% endif %}{% endblock description %}
 
-{% block metaimage %}
-  {% if article.illustration %}
-    {{ SITEURL }}/images/{{ article.illustration }}
-  {% elif NEST_ARTICLE_DEFAULT_HEADER_IMAGE %}
-    {{ SITEURL }}/images/{{ NEST_ARTICLE_DEFAULT_HEADER_IMAGE }}
-  {% else %}
-    {{ SITEURL }}/images/{{ NEST_META_IMAGE }}
-  {% endif %}
-{% endblock %}
+{% block metaimage %}{% if article.illustration %}{{ SITEURL }}/images/{{ article.illustration }}{% elif NEST_ARTICLE_DEFAULT_HEADER_IMAGE %}{{ SITEURL }}/images/{{ NEST_ARTICLE_DEFAULT_HEADER_IMAGE }}{% else %}{{ SITEURL }}/images/{{ NEST_META_IMAGE }}{% endif %}{% endblock %}
 
 {% block opengraph %}
   <meta property="og:type" content="article" />
-  <meta property="og:article:published_time" content="{{ article.date }}" />
+  <meta property="article:published_time" content="{{ article.date }}" />
   {% if article.modified %}
-    <meta property="og:article:modified_time" content="{{ article.modified }}" />
+    <meta property="article:modified_time" content="{{ article.modified }}" />
   {% endif %}
-  <meta property="og:article:author" content="{% for author in article.authors %}{{ author }}{% if not loop.last %}, {% endif %}{% endfor %}" />
-  <meta property="og:article:section" content="{{ article.category }}" />
-  <meta property="og:article:tag" content="{% for tag in article.tags|sort %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}" />
+  <meta property="article:author" content="{% for author in article.authors %}{{ author }}{% if not loop.last %}, {% endif %}{% endfor %}" />
+  <meta property="article:section" content="{{ article.category }}" />
+  <meta property="article:tag" content="{% for tag in article.tags|sort %}{{ tag }}{% if not loop.last %}, {% endif %}{% endfor %}" />
 {% endblock opengraph %}
 
 {% block headerstyle %}
