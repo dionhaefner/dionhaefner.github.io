@@ -165,9 +165,8 @@ NEST_TAGS_HEADER_SUBTITLE = u'Tags List'
 NEST_TAGS_CONTENT_TITLE = u'Tags List'
 NEST_TAGS_CONTENT_LIST = u'tagged'
 # Static files
-STATIC_PATHS = ['images', 'downloads', 'extra/robots.txt', 'extra/README', 'extra/CNAME']
+STATIC_PATHS = ['images', 'downloads', 'extra/robots.txt', 'extra/README']
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
-    'extra/README': {'path': 'README.md'},
-    'extra/CNAME': {'path': 'CNAME'}
+    'extra/README': {'path': 'README.md'}
 }
