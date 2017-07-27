@@ -9,20 +9,22 @@
         <link rel="icon" href="{{ SITEURL }}/favicon.ico">
 
         <!-- Open Graph -->
-        <meta property="og:title" content="{% block title %}{{ SITENAME }}{% endblock title %}" />
-        <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
+        <meta property="og:title" content="{{ self.title() }}" />
+        <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}" />
+        <meta property="og:image" content="{% block metaimage %}{{ NEST_META_IMAGE }}{% endblock metaimage %}" />
         {% block opengraph %}
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+          <meta property="og:type" content="website" />
         {% endblock opengraph %}
         <!-- /Open Graph -->
 
         <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@dionhaefner" />
-        <meta name="twitter:title" content="{% block title %}{{ SITENAME }}{% endblock title %}" />
-        <meta name="twitter:description" content="{% block description %}{% endblock description %}" />
-        <meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
+        <meta name="twitter:card" content="{{ self.title() }}" />
+        {% if NEST_TWITTER_CARD_TAG %}
+          <meta name="twitter:site" content="@{{ NEST_TWITTER_CARD_TAG }}" />
+        {% endif %}
+        <meta name="twitter:title" content="{{ self.title() }}" />
+        <meta name="twitter:description" content="{{ self.description() }}" />
+        <meta name="twitter:image" content="{{ self.metaimage() }}" />
         <!-- /Twitter Card -->
 
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>

@@ -56,6 +56,12 @@ SOCIAL_SHARE = (("twitter", "twitter fa-2x", "Twitter"),
                 ("email", "send fa-2x", "E-Mail"))
 
 #
+# Meta data
+#
+NEST_META_IMAGE = "content/images/headers/index.jpeg"
+NEST_TWITTER_CARD_TAG = "dionhaefner"
+
+#
 # https://github.com/danielfrg/pelican-ipynb
 #
 MARKUP = ('md', 'ipynb')
