@@ -4,28 +4,57 @@
  * Licensed under Apache V2 (https://github.com/molivier/nest/blob/master/LICENSE)
  */
 
+body{font-size: 14px;}
+
+ .container {
+   padding-left: 10px;
+   padding-right: 10px;
+ }
+
 /* Responsive */
 @media (min-width: 0px) {
   .container {
     width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  body{font-size: 14px;}
   .header-title{font-size: 32px;}
   .header-subtitle{font-size: 20px;}
   h1 {font-size: 24px;}
   h2 {font-size: 20px;}
   h3 {font-size: 16px;}
+  .content{
+    padding: 20px 20px;
+  }
+  .twocol-content {
+    padding: 20px 20px;
+  }
+}
+@media (min-width: 440px) {
+  .container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .content{
+    padding: 20px 40px;
+  }
 }
 @media (min-width: 768px) {
   .container {
     width: 750px;
   }
-  body{font-size: 14px;}
   .header-title{font-size: 48px;}
   .header-subtitle{font-size: 22px;}
   h1 {font-size: 28px;}
   h2 {font-size: 22px;}
   h3 {font-size: 18px;}
+  .content{
+      padding: 20px 60px;
+  }
+  .twocol-content {
+    padding: 20px 40px !important;
+  }
 }
 @media (min-width: 992px) {
   .container {
@@ -317,10 +346,6 @@ nav.navbar-fixed-top {
 
 .content{
     background-color: #fff;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
     border-left: 1px solid rgba(0,0,0,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);
 }
@@ -453,7 +478,6 @@ h2.image-title:after {
 }
 .article {
     line-height: 26px;
-    padding: 20px 60px;
 }
 .article h2{
     margin-top: 40px;
@@ -518,7 +542,6 @@ h2.image-title:after {
 }
 .page{
     line-height: 24px;
-    padding: 20px 60px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     border-top: 1px solid rgba(0,0,0,0.1);
 }
