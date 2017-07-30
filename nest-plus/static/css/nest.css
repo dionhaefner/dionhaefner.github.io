@@ -323,6 +323,8 @@ nav.navbar-fixed-top {
     padding-right: 40px;
     border-left: 1px solid rgba(0,0,0,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);
+    font-size: 1.7rem;
+    line-height: 1.7;
 }
 
 .content img{
@@ -452,7 +454,6 @@ h2.image-title:after {
     margin-bottom: 0;
 }
 .article {
-    line-height: 26px;
     padding: 20px 60px;
 }
 .article h2{
@@ -482,7 +483,6 @@ h2.image-title:after {
     margin-bottom: 40px;
 }
 .archive {
-    line-height: 24px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -517,7 +517,6 @@ h2.image-title:after {
     margin-bottom: 60px;
 }
 .page{
-    line-height: 24px;
     padding: 20px 60px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     border-top: 1px solid rgba(0,0,0,0.1);
