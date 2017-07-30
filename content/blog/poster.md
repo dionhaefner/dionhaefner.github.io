@@ -2,6 +2,7 @@ Title: Creating a Science Conference Poster with Inkscape
 Date: 2015-07-17
 Tags: Design, Inkscape, Science
 Author: Dion
+related_posts:
 
 ## First things first
 

@@ -70,7 +70,7 @@
                 <div class="image-underline"></div>
               </div>
             </div>
-            <div class="content archive">
+            <div class="twocol-content content archive">
               <p class="date">{{ NEST_ARTICLE_HEADER_BY }} {% for author in article.authors %}<a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}{% endfor %}, {{ article.locale_date }}{% if article.modified %}, {{ NEST_ARTICLE_HEADER_MODIFIED }} {{ article.locale_modified }}{% endif %}, {{ NEST_ARTICLE_HEADER_IN }} <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category|capitalize }}</a></p>
               {{ article._summary }}
               {% if article.content | trim | length > 0 %}
