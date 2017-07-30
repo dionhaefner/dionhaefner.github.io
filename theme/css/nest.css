@@ -4,7 +4,7 @@
  * Licensed under Apache V2 (https://github.com/molivier/nest/blob/master/LICENSE)
  */
 
-body{font-size: 14px;}
+body{font-size: 15px;}
 
  .container {
    padding-left: 10px;
@@ -36,8 +36,11 @@ body{font-size: 14px;}
     padding-left: 20px;
     padding-right: 20px;
   }
-  .content{
+  .content {
     padding: 20px 40px;
+  }
+  .page, .article {
+    font-size: 1.5rem;
   }
 }
 @media (min-width: 768px) {
@@ -47,10 +50,13 @@ body{font-size: 14px;}
   .header-title{font-size: 48px;}
   .header-subtitle{font-size: 22px;}
   h1 {font-size: 28px;}
-  h2 {font-size: 22px;}
-  h3 {font-size: 18px;}
+  h2 {font-size: 24px;}
+  h3 {font-size: 20px;}
   .content{
       padding: 20px 60px;
+  }
+  .page, .article {
+    font-size: 1.6rem;
   }
   .twocol-content {
     padding: 20px 40px !important;
@@ -210,7 +216,7 @@ h4:after {
     height:50px;
     line-height:50px;
     color:#f6f1ed;
-    font-size:12px;
+    font-size:13px;
     font-weight:600;
 }
 .header-nav .nav{
@@ -308,7 +314,7 @@ nav.navbar-fixed-top {
     font-weight: 700;
 }
 .header-date {
-    font-size: 12px;
+    font-size: 14px;
     color: #fff;
 }
 .header-date a {
@@ -348,6 +354,7 @@ nav.navbar-fixed-top {
     background-color: #fff;
     border-left: 1px solid rgba(0,0,0,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);
+    line-height: 1.7;
 }
 
 .content img{
@@ -476,9 +483,6 @@ h2.image-title:after {
     margin-top: 0;
     margin-bottom: 0;
 }
-.article {
-    line-height: 26px;
-}
 .article h2{
     margin-top: 40px;
     margin-bottom: 25px;
@@ -491,7 +495,7 @@ h2.image-title:after {
     margin: 40px;
 }
 .article .date{
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 10px;
     opacity: 0.9;
 }
@@ -506,7 +510,6 @@ h2.image-title:after {
     margin-bottom: 40px;
 }
 .archive {
-    line-height: 24px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -521,7 +524,7 @@ h2.image-title:after {
     text-decoration: None;
 }
 .archive dt{
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 24px;
 }
@@ -541,7 +544,6 @@ h2.image-title:after {
     margin-bottom: 60px;
 }
 .page{
-    line-height: 24px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     border-top: 1px solid rgba(0,0,0,0.1);
 }
@@ -565,6 +567,10 @@ blockquote{
     font-size: 15px;
     opacity: 0.65;
 }
+
+b, strong {
+  font-weight: 600;
+}
 /* Comments */
 .comments{
     margin-top: 40px;
@@ -583,7 +589,7 @@ blockquote{
 
 .footer{
     background-color: #333;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 300;
     text-align: left;
     color: #f6f1ed;
@@ -644,19 +650,6 @@ a.anchor-link {
 }
 
 /* MISC */
-.scroll-icon {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    padding: 0;
-    width: 30px;
-    color: #f6f1ed;
-}
-
-.scroll-icon a .fa {
-    color: #f6f1ed;
-}
-
 img.img-responsive {
     margin: 5px;
 }
@@ -687,6 +680,7 @@ img.img-responsive {
     flex-flow: column;
     justify-content: center;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .image-block .block-content > h4 {
