@@ -5,7 +5,7 @@ Author: Dion
 Illustration: headers/about-me.jpeg
 
 ## Let me introduce myself
-<img class="img-circle pull-right" style="margin: 20px; max-height: 300px;" src="images/dion.jpg" alt="That's me!">
+<img class="img-circle pull-right" style="margin: 20px; max-height: 250px;" src="images/dion.jpg" alt="That's me!">
 
 I am an aspiring scientist living in Malmö, Sweden. Although I have been doing geophysics for a while now, I mostly see myself as a "computer guy". I have a passion for scientific software, modeling, and effective communication & visualization.
 

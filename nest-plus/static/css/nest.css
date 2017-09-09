@@ -15,8 +15,6 @@ body{font-size: 15px;}
 @media (min-width: 0px) {
   .container {
     width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
   }
   .header-title{font-size: 32px;}
   .header-subtitle{font-size: 20px;}
@@ -24,10 +22,14 @@ body{font-size: 15px;}
   h2 {font-size: 20px;}
   h3 {font-size: 16px;}
   .content{
+    margin: 0 -10px;
     padding: 20px 20px;
   }
   .twocol-content {
     padding: 20px 20px;
+  }
+  .page, .article {
+    font-size: 14px;
   }
 }
 @media (min-width: 440px) {
@@ -37,32 +39,31 @@ body{font-size: 15px;}
     padding-right: 20px;
   }
   .content {
+    margin: 0;
     padding: 20px 40px;
-  }
-  .page, .article {
-    font-size: 1.5rem;
   }
 }
 @media (min-width: 768px) {
   .container {
     width: 750px;
+    padding: 0;
   }
   .header-title{font-size: 48px;}
   .header-subtitle{font-size: 22px;}
   h1 {font-size: 28px;}
-  h2 {font-size: 24px;}
+  h2 {font-size: 22px;}
   h3 {font-size: 20px;}
   .content{
       padding: 20px 60px;
   }
   .page, .article {
-    font-size: 1.6rem;
+    font-size: 15px;
   }
   .twocol-content {
     padding: 20px 40px !important;
   }
 }
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
   .container {
     width: 850px;
   }
@@ -71,12 +72,12 @@ body{font-size: 15px;}
   .container {
     width: 850px;
   }
-}
+}*/
 
 /* Default styling */
 body {
     font-family: "Open Sans", sans-serif;
-    color: #4b505a;
+    color: #2e3239;
     background-color: #f5f5f5;
     line-height: 24px;
     -webkit-font-smoothing:antialiased;
@@ -354,7 +355,7 @@ nav.navbar-fixed-top {
     background-color: #fff;
     border-left: 1px solid rgba(0,0,0,0.1);
     border-right: 1px solid rgba(0,0,0,0.1);
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 .content img{
@@ -564,8 +565,8 @@ h2.image-title:after {
 
 /* Styling */
 blockquote{
-    font-size: 15px;
-    opacity: 0.65;
+    font-size: inherit;
+    opacity: 0.7;
 }
 
 b, strong {
@@ -583,6 +584,16 @@ b, strong {
 /* Gradients */
 .gradient {
     background-color: #356689;
+}
+
+/* Lists */
+.content li {
+    margin: 10px 0;
+}
+
+/* Rules */
+hr {
+    border-top: 1px solid #ccc;
 }
 
 /* Footer */
@@ -681,6 +692,7 @@ img.img-responsive {
     justify-content: center;
     text-align: center;
     font-size: 1.5rem;
+    line-height: 1.5;
 }
 
 .image-block .block-content > h4 {
