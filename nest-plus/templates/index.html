@@ -27,7 +27,7 @@
 <div class="container">
   {% if not DEFAULT_PAGINATION or not articles_previous_page %}
   <div class="archive-container">
-      <div class="content archive">
+      <div class="content content-boxed archive">
           <h2><a href="{{ SITEURL }}/archives.html">{{ NEST_BLOG_LATESTPOSTS_TITLE }}</a></h2>
           <dl class="dl-horizontal">
             {% for article in articles[:5] %}
@@ -70,7 +70,7 @@
                 <div class="image-underline"></div>
               </div>
             </div>
-            <div class="twocol-content content archive">
+            <div class="twocol-content content content-boxed archive">
               <p class="date">{{ NEST_ARTICLE_HEADER_BY }} {% for author in article.authors %}<a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% if not loop.last %}, {% endif %}{% endfor %}, {{ article.locale_date }}{% if article.modified %}, {{ NEST_ARTICLE_HEADER_MODIFIED }} {{ article.locale_modified }}{% endif %}, {{ NEST_ARTICLE_HEADER_IN }} <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category|capitalize }}</a></p>
               {{ article._summary }}
               {% if article.content | trim | length > 0 %}
