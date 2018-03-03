@@ -4,8 +4,12 @@ Date: 27-03-2016
 Author: Dion
 Illustration: headers/research.jpeg
 
-<div class="negative-spacer"></div>
-<div class="clearfix"></div>
+## Talks
+
+
+## Publications
+
+
 <a href="https://github.com/dionhaefner/dionsthesis" target="_blank">
 <img class="pull-right" style="margin: 20px; max-width: 250px;" src="images/msc-thesis-cover.png" alt="My Master's thesis">
 </a>

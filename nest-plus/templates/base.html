@@ -36,6 +36,7 @@
         <link href="{{ SITEURL }}/theme/css/nest.css" rel="stylesheet">
         <link href="{{ SITEURL }}/theme/css/pygments-colorful.css" rel="stylesheet">
         <link href="{{ SITEURL }}/theme/css/font-awesome.css" rel="stylesheet">
+        {% block extra_css %}{% endblock extra_css %}
         <!-- /Stylesheets -->
 
         <!-- JQuery / JS -->
@@ -125,67 +126,61 @@
 
     <body>
 
+        <!-- Static navbar -->
+        <div class="row">
+          {% block navstyle %}
+            <nav class="navbar navbar-static navbar-default header-nav">
+          {% endblock navstyle %}
+            <div class="container">
+                    <div class="header-logo">
+                        {% if NEST_LOGO_TARGET %}
+                          <a class="pull-left" href="{{ NEST_LOGO_TARGET }}">
+                        {% else %}
+                          <a class="pull-left" href="{{ SITEURL }}/">
+                        {% endif %}
+                            {% if NEST_HEADER_LOGO %}
+                              <img class="mr5" src="{{ SITEURL }}{{ NEST_HEADER_LOGO }}" alt="logo">
+                            {% endif %}
+                            {{ SITENAME }}
+                          </a>
+                    </div>
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                    </div>
+                    <div class="nav pull-right collapse navbar-collapse" id="navbar-collapse">
+                      <ul class="nav navbar-nav navigate">
+                        {% for title, link in MENUITEMS %}
+                            {% if 'http://' in link or 'https://' in link %}
+                                <li><a href="{{ link }}">{{ title }}</a></li>
+                            {% else %}
+                                <li><a href="{{ SITEURL }}{{ link }}">{{ title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if DISPLAY_PAGES_ON_MENU %}
+                          {% for pg in pages | sort(attribute='slug') %}
+                              <li><a {% if pg == page %} class="active"{% endif %} href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
+                          {% endfor %}
+                        {% endif %}
+                      </ul>
+                    </div>
+            </div>
+          </nav>
+        </div>
+        <!-- /Static navbar -->
+
         <!-- Header -->
         {% block headerstyle %}
+        <div class="header-container">
         {% endblock headerstyle %}
-
-        <div class="image-overlay">
-
-          <!-- Static navbar -->
-          <div class="row">
-            {% block navstyle %}
-              <nav class="navbar navbar-static navbar-default header-nav">
-            {% endblock navstyle %}
-              <div class="container">
-                      <div class="header-logo">
-                          {% if NEST_LOGO_TARGET %}
-                            <a class="pull-left" href="{{ NEST_LOGO_TARGET }}">
-                          {% else %}
-                            <a class="pull-left" href="{{ SITEURL }}/">
-                          {% endif %}
-                              {% if NEST_HEADER_LOGO %}
-                                <img class="mr20" src="{{ SITEURL }}{{ NEST_HEADER_LOGO }}" alt="logo">
-                              {% endif %}
-                              {{ SITENAME }}
-                            </a>
-                      </div>
-                      <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                      </div>
-                      <div class="nav pull-right collapse navbar-collapse" id="navbar-collapse">
-                        <ul class="nav navbar-nav navigate">
-                          {% for title, link in MENUITEMS %}
-                              {% if 'http://' in link or 'https://' in link %}
-                                  <li><a href="{{ link }}">{{ title }}</a></li>
-                              {% else %}
-                                  <li><a href="{{ SITEURL }}{{ link }}">{{ title }}</a></li>
-                              {% endif %}
-                          {% endfor %}
-                          {% if DISPLAY_PAGES_ON_MENU %}
-                            {% for pg in pages | sort(attribute='slug') %}
-                                <li><a {% if pg == page %} class="active"{% endif %} href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
-                            {% endfor %}
-                          {% endif %}
-                        </ul>
-                      </div>
-              </div>
-            </nav>
-          </div>
-          <!-- /Static navbar -->
-
-            <!-- Header -->
-            {% block header %}
-            {% endblock header %}
-            <!-- /Header -->
-          </div>
+          {% block header %}
+          {% endblock header %}
         </div>
         <!-- /Header -->
-
 
         <!-- Content -->
         {% block content %}

@@ -27,7 +27,7 @@
 
 {% block content %}
     <div class="archive-container">
-        <div class="container content archive">
+        <div class="container content content-boxed archive">
         	{% for category, articles in categories %}
             <h2><a href="{{ SITEURL }}/{{ category.url }}">{{ category|capitalize }}</a></h2>
             <dl class="dl-horizontal">

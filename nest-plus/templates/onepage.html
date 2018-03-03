@@ -8,11 +8,11 @@
 {% endblock head_extra %}
 
 {% block headerstyle %}
-    {% if NEST_HEADER_IMAGES %}
-    <div id="top" class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}">
-    {% else %}
-    <div id="top" class="header-container gradient">
-    {% endif %}
+{% if NEST_HEADER_IMAGES %}
+<div id="top" class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}">
+{% else %}
+<div id="top" class="header-container gradient">
+{% endif %}
 {% endblock headerstyle %}
 
 {% block navstyle %}
@@ -44,7 +44,7 @@
     </div>
     {% endif %}
     <div class="container page-container">
-      <div class="page content">
+      <div class="page content content-boxed">
         <div class="spacer"></div>
         {{ page.content }}
         <div class="spacer"></div>

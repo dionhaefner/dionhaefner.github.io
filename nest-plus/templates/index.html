@@ -11,10 +11,6 @@
     {% endif %}
 {% endblock headerstyle %}
 
-{% block navstyle %}
-<nav class="navbar navbar-static navbar-default header-nav">
-{% endblock navstyle %}
-
 {% block header %}
     <div class="container header-content">
         <h1 class="header-title">{{ NEST_BLOG_HEADER_TITLE }}</h1>
@@ -27,7 +23,7 @@
 <div class="container">
   {% if not DEFAULT_PAGINATION or not articles_previous_page %}
   <div class="archive-container">
-      <div class="content content-boxed archive">
+      <div class="content archive">
           <h2><a href="{{ SITEURL }}/archives.html">{{ NEST_BLOG_LATESTPOSTS_TITLE }}</a></h2>
           <dl class="dl-horizontal">
             {% for article in articles[:5] %}
