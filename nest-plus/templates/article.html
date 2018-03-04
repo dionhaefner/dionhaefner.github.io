@@ -17,7 +17,7 @@
 {% endblock opengraph %}
 
 {% block extra_css %}
-<link href="{{ SITEURL }}/theme/css/nest-article.css" rel="stylesheet">
+<link href="{{ SITEURL }}/theme/css/nest-reader.css" rel="stylesheet">
 {% endblock extra_css %}
 
 {% block header %}
@@ -45,8 +45,8 @@
 
 
 {% block content %}
-  <article class="container article-container article content">
-    <div class="article-content">
+  <article class="container article">
+    <div class="content">
       <div class="spacer"></div>
       {{ article.content }}
     </div>

@@ -22,17 +22,6 @@ body {
   padding-right: 10px;
 }
 
-.article-content p,
-.article-content li,
-.article-content a,
-.article-content table {
-    font-family: "DejaVu Sans", sans-serif;
-}
-
-/*.article-content {
-    font-size: 16px;
-}*/
-
 .article img, .article video {
     border: 0;
     display: block;
@@ -409,33 +398,6 @@ h2.image-title:after {
     font-style: italic;
 }
 
-/* Article */
-.article-container{
-    margin-top: 20px;
-    margin-bottom: 0;
-}
-.article h2{
-    margin-top: 40px;
-    margin-bottom: 25px;
-}
-.article h3, .article h4{
-    margin-top: 35px;
-    margin-bottom: 15px;
-}
-.article .spacer{
-    margin: 10px;
-}
-.article .date{
-    font-size: 14px;
-    margin-bottom: 10px;
-    opacity: 0.9;
-}
-.article .postmatter{
-    border-top: 1px solid #eee;
-    margin-top: 50px;
-    margin-bottom: 25px;
-    padding-top: 15px;
-}
 
 /* Archives */
 .archive-container{
@@ -470,6 +432,7 @@ h2.image-title:after {
 .archive .readmore{
     font-size: 12px;
 }
+
 
 /* One page layout */
 .page-container{
@@ -540,8 +503,8 @@ hr {
     font-size: 12px;
 }
 .footer-container{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .footer a, .footer a:focus, .footer a:active, .footer a:hover, .footer a:visited {
     color: #f6f1ed;
@@ -671,7 +634,8 @@ img.img-responsive {
 @media (min-width: 768px) {
   .container {
     width: 750px;
-    padding: 0;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .header-title{font-size: 48px;}
   .header-subtitle{font-size: 22px;}
