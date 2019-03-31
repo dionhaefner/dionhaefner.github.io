@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ NEST_ONEPAGE_HEAD_TITLE }} | {{ super() }}{% endblock title %}
+{% block description %}{{ NEST_ONEPAGE_META_DESCRIPTION}}{% endblock description %}
+{% block head_extra %}
+  <script src="{{ SITEURL }}/theme/jquery/jquery.smoothScroll.js"></script>
+  <script src="{{ SITEURL }}/theme/jquery/scroll.js"></script>
+{% endblock head_extra %}
+
+{% block headerstyle %}
+{% if NEST_HEADER_IMAGES %}
+<div id="top" class="header-container" data-parallax="scroll" data-speed="0.2" data-image-src="{{ SITEURL }}/images/{{ NEST_HEADER_IMAGES }}">
+{% else %}
+<div id="top" class="header-container gradient">
+{% endif %}
+{% endblock headerstyle %}
+
+{% block navstyle %}
+<nav class="navbar navbar-static navbar-default header-nav">
+{% endblock navstyle %}
+
+{% block header %}
+<div class="container header-content">
+    <h1 class="header-title">{{ NEST_ONEPAGE_HEADER_TITLE }}</h1>
+    <div class="header-underline"></div>
+    <p class="header-subtitle header-subtitle-homepage">{{ NEST_ONEPAGE_HEADER_SUBTITLE }}</p>
+</div>
+{% endblock header %}
+
+{% block content %}
+  {% for page in pages | sort(attribute='slug') %}
+  <div class="container page-container">
+    <article class="homepage-section" id="{{ page.slug }}">
+      {% if not loop.first %}
+      <div class="image-container" style="background-image: url({{ SITEURL }}/images/{{ page.illustration }}); background-size: cover;">
+        <div class="image-content">
+          <h1 class="image-title image-title-homepage">{{ page.title }}</h1>
+          {% if page.subtitle %}<p class="image-subtitle image-subtitle-homepage">{{ page.subtitle }}</p>{% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="page content">
+        <div class="spacer"></div>
+        {{ page.content }}
+        <div class="spacer"></div>
+      </div>
+    </article>
+  </div>
+  {% endfor %}
+{% endblock content %}

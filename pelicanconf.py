@@ -10,7 +10,7 @@ SITEURL = ""
 
 PATH = "content"
 
-TIMEZONE = "Europe/Berlin"
+TIMEZONE = "Europe/Stockholm"
 
 OUTPUT_SOURCES = True
 OUTPUT_SOURCES_EXTENSION = ".source"
@@ -22,13 +22,14 @@ TYPOGRIFY = True
 TYPOGRIFY_IGNORE_TAGS = ["style", "script", "title"]
 
 FORMATTED_FIELDS = ["summary", "_summary"]
-DIRECT_TEMPLATES = ["index", "tags", "archives", "onepage"]
+DIRECT_TEMPLATES = ["index", "tags", "archives", "onepage_simple", "onepage_fancy"]
 
 DISPLAY_PAGES_ON_MENU = True
-ONEPAGE_SAVE_AS = "about.html"
+ONEPAGE_SIMPLE_SAVE_AS = "index.html"
+INDEX_SAVE_AS = "blog.html"
 ARTICLE_URL = "{date:%Y}/{date:%m}/{slug}/"
 ARTICLE_SAVE_AS = "{date:%Y}/{date:%m}/{slug}/index.html"
-PAGE_URL = "about.html#{slug}"
+PAGE_URL = "index.html#{slug}"
 
 # Categories are 2011
 CATEGORY_SAVE_AS = False
@@ -84,14 +85,11 @@ SUMMARY_USE_FIRST_PARAGRAPH = True
 # NEST THEME
 #
 SITESUBTITLE = u"Home"
-NEST_INTRODUCTION_PAGE = u"introduction"
 NEST_SINGLEAUTHOR = True
 # Add items to top menu before pages
-MENUITEMS = [("Blog", "/index.html")]
+MENUITEMS = [("Blog", "/blog.html")]
 # Add header background image from content/images : "background.jpg"
 NEST_HEADER_IMAGES = "headers/index.jpeg"
-NEST_HEADER_LOGO = "/images/logo.png"
-NEST_LOGO_TARGET = "/about.html"
 # Footer
 NEST_SITEMAP_COLUMN_TITLE = u"Sitemap"
 NEST_SITEMAP_MENU = [("Archives", "/archives.html"), ("Tags","/tags.html")]
@@ -99,13 +97,13 @@ NEST_SITEMAP_ATOM_LINK = u"Atom Feed"
 NEST_SITEMAP_RSS_LINK = u"RSS Feed"
 NEST_SOCIAL_COLUMN_TITLE = u"Visit Me"
 NEST_LINKS_COLUMN_TITLE = u"Links"
-NEST_COPYRIGHT = u"&copy; Dion Häfner 2017"
+NEST_COPYRIGHT = u"&copy; Dion Häfner 2019"
 # Footer optional
 NEST_FOOTER_HTML = ""
 # onepage.html
 NEST_ONEPAGE_HEAD_TITLE = u"About Me"
 NEST_ONEPAGE_HEAD_SUBTITLE = u"Dion Häfner"
-NEST_ONEPAGE_HEADER_TITLE = u"Meet the snake charmer"
+NEST_ONEPAGE_HEADER_TITLE = u"About Me"
 NEST_ONEPAGE_HEADER_SUBTITLE = u""
 NEST_ONEPAGE_META_DESCRIPTION = "Learn more about me, my work, and my reasearch."
 NEST_ONEPAGE_CONTENT_TITLE = u"Latest Content"

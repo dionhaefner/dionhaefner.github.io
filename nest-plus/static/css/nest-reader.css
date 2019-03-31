@@ -59,6 +59,14 @@ nav.navbar-static {
     line-height: 36px;
 }
 
+.article img, .article video {
+    border: 0;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 45px auto;
+}
+
 .content {
     line-height: 1.8;
     background: transparent;
