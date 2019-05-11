@@ -15,10 +15,8 @@ my address "mail" inside domain "dionhaefner" ending in ".de"
 </script>
 </div>
 
-#### Badges
-
-![Project Euler](https://projecteuler.net/profile/dhaefner.png)
-
 #### Music
 
-<iframe src="https://open.spotify.com/embed/user/1214862881/playlist/5S2gNwk7DiQcy4S0FVkc7u" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+I am a huge sucker for indie music. While you're here, why don't check out one of my playlists?
+
+<iframe src="https://open.spotify.com/embed/user/1214862881/playlist/6GOEPE74YAeMUkzdsTc4bM" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>

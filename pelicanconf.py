@@ -22,7 +22,7 @@ TYPOGRIFY = True
 TYPOGRIFY_IGNORE_TAGS = ["style", "script", "title"]
 
 FORMATTED_FIELDS = ["summary", "_summary"]
-DIRECT_TEMPLATES = ["index", "tags", "archives", "onepage_simple", "onepage_fancy"]
+DIRECT_TEMPLATES = ["index", "tags", "archives", "onepage_simple"]
 
 DISPLAY_PAGES_ON_MENU = True
 ONEPAGE_SIMPLE_SAVE_AS = "index.html"
@@ -70,7 +70,7 @@ NEST_TWITTER_CARD_TAG = "dionhaefner"
 # https://github.com/danielfrg/pelican-ipynb
 #
 MARKUP = ("md", "ipynb")
-PLUGIN_PATH = "./plugins"
+PLUGIN_PATHS = ["./plugins"]
 PLUGINS = ["ipynb.markup", "share_post", "summary", "related_posts"]
 IPYNB_USE_META_SUMMARY = True
 IPYNB_STRIP_CSS = True
