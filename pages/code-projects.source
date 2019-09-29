@@ -25,7 +25,8 @@
             <div class="block-content">
               <h4>Terracotta</h4>
               <p>
-                An open source package for simulations of animal species based on a model proposed by Botero et al., 2015.
+                Terracotta is a pure Python raster tile server that runs as a WSGI app on a dedicated webserver or as a serverless app on AWS
+                Lambda. It is built on a modern Python 3.6 stack, powered by open-source software such as Flask, Zappa, and Rasterio.
                 <a href="http://github.com/DHI-GRAS/terracotta" target="_blank">View on GitHub</a>.
               </p>
             </div>
