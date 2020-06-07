@@ -4,6 +4,10 @@ Date: 27-03-2016
 Author: Dion
 Illustration: headers/research.jpeg
 
+## Research interests
+
+My current main research interest is "human learning": How can we build machines that teach us something fundamental about our physical world?
+
 ## Publications
 
 #### Papers
