@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+from pelican_jupyter import markup as nb_markup
+
 THEME = "nest-plus"
 
 AUTHOR = "Dion Häfner"
@@ -30,9 +32,6 @@ INDEX_SAVE_AS = "blog.html"
 ARTICLE_URL = "{date:%Y}/{date:%m}/{slug}/"
 ARTICLE_SAVE_AS = "{date:%Y}/{date:%m}/{slug}/index.html"
 PAGE_URL = "index.html#{slug}"
-
-# Categories are 2011
-CATEGORY_SAVE_AS = False
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -71,9 +70,10 @@ NEST_TWITTER_CARD_TAG = "dionhaefner"
 #
 MARKUP = ("md", "ipynb")
 PLUGIN_PATHS = ["./plugins"]
-PLUGINS = ["ipynb.markup", "share_post", "summary", "related_posts"]
-IPYNB_USE_META_SUMMARY = True
-IPYNB_STRIP_CSS = True
+PLUGINS = ["share_post", "summary", "related_posts", nb_markup]
+
+IGNORE_FILES = [".ipynb_checkpoints"]
+IPYNB_SKIP_CSS = True
 
 #
 # SUMMARY
@@ -92,12 +92,15 @@ MENUITEMS = [("Blog", "/blog.html")]
 NEST_HEADER_IMAGES = "headers/index.jpeg"
 # Footer
 NEST_SITEMAP_COLUMN_TITLE = u"Sitemap"
-NEST_SITEMAP_MENU = [("Archives", "/archives.html"), ("Tags","/tags.html")]
+NEST_SITEMAP_MENU = [
+    ("Archives", "/archives.html"),
+    ("Tags", "/tags.html"),
+]
 NEST_SITEMAP_ATOM_LINK = u"Atom Feed"
 NEST_SITEMAP_RSS_LINK = u"RSS Feed"
 NEST_SOCIAL_COLUMN_TITLE = u"Visit Me"
 NEST_LINKS_COLUMN_TITLE = u"Links"
-NEST_COPYRIGHT = u"&copy; Dion Häfner 2019"
+NEST_COPYRIGHT = u"&copy; Dion Häfner 2016-2020"
 # Footer optional
 NEST_FOOTER_HTML = ""
 # onepage.html
