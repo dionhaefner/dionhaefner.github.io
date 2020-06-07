@@ -56,21 +56,6 @@
         <![endif]-->
 
 
-        <!-- Piwik Analytics -->
-        <script type="text/javascript">
-          var _paq = _paq || [];
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-            var u="https://home.dionhaefner.de:60000/piwik/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', 1]);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-          })();
-        </script>
-          <noscript><img src="https://home.dionhaefner.de:60000/piwik//piwik.php?idsite=1" style="border:0;" alt="" /></noscript>
-        <!-- /Piwik Analytics -->
 
     </head>
 
@@ -129,20 +114,21 @@
   <article class="container article">
     <div class="content">
       <div class="spacer"></div>
-      
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This example shows how simple Fortran-style loops over arrays can be implemented efficiently in Python. Since many Python operations carry a significant overhead compared to a low-level language as e.g. C or Fortran, Python is often generally classified as slow. However, satisfying speeds can be achieved if the Python code makes use of packages like Cython, Numba, or NumPy. Also, it is important to keep in mind that Python is considerably easier to learn and faster to write than e.g. C. In many situations, slower runtimes can be compensated by faster development times (which is a good thing, since your time is usually more valuable than your&nbsp;computer&#8217;s).</p>
 <p>As an example for tight, simple loops, we will implement a numerical solver for a two-dimensional shallow-water model using finite differences. Explicit finite differences require multiple loops over the entire domain in each time step, so the complexity of the algorithm is at least $n^2$ in two spatial&nbsp;dimensions.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-Model">The Model<a class="anchor-link" href="#The-Model">¶</a></h2><p>The unforced shallow-water equations for geostrophic flow in 2 dimensions&nbsp;read:</p>
+<h2 id="The-Model">The Model<a class="anchor-link" href="#The-Model">&#182;</a></h2><p>The unforced shallow-water equations for geostrophic flow in 2 dimensions&nbsp;read:</p>
 $$\frac{\partial}{\partial t} u = -g \frac{\partial}{\partial x}h$$$$\frac{\partial}{\partial t} v = -g \frac{\partial}{\partial y}h$$$$\frac{\partial}{\partial t} h + \frac{\partial}{\partial x} (hu) + \frac{\partial}{\partial y} (hu) = 0$$<p>where $u$ denotes the velocity field in $x$-direction, $v$ the velocity in $y$-direction, and $h$ the layer height of the water column. $g$ is the gravitational&nbsp;acceleration.</p>
+
 </div>
 </div>
 </div>
@@ -160,6 +146,7 @@ $$ u^{n+1}_{i,j} = u^n_{i,j} - g\frac{\Delta t}{\Delta x} (h_{i,j+1} - h_{i,j})$
 <p>with</p>
 $$f^e_{i,j} = u^+_{i,j} h_{i,j} + u^-_{i,j} h_{i,j+1}$$$$f^n_{i,j} = v^+_{i,j} h_{i,j} + v^-_{i,j} h_{i+1,j}$$$$f^w_{i,j} = u^+_{i,j} h_{i,j-1} + u^-_{i,j} h_{i,j}$$$$f^s_{i,j} = v^+_{i,j} h_{i-1,j} + v^-_{i,j} h_{i,j}$$<p>and</p>
 $$u^+_{i,j} = 0.5 (u_{i,j} + |u_{i,j}|)$$$$u^-_{i,j} = 0.5 (u_{i,j} - |u_{i,j}|)$$<p>(analogous for&nbsp;$v$)</p>
+
 </div>
 </div>
 </div>
@@ -167,6 +154,7 @@ $$u^+_{i,j} = 0.5 (u_{i,j} + |u_{i,j}|)$$$$u^-_{i,j} = 0.5 (u_{i,j} - |u_{i,j}|)
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The system of three coupled partial differential equations is thus solved by explicitly discretizing the domain in each dimension and in time. The used discretization schemes are explicit Euler in time, and an upwinding scheme in space. The only boundary condition is no-normal-flow (i.e., $u=0$ on the western and easter boundaries, and $v=0$ in the north and south). To ensure stability, the layer height is artificially smoothed in every time&nbsp;step:</p>
+
 </div>
 </div>
 </div>
@@ -174,49 +162,54 @@ $$u^+_{i,j} = 0.5 (u_{i,j} + |u_{i,j}|)$$$$u^-_{i,j} = 0.5 (u_{i,j} - |u_{i,j}|)
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 $$ h^*_{i,j} = (1-\varepsilon)~h_{i,j} + \frac{\varepsilon}{4} (h_{i-1,j} +  h_{i+1,j} + h_{i,j-1} + h_{i,j+1}) $$<p>with a smoothing coefficient&nbsp;$\varepsilon$.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Set-up">Set-up<a class="anchor-link" href="#Set-up">¶</a></h2><p>Let&#8217;s import all the packages we&#8217;ll&nbsp;need:</p>
+<h2 id="Set-up">Set-up<a class="anchor-link" href="#Set-up">&#182;</a></h2><p>Let&#8217;s import all the packages we&#8217;ll&nbsp;need:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">load_ext</span> cython
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">numba</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"talk"</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">'animation.html'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'html5'</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.html&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;html5&#39;</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, we create the numerical grid ($100 \times 100$ cells) and define some constants and the initial conditions (a Gaussian bump of water in the center of the&nbsp;domain):</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">100j</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">100j</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">yy</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">dx</span> <span class="o">=</span> <span class="n">xx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">xx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">dy</span> <span class="o">=</span> <span class="n">yy</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">yy</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 
@@ -230,23 +223,26 @@ $$ h^*_{i,j} = (1-\varepsilon)~h_{i,j} + \frac{\varepsilon}{4} (h_{i-1,j} +  h_{
 <span class="n">u0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span>
 <span class="n">v0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Naive-Python-implementation">Naive Python implementation<a class="anchor-link" href="#Naive-Python-implementation">¶</a></h2><p>This implementation uses explicit loops over the domain, and checks explicitly for boundary&nbsp;cells:</p>
+<h2 id="Naive-Python-implementation">Naive Python implementation<a class="anchor-link" href="#Naive-Python-implementation">&#182;</a></h2><p>This implementation uses explicit loops over the domain, and checks explicitly for boundary&nbsp;cells:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">iterate_py</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">iterate_py</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
     <span class="n">h_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
     <span class="n">u_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
     <span class="n">v_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -311,23 +307,26 @@ $$ h^*_{i,j} = (1-\varepsilon)~h_{i,j} + \frac{\varepsilon}{4} (h_{i-1,j} +  h_{
             
     <span class="k">return</span> <span class="n">h_filter</span><span class="p">,</span> <span class="n">u_new</span><span class="p">,</span> <span class="n">v_new</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let&#8217;s test how long the solution takes, and animate the&nbsp;solution:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">solve_shallow_water</span><span class="p">(</span><span class="n">iterate_fun</span><span class="p">,</span><span class="n">t1</span><span class="o">=</span><span class="n">t1</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">solve_shallow_water</span><span class="p">(</span><span class="n">iterate_fun</span><span class="p">,</span><span class="n">t1</span><span class="o">=</span><span class="n">t1</span><span class="p">):</span>
     <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">h0</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">u0</span>
@@ -339,67 +338,86 @@ $$ h^*_{i,j} = (1-\varepsilon)~h_{i,j} + \frac{\varepsilon}{4} (h_{i-1,j} +  h_{
         <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
     <span class="k">return</span> <span class="n">sol</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_py)
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_py)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>1 loop, best of 3: 9.95 s per loop
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">animate_shallow_water</span><span class="p">(</span><span class="n">sol</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">animate_shallow_water</span><span class="p">(</span><span class="n">sol</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">"equal"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="n">xx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">xx</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="n">yy</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">yy</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
-    <span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span><span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="mf">9.9</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">10.1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s2">"horizontal"</span><span class="p">)</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span><span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">vmin</span><span class="o">=</span><span class="mf">9.9</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">10.1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Layer height at t = {:.1f}s"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dt</span><span class="o">*</span><span class="n">i</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Layer height at t = </span><span class="si">{:.1f}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dt</span><span class="o">*</span><span class="n">i</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
         <span class="n">cs</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">cs</span><span class="p">,)</span>
 
-    <span class="k">return</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sol</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sol</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_shallow_water</span><span class="p">(</span><span class="n">iterate_py</span><span class="p">)</span>
 <span class="n">animate_shallow_water</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[6]:</div>
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
 <div class="output_html rendered_html output_subarea output_execute_result">
-<video autoplay="" controls="" height="432" loop="" width="576">
-<source src="data:video/mp4;base64,AAAAHGZ0eXBNNFYgAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAFkSW1kYXQAAAKvBgX//6vcRem9
+<video width="576" height="432" controls autoplay loop>
+  <source type="video/mp4" src="data:video/mp4;base64,AAAAHGZ0eXBNNFYgAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAFkSW1kYXQAAAKvBgX//6vcRem9
 5tlIt5Ys2CDZI+7veDI2NCAtIGNvcmUgMTQ4IHIyNzQ4IDk3ZWFlZjIgLSBILjI2NC9NUEVHLTQg
 QVZDIGNvZGVjIC0gQ29weWxlZnQgMjAwMy0yMDE2IC0gaHR0cDovL3d3dy52aWRlb2xhbi5vcmcv
 eDI2NC5odG1sIC0gb3B0aW9uczogY2FiYWM9MSByZWY9MyBkZWJsb2NrPTE6MDowIGFuYWx5c2U9
@@ -2055,25 +2073,29 @@ XwAAAFQAAARyAAABfwAAAGEAAABKAAAEygAAATkAAABzAAAAPwAABLgAAAFTAAAAVwAAAEwAAARf
 AAABlQAAAFcAAABhAAAExgAAAYwAAABUAAAAZgAAA54AAAFzAAAAVAAAAGkAAAJVAAAAiAAAABRz
 dGNvAAAAAAAAAAEAAAAsAAAAYnVkdGEAAABabWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAbWRpcmFw
 cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
-" type="video/mp4"/>
+">
   Your browser does not support the video tag.
 </video>
 </div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The solution looks nice, but a runtime of 10 s is just too slow for such a short simulation&nbsp;time.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-Numba">Using Numba<a class="anchor-link" href="#Using-Numba">¶</a></h2>
+<h2 id="Using-Numba">Using Numba<a class="anchor-link" href="#Using-Numba">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -2081,15 +2103,16 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numba is a quite recent project by Continuum Analytics (the developers of <a href="https://www.continuum.io/downloads">Anaconda Python</a>. Its main module is a just-in-time compiler (jit) that aims at making math-heavy Python code more efficient by compiling it to machine instructions before execution. Using numba is very simplpe; just apply the <code>jit</code> decorator to the function you want to get compiled. In this case, the function code is exactly the same as&nbsp;before:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="nd">@numba.jit</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="nd">@numba</span><span class="o">.</span><span class="n">jit</span>
 <span class="k">def</span> <span class="nf">iterate_numba</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
     <span class="n">h_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
     <span class="n">u_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
@@ -2155,61 +2178,75 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
             
     <span class="k">return</span> <span class="n">h_filter</span><span class="p">,</span> <span class="n">u_new</span><span class="p">,</span> <span class="n">v_new</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let&#8217;s see how it&nbsp;performs:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_numba)
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_numba)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>The slowest run took 29.66 times longer than the fastest. This could mean that an intermediate result is being cached.
 1 loop, best of 3: 27.1 ms per loop
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Wow! A speedup by a factor of about 400, just by applying a decorator to the function. Note how the first call to the function takes much longer than subsequent calls, because Numba has to compile it&nbsp;first.</p>
 <p>Even though the speedup is substantial, using Numba still has a few drawbacks. First of all, in more complicated functions, I often received compilation errors - Numba still only supports a subset of the Python and NumPy capabilities - and speedups are not always <em>that</em> dramatic. And second of all, in order for Numba to do its magic, it is necssary to write your function in a verbose, exlicit manner. This might seem natural when coming from a C or Fortran background, but denies the access to the <em>elegant</em> side of&nbsp;Python.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-Cython">Using Cython<a class="anchor-link" href="#Using-Cython">¶</a></h2><p>Cython is a project that allows the user to add static types to Python variables, which enables efficient compilation of the typed parts of your script to C. When using Cython from a Jupyter notebook, you can make use of the convenient %%cython magic, which marks that the respective code cell should be compiled with Cython. An implementation could look like&nbsp;this:</p>
+<h2 id="Using-Cython">Using Cython<a class="anchor-link" href="#Using-Cython">&#182;</a></h2><p>Cython is a project that allows the user to add static types to Python variables, which enables efficient compilation of the typed parts of your script to C. When using Cython from a Jupyter notebook, you can make use of the convenient %%cython magic, which marks that the respective code cell should be compiled with Cython. An implementation could look like&nbsp;this:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
 <span class="k">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="k">cimport</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="k">cimport</span> <span class="nn">cython</span>
@@ -2288,44 +2325,56 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
             
     <span class="k">return</span> <span class="n">h_filter</span><span class="p">,</span> <span class="n">u_new</span><span class="p">,</span> <span class="n">v_new</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">iterate_cython_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">h</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">iterate_cython</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">iterate_cython_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">h</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">iterate_cython</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
 <span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_cython_wrapper)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>10 loops, best of 3: 46.6 ms per loop
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So, in this case, Cython is in fact a bit slower than Numba, and requires more changes to the code. However, Cython is generally applicable to more cases than&nbsp;Numba.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-NumPy">Using NumPy<a class="anchor-link" href="#Using-NumPy">¶</a></h2>
+<h2 id="Using-NumPy">Using NumPy<a class="anchor-link" href="#Using-NumPy">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -2333,22 +2382,23 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In order to showcase how a more elegant <em>and</em> quite efficient solution could look, consider the following implementation with NumPy. It makes heavy use of array slicing and padding to enforce the boundary conditions, which is fast with NumPy. It also avoids <em>all</em> explicit loops, so the overall code turns out to be much shorter and more&nbsp;readable:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">iterate_numpy</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
-    <span class="n">h_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">"edge"</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">iterate_numpy</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+    <span class="n">h_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;edge&quot;</span><span class="p">)</span>
     
     <span class="n">u_new</span> <span class="o">=</span> <span class="n">u</span> <span class="o">-</span> <span class="n">g</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_pad</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span>
     <span class="n">v_new</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">g</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="n">dy</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_pad</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span>
     
-    <span class="n">u_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">u_new</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">"constant"</span><span class="p">)</span>
-    <span class="n">v_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">v_new</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">"constant"</span><span class="p">)</span>
+    <span class="n">u_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">u_new</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;constant&quot;</span><span class="p">)</span>
+    <span class="n">v_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">v_new</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;constant&quot;</span><span class="p">)</span>
                 
     <span class="n">u_plus</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_new_pad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u_new_pad</span><span class="p">))</span>
     <span class="n">u_minus</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_new_pad</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u_new_pad</span><span class="p">))</span>
@@ -2361,48 +2411,60 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
     <span class="n">f_s</span> <span class="o">=</span> <span class="n">v_plus</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">h_pad</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_minus</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span>
          
     <span class="n">h_new</span> <span class="o">=</span> <span class="n">h</span> <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="n">f_e</span> <span class="o">-</span> <span class="n">f_w</span><span class="p">)</span> <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="n">dy</span><span class="o">*</span><span class="p">(</span><span class="n">f_n</span> <span class="o">-</span> <span class="n">f_s</span><span class="p">)</span>
-    <span class="n">h_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">"reflect"</span><span class="p">)</span>
+    <span class="n">h_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;reflect&quot;</span><span class="p">)</span>
     <span class="n">h_filter</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">h_new</span> <span class="o">+</span> <span class="o">.</span><span class="mi">25</span><span class="o">*</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="n">h_new_pad</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">h_new_pad</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span>\
                                           <span class="n">h_new_pad</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">h_new_pad</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">:])</span>
     <span class="k">return</span> <span class="n">h_filter</span><span class="p">,</span> <span class="n">u_new</span><span class="p">,</span> <span class="n">v_new</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_numpy)
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_numpy)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>10 loops, best of 3: 105 ms per loop
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So, this implementation is still about 100 times faster than pure Python, while being short and elegant, which is why we all love Python,&nbsp;right?</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-NumPy-+-Cython">Using NumPy + Cython<a class="anchor-link" href="#Using-NumPy-+-Cython">¶</a></h2>
+<h2 id="Using-NumPy-+-Cython">Using NumPy + Cython<a class="anchor-link" href="#Using-NumPy-+-Cython">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -2410,15 +2472,16 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Often, performance can be enhanced even further when using both NumPy and&nbsp;Cython:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
 <span class="k">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="k">cimport</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -2431,13 +2494,13 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
     <span class="k">cdef</span> <span class="kt">np</span>.<span class="kt">ndarray</span>[<span class="kt">np</span>.<span class="nf">float_t</span><span class="p">,</span><span class="nf">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">]</span> <span class="n">h_filter</span>
     <span class="k">cdef</span> <span class="kt">np</span>.<span class="kt">ndarray</span>[<span class="kt">np</span>.<span class="nf">float_t</span><span class="p">,</span><span class="nf">ndim</span><span class="o">=</span><span class="mf">2</span><span class="p">]</span> <span class="n">f_e</span><span class="p">,</span> <span class="n">f_n</span><span class="p">,</span> <span class="n">f_w</span><span class="p">,</span> <span class="n">f_s</span>
     
-    <span class="n">h_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">"edge"</span><span class="p">)</span>
+    <span class="n">h_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">&quot;edge&quot;</span><span class="p">)</span>
     
     <span class="n">u_new</span> <span class="o">=</span> <span class="n">u</span> <span class="o">-</span> <span class="n">g</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_pad</span><span class="p">[</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span>
     <span class="n">v_new</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">g</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="n">dy</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_pad</span><span class="p">[</span><span class="mf">2</span><span class="p">:,</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span>
     
-    <span class="n">u_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">u_new</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">"constant"</span><span class="p">)</span>
-    <span class="n">v_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">v_new</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">"constant"</span><span class="p">)</span>
+    <span class="n">u_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">u_new</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">&quot;constant&quot;</span><span class="p">)</span>
+    <span class="n">v_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">v_new</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">&quot;constant&quot;</span><span class="p">)</span>
                 
     <span class="n">u_plus</span> <span class="o">=</span> <span class="o">.</span><span class="mf">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_new_pad</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u_new_pad</span><span class="p">))</span>
     <span class="n">u_minus</span> <span class="o">=</span> <span class="o">.</span><span class="mf">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_new_pad</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u_new_pad</span><span class="p">))</span>
@@ -2450,49 +2513,61 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
     <span class="n">f_s</span> <span class="o">=</span> <span class="n">v_plus</span><span class="p">[:</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">h_pad</span><span class="p">[:</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v_minus</span><span class="p">[:</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span>
          
     <span class="n">h_new</span> <span class="o">=</span> <span class="n">h</span> <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="n">f_e</span> <span class="o">-</span> <span class="n">f_w</span><span class="p">)</span> <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="n">dy</span><span class="o">*</span><span class="p">(</span><span class="n">f_n</span> <span class="o">-</span> <span class="n">f_s</span><span class="p">)</span>
-    <span class="n">h_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">"reflect"</span><span class="p">)</span>
+    <span class="n">h_new_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="mf">1</span><span class="p">,</span><span class="s">&quot;reflect&quot;</span><span class="p">)</span>
     <span class="n">h_filter</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1</span><span class="o">-</span><span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">h_new</span> <span class="o">+</span> <span class="o">.</span><span class="mf">25</span><span class="o">*</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="n">h_new_pad</span><span class="p">[:</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span><span class="o">+</span><span class="n">h_new_pad</span><span class="p">[</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">,:</span><span class="o">-</span><span class="mf">2</span><span class="p">]</span><span class="o">+</span>\
                                           <span class="n">h_new_pad</span><span class="p">[</span><span class="mf">2</span><span class="p">:,</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">]</span><span class="o">+</span><span class="n">h_new_pad</span><span class="p">[</span><span class="mf">1</span><span class="p">:</span><span class="o">-</span><span class="mf">1</span><span class="p">,</span><span class="mf">2</span><span class="p">:])</span>
     <span class="k">return</span> <span class="n">h_filter</span><span class="p">,</span> <span class="n">u_new</span><span class="p">,</span> <span class="n">v_new</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">iterate_numcy_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">h</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">iterate_numcy</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">iterate_numcy_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">h</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">iterate_numcy</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
 <span class="o">%</span><span class="k">timeit</span> solve_shallow_water(iterate_numcy_wrapper)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>10 loops, best of 3: 110 ms per loop
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this case, it seems that Cython does not grant an additional speedup compared to the NumPy implementation (I guess because all expensive computations happen inside NumPy&nbsp;anyway).</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h2>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -2500,6 +2575,7 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Comparison between all&nbsp;implementations:</p>
+
 </div>
 </div>
 </div>
@@ -2537,7 +2613,8 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
 </table>
 <p>Numba delivered the best performance on this problem, while still being easy to use. The (in my opinion) most elegant code is the implementation in pure NumPy (which is, by the way, also the most portable). I would thus recommend starting from there, and only use the big guns (Numba / Cython) when&nbsp;needed.</p>
 <p>Oh, also, <strong>never use explicit loops over arrays in pure Python</strong>.</p>
-<hr/>
+<hr>
+
 </div>
 </div>
 </div>
@@ -2545,27 +2622,36 @@ cGwAAAAAAAAAAAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny41Ni4xMDE=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Before we close - here&#8217;s a longer animation of the shallow-water model, made with the Numba implementation.&nbsp;Enjoy!</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">solve_shallow_water</span><span class="p">(</span><span class="n">iterate_numba</span><span class="p">,</span><span class="n">t1</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">solve_shallow_water</span><span class="p">(</span><span class="n">iterate_numba</span><span class="p">,</span><span class="n">t1</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">animate_shallow_water</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt output_prompt">Out[15]:</div>
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
 <div class="output_html rendered_html output_subarea output_execute_result">
-<video autoplay="" controls="" height="432" loop="" width="576">
-<source src="data:video/mp4;base64,AAAAHGZ0eXBNNFYgAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAevdG1kYXQAAAKvBgX//6vcRem9
+<video width="576" height="432" controls autoplay loop>
+  <source type="video/mp4" src="data:video/mp4;base64,AAAAHGZ0eXBNNFYgAAACAGlzb21pc28yYXZjMQAAAAhmcmVlAAevdG1kYXQAAAKvBgX//6vcRem9
 5tlIt5Ys2CDZI+7veDI2NCAtIGNvcmUgMTQ4IHIyNzQ4IDk3ZWFlZjIgLSBILjI2NC9NUEVHLTQg
 QVZDIGNvZGVjIC0gQ29weWxlZnQgMjAwMy0yMDE2IC0gaHR0cDovL3d3dy52aWRlb2xhbi5vcmcv
 eDI2NC5odG1sIC0gb3B0aW9uczogY2FiYWM9MSByZWY9MyBkZWJsb2NrPTE6MDowIGFuYWx5c2U9
@@ -11622,20 +11708,25 @@ AAC4AAAE+gAAAJkAAACUAAAArQAABVEAAACNAAAApAAAAKYAAATyAAAAuQAAAJQAAAClAAAE+QAA
 AKIAAACSAAAAegAABOsAAACcAAAArAAAAIcAAASCAAAAlgAAAK8AAACPAAAC+gAAAH8AAAAUc3Rj
 bwAAAAAAAAABAAAALAAAAGJ1ZHRhAAAAWm1ldGEAAAAAAAAAIWhkbHIAAAAAAAAAAG1kaXJhcHBs
 AAAAAAAAAAAAAAAALWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTcuNTYuMTAx
-" type="video/mp4"/>
+">
   Your browser does not support the video tag.
 </video>
 </div>
+
+</div>
+
 </div>
 </div>
+
 </div>
-</div>
+ 
+
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -11652,6 +11743,7 @@ AAAAAAAAAAAAAAAALWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTcuNTYuMTAx
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
         "    } " +
         "}); ";
@@ -11715,7 +11807,7 @@ AAAAAAAAAAAAAAAALWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTcuNTYuMTAx
                             <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
                             <small><em>Theme by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br />
                             <small><em>Modified by Dion H&auml;fner</em></small><br/>
-                            <small>&copy; Dion Häfner 2019</small>
+                            <small>&copy; Dion Häfner 2016-2020</small>
                         </p>
                     </div>
                 </div>

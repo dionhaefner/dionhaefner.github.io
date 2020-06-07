@@ -56,21 +56,6 @@
         <![endif]-->
 
 
-        <!-- Piwik Analytics -->
-        <script type="text/javascript">
-          var _paq = _paq || [];
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-            var u="https://home.dionhaefner.de:60000/piwik/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', 1]);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-          })();
-        </script>
-          <noscript><img src="https://home.dionhaefner.de:60000/piwik//piwik.php?idsite=1" style="border:0;" alt="" /></noscript>
-        <!-- /Piwik Analytics -->
 
     </head>
 
@@ -129,36 +114,38 @@
   <article class="container article">
     <div class="content">
       <div class="spacer"></div>
-      
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this example, we explore how evolution models can be implemented efficiently. An example of an evolution model is given in <a href="http://www.pnas.org/content/112/1/184.full">Botero et al., 2015</a>, but many are found throughout literature. In those models, some individuals (in this example animals) form a population, and each individual randomly adjusts its genome (i.e., mutates). Depending on how well the individuals fit into their environment, they produce more or less offspring, thus altering the composition of the population (survival of the&nbsp;fittest).</p>
 <p>In this simple example, the fitness of the individuals will just depend on the distance of their genome to some perfect state, and the population size is held constant by cloning / killing random&nbsp;animals.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">load_ext</span> cython
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"talk"</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Naive-Python-implementation">Naive Python implementation<a class="anchor-link" href="#Naive-Python-implementation">¶</a></h2>
+<h2 id="Naive-Python-implementation">Naive Python implementation<a class="anchor-link" href="#Naive-Python-implementation">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -166,15 +153,16 @@
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This implementation uses two classes, one for the animals, and one for the population. During one time step, each animal mutates five times, then it reproduces. The fitness has the shape of a Gaussian around an optimal value&nbsp;$i=10$.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [2]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">PyAnimal</span><span class="p">:</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">PyAnimal</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">initial</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">initial</span>
     <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -205,42 +193,58 @@
     <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">state</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">]</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let&#8217;s check the performance and the resulting distribution of&nbsp;genes:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="n">PyAnimal</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="n">PyAnimal</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
 <span class="n">population</span> <span class="o">=</span> <span class="n">PyPopulation</span><span class="p">(</span><span class="n">animals</span><span class="p">)</span>
 <span class="o">%</span><span class="k">timeit</span> population.do_step()
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">state</span><span class="p">());</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>1 loop, best of 3: 592 ms per loop
 </pre>
 </div>
 </div>
+
 <div class="output_area">
-<div class="prompt"></div>
-<div class="output_png output_subarea">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAn8AAAGoCAYAAAA3nYPxAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X9Q1Gdix/HPLnuyLOCh/Gh1ahWhOY09iRqV81QYTC6h
 Be0kJLae1dF4tyQ2alr0jBmrV43JeUETcq3YKdThJHOOdhRjbcZolGRiMsbBhLvE3ORuN6kO0XNh
@@ -425,31 +429,42 @@ uO0sy9KTTz6plJQUVVRUEH63mfE7f52dnfr888+7fJEpBs+3vvUtlZWV6aWXXtKzzz6r0aNH6yc/
 C7jtzp07pzNnzig2NlYzZsyIHr/77rtVXV1t48yGJodlWZbdkwAAAMDg4GVfAAAAgxB/AAAABiH+
 AAAADEL8AQAAGIT4AwAAMAjxBwAAYBDiDwAAwCDEHwAAgEGIPwAAAIP8Dy5hMicYN9lrAAAAAElF
 TkSuQmCC
-"/>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">prun</span> -l 10 -q -T profile population.do_step()
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"profile"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">prun</span> -l 10 -q -T profile population.do_step()
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;profile&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre> 
-*** Profile printout saved to text file u'profile'. 
+*** Profile printout saved to text file u&#39;profile&#39;. 
          1400140 function calls in 1.009 seconds
 
    Ordered by: internal time
@@ -457,32 +472,35 @@ TkSuQmCC
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
         1    0.406    0.406    1.008    1.008 &lt;ipython-input-2-b4af97439b11&gt;:15(do_step)
-   500000    0.137    0.000    0.137    0.000 {method 'randn' of 'mtrand.RandomState' objects}
+   500000    0.137    0.000    0.137    0.000 {method &#39;randn&#39; of &#39;mtrand.RandomState&#39; objects}
    500000    0.132    0.000    0.269    0.000 &lt;ipython-input-2-b4af97439b11&gt;:4(mutate)
         4    0.124    0.031    0.124    0.031 {numpy.core.multiarray.array}
    100000    0.084    0.000    0.084    0.000 &lt;ipython-input-2-b4af97439b11&gt;:6(fitness)
-        1    0.082    0.082    0.082    0.082 {method 'choice' of 'mtrand.RandomState' objects}
+        1    0.082    0.082    0.082    0.082 {method &#39;choice&#39; of &#39;mtrand.RandomState&#39; objects}
    100047    0.011    0.000    0.011    0.000 &lt;ipython-input-2-b4af97439b11&gt;:8(state)
    100001    0.011    0.000    0.011    0.000 {range}
    100047    0.010    0.000    0.010    0.000 &lt;ipython-input-2-b4af97439b11&gt;:2(__init__)
-        1    0.005    0.005    0.006    0.006 {method 'poisson' of 'mtrand.RandomState' objects}
+        1    0.005    0.005    0.006    0.006 {method &#39;poisson&#39; of &#39;mtrand.RandomState&#39; objects}
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The implementation seems to work (the resulting distribution is centered around 10), but it is quite slow. Profiling the code reveals that most of the time is spent directly in the <code>do_step</code>, <code>mutate</code> and <code>fitness</code> functions, while the NumPy functions only play a minor roll. It thus seems like the slow runtime is mainly caused by the overhead when creating and accessing the class members or calling class&nbsp;methods.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Cython-implementation">Cython implementation<a class="anchor-link" href="#Cython-implementation">¶</a></h2>
+<h2 id="Cython-implementation">Cython implementation<a class="anchor-link" href="#Cython-implementation">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -490,15 +508,16 @@ TkSuQmCC
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since member access is much faster in Cython, it seems obvious to try and cythonize the Python implementation. A first iteration may look like&nbsp;this:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
 <span class="c"># cython: profile=True</span>
 
 <span class="k">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -541,37 +560,52 @@ TkSuQmCC
     <span class="k">cpdef</span> <span class="kt">list</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">animal</span><span class="o">.</span><span class="n">state</span><span class="p">()</span> <span class="k">for</span> <span class="n">animal</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">]</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="n">CyAnimal</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">animals</span> <span class="o">=</span> <span class="p">[</span><span class="n">CyAnimal</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
 <span class="n">population</span> <span class="o">=</span> <span class="n">CyPopulation</span><span class="p">(</span><span class="n">animals</span><span class="p">)</span>
 <span class="o">%</span><span class="k">timeit</span> population.do_step()
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">state</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">state</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">state</span><span class="p">()))</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>1 loop, best of 3: 366 ms per loop
 100000
 </pre>
 </div>
 </div>
+
 <div class="output_area">
-<div class="prompt"></div>
-<div class="output_png output_subarea">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAn8AAAGoCAYAAAA3nYPxAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X9UVHd+//HXjKwMAxiUH208NYrQbIytCEYlJooHYhK6
 oK0htetarW62Q2KjpgfdRE+O7kpM1g2YkKTidmH9spKzHu1RjEv3GI2SnLhZw9HE/NA9NjOxWqIr
@@ -781,31 +815,42 @@ dsUf1OKb+Yu/+AutW7dOjz/+uFpaWjR+/HhVVlbytGQ/Wr9+vdauXausrCw5nU6tXLlSaWlp4W4L
 uKpjx47pyJEjioyM1JQpUwLb77zzTlVXV4exs4HvxRdf1E9+8hPdc889uuWWW/RP//RP+ru/+7tw
 t3XD2SzLxP9uCAAAYKZB/bQvAAAAghH+AAAADEL4AwAAMAjhDwAAwCCEPwAAAIMQ/gAAAAxC+AMA
 ADAI4Q8AAMAghD8AAACD/H/TRgUalS17xgAAAABJRU5ErkJggg==
-"/>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">prun</span> -l 10 -q -T profile population.do_step()
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"profile"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">prun</span> -l 10 -q -T profile population.do_step()
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;profile&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre> 
-*** Profile printout saved to text file u'profile'. 
+*** Profile printout saved to text file u&#39;profile&#39;. 
          1500040 function calls in 0.565 seconds
 
    Ordered by: internal time
@@ -819,26 +864,29 @@ ADAI4Q8AAMAghD8AAACD/H/TRgUalS17xgAAAABJRU5ErkJggg==
         4    0.056    0.014    0.056    0.014 {numpy.core.multiarray.array}
    100000    0.013    0.000    0.072    0.000 _cython_magic_a6767cf8e5f3cb4da40bd98caafdfcf3.pyx:13(fitness (wrapper))
    100000    0.012    0.000    0.015    0.000 _cython_magic_a6767cf8e5f3cb4da40bd98caafdfcf3.pyx:15(state (wrapper))
-        1    0.004    0.004    0.004    0.004 {method 'repeat' of 'numpy.ndarray' objects}
+        1    0.004    0.004    0.004    0.004 {method &#39;repeat&#39; of &#39;numpy.ndarray&#39; objects}
    100000    0.004    0.000    0.004    0.000 _cython_magic_a6767cf8e5f3cb4da40bd98caafdfcf3.pyx:15(state)
    100000    0.004    0.000    0.004    0.000 _cython_magic_a6767cf8e5f3cb4da40bd98caafdfcf3.pyx:9(__init__)
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So, just by adding a few types we gain about double the performance, which is alright, but not really mind-blowing. Also, it seems like the performance bottleneck in <code>mutate</code> and <code>fitness</code> is still present (there are still lots of Python interactions). How can we eliminate this? One solution is to implement the animal class in pure C++ and interface it through&nbsp;Cython.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="C++-Wrapper">C++ Wrapper<a class="anchor-link" href="#C++-Wrapper">¶</a></h2>
+<h2 id="C++-Wrapper">C++ Wrapper<a class="anchor-link" href="#C++-Wrapper">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -846,15 +894,16 @@ ADAI4Q8AAMAghD8AAACD/H/TRgUalS17xgAAAABJRU5ErkJggg==
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since the animals are now implemented in C++, we cannot use the NumPy functions anymore to create random numbers, but the C++ standard library provides random number generators anyway. Just make sure to set a different random seed for every animal (otherwise your whole population will evolve into the same&nbsp;direction).</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%%writefile</span> cppanimal.h
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%writefile</span> cppanimal.h
 <span class="c1">#include &lt;math.h&gt;</span>
 <span class="c1">#include &lt;random&gt;</span>
 
@@ -871,42 +920,52 @@ ADAI4Q8AAMAghD8AAACD/H/TRgUalS17xgAAAABJRU5ErkJggg==
         <span class="n">double</span> <span class="n">state</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">i</span><span class="p">;}</span>
 <span class="p">};</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Overwriting cppanimal.h
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The class CppAnimal from the external file cppanimal.h can then be interfaced using the <code>extern</code> keyword from Cython. You just need to specify which functions should be interfaced to Python. Also note the different compiler flags (<code>-+</code> to enable C++, and <code>-I .</code> to tell the compiler that it should look in the current directory for <code>cppanimal.h</code>).</p>
 <p>Since <code>CppAnimal</code> is implemented in pure C++, we cannot put it into a Python list without wrapping it. Instead, we use a C++ <code>vector</code> to contain the animals, which enables us to loop over the animals in C-speed. However, this makes the animals inaccessible from Python, so we need to provide a new Cython method <code>create_animal</code>.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-+</span> <span class="o">-</span><span class="n">I</span> <span class="o">.</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="n">cython</span> <span class="o">-+</span> <span class="o">-</span><span class="n">I</span> <span class="o">.</span> <span class="o">-</span><span class="n">c</span><span class="o">=-</span><span class="n">O3</span>
 <span class="c"># cython: profile=True</span>
 
 <span class="k">from</span> <span class="nn">libcpp.vector</span> <span class="k">cimport</span> <span class="n">vector</span>
 <span class="k">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="k">cimport</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">cdef</span> <span class="kr">extern</span> <span class="k">from</span> <span class="s">"cppanimal.h"</span><span class="p">:</span>
+<span class="k">cdef</span> <span class="kr">extern</span> <span class="k">from</span> <span class="s">&quot;cppanimal.h&quot;</span><span class="p">:</span>
     <span class="k">cdef</span> <span class="kt">cppclass</span> <span class="nf">CppAnimal</span><span class="p">:</span>
         <span class="n">CppAnimal</span><span class="p">(</span><span class="n">double</span> <span class="n">initial</span><span class="p">)</span>
         <span class="n">void</span> <span class="n">mutate</span><span class="p">()</span>
@@ -954,37 +1013,52 @@ ADAI4Q8AAMAghD8AAACD/H/TRgUalS17xgAAAABJRU5ErkJggg==
             <span class="n">state_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">animals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">state_list</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">population</span> <span class="o">=</span> <span class="n">CppPopulation</span><span class="p">()</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">population</span> <span class="o">=</span> <span class="n">CppPopulation</span><span class="p">()</span>
 <span class="p">[</span><span class="n">population</span><span class="o">.</span><span class="n">create_animal</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">)]</span>
 <span class="o">%</span><span class="k">timeit</span> population.do_step()
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">state</span><span class="p">())</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">state</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">state</span><span class="p">()))</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>10 loops, best of 3: 47.7 ms per loop
 100000
 </pre>
 </div>
 </div>
+
 <div class="output_area">
-<div class="prompt"></div>
-<div class="output_png output_subarea">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoMAAAGoCAYAAAA97e/mAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X9Q1Pedx/HXwiq7CxgiQk9uvIiQ6RmvmkBVJLE4mtRw
 B3qT0pk7a3GwTtbonJqcmJzWmgnEJEY0QVujNxCPiE2Cd4q1TJpq0HZia0Lxx8U2d17ZpPGoVmBY
@@ -1182,31 +1256,42 @@ f9KoUaNUUVFBCA5QSUmJjh8/7v8zJi8vT/PnzycEb8OIESP08MMPa9OmTbp48aLOnz+vf/u3fwvq
 0tsaMo4fP64PPvhAMTExmjJliv/x++67T9XV1RHcGUz0wgsv6KWXXtLf/u3fqqurS3//93+vhQsX
 9nucxcd7VAAAAMbiPVMAAACDEYMAAAAGIwYBAAAMRgwCAAAYjBgEAAAwGDEIAABgMGIQAADAYMQg
 AACAwYhBAAAAg/0f/HcigeZn01MAAAAASUVORK5CYII=
-"/>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">prun</span> -l 10 -q -T profile population.do_step()
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"profile"</span><span class="p">,</span><span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">prun</span> -l 10 -q -T profile population.do_step()
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;profile&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre> 
-*** Profile printout saved to text file u'profile'. 
+*** Profile printout saved to text file u&#39;profile&#39;. 
          36 function calls in 0.082 seconds
 
    Ordered by: internal time
@@ -1214,7 +1299,7 @@ AACAwYhBAAAAg/0f/HcigeZn01MAAAAASUVORK5CYII=
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
         1    0.082    0.082    0.082    0.082 _cython_magic_38e2df27a5b6471fc4ab6ddd0b6fe556.pyx:19(do_step)
-        4    0.000    0.000    0.000    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+        4    0.000    0.000    0.000    0.000 {method &#39;reduce&#39; of &#39;numpy.ufunc&#39; objects}
         1    0.000    0.000    0.000    0.000 _methods.py:53(_mean)
         1    0.000    0.000    0.000    0.000 fromnumeric.py:2388(prod)
         2    0.000    0.000    0.000    0.000 fromnumeric.py:1866(any)
@@ -1222,25 +1307,28 @@ AACAwYhBAAAAg/0f/HcigeZn01MAAAAASUVORK5CYII=
         1    0.000    0.000    0.000    0.000 fromnumeric.py:2786(mean)
         3    0.000    0.000    0.000    0.000 numeric.py:534(asanyarray)
         1    0.000    0.000    0.082    0.082 &lt;string&gt;:1(&lt;module&gt;)
-        1    0.000    0.000    0.082    0.082 {method 'do_step' of '_cython_magic_38e2df27a5b6471fc4ab6ddd0b6fe556.CppPopulation' objects}
+        1    0.000    0.000    0.082    0.082 {method &#39;do_step&#39; of &#39;_cython_magic_38e2df27a5b6471fc4ab6ddd0b6fe556.CppPopulation&#39; objects}
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Implementing the animal class in C++ and using C++-vectors as containers gives us a nice speedup from about 370 ms to 50 ms. My Cython code is also far from perfect, since it still has some Python interactions when calling the NumPy functions. You could probably create some lightning fast code if you also implemented those yourself in Cython or even&nbsp;C++.</p>
 <p>But, on the other hand, if you are able to write this code in Cython/C++ without using any Python interactions, why are you even using Python in the first place? Doing so eliminates most of the advantages that Python offers, so you might as well write your model entirely in C++, and just do the post-processing in Python. What if the design of the module was flawed from the very beginning? Let&#8217;s start from&nbsp;scratch.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Doing-it-the-Python-way">Doing it the Python way<a class="anchor-link" href="#Doing-it-the-Python-way">¶</a></h2>
+<h2 id="Doing-it-the-Python-way">Doing it the Python way<a class="anchor-link" href="#Doing-it-the-Python-way">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1248,40 +1336,50 @@ AACAwYhBAAAAg/0f/HcigeZn01MAAAAASUVORK5CYII=
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>My first impulse to represent animals and populations as instances of a class might make intuitive sense, but in the end, it is an abstraction that prevents us from writing <em>elegant</em> code. The approach was to loop over all animals and do things one-by-one. As we have seen in example 2, this is usually a really bad idea. After all, animals can just be represented by numbers - say, their genome, or a position in space, or a lifetime fitness. So, let&#8217;s create a population that is just a structured array of numbers, with four&nbsp;fields:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">create_population</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'&lt;f8'</span><span class="p">),(</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'&lt;f8'</span><span class="p">),(</span><span class="s1">'position'</span><span class="p">,</span><span class="s1">'&lt;i8'</span><span class="p">),(</span><span class="s1">'supergene'</span><span class="p">,</span><span class="s1">'&lt;f8'</span><span class="p">)])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">create_population</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;f8&#39;</span><span class="p">),(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;f8&#39;</span><span class="p">),(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;i8&#39;</span><span class="p">),(</span><span class="s1">&#39;supergene&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;f8&#39;</span><span class="p">)])</span>
     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">pop</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
         <span class="n">pop</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span>
     <span class="k">return</span> <span class="n">pop</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">create_population</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="p">[</span><span class="s2">"position"</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="n">pop</span><span class="p">[</span><span class="s2">"supergene"</span><span class="p">])</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">create_population</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pop</span><span class="p">[</span><span class="s2">&quot;position&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pop</span><span class="p">[</span><span class="s2">&quot;supergene&quot;</span><span class="p">])</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[ 0  4  0  0  7  7  0  3  3 -2]
 [ 3.00132731  3.30461432  4.90439491  0.26981922 -3.87040995 -4.56569831
@@ -1289,32 +1387,35 @@ AACAwYhBAAAAg/0f/HcigeZn01MAAAAASUVORK5CYII=
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The NumPy interface allows us to operate <em>on the whole population at once</em>:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">population</span><span class="p">):</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">population</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
-    <span class="n">population</span><span class="p">[</span><span class="s2">"a"</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">population</span><span class="p">[</span><span class="s2">"b"</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.25</span>
-    <span class="n">population</span><span class="p">[</span><span class="s2">"supergene"</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">population</span><span class="p">[</span><span class="s2">"position"</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">population</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">population</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.25</span>
+    <span class="n">population</span><span class="p">[</span><span class="s2">&quot;supergene&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">population</span><span class="p">[</span><span class="s2">&quot;position&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
     
 <span class="k">def</span> <span class="nf">fitness</span><span class="p">(</span><span class="n">population</span><span class="p">):</span>
     <span class="n">fit_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">population</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span> <span class="o">+</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">"b"</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> \
-             <span class="o">+</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">"supergene"</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">"position"</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span> <span class="o">+</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> \
+             <span class="o">+</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">&quot;supergene&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">fit_fun</span><span class="p">(</span><span class="s2">&quot;position&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">do_step</span><span class="p">(</span><span class="n">population</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
@@ -1324,45 +1425,57 @@ AACAwYhBAAAAg/0f/HcigeZn01MAAAAASUVORK5CYII=
     <span class="n">offspring</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">fitnesses</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fitnesses</span><span class="p">))</span>
     <span class="n">population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">population</span><span class="p">,</span><span class="n">offspring</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
-        <span class="n">population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">population</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">population</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
         <span class="n">clones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)),</span>
-                                  <span class="n">n</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">),</span><span class="n">replace</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                                  <span class="n">n</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">),</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">clone_rep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
         <span class="n">clone_rep</span><span class="p">[</span><span class="n">clones</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="n">population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">population</span><span class="p">,</span><span class="n">clone_rep</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">population</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Just look at the sheer length of this code, compared to the complicated implementations above. If you want, you can also put those functions into a population class that holds the animals as a member array to keep your namespace&nbsp;clean.</p>
 <p>Representing the population as a structured array also allows for nice interactions with other Python packages (here Pandas and&nbsp;Seaborn):</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">create_population</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">create_population</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">do_step</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pop</span><span class="p">));</span>
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
-<div class="output_png output_subarea">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAGoCAYAAAApVLNCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl8VPW9//H3mSWzJCELBEIg7IiAIhEUQSpUtNIK/fVa
 bXu93aj6EJfW389qrbWKVW9b7cPdamtva/dL61JFtIpWa1VQioCIKAoJSwhbCIRsk9nO749Jhsxk
@@ -1693,68 +1806,86 @@ DAwMMDw8/NttTUxMUFlZaQTABw8eEAgEePTo0W+3vVbJTJwQQggh8u727dssLCwQDAbRNI3+/n48
 Hk++u7WqyZ44IYQQQuTdqVOn0DQNj8fD/v37URSFs2fP5rtbq5ospwohhBBCFCCZiRNCCCGEKEAS
 4oQQQgghCpCEOCGEEEKIAiQhTgghhBCiAEmIE0IIIYQoQBLihBBCCCEK0F/SbIIqUqr+UgAAAABJ
 RU5ErkJggg==
-"/>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And, finally, let&#8217;s have a look at&nbsp;performance:</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython2"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">create_population</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pop</span> <span class="o">=</span> <span class="n">create_population</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
 <span class="o">%</span><span class="k">timeit</span> do_step(pop)
 </pre></div>
+
+    </div>
 </div>
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
-<div class="prompt"></div>
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>10 loops, best of 3: 77.4 ms per loop
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So, completely un-optimized Python code with <em>four genes instead of one</em> is not even slower by a factor of two compared to the C++/Cython implementation above. What do we learn from&nbsp;that?</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bottom-line:-don't-be-stupid™">Bottom line: don&#8217;t be stupid™<a class="anchor-link" href="#Bottom-line:-don't-be-stupid™">¶</a></h2><ul>
+<h2 id="Bottom-line:-don't-be-stupid&#8482;">Bottom line: don&#8217;t be stupid&#8482;<a class="anchor-link" href="#Bottom-line:-don't-be-stupid&#8482;">&#182;</a></h2><ul>
 <li>Don&#8217;t get carried away by unnecessary abstraction. Think in terms of clusters, not single&nbsp;objects.</li>
 <li>Don&#8217;t try to apply low-level logic to high-level languages. Chances are, you will make your life&nbsp;miserable.</li>
 <li>Before optimizing a solution, ask yourself whether your abstraction makes&nbsp;sense.</li>
 <li>Use the tools that you are given (in this case NumPy). There are lots of developers thinking about low-level implementations so you don&#8217;t have to (that&#8217;s why we all like Python,&nbsp;remember).</li>
 </ul>
 <p>That concludes this example, and this series. Thank you for reading, and don&#8217;t hesitate to contact me if you have questions or if you have a suggestion on how to improve my code. I&#8217;m always happy to&nbsp;learn.</p>
+
 </div>
 </div>
 </div>
+ 
+
 
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -1771,6 +1902,7 @@ RU5ErkJggg==
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
         "    } " +
         "}); ";
@@ -1834,7 +1966,7 @@ RU5ErkJggg==
                             <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
                             <small><em>Theme by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br />
                             <small><em>Modified by Dion H&auml;fner</em></small><br/>
-                            <small>&copy; Dion Häfner 2019</small>
+                            <small>&copy; Dion Häfner 2016-2020</small>
                         </p>
                     </div>
                 </div>

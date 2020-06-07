@@ -17,7 +17,9 @@ my address "mail" inside domain "dionhaefner" ending in ".de"
 
 #### Music
 
-I really like 2010s indie music. While you're here, why don't check out one of my playlists?
+I'm a huge sucker for 2010s indie music. While you're here, why not check out one of my playlists?
+
+</p>
 
 <div class="row text-center">
 <iframe src="https://open.spotify.com/embed/user/1214862881/playlist/6GOEPE74YAeMUkzdsTc4bM" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
