@@ -26,8 +26,8 @@
 {% endblock header %}
 
 {% block content %}
-    <div class="archive-container">
-        <div class="container content content-boxed archive">
+    <div class="archive-container container">
+        <div class="content content-boxed archive">
             <h2><a href="{{ SITEURL }}/tags.html">{{ NEST_TAGS_CONTENT_TITLE }}</a></h2>
             <dl class="dl-horizontal">
             	{% for tag, articles in tags|sort %}
