@@ -82,5 +82,5 @@ MAXWELL_TWITTER_CARD_TAG = "dionhaefner"
 STATIC_PATHS = ["images", "downloads", "extra/robots.txt", "extra/README"]
 EXTRA_PATH_METADATA = {
     "extra/robots.txt": {"path": "robots.txt"},
-    "extra/README": {"path": "README.md"}
+    "extra/README.md": {"path": "README.md"}
 }
