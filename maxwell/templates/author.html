@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Articles by {{ author }}{% endblock %}
+
+{% block content %}
+<h2>Articles by {{ author }}</h2>
+
+{% include 'articles.html' %}
+{% endblock %}
+

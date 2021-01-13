@@ -18,10 +18,7 @@ CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
-# Following items are often useful when publishing
-
-# ISSO_URL = ""
-# GOOGLE_ANALYTICS = ""
-# PIWIK_URL = ""
-# PIWIK_SSL_URL = ""
-# PIWIK_SITE_ID = ""
+MAXWELL_EXTRA_JS = """
+<script data-goatcounter="https://dionhaefner.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+"""

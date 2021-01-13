@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ period | reverse | join(' ') }} archives{% endblock %}
+
+{% block content %}
+<section>
+<h1>Archives for {{ period | reverse | join(' ') }}</h1>
+
+<dl id="post-list">
+    {% for article in dates %}
+    <dt>
+        <time class="published" datetime="{{ article.date.isoformat() }}"> {{ article.date | strftime('%Y-%m-%d') }} </time>
+    </dt>
+    <dd>
+        <article class="hentry">
+            <span class="entry-title">
+                <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}{% if article.subtitle %} &mdash; {{ article.subtitle }}{% endif %}</a>
+            </span>
+            {% if not MAXWELL_SINGLEAUTHOR %}
+            <address class="vcard author">By
+            {% for author in article.authors %}
+                <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+            {% endfor %}
+            </address>
+            {% endif %}
+        </article>
+    </dd>
+    {% endfor %}
+</dl><!-- /#posts-list -->
+</section>
+{% endblock %}

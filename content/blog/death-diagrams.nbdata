@@ -1,7 +1,6 @@
 Title: Beautiful data visualization in Python with Matplotlib
 Slug: beautiful-data-visualization-in-python-with-matplotlib
 Date: 27-03-2016
-Tags: Technology, Python, Visualization
+Tags: Python, Visualization
 Author: Dion
 related_posts: why-you-should-not-be-afraid-of-terrorism
-summary: Here I demonstrate how I created the diagrams for my blog post on [terrorism](/why-you-should-not-be-afraid-of-terrorism.html). The tutorial uses an iPython notebook to show the creation of beautiful statistical plots like this one step-by-step: !["A pretty figure."](/images/deaths-bar.png)
