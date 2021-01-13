@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+{% if MAXWELL_ABOUT_IMAGE_BRIGHT and MAXWELL_ABOUT_IMAGE_DARK %}
+    <style>
+        img#index-logo {
+            content: url("{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_BRIGHT }}");
+        }
+
+        .dark-theme img#index-logo{
+            content: url("{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_DARK }}");
+        }
+    </style>
+
+    <link rel="preload" as="image" href="{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_BRIGHT }}">
+    <link rel="preload" as="image" href="{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_DARK }}">
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<nav id="menu"><ul>
+    {% for title, link in MENUITEMS %}
+        <li><a href="{{ link }}">{{ title }}</a></li>
+    {% endfor %}
+    {% if DISPLAY_PAGES_ON_MENU %}
+      {% for p in pages %}
+        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+      {% endfor %}
+    {% endif %}
+    {% if DISPLAY_CATEGORIES_ON_MENU %}
+      {% for cat, null in categories %}
+        <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+      {% endfor %}
+    {% endif %}
+</ul></nav><!-- /#menu -->
+
+{% if MAXWELL_ABOUT_PAGE %}
+{% set ns = namespace(p=None) %}
+{% for p in pages + hidden_pages %}
+    {% if (p.source_path | basename) == MAXWELL_ABOUT_PAGE %}
+        {% set ns.p = p %}
+    {% endif %}
+{% endfor %}
+
+{% if ns.p %}
+{% if MAXWELL_ABOUT_IMAGE_BRIGHT and MAXWELL_ABOUT_IMAGE_DARK %}<img id="index-logo" alt="Logo">{% endif %}
+<section id="about">
+    {% if ns.p.title %}<h2>{{ns.p.title}}</h2>{% endif %}
+    {{ ns.p.content }}
+</section> 
+{% endif %}
+{% endif %}
+
+<section id="content">
+<a id="blog"></a>
+<h2>Latest articles</h2>
+
+{% include 'articles.html' %}
+</section>
+
+<section id="categories">
+<h3>Tags</h3>
+
+<ul id="tag-list">
+{% for tag, articles in tags|sort %}
+    <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag.name.title() }}</a> ({{ articles|count }})</li>
+{% endfor %}
+</ul>
+</section><!-- /#categories -->
+{% endblock content %}

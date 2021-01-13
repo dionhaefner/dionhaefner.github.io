@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ tag }} tag{% endblock %}
+
+{% block content %}
+<section>
+<h2>Articles tagged with {{ tag }}</h2>
+
+{% include 'articles.html' %}
+</section>
+{% endblock %}

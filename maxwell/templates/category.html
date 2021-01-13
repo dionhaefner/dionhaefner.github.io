@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - {{ category }} category{% endblock %}
+
+{% block content %}
+<h2>Articles in the {{ category }} category</h2>
+
+{% include 'articles.html' %}
+{% endblock %}
