@@ -1,0 +1,358 @@
+html {
+    min-height: 100%;
+}
+
+body {
+    font-family: "Open Sans";
+    line-height: 1.5;
+    font-size: 11pt;
+    margin: 0 auto;
+    max-width: 45em;
+    padding: 0 1.5em;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    color: #2e3239;
+    background: #fff;
+}
+
+body.dark-theme {
+    color: #ddd;
+    background: #222;
+}
+
+section {
+    margin-top: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0 0.5em 0;
+    line-height: 1.2;
+}
+
+a:link {
+    color: #df2043;
+    text-decoration: none;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    opacity: 1.0;
+}
+
+a:visited {
+    color: #c91d3d;
+    text-decoration: none;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    opacity: 1.0;
+}
+
+a:hover, a:active, a:focus {
+    color: #c91d3d;
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.dark-theme a:link {
+    color: #207fdf;
+}
+
+.dark-theme a:hover, .dark-theme a:active, .dark-theme a:focus, .dark-theme a:visited {
+    color: #1d73c9;
+}
+
+h1 a:empty:before, h2 a:empty:before, h3 a:empty:before,
+h4 a:empty:before, h5 a:empty:before, h6 a:empty:before {
+    content: "#";
+}
+
+h1 a:empty, h2 a:empty, h3 a:empty, h4 a:empty, h5 a:empty, h6 a:empty {
+    visibility: hidden;
+    padding-left: 0.25em;
+}
+
+h1:hover a:empty, h2:hover a:empty, h3:hover a:empty,
+h4:hover a:empty, h5:hover a:empty, h6:hover a:empty {
+    visibility: visible;
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    margin: 1em 0;
+    text-align: center;
+}
+
+figcaption {
+    font-size: small;
+}
+
+pre, code, samp, kbd {
+    font-family: monospace, monospace;
+    font-size: 85%;
+}
+
+pre, blockquote {
+    background: #f8f7fa;
+    padding: 0.5em;
+    line-height: 1.6;
+}
+
+.dark-theme pre, .dark-theme blockquote {
+    background: #272822;
+}
+
+pre {
+    overflow: auto;
+}
+
+blockquote {
+    border-left: medium solid #ccc;
+    margin: 1em 0;
+}
+
+blockquote :first-child {
+    margin-top: 0;
+}
+
+blockquote :last-child {
+    margin-bottom: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: none;
+    padding: 0.3em 0.4em;
+    text-align: left;
+}
+
+li {
+    line-height: 2;
+}
+
+dt {
+    float: left;
+    width: 80px;
+    overflow: hidden;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    clear: left;
+    text-align: right;
+    font-size: 80%;
+    line-height: 2.25;
+}
+
+dd {
+    margin-left: 100px;
+    line-height: 1.8;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: #888;
+}
+
+
+/* Articles / rendered Jupyter notebooks */
+
+/* Hide in / out text */
+div.jp-InputPrompt {
+    display: none;
+}
+
+div.jp-OutputPrompt {
+    display: none;
+}
+
+/* Hide anchor links */
+a.anchor-link {
+    opacity: .1;
+}
+
+a.anchor-link:hover {
+    opacity: .6;
+}
+
+.jp-OutputArea-output pre {
+    margin-top: -25px;
+    margin-bottom: 25px;
+    border-left: 2px solid #333;
+}
+
+.jp-InputArea pre {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 1px dotted #aaa;
+}
+
+.jp-RenderedMarkdown table {
+    margin: 20px auto;
+}
+
+.jp-RenderedMarkdown td, .jp-RenderedMarkdown th {
+    padding: 5px 5px;
+}
+
+.entry-content {
+    line-height: 1.8;
+}
+
+.entry-content > :first-child {
+    margin-top: 1.5em;
+}
+
+.entry-content img, .entry-content video {
+    border: 0;
+    display: block;
+    max-width: 90%;
+    height: auto;
+    margin: 45px auto;
+    background: #fff;
+}
+
+.entry-content pre, .entry-content code, .entry-content samp, .entry-content kbd {
+    color: inherit;
+}
+
+
+/* Specific elements */
+
+header#banner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding-top: 1.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px dotted #888;
+    margin: 0 -5px 0.5em -5px;
+}
+
+header#banner > * {
+    margin: 0 5px;
+}
+
+.site-logo {
+    max-height: 20px;
+    margin-right: 5px;
+}
+
+.site-title {
+    margin: 1em 0 0.5em 0;
+    line-height: 1.2;
+    font-size: 120%;
+    font-family: monospace;
+}
+
+.site-subtitle {
+    font-weight: 600;
+    font-size: 120%;
+}
+
+header#banner a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+footer.body {
+    padding: 50px 0 20px 0;
+    font-size: 85%;
+}
+
+img#index-logo {
+    margin: 20px; 
+    max-height: 256px; 
+    max-width: 30%;
+    float: right;
+}
+
+.paginator {
+    font-style: italic;
+    font-size: 90%;
+}
+
+.paginator .fa {
+    margin: 0 5px;
+}
+
+ul#tag-list {
+    font-size: 90%;
+}
+
+#content header {
+    text-align: center;
+}
+
+.entry-metadata {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    font-size: 80%;
+    margin: 2em 0 0.5em 0;
+}
+
+.entry-metadata .fa {
+    margin-right: 0.4em;
+}
+
+h1.entry-title {
+    font-size: 250%;
+    margin: 0.6em 0 0.4em 0;
+}
+
+h1.entry-title a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+h2.entry-subtitle {
+    font-weight: 400;
+    margin: 0.5em 0;
+}
+
+.header-underline {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 70px;
+    border-bottom: 3px solid #888;
+}
+
+footer.post-info {
+    border-bottom: 2px solid #aaa;
+}
+
+footer.postmatter {
+    border-top: 2px solid #aaa;
+    margin-top: 50px;
+    padding-top: 15px;
+}
+
+footer.postmatter #download-source {
+    width: 100%;
+    text-align: right;
+    margin-top: 15px;
+    font-size: 90%;
+}

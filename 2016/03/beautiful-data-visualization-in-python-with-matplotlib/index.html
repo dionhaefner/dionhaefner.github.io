@@ -1,122 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
+<head>
+          <title>Beautiful data visualization in Python with&nbsp;Matplotlib | dionhaefner.github.io</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content=" Here I demonstrate how I created the diagrams for my blog post on terrorism. The tutorial uses an iPython notebook to show the creation of beautiful statistical plots like this one step-by-step: ">
+        <meta name="description" content="">
         <link rel="icon" href="https://dionhaefner.github.io/favicon.ico">
 
         <!-- Open Graph -->
-        <meta property="og:title" content="Beautiful data visualization in Python with&nbsp;Matplotlib | Dion Häfner" />
+        <meta property="og:title" content="Beautiful data visualization in Python with&nbsp;Matplotlib | dionhaefner.github.io" />
         <meta property="og:url" content="https://dionhaefner.github.io/2016/03/beautiful-data-visualization-in-python-with-matplotlib/index.html" />
-        <meta property="og:image" content="https://dionhaefner.github.io/images/images/logo.png" />
+        <meta property="og:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="2016-03-27 00:00:00+01:00" />
   <meta property="article:author" content="Dion" />
   <meta property="article:section" content="blog" />
-  <meta property="article:tag" content="Python, Technology, Visualization" />
+  <meta property="article:tag" content="Python, Visualization" />
         <!-- /Open Graph -->
 
         <!-- Twitter Card -->
-        <meta name="twitter:card" content="Beautiful data visualization in Python with&nbsp;Matplotlib | Dion Häfner" />
+        <meta name="twitter:card" content="Beautiful data visualization in Python with&nbsp;Matplotlib | dionhaefner.github.io" />
           <meta name="twitter:site" content="@dionhaefner" />
-        <meta name="twitter:title" content="Beautiful data visualization in Python with&nbsp;Matplotlib | Dion Häfner" />
-        <meta name="twitter:description" content=" Here I demonstrate how I created the diagrams for my blog post on terrorism. The tutorial uses an iPython notebook to show the creation of beautiful statistical plots like this one step-by-step: " />
-        <meta name="twitter:image" content="https://dionhaefner.github.io/images/images/logo.png" />
+        <meta name="twitter:title" content="Beautiful data visualization in Python with&nbsp;Matplotlib | dionhaefner.github.io" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
         <!-- /Twitter Card -->
 
-        <title>Beautiful data visualization in Python with&nbsp;Matplotlib | Dion Häfner</title>
-
         <!-- Stylesheets -->
-        <link href="https://dionhaefner.github.io/theme/css/bootstrap.css" rel="stylesheet">
         <link href="https://dionhaefner.github.io/theme/css/fonts.css" rel="stylesheet">
-        <link href="https://dionhaefner.github.io/theme/css/nest.css" rel="stylesheet">
-        <link href="https://dionhaefner.github.io/theme/css/pygments-colorful.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/maxwell.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/pygments.css" rel="stylesheet">
         <link href="https://dionhaefner.github.io/theme/css/font-awesome.css" rel="stylesheet">
-<link href="https://dionhaefner.github.io/theme/css/nest-reader.css" rel="stylesheet">
         <!-- /Stylesheets -->
 
-        <!-- JQuery / JS -->
-        <script src="https://dionhaefner.github.io/theme/jquery/jquery.min.js"></script>
-        <script src="https://dionhaefner.github.io/theme/jquery/parallax.js"></script>
-        <script src="https://dionhaefner.github.io/theme/js/bootstrap.min.js"></script>
-        <script src="https://dionhaefner.github.io/theme/js/nest.js"></script>
-        <!-- /JQuery / JS -->
+        <!-- JS -->
+        <script src="https://dionhaefner.github.io/theme/js/toggle-dark.js" language="javascript"></script>
+        
+<script data-goatcounter="https://dionhaefner.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
-        <!-- RSS Feeds -->
-        <link href="https://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Full Atom Feed" />
-        <link href="https://dionhaefner.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Dion Häfner Categories Atom Feed" />
-        <!-- /RSS Feeds -->
+        <!-- /JS -->
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <link href="https://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Full Atom Feed" />
+        <link href="https://dionhaefner.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Categories Atom Feed" />
 
 
 
-    </head>
 
-    <body>
+    <meta name="tags" content="Python" />
+    <meta name="tags" content="Visualization" />
 
-        <!-- Static navbar -->
-        <div class="row">
-            <nav class="navbar navbar-static navbar-default header-nav">
-            <div class="container">
-                    <div class="header-logo">
-                          <a class="pull-left" href="https://dionhaefner.github.io/">
-                            Dion Häfner
-                          </a>
-                    </div>
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                    </div>
-                    <div class="nav pull-right collapse navbar-collapse" id="navbar-collapse">
-                      <ul class="nav navbar-nav navigate">
-                                <li><a href="https://dionhaefner.github.io/blog.html">Blog</a></li>
-                              <li><a  href="https://dionhaefner.github.io/index.html#about-me">About&nbsp;Me</a></li>
-                              <li><a  href="https://dionhaefner.github.io/index.html#code-projects">Code&nbsp;Projects</a></li>
-                              <li><a  href="https://dionhaefner.github.io/index.html#research">Research</a></li>
-                              <li><a  href="https://dionhaefner.github.io/index.html#zmisc">Misc</a></li>
-                      </ul>
-                    </div>
-            </div>
-          </nav>
-        </div>
-        <!-- /Static navbar -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": {
+        scale: 85,
+        styles: {".MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn": {color: "inherit"}},
+      }
+    });
+    </script>
+</head>
 
-        <!-- Header -->
-        <div class="header-container">
-<div class="container header-subcontent">
-  <div class="clearfix"></div>
-    <p class="pull-right header-tags">
-      <span class="fa fa-tags mr5" aria-hidden="true"></span>
-<a href="https://dionhaefner.github.io/tag/python.html">Python</a>, <a href="https://dionhaefner.github.io/tag/technology.html">Technology</a>, <a href="https://dionhaefner.github.io/tag/visualization.html">Visualization</a>    </p>
-    <p class="pull-left header-tags">
-        <span class="fa fa-calendar mr5" aria-hidden="true"></span>
-        Sun 27 March 2016    </p>
-</div>
-<div class="container header-content">
-  <h1 class="header-title">Beautiful data visualization in Python with&nbsp;Matplotlib</h1>
-  <div class="header-underline"></div>
-</div>
-        </div>
-        <!-- /Header -->
+<body id="index" class="home">
+        <header id="banner" class="body">
+          <a href="https://dionhaefner.github.io/"><span class="site-title">dionhaefner.github.io</span></a><span class="site-subtitle">Maximum entropy</span><a class="btn-toggle fa" alt="Toggle theme"></a>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <header class="post-info">
+    <div class="entry-metadata">
+      <time class="published" datetime="2016-03-27T00:00:00+01:00">
+        <span class="fa fa-calendar"></span> 2016-03-27
+      </time>
+      <div class="tags">
+          <span class="fa fa-tags"></span>
+              <a href="https://dionhaefner.github.io/tag/python.html">Python</a>,              <a href="https://dionhaefner.github.io/tag/visualization.html">Visualization</a>      </div>
+    </div>
+    <h1 class="entry-title">
+      <a href="https://dionhaefner.github.io/2016/03/beautiful-data-visualization-in-python-with-matplotlib/" rel="bookmark"
+         title="Permalink to Beautiful data visualization in Python with Matplotlib">Beautiful data visualization in Python with&nbsp;Matplotlib</a>
+    </h1>
+ 
+    <div class="header-underline"></div>
+  </header>
 
-        <!-- Content -->
-  <article class="container article">
-    <div class="content">
-      <div class="spacer"></div>
-      <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+  <article class="entry-content">
+    <body><div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In this post, I want to show you how to create the diagrams I made for <a href="https://dionhaefner.github.io/2016/03/why-you-should-not-be-afraid-of-terrorism/">my post on terrorism</a>. I used Python 3.4 with the following&nbsp;packages:</p>
 <ul>
 <li>IPython Notebook&nbsp;(Jupyter)</li>
@@ -129,45 +100,41 @@
 <h2 id="Let's-get-started">Let&#8217;s get started<a class="anchor-link" href="#Let's-get-started">&#182;</a></h2><p>First, we will import some&nbsp;packages:</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 
-    </div>
+     </div>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Read-data">Read data<a class="anchor-link" href="#Read-data">&#182;</a></h3>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>I have downloaded the data I want to use from <a href="http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=hlth_cd_asdr2&amp;lang=en">Eurostat</a>. You can go ahead, change the contents of the data, and download it yourself, or <a href="https://dionhaefner.github.io/downloads/hlth_cd_asdr2_1_Data.csv">use the data I used</a>. Either way, let&#8217;s read it into pandas and have a look at the first 5 entries, and the data that is contained in the&nbsp;columns:</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../downloads/hlth_cd_asdr2_1_Data.csv&quot;</span><span class="p">)</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../downloads/hlth_cd_asdr2_1_Data.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 
 <span class="n">time_range</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">TIME</span><span class="p">)</span>
@@ -181,20 +148,23 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Causes of death: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">death_causes</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
-<div class="output_subarea output_stream output_stdout output_text">
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>     SEX      GEO  UNIT  TIME    AGE  \
 0  Total  Belgium  Rate  2011  Total   
 1  Total  Belgium  Rate  2011  Total   
@@ -228,42 +198,44 @@ Causes of death: Malignant neoplasm of trachea, bronchus and lung, Diseases of t
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>To make sure that the data is interpreted correctly, we have to specify a type for the numeric columns (<span class="caps">TIME</span> and Value). Also, we should specify that commas are used as a delimiter for thousands, and that missing data is replaced by a&nbsp;colon.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../downloads/hlth_cd_asdr2_1_Data.csv&quot;</span><span class="p">,</span> 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../downloads/hlth_cd_asdr2_1_Data.csv&quot;</span><span class="p">,</span> 
                    <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">thousands</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> 
                    <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;TIME&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Value</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
-<div class="output_subarea output_stream output_stdout output_text">
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>0    1023.02
 1      23.54
 2       0.48
@@ -275,23 +247,22 @@ Name: Value, dtype: float64
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>I want to make a diagram showing the <em>average</em> number of deaths in all of Western Europe from 2011-2013, so we need to average over everything except the different age classes and the causes of death. We can do that by using a multi-index, i.e. grouping all of the data by age class and cause of death, and averaging over everything that is not an index. We should also sort the data, so we get an idea of the top-killers in our data&nbsp;set.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;AGE&quot;</span><span class="p">,</span><span class="s2">&quot;ICD10&quot;</span><span class="p">])[</span><span class="s2">&quot;Value&quot;</span><span class="p">]</span> \
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_mean</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;AGE&quot;</span><span class="p">,</span><span class="s2">&quot;ICD10&quot;</span><span class="p">])[</span><span class="s2">&quot;Value&quot;</span><span class="p">]</span> \
             <span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
@@ -300,20 +271,23 @@ Name: Value, dtype: float64
 <span class="nb">print</span><span class="p">(</span><span class="n">data_mean</span><span class="p">[</span><span class="s2">&quot;Less than 65 years&quot;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
-<div class="output_subarea output_stream output_stdout output_text">
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Total:
 ICD10
 All causes of death (A00-Y89) excluding S00-T98                           978.673333
@@ -346,23 +320,22 @@ Name: Value, dtype: float64
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Note that the causes of death are not exclusive - for instance, Malignant neoplasms are a sub-group of Neoplasms. Let&#8217;s pick some interesting causes of death that we want to show in our diagram, and rename them into something snappier. I also convert the death rate to per 10 Million people, because the kills by terrorist are so&nbsp;low.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">rename_keys</span> <span class="o">=</span> <span class="p">{</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rename_keys</span> <span class="o">=</span> <span class="p">{</span>
               <span class="s2">&quot;Diseases of the circulatory system (I00-I99)&quot;</span><span class="p">:</span> 
                     <span class="s2">&quot;Heart disease&quot;</span><span class="p">,</span>
               <span class="s2">&quot;Neoplasms&quot;</span><span class="p">:</span> <span class="s2">&quot;Cancer&quot;</span><span class="p">,</span>
@@ -398,26 +371,25 @@ Name: Value, dtype: float64
                           <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">,</span> <span class="s2">&quot;Less than 65 years&quot;</span><span class="p">]]</span>
 </pre></div>
 
-    </div>
+     </div>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Now we still need to add the kills by terrorists to the data. For this purpose, I took the number of people killed in terrorist attacks between 2001 and 2015 from <a href="https://www.statista.com/chart/4093/people-killed-by-terrorist-attacks-in-western-europe-since-1970/">Statista</a>, and averaged over the 15 years. Since the data from Eurostat is in dead people / 100,000 inhabitants, we still need to convert this number a bit to get a comparable value. I estimate the population of Western Europe to be around 450 Million, of which 91.5% are aged 65 and under. Based on these numbers, I can get the death rate of people caused by terrorist attacks (assuming everyone killed is &lt;&nbsp;65).</p>
 <p>This process might seem a bit crude, but the exact numbers really don&#8217;t matter. Even if my estimates were wrong by a factor of 2, virtually nothing would change in the resulting&nbsp;proportions.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">terrorism_deaths</span> <span class="o">=</span> <span class="mi">567</span> <span class="o">/</span> <span class="mi">15</span> <span class="c1"># fatalities per year</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">terrorism_deaths</span> <span class="o">=</span> <span class="mi">567</span> <span class="o">/</span> <span class="mi">15</span> <span class="c1"># fatalities per year</span>
 <span class="n">w_e_inhabitants</span> <span class="o">=</span> <span class="mf">450E6</span>
 <span class="n">w_e_inhabitants_under_65</span> <span class="o">=</span> <span class="n">w_e_inhabitants</span> <span class="o">*</span> <span class="o">.</span><span class="mi">915</span>
 
@@ -428,25 +400,24 @@ Name: Value, dtype: float64
 <span class="n">young_data</span> <span class="o">=</span> <span class="n">add_terror</span><span class="p">(</span><span class="n">young_data</span><span class="p">,</span> <span class="n">terrorism_deaths</span> <span class="o">/</span> <span class="n">w_e_inhabitants_under_65</span> <span class="o">*</span> <span class="mf">1E7</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+     </div>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Finally, I add a &#8216;other&#8217; column to the data frames, to show how much of the data we threw away when we picked only the causes of death in the <code>rename_keys</code> dictionary.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">add_other</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">add_other</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">total</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Other&quot;</span><span class="p">]))</span>
 
 <span class="n">total_deaths</span> <span class="o">=</span> <span class="s2">&quot;All causes of death (A00-Y89) excluding S00-T98&quot;</span>
@@ -456,54 +427,54 @@ Name: Value, dtype: float64
                     <span class="n">data_mean</span><span class="p">[</span><span class="s2">&quot;Less than 65 years&quot;</span><span class="p">][</span><span class="n">total_deaths</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+     </div>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Plot-the-data">Plot the data<a class="anchor-link" href="#Plot-the-data">&#182;</a></h3>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>We can now produce a first bar plot of the data&nbsp;sets:</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">total_data</span><span class="p">))</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">total_data</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">young_data</span><span class="p">);</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtUAAAHWCAYAAAC4z3VYAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X+sXeV95/v3pxjSiLaxCedyuTYd08ZqRCKFEAvotKoy
 oBpDqppKaQQaBTfD1K0K9zZSZyakM7q0JFyRO9MyYZRw5QY3psoEGNpcrMQp9RCqqn/wwySEn81w
@@ -692,23 +663,22 @@ dTJUS5IkSZ0M1ZIkSVInQ7UkSZLU6f8HXbZMbpJNIo4AAAAASUVORK5CYII=
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Well, that doesn&#8217;t look so nice, yet. We need to add some labels and captions, so it becomes clear what we are&nbsp;plotting.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;The most common ways to die in the West&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Standardized death rate per 10 Mio. people &quot;</span>
          <span class="s2">&quot;in Western Europe, 2011-2013, average per year&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -723,22 +693,25 @@ dTJUS5IkSZ0M1ZIkSVInQ7UkSZLU6f8HXbZMbpJNIo4AAAAASUVORK5CYII=
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">young_data</span><span class="o">.</span><span class="n">index</span><span class="p">);</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAvAAAAJBCAYAAAAgMIGqAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xu4bVVd//H3Ry6KmHI7EgJ5CFFDU9STYioiKqD2C8p7
 KWgkVt7LCs0Cr2llpJUmKgFlglIqKomEkFcuR0UQ0DgBCoRy9BxARFDw+/tjjsWeLNba++zD3ufs
@@ -1314,23 +1287,22 @@ AAAASUVORK5CYII=
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Well, these labels are impossible to read, because they overlap. Let&#8217;s change the orientation of the bar plot to horizontal, so the labels are getting more horizontal&nbsp;space.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;The most common ways to die in the West&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Standardized death rate per 10 Mio. people &quot;</span>
          <span class="s2">&quot;in Western Europe, 2011-2013, average per year&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -1346,22 +1318,25 @@ AAAASUVORK5CYII=
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">young_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">);</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0IAAAIqCAYAAAAJjvr3AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xn8XdO9//HXWwQhhhob0TZEjBFB0hojejXaapWirqFo
 i+q9ami15V4l2v7QosYqqpoOippaRYkpxJyESIxNS7iGFhWRkCjx+f2x1s5359jnfId8v/nmm/N+
@@ -2331,23 +2306,22 @@ iZCZmZmZmdUcJ0JmZmZmZlZznAiZmZmZmVnN+R/XOD8ZYwA2rgAAAABJRU5ErkJggg==
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Now the labels are readable, but the two diagrams stil overlap. Actually, there is no real reason to print the labels twice, since both plots show the same thing anyway. We can just combine the two bar plots into one&nbsp;subplot.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;The most common ways to die in the West&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Standardized death rate per 10 Mio. people &quot;</span>
          <span class="s2">&quot;in Western Europe, 2011-2013, average per year&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -2366,22 +2340,25 @@ iZCZmZmZmdUcJ0JmZmZmZlZznAiZmZmZmVnN+R/XOD8ZYwA2rgAAAABJRU5ErkJggg==
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">);</span>  <span class="c1"># add a legend</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAt8AAAOkCAYAAAB+mFhyAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xf8JVV9//HXmyJdUEFFNK4iiooNsEvRICaaWCJKrGBD
 TdRoovlpYkFjxBJ7iYXoaqyxoChGsIAgoMDSQVEDq1GJoBSlKvD5/THn8p293Psty+58d5fX8/G4
@@ -3115,46 +3092,44 @@ LUmSJOXk/wcAg1DWkDXHHAAAAABJRU5ErkJggg==
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Alright! We have produced a plot that is ugly, but at least&nbsp;readable.</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Make-it-pretty">Make it pretty<a class="anchor-link" href="#Make-it-pretty">&#182;</a></h3><p>My first step towards a pretty plot is to import seaborn. Just by importing this package, calling its <code>set</code> function, and choosing a different color palette, the plots already become much&nbsp;prettier.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
 <span class="n">bar_palette</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;Paired&quot;</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="n">desat</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+     </div>
+</div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># same code as before, now with seaborn and a color palette!</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># same code as before, now with seaborn and a color palette!</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;The most common ways to die in the West&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Standardized death rate per 10 Mio. people &quot;</span>
@@ -3174,22 +3149,25 @@ LUmSJOXk/wcAg1DWkDXHHAAAAABJRU5ErkJggg==
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">);</span> 
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxsAAAMpCAYAAABsbC5vAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcT9n/B/BXi5BskT0kfT7Spj2UpYix0zD2pqKI7Ftj
 GYZMttJCtmzZyTJjF0mUQWRL0kaJSCVpr/P7o8fnfrt9PtWnCPOb9/Px6PHoc9dzzz333HPuPedc
@@ -4390,23 +4368,22 @@ iEgVbDaIiIiIiEgVbDaIiIiIiEgV/wNdJrcPSn4tzgAAAABJRU5ErkJggg==
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Seaborn provides an easy way to remove the grid spines at the top and right of the axes (which are not really needed here). I chose to lighten the remaining spines, which is often a good idea if you have big, black lines in your&nbsp;diagram.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;The most common ways to die in the West&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Standardized death rate per 10 Mio. people &quot;</span>
          <span class="s2">&quot;in Western Europe, 2011-2013, average per year&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -4427,22 +4404,25 @@ iEgVbDaIiIiIiEgVbDaIiIiIiEgV/wNdJrcPSn4tzgAAAABJRU5ErkJggg==
 <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s2">&quot;#AAAAAA&quot;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxsAAAMpCAYAAABsbC5vAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcT9n/B/BXi5BskT0kfT7Spj2UpYix0zD2pqKI7Ftj
 GYZMttJCtmzZyTJjF0mUQWRL0kaJSCVpr/P7o8fnfrt9PtWnCPOb9/Px6PHoc9dzzz333HPuPedc
@@ -5638,23 +5618,22 @@ B5MaOn8UQgwoAAAAAElFTkSuQmCC
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Actually, one of the golden rule of making pretty diagrams is to throw away everything that is unnecessary and might distract the viewer from the data. It would be much nicer to label the bars directly, and remove the bottom axis completely. This can be done via a simple code&nbsp;snippet:</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">autolabel</span><span class="p">(</span><span class="n">rects</span><span class="p">):</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">autolabel</span><span class="p">(</span><span class="n">rects</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Attach some text labels to a horizontal bar plot &quot;&quot;&quot;</span>
     <span class="c1"># determine maximum width of the bars, and offset labels by 2% of that</span>
     <span class="n">offset</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">])</span> <span class="o">*</span> <span class="o">.</span><span class="mi">02</span>
@@ -5665,25 +5644,24 @@ B5MaOn8UQgwoAAAAAElFTkSuQmCC
                 <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;x-small&quot;</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+     </div>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>So, let&#8217;s despine the figure completely. I have also removed the outline of the bars, giving the diagram a flatter look, and fixed the limits of the y-axis to remove unnecessary whitespace at the&nbsp;top.</p>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;The most common ways to die in the West&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Standardized death rate per 10 Mio. people&quot;</span>
          <span class="s2">&quot;in Western Europe, 2011-2013, average per year&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">y</span><span class="o">=.</span><span class="mi">95</span><span class="p">)</span>
@@ -5709,22 +5687,25 @@ B5MaOn8UQgwoAAAAAElFTkSuQmCC
 <span class="n">autolabel</span><span class="p">([</span><span class="n">rect</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">bar1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">rect</span> <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">bar2</span><span class="p">])</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxcAAAMUCAYAAADOtNqSAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXlcT8v/x1/tokJkT0LnI+3aKRTKLuslblER2cUlu5sl
 QioJqZDdtV3bRSRRbrayhCRJRWiRitb5/dHjnF+nz6f61M3lfs3z8ejx6DNnzsx7ljNn3jPv9xwJ
@@ -7147,12 +7128,12 @@ SIlQciEiIiIiIiXi/wPjXcAkBg+bqgAAAABJRU5ErkJggg==
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Some last&nbsp;cosmetics:</p>
 <ul>
 <li>slightly adjust the spacing of the&nbsp;bars</li>
@@ -7163,14 +7144,13 @@ SIlQciEiIiIiIiXi/wPjXcAkBg+bqgAAAABJRU5ErkJggg==
 </ul>
 
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;The most common ways to die in the West&quot;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
          <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Standardized death rate per 10 Mio. people, 2011-2013, average per year&quot;</span><span class="p">,</span>
@@ -7203,22 +7183,25 @@ SIlQciEiIiIiIiXi/wPjXcAkBg+bqgAAAABJRU5ErkJggg==
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;deaths-bar.png&quot;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+     </div>
 </div>
 </div>
+</div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
+<div class="jp-Cell-outputWrapper">
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="output_png output_subarea ">
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAksAAANvCAYAAADN956WAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXdYFMn297+AQ1DEiGENGAeQNAQJShBUWFEEs4sBE2Zc
 FXdB173imtcsBoygC2ZRFkVBUFAMGFEMqKiIgIKAiCAyDNT7B+/Ub5oZhsE13bv1eR4fp6u7qk5X
@@ -8642,20 +8625,19 @@ AAAAAElFTkSuQmCC
 </div>
 
 </div>
+
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Ta-da! Looks nice, doesn&#8217;t it? If you want, you can play around a bit - it could be nice to use a different color scheme, or to have a light grid in the background, so it becomes easier to compare values. Also, I&#8217;m not entirely happy with the different scales on the two data sets - this way, the difference in relative importance of e.g. cancer and suicide isn&#8217;t really striking the&nbsp;viewer.</p>
 
 </div>
 </div>
-</div>
- 
 
 
+</body>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var mathjaxscript = document.createElement('script');
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
@@ -8685,66 +8667,23 @@ AAAAAElFTkSuQmCC
 }
 </script>
 
-    </div>
+  </article><!-- /.entry-content -->
 
-    <div class="postmatter">
-          <h4>Related posts</h4>
-          <dl class="dl-horizontal">
-              <dt>Sat 26 March 2016</dt>
-              <dd><a href="https://dionhaefner.github.io/2016/03/why-you-should-not-be-afraid-of-terrorism/">Why you should not be afraid of&nbsp;terrorism </a></dd>
-          </dl>
-        <div class="pull-right">
-          <a href="https://dionhaefner.github.io/2016/03/beautiful-data-visualization-in-python-with-matplotlib/index.source" download="beautiful-data-visualization-in-python-with-matplotlib.ipynb">Download source</a>
-        </div>
-          <div id="post-share-links">
-              Share via:
-              <ul class="list-inline">
-                  <li> <a href="http://twitter.com/home?status=b'Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib%20https%3A//dionhaefner.github.io/2016/03/beautiful-data-visualization-in-python-with-matplotlib/'" target="_blank" title="Share via Twitter"><span class="fa fa-twitter fa-2x"></span></a> </li>
-                  <li> <a href="http://www.facebook.com/sharer/sharer.php?u=https%3A//dionhaefner.github.io/2016/03/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via Facebook"><span class="fa fa-facebook fa-2x"></span></a> </li>
-                  <li> <a href="mailto:?subject=Beautiful%20data%20visualization%20in%20Python%20with%C2%A0Matplotlib&amp;body=https%3A//dionhaefner.github.io/2016/03/beautiful-data-visualization-in-python-with-matplotlib/" target="_blank" title="Share via E-Mail"><span class="fa fa-send fa-2x"></span></a> </li>
-              </ul>
-          </div>
-    </div>
-  </article>
-        <!-- /Content -->
-
-        <!-- Footer -->
-        <div class="footer">
-            <div class="container footer-container ">
-                <div class="row">
-                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-                        <div class="footer-title">Sitemap</div>
-                        <ul class="list-unstyled">
-                            <li><a href="https://dionhaefner.github.io/archives.html">Archives</a></li>
-                            <li><a href="https://dionhaefner.github.io/tags.html">Tags</a></li>
-                            <li><a href="https://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">Atom Feed</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-                        <div class="footer-title">Visit Me</div>
-                        <ul class="list-inline">
-                            <li><a href="https://github.com/dionhaefner/" target="_blank"><span class="fa fa-github fa-2x"></span></a></li>
-                            <li><a href="https://www.linkedin.com/in/dion-h%C3%A4fner-763821121/" target="_blank"><span class="fa fa-linkedin fa-2x"></span></a></li>
-                            <li><a href="https://twitter.com/dionhaefner" target="_blank"><span class="fa fa-twitter fa-2x"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-                        <div class="footer-title">Links</div>
-                        <ul class="list-unstyled">
-                            <li><a href="https://unsplash.com/" target="_blank">Unsplash</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                        <p class="pull-right text-right">
-                            <small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
-                            <small><em>Theme by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br />
-                            <small><em>Modified by Dion H&auml;fner</em></small><br/>
-                            <small>&copy; Dion Häfner 2016-2020</small>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Footer -->
-    </body>
+  <footer class="postmatter">
+        <h3>Related posts</h3>
+        <dl>
+            <dt>2016-03-26</dt>
+            <dd><a href="https://dionhaefner.github.io/2016/03/why-you-should-not-be-afraid-of-terrorism/">Why you should not be afraid of&nbsp;terrorism </a></dd>
+        </dl>
+      <div id="download-source">
+        <a href="https://dionhaefner.github.io/2016/03/beautiful-data-visualization-in-python-with-matplotlib/index.source" download="beautiful-data-visualization-in-python-with-matplotlib.ipynb">Download article source</a>
+      </div>
+  </footer>
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/" target="_blank">Pelican</a>.
+&copy; Dion Häfner 2016-2021                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
 </html>
