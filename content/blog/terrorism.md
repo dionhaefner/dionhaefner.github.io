@@ -3,7 +3,6 @@ Slug: why-you-should-not-be-afraid-of-terrorism
 Date: 26-03-2016
 Tags: Thoughts, Psychology
 Author: Dion
-Illustration: headers/terrorism.jpeg
 related_posts: beautiful-data-visualization-in-python-with-matplotlib
 
 ## Introduction
