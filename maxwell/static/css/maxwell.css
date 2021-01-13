@@ -236,7 +236,11 @@ header#banner {
     padding-top: 1.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px dotted #888;
-    margin-bottom: 0.5em;
+    margin: 0 -5px 0.5em -5px;
+}
+
+header#banner > * {
+    margin: 0 5px;
 }
 
 .site-logo {
@@ -279,7 +283,7 @@ footer.body {
 
 img#index-logo {
     margin: 20px; 
-    max-height: 200px; 
+    max-height: 256px; 
     max-width: 30%;
     float: right;
 }

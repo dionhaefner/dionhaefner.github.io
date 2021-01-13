@@ -9,7 +9,7 @@ THEME = "maxwell"
 AUTHOR = "Dion Häfner"
 SITENAME = "dionhaefner.github.io"
 SITEURL = ""
-SITESUBTITLE = "Maximum entropy blog"
+SITESUBTITLE = "Maximum entropy"
 
 PATH = "content"
 
