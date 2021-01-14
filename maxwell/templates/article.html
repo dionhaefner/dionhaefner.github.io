@@ -12,7 +12,7 @@
   {% endif %}
 
   {% if article.description %}
-    <meta name="description" content="{{article.description}}" />
+    {% block description %}{{ article.summary | striptags | truncate(300) }}{% endblock %}
   {% endif %}
 
   {% for tag in article.tags %}
@@ -31,9 +31,9 @@
 
 {% block opengraph %}
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="{{ article.date }}" />
+  <meta property="article:published_time" content="{{ article.date.isoformat() }}" />
   {% if article.modified %}
-    <meta property="article:modified_time" content="{{ article.modified }}" />
+    <meta property="article:modified_time" content="{{ article.modified.isoformat() }}" />
   {% endif %}
   <meta property="article:author" content="{% for author in article.authors %}{{ author }}{% if not loop.last %}, {% endif %}{% endfor %}" />
   <meta property="article:section" content="{{ article.category }}" />
@@ -81,7 +81,7 @@
   </header>
 
   <article class="entry-content">
-    {{ article.content }}
+    {{ article.content | replace('<body>', '') | replace('</body>', '') }}
   </article><!-- /.entry-content -->
 
   <footer class="postmatter">

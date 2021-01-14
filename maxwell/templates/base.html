@@ -7,17 +7,17 @@
         <meta name="generator" content="Pelican" />
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="{% block description %}{% endblock description %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="{% block description %}{{ MAXWELL_SITE_DESCRIPTION }}{% endblock description %}">
         <link rel="icon" href="{{ SITEURL }}/favicon.ico">
 
         <!-- Open Graph -->
         <meta property="og:title" content="{{ self.title() }}" />
         <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}" />
         <meta property="og:image" content="{% block metaimage %}{{ SITEURL }}/{{ MAXWELL_META_IMAGE }}{% endblock metaimage %}" />
+        <meta property="og:description" content="{{ self.description() }}" />
         {% block opengraph %}
           <meta property="og:type" content="website" />
-          <meta property="og:description" content="{{ self.description() }}" />
         {% endblock opengraph %}
         <!-- /Open Graph -->
 

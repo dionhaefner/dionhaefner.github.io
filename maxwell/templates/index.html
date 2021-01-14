@@ -1,19 +1,22 @@
 {% extends "base.html" %}
 
 {% block extra_css %}
-{% if MAXWELL_ABOUT_IMAGE_BRIGHT and MAXWELL_ABOUT_IMAGE_DARK %}
+{% if MAXWELL_ABOUT_IMAGE %}
     <style>
         img#index-logo {
-            content: url("{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_BRIGHT }}");
+            content: url("{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE }}");
         }
-
+        {% if MAXWELL_ABOUT_IMAGE_DARK %}
         .dark-theme img#index-logo{
             content: url("{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_DARK }}");
         }
+        {% endif %}
     </style>
 
-    <link rel="preload" as="image" href="{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_BRIGHT }}">
+    <link rel="preload" as="image" href="{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE }}">
+    {% if MAXWELL_ABOUT_IMAGE_DARK %}
     <link rel="preload" as="image" href="{{ SITEURL }}/{{ MAXWELL_ABOUT_IMAGE_DARK }}">
+    {% endif %}
 {% endif %}
 {% endblock %}
 
@@ -43,7 +46,7 @@
 {% endfor %}
 
 {% if ns.p %}
-{% if MAXWELL_ABOUT_IMAGE_BRIGHT and MAXWELL_ABOUT_IMAGE_DARK %}<img id="index-logo" alt="Logo">{% endif %}
+{% if MAXWELL_ABOUT_IMAGE %}<img id="index-logo" alt="Logo">{% endif %}
 <section id="about">
     {% if ns.p.title %}<h2>{{ns.p.title}}</h2>{% endif %}
     {{ ns.p.content }}
