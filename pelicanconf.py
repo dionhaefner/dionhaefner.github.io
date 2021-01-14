@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
 
 from pelican_jupyter import markup as nb_markup
 
@@ -35,7 +34,7 @@ DISPLAY_PAGES_ON_MENU = True
 DEFAULT_PAGINATION = 20
 
 # Remove unused templates
-# DIRECT_TEMPLATES = ['index']
+DIRECT_TEMPLATES = ['index']
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -64,15 +63,16 @@ IPYNB_SKIP_CSS = True
 import os
 JINJA_FILTERS = {"basename": os.path.basename}
 MAXWELL_ABOUT_PAGE = "introduction.md"
-MAXWELL_ABOUT_IMAGE_BRIGHT = "images/logo-bright.png"
+MAXWELL_ABOUT_IMAGE = "images/logo-bright.png"
 MAXWELL_ABOUT_IMAGE_DARK = "images/logo-dark.png"
 
 MAXWELL_SINGLEAUTHOR = True
 
 if MAXWELL_SINGLEAUTHOR:
-    AUTHOR_SAVE_AS = ''
+    AUTHOR_SAVE_AS = ""
 
-MAXWELL_COPYRIGHT = u"&copy; Dion Häfner 2016-2021"
+MAXWELL_SITE_DESCRIPTION = "Dion Häfner • About me • Maximum entropy blog"
+MAXWELL_COPYRIGHT = "&copy; Dion Häfner 2016-2021"
 
 # Metadata
 MAXWELL_META_IMAGE = "images/logo-bright.png"
