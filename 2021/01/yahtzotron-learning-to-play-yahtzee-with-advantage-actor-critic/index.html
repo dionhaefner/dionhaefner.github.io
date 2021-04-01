@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Learning to play Yahtzee with Advantage Actor-Critic (A2C) | dionhaefner.github.io</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="My in-laws are really into the dice game Yatzy (the Scandinavian version of Yahtzee). If you’re unfamiliar with the game, here’s a brief summary of the rules from Wikipedia: Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to …">
+        <link rel="icon" href="https://dionhaefner.github.io/favicon.ico">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Learning to play Yahtzee with Advantage Actor-Critic (A2C) | dionhaefner.github.io" />
+        <meta property="og:url" content="https://dionhaefner.github.io/2021/01/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/index.html" />
+        <meta property="og:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <meta property="og:description" content="My in-laws are really into the dice game Yatzy (the Scandinavian version of Yahtzee). If you’re unfamiliar with the game, here’s a brief summary of the rules from Wikipedia: Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to …" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2021-01-04T00:00:00+01:00" />
+  <meta property="article:author" content="Dion" />
+  <meta property="article:section" content="blog" />
+  <meta property="article:tag" content="Machine Learning, Python, Reinforcement Learning" />
+        <!-- /Open Graph -->
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="Learning to play Yahtzee with Advantage Actor-Critic (A2C) | dionhaefner.github.io" />
+          <meta name="twitter:site" content="@dionhaefner" />
+        <meta name="twitter:title" content="Learning to play Yahtzee with Advantage Actor-Critic (A2C) | dionhaefner.github.io" />
+        <meta name="twitter:description" content="My in-laws are really into the dice game Yatzy (the Scandinavian version of Yahtzee). If you’re unfamiliar with the game, here’s a brief summary of the rules from Wikipedia: Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to …" />
+        <meta name="twitter:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <!-- /Twitter Card -->
+
+        <!-- Stylesheets -->
+        <link href="https://dionhaefner.github.io/theme/css/fonts.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/maxwell.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/pygments.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/font-awesome.css" rel="stylesheet">
+        <!-- /Stylesheets -->
+
+        <!-- JS -->
+        <script src="https://dionhaefner.github.io/theme/js/toggle-dark.js" language="javascript"></script>
+        
+<script data-goatcounter="https://dionhaefner.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+        <!-- /JS -->
+
+        <link href="https://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Full Atom Feed" />
+        <link href="https://dionhaefner.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="Machine Learning" />
+    <meta name="tags" content="Reinforcement Learning" />
+    <meta name="tags" content="Python" />
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": {
+        scale: 85,
+        styles: {".MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn": {color: "inherit"}},
+      }
+    });
+    </script>
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+          <a href="https://dionhaefner.github.io/"><span class="site-title">dionhaefner.github.io</span></a><span class="site-subtitle">Maximum entropy</span><a class="btn-toggle fa" alt="Toggle theme"></a>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <header class="post-info">
+    <div class="entry-metadata">
+      <time class="published" datetime="2021-01-04T00:00:00+01:00">
+        <span class="fa fa-calendar"></span> 2021-01-04
+      </time>
+      <div class="tags">
+          <span class="fa fa-tags"></span>
+              <a href="https://dionhaefner.github.io/tag/machine-learning.html">Machine Learning</a>,              <a href="https://dionhaefner.github.io/tag/reinforcement-learning.html">Reinforcement Learning</a>,              <a href="https://dionhaefner.github.io/tag/python.html">Python</a>      </div>
+    </div>
+    <h1 class="entry-title">
+      <a href="https://dionhaefner.github.io/2021/01/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/" rel="bookmark"
+         title="Permalink to Learning to play Yahtzee with Advantage Actor-Critic (A2C)">Learning to play Yahtzee with Advantage Actor-Critic (<span class="caps">A2C</span>)</a>
+    </h1>
+ 
+    <div class="header-underline"></div>
+  </header>
+
+  <article class="entry-content">
+    <p>My in-laws are really into the dice game <a href="https://en.wikipedia.org/wiki/Yatzy">Yatzy</a> (the Scandinavian version of&nbsp;Yahtzee).</p>
+<p>If you&#8217;re unfamiliar with the game, here&#8217;s a brief summary of the rules <a href="https://en.wikipedia.org/wiki/Yatzy#Gameplay">from Wikipedia</a>:</p>
+<blockquote>
+<p>Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to reroll. A player may reroll some or all of the dice up to two times on a turn. The player must put a score or zero into a score box each turn. The game ends when all score boxes are used. The player with the highest total score wins the&nbsp;game.</p>
+</blockquote>
+<p>Sounds easy enough,&nbsp;right?</p>
+<p>My in-laws, who have much more experience than me, made very quick decisions, but I couldn&#8217;t see if they were really better than mine. Is it better to give up on getting a Yahtzee early on, or should you delay that for as long as possible? Is going for straights even worth it? How important is the bonus,&nbsp;really?</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/yahtzotron/Dice-2.svg" style="width: 2em">
+    <img src="https://dionhaefner.github.io/images/yahtzotron/Dice-3.svg" style="width: 2em">
+    <img src="https://dionhaefner.github.io/images/yahtzotron/Dice-4.svg" style="width: 2em">
+    <img src="https://dionhaefner.github.io/images/yahtzotron/Dice-6.svg" style="width: 2em">
+    <img src="https://dionhaefner.github.io/images/yahtzotron/Dice-6.svg" style="width: 2em">
+    <figcaption>What to go for? A straight? Or keep the sixes? The right answer isn&#8217;t obvious, and depends on both your and your opponent&#8217;s scorecard.</figcaption>
+</figure>
+
+<p>While playing (and losing), I could never shake the feeling that I had no idea <em>whether my strategy was good or not</em>. Yahtzee is luck-based to a large degree, so it&#8217;s hard to judge whether you suck at the game or whether you&#8217;re just&nbsp;unlucky.</p>
+<p>So, I finally thought to&nbsp;myself:</p>
+<blockquote>
+<p>This sounds like a game that should be easy to learn for a bot. Maybe it can teach me how to&nbsp;play!</p>
+</blockquote>
+<p>Specifically, I wanted to <strong>build a bot that could learn to play Yahtzee close to perfection through self-play</strong> (via reinforcement learning, <span class="caps">RL</span>). Turns out, I was wrong about the <em>easy</em> part, but a few weeks of intensive labor later I was done with my&nbsp;creation.</p>
+<figure class="lesson">
+<figcaption>Lessons</figcaption>
+<p>Throughout this article, you will find some of the more salient lessons I learned in boxes like this&nbsp;one.</p>
+</figure>
+
+<div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#the-making-of-yahtzotron">The Making of Yahtzotron</a><ul>
+<li><a href="#why-reinforcement-learning">Why Reinforcement&nbsp;Learning?</a></li>
+<li><a href="#rl-frameworks-the-jax-deepmind-stack"><span class="caps">RL</span> Frameworks &#8212; The <span class="caps">JAX</span> + DeepMind&nbsp;Stack</a></li>
+<li><a href="#implementing-yahtzee-yatzy">Implementing Yahtzee /&nbsp;Yatzy</a></li>
+<li><a href="#detour-genetic-optimization">Detour: Genetic&nbsp;Optimization</a></li>
+<li><a href="#advantage-actor-critic">Advantage&nbsp;Actor-Critic</a></li>
+<li><a href="#pre-training-via-greedy-look-up-table">Pre-training via Greedy Look-up&nbsp;Table</a></li>
+<li><a href="#pre-training-via-advantage-look-up-table">Pre-training via Advantage Look-up&nbsp;Table</a></li>
+<li><a href="#parameter-tuning">Parameter&nbsp;Tuning</a></li>
+<li><a href="#other-stuff-i-did-that-didnt-end-up-working">Other Stuff I Did That Didn&#8217;t End Up&nbsp;Working</a></li>
+</ul>
+</li>
+<li><a href="#the-results-are-in">The Results Are In</a><ul>
+<li><a href="#showmatch-time">Showmatch&nbsp;Time!</a></li>
+<li><a href="#the-numbers">The&nbsp;Numbers</a></li>
+</ul>
+</li>
+<li><a href="#final-thoughts">Final Thoughts</a><ul>
+<li><a href="#why-was-this-so-hard">Why Was This So&nbsp;Hard?</a></li>
+<li><a href="#human-learning-machine-teaching">Human learning &#8212; Machine&nbsp;Teaching</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="the-making-of-yahtzotron">The Making of Yahtzotron<a class="anchor-link" href="#the-making-of-yahtzotron" title="Permanent link">&para;</a></h2>
+<figure>
+    <img src="https://dionhaefner.github.io/images/yahtzotron/sass.png" style="width: 100%; max-width: 400px;">
+    <figcaption>The nerve on this guy.</figcaption>
+</figure>
+
+<p>Some spoilers&nbsp;first:</p>
+<p>Yahtzotron&#8217;s average final score is about 5% below perfect play, which is definitely competitive with experienced human players. Training time of the final agent is about 2 hours on a single <span class="caps">CPU</span>. <a href="https://github.com/dionhaefner/yahtzotron">And it&#8217;s available on GitHub, for you to&nbsp;try!</a></p>
+<p>However, for a long time, it seemed like I bit off more than I could chew. As a first reinforcement learning project this was definitely a challenge. So, let me present to you the long and winding path towards a strong reinforcement learning agent, so that others may learn from my&nbsp;hubris.</p>
+<p>If you want to skip ahead to the fun part, you can <a href="#the-results-are-in">watch me play a full game at the end of this&nbsp;article.</a></p>
+<h3 id="why-reinforcement-learning">Why Reinforcement Learning?<a class="anchor-link" href="#why-reinforcement-learning" title="Permanent link">&para;</a></h3>
+<p><a href="http://yahtzee.org.uk/optimal_yahtzee_TV.pdf">Yahtzee has a known solution for perfect play</a> (and so does Yatzy). So, why go through all of this to learn a &#8220;solved&#8221;&nbsp;game?</p>
+<p>I believe that a strong self-taught agent is still valuable, even if there <em>is</em> a known solution to the&nbsp;game.</p>
+<p>Perhaps the biggest factor is efficiency. Exact solutions to probabilistic games have to search through all possible outcomes to identify the best action. This is computationally costly (without optimization, this scales exponentially with the number of game steps). Common optimization strategies such as <a href="https://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> are difficult to implement correctly, and efficient implementations need to be tailored to the problem at&nbsp;hand.</p>
+<p>A second factor is flexibility. An agent that learns through self-play is robust to minor rule changes (this is why we can learn Yahtzee and Yatzy with the same agent). We can also <em>change the objective</em>. Most exact solutions to Yahtzee optimize the average game score, but I personally tend to <em>play to win</em> (a good winning agent might have to take more risks when it is behind, and play it safe when it&#8217;s&nbsp;ahead).</p>
+<p>And finally, it can help us understand how to build efficient <span class="caps">RL</span> agents, so we can eventually tackle problems that do not have a known&nbsp;solution.</p>
+<h3 id="rl-frameworks-the-jax-deepmind-stack"><span class="caps">RL</span> Frameworks &#8212; The <span class="caps">JAX</span> + DeepMind Stack<a class="anchor-link" href="#rl-frameworks-the-jax-deepmind-stack" title="Permanent link">&para;</a></h3>
+<p>I wanted to use this opportunity to learn a new framework, so I decided to implement the training loop in <a href="https://github.com/google/jax"><span class="caps">JAX</span></a>.</p>
+<p>Unlike Pytorch and Tensorflow, <span class="caps">JAX</span> doesn&#8217;t supply a high-level interface for machine learning (instead, it relies on third-party libraries for that). I settled on the DeepMind stack: <a href="https://github.com/deepmind/dm-haiku">Haiku</a> for neural networks, <a href="https://github.com/deepmind/optax">optax</a> for optimization, <a href="https://github.com/deepmind/rlax">rlax</a> for reinforcement learning&nbsp;components.</p>
+<p>Overall, the experience was pleasant, but not without obstacles. I had to file several bug reports while working on Yahtzotron. For more serious projects I would probably just go with <a href="https://pytorch.org/">Pytorch</a> right&nbsp;now.</p>
+<figure class="lesson">
+<figcaption>Lesson 1</figcaption>
+<p>Only go with the <span class="caps">JAX</span> ecosystem if you are prepared to implement most of the logic yourself. Also, be ready to work around bugs or performance&nbsp;issues.</p>
+<p><i>(<span class="caps">JAX</span> is evolving fast. This advice is probably outdated soon, so make sure to give <span class="caps">JAX</span> a chance. Most of it is awesome&nbsp;already.)</i></p>
+</figure>
+
+<h3 id="implementing-yahtzee-yatzy">Implementing Yahtzee / Yatzy<a class="anchor-link" href="#implementing-yahtzee-yatzy" title="Permanent link">&para;</a></h3>
+<p>I started with coding up the rules for Yahtzee and Yatzy in pure&nbsp;Python.</p>
+<p>For this, I introduced 2 classes: <code>Ruleset</code> and <code>Scorecard</code>. <code>Ruleset</code> encapsulates the core rules of the game: Which categories they are, how they are scored, and what bonuses there are (see e.g. <a href="https://github.com/dionhaefner/yahtzotron/blob/master/yahtzotron/rulesets/yatzy.py">the ruleset for Yatzy</a>). <code>Scorecard</code> uses a <code>Ruleset</code> internally to keep track of filled categories and scores for each&nbsp;player.</p>
+<p>In hindsight, I do like this extensible approach. However, I made one crucial mistake, which was not to wrap the game in <a href="https://gym.openai.com/">OpenAI&#8217;s gym</a>. I didn&#8217;t see how I could make it work with the changing action space, so I didn&#8217;t bother because I thought I didn&#8217;t need&nbsp;it.</p>
+<p>I later realized that not having the game implemented in <code>gym</code> was a huge disadvantage. It made it so I couldn&#8217;t test my agent on other, simpler problems while debugging. And it also made it that I couldn&#8217;t switch out the <span class="caps">A2C</span> agent for a different one (such as <a href="https://openai.com/blog/openai-baselines-ppo/"><span class="caps">PPO</span></a>) when I would have liked&nbsp;to.</p>
+<figure class="lesson">
+<figcaption>Lesson 2</figcaption>
+<p>Implement your problem in <a href="https://gym.openai.com/">gym</a>. You might think you don&#8217;t need to, but you probably&nbsp;will.</p>
+</figure>
+
+<h3 id="detour-genetic-optimization">Detour: Genetic Optimization<a class="anchor-link" href="#detour-genetic-optimization" title="Permanent link">&para;</a></h3>
+<p>I was intrigued to try <a href="https://en.wikipedia.org/wiki/Genetic_algorithm">genetic optimization</a> as a baseline. <a href="https://towardsdatascience.com/reinforcement-learning-without-gradients-evolving-agents-using-genetic-algorithms-8685817d84f">This article gives an overview how genetic optimization can work in <span class="caps">RL</span> contexts.</a> The idea is deceptively&nbsp;simple:</p>
+<ol>
+<li>Initialize a league of agents with random&nbsp;weights.</li>
+<li>Let them play each other&nbsp;repeatedly.</li>
+<li>Compute a fitness based on how well each agent&nbsp;did.</li>
+<li>Populate a new league by drawing agents at random, weighted with their respective fitness. (You could also do <em>sexual</em> procreation by drawing 2 agents and combining their weights every time, but it&#8217;s not really&nbsp;necessary.)</li>
+<li>Mutate the weights of each agent by a small random number (e.g. drawn from a Gaussian with zero mean and small&nbsp;variance).</li>
+<li>Repeat for as long as&nbsp;necessary.</li>
+</ol>
+<figure>
+<img src="https://dionhaefner.github.io/images/yahtzotron/genetic.svg" style="width: 100%; max-width: 350px;">
+<figcaption>Genetic optimization in a nutshell.</figcaption>
+</figure>
+
+<p>As expected, genetic optimization was easy to implement. All we need is an agent that can play games - no loss functions, no optimizers. You can treat your agent as a black box that you just evaluate based on its&nbsp;fitness.</p>
+<p><strong>But this simplicity comes as a cost</strong>. In my tests, the league advanced quickly at first, up to a mean score of about 130. But by then, progress had slowed down so much that it seemed stuck. (A decent game score is&nbsp;200+.)</p>
+<p>It is important to remember that real-life evolution needs one key ingredient to work: <em>time</em>. Unfortunately, we don&#8217;t have millions of years on our hands to wait for the perfect Yahtzee machine to evolve. So let&#8217;s get back to something more&nbsp;intelligent.</p>
+<figure class="lesson">
+<figcaption>Lesson 3</figcaption>
+<p>Genetic optimization is simple to implement and can give you a decent baseline performance with little effort, but don&#8217;t expect super-human agents to come out of&nbsp;this.</p>
+</figure>
+
+<h3 id="advantage-actor-critic">Advantage Actor-Critic<a class="anchor-link" href="#advantage-actor-critic" title="Permanent link">&para;</a></h3>
+<p>After the detour to genetic optimization, it is time to return to reinforcement learning. I decided to try the <span class="caps">A2C</span> (advantage actor-critic) algorithm&nbsp;next.</p>
+<p>If you are not familiar with <span class="caps">A2C</span>, <a href="https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752">here is an amazing introduction in the form of a&nbsp;cartoon.</a></p>
+<p>The basic idea is pretty straightforward. The agent consists of 2 parts, the actor and the critic. Both receive the current state of the game as&nbsp;input.</p>
+<ul>
+<li>
+<p>The <strong>critic</strong> predicts the <em>value</em> of the current state in the form of what it thinks the total reward will be at the end of the game (in our case, the final score of the agent + an optional winning&nbsp;bonus).</p>
+<p>The critic&#8217;s loss is essentially the accuracy of those predictions, evaluated through a mechanism called temporal difference learning or <span class="caps">TD</span>-λ. Temporal differencing accounts for the fact that the near future is safer to predict than the far future, and that rewards now are better than equal rewards&nbsp;later.</p>
+</li>
+<li>
+<p>The <strong>actor</strong> predicts a probability with which each action should be taken, according to the current <em>policy</em>.</p>
+<p>Its loss is based on something called the <em>advantage</em>: If the picked action was better than expected (based on what the critic estimated for it), the actor should take it more often, and its probability increases (and vice-versa for an action that was worse than&nbsp;predicted).</p>
+</li>
+</ul>
+<p>The total loss of the agent is then the summed loss of both actor and critic, plus an additional entropy loss that makes sure that the model keeps exploring different&nbsp;options.</p>
+<p>For the implementation in <span class="caps">JAX</span> / Haiku, I used <a href="https://github.com/deepmind/bsuite/blob/a07485f497b72669f1058639fa806b6127c4c6a9/bsuite/baselines/jax/actor_critic/agent.py">bsuite&#8217;s <span class="caps">A2C</span> agent</a> as a template.
+One nice thing about <span class="caps">JAX</span> is how readable and &#8220;non-magical&#8221; the loss function&nbsp;looks:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loss</span><span class="p">(</span>
+        <span class="n">weights</span><span class="p">,</span>
+        <span class="n">observations</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">,</span>
+        <span class="n">rewards</span><span class="p">,</span>
+        <span class="n">td_lambda</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">discount</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>
+        <span class="n">policy_cost</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+        <span class="n">entropy_cost</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Actor-critic loss.&quot;&quot;&quot;</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">network</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">observations</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rewards</span><span class="p">))</span>
+
+        <span class="c1"># replace -inf values by tiny finite value</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">MINIMUM_LOGIT</span><span class="p">)</span>
+
+        <span class="n">td_errors</span> <span class="o">=</span> <span class="n">rlax</span><span class="o">.</span><span class="n">td_lambda</span><span class="p">(</span>
+            <span class="n">v_tm1</span><span class="o">=</span><span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">r_t</span><span class="o">=</span><span class="n">rewards</span><span class="p">,</span>
+            <span class="n">discount_t</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">rewards</span><span class="p">,</span> <span class="n">discount</span><span class="p">),</span>
+            <span class="n">v_t</span><span class="o">=</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+            <span class="n">lambda_</span><span class="o">=</span><span class="n">td_lambda</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">critic_loss</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">td_errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">type_</span> <span class="o">==</span> <span class="s2">&quot;a2c&quot;</span><span class="p">:</span>
+            <span class="n">actor_loss</span> <span class="o">=</span> <span class="n">rlax</span><span class="o">.</span><span class="n">policy_gradient_loss</span><span class="p">(</span>
+                <span class="n">logits_t</span><span class="o">=</span><span class="n">logits</span><span class="p">,</span>
+                <span class="n">a_t</span><span class="o">=</span><span class="n">actions</span><span class="p">,</span>
+                <span class="n">adv_t</span><span class="o">=</span><span class="n">td_errors</span><span class="p">,</span>
+                <span class="n">w_t</span><span class="o">=</span><span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">td_errors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">type_</span> <span class="o">==</span> <span class="s2">&quot;supervised&quot;</span><span class="p">:</span>
+            <span class="n">actor_loss</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">actions</span><span class="p">))</span>
+
+        <span class="n">entropy_loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">policy_cost</span> <span class="o">*</span> <span class="n">actor_loss</span><span class="p">,</span> <span class="n">critic_loss</span><span class="p">,</span> <span class="n">entropy_cost</span> <span class="o">*</span> <span class="n">entropy_loss</span>
+</code></pre></div>
+
+<p><em>(These are actually 2 losses in 1, either <span class="caps">A2C</span> or a supervised loss for the actor. This becomes relevant during pre-training, see next&nbsp;section.)</em></p>
+<p>The only real struggle was to figure out how to handle action space constraints. In Yahtzee, the first 2 actions of the turn are keep actions (which dice should be kept for the next roll). The last action is a category action (which score category we should use for the roll). Both have a different number of possible actions. How do we encode this with a single&nbsp;output?</p>
+<p>I decided to bake this into the network architecture, and replace the predicted logits with <code>-inf</code> if the action was invalid. By doing this however I opened Pandora&#8217;s Box, because <code>NaN</code> values started to pop up everywhere (where <span class="caps">JAX</span> functions couldn&#8217;t handle infinities). To work around this, in the loss function, I replace <code>-inf</code> with the smallest possible float&nbsp;instead.</p>
+<p><em>(I have since read that people usually just give a negative reward to impossible actions and let the model learn the rules by itself. Perhaps I should have done that&nbsp;instead.)</em></p>
+<p><strong>Finally, after implementing <span class="caps">A2C</span>, I had it all laid out.</strong> Here is how Yahtzotron plays a&nbsp;turn:</p>
+<figure>
+<img src="https://dionhaefner.github.io/images/yahtzotron/yzt-flowchart.svg" style="width: 100%;">
+<figcaption>How Yahtzotron plays a turn. The agent uses its value output to determine the value of the strongest opponent, which is used as an input later on. Then, it uses its policy output to select actions, which finally lead to a turn score (reward).</figcaption>
+</figure>
+
+<p>If you look closely, you will find some more features that I haven&#8217;t mentioned yet: Once, at the start of the turn, Yahtzotron uses its value output (from the <em>critic</em>, see above) to predict the value of the currently strongest opponent. This is used as an input to all decisions if Yahtzotron is playing to <em>win</em> (as opposed to maximizing expected score). Another thing I haven&#8217;t mentioned yet is the strategy output, which we will <a href="#human-learning-machine-teaching">return to later</a>.</p>
+<p>Unfortunately, there&#8217;s no way to sugarcoat it: <strong>initial performance of the agent was terrible.</strong> It seemed to be unable to learn anything more sophisticated than super greedy, semi-random play with a mean score of about&nbsp;100.</p>
+<p>In the following sections, I will describe how I managed to convince the agent to go above this local&nbsp;maximum.</p>
+<figure class="lesson">
+<figcaption>Lesson 4</figcaption>
+<p>A more complicated model could mean that you need to try harder to make it work (with potentially greater&nbsp;reward).</p>
+</figure>
+
+<h3 id="pre-training-via-greedy-look-up-table">Pre-training via Greedy Look-up Table<a class="anchor-link" href="#pre-training-via-greedy-look-up-table" title="Permanent link">&para;</a></h3>
+<p>To help the agent learn a better strategy, I decided to pre-train it on a simple baseline policy via supervised&nbsp;learning.</p>
+<p>As the baseline policy I first used a naive, greedy strategy: Pick the action that yields the maximum expected score across all categories after the next roll. This can be pre-computed in a look-up table within a few seconds (there are only 252 distinct roll combinations for a single&nbsp;roll).</p>
+<p>Unfortunately, this proved to be a very weak baseline. Being <em>this</em> greedy is highly suboptimal in Yahtzee, because you end up filling valuable categories early on that you might need as a buffer later (like Chance). With a mean score of around 120, this was able to make the agent somewhat better, but nowhere near optimal&nbsp;play.</p>
+<h3 id="pre-training-via-advantage-look-up-table">Pre-training via Advantage Look-up Table<a class="anchor-link" href="#pre-training-via-advantage-look-up-table" title="Permanent link">&para;</a></h3>
+<p>Next, I thought about how I as a human approach the game. It occurred to me that human players don&#8217;t think in discrete &#8220;keep&#8221; actions. Rather, they decide for a <em>category</em> to go for, and then pick the keep action that they think maximizes the score for this&nbsp;category.</p>
+<p>But how to pick the optimal category? As a human I&#8217;m playing mostly opportunistic. If my current roll looks like it might become a better-than-average result for a category, I go for&nbsp;it.</p>
+<p>For example, rolling <code>1 6 6 6 6</code> is certainly better than average for the &#8220;sixes&#8221; category, worse than average for the &#8220;ones&#8221; category, and much better than average for the &#8220;Yahtzee&#8221; category. I would try to roll a Yahtzee here (and keep the&nbsp;sixes).</p>
+<p>So, this is the quantity that I use to pick the best category for this agent: The maximum expected score of each category given the current roll, minus the average score for this category across all rolls (I call that quantity advantage, as in <span class="caps">A2C</span> learning). We can pre-compute this with the same look-up table as in the greedy case - we just need to also compute the expected score for each category across all&nbsp;rolls.</p>
+<p>This baseline is much much stronger, with an average score of about 220 for Yahtzee und 200 for Yatzy. This is a great baseline to lift our agents to the next&nbsp;level.</p>
+<figure class="lesson">
+<figcaption>Lesson 5</figcaption>
+<p>Think about how you as a human approach the game. Simple heuristics often make for a strong baseline that you can use to pre-train your&nbsp;model.</p>
+</figure>
+
+<h3 id="parameter-tuning">Parameter Tuning<a class="anchor-link" href="#parameter-tuning" title="Permanent link">&para;</a></h3>
+<p>What followed next was lots. of. parameter.&nbsp;tuning.</p>
+<p><span class="caps">RL</span> agents have a large number of&nbsp;hyperparameters:</p>
+<ul>
+<li>network architecture (e.g. number of layers and&nbsp;neurons);</li>
+<li>learning rate <span class="amp">&amp;</span> number of&nbsp;epochs;</li>
+<li>reward discount <span class="amp">&amp;</span> <span class="caps">TD</span>-λ;</li>
+<li>reward norm <span class="amp">&amp;</span> winning&nbsp;reward;</li>
+<li>relative weight of policy, value, entropy loss&nbsp;terms;</li>
+<li>batch size (here: number of players per&nbsp;game).</li>
+</ul>
+<p><em>(possibly repeated for multiple learning&nbsp;stages)</em></p>
+<p>I found that parameter tuning was even more important for this <span class="caps">RL</span> application than what I&#8217;m used to from &#8220;regular&#8221; Deep&nbsp;Learning.</p>
+<p>Especially λ (as in <span class="caps">TD</span>-λ) had a huge influence on performance. λ can range from 0 to 1, where 0 implies maximum greed (only care about the reward of the next action), and 1 maximum patience (rewards later are as good as rewards now). I first started with a high λ of around 0.9 because I thought that patience was the right strategy, but it also made it harder for my agent to learn the right&nbsp;patterns.</p>
+<p>Ultimately, I found it best to start out with a low λ (0.2), which I gradually increase during training to 0.8. This lets the agent learn simple greedy patterns first before strategizing more about the long&nbsp;run.</p>
+<p>To give you an idea of the complexity of this tuning process, here is the function responsible for varying some of the hyperparameters during&nbsp;training:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_default_schedules</span><span class="p">(</span><span class="n">pretraining</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get schedules for learning rate, entropy, TDlambda.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">pretraining</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">learning_rate</span><span class="o">=</span><span class="n">optax</span><span class="o">.</span><span class="n">constant_schedule</span><span class="p">(</span><span class="mf">5e-3</span><span class="p">),</span>
+            <span class="n">entropy</span><span class="o">=</span><span class="n">optax</span><span class="o">.</span><span class="n">constant_schedule</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">),</span>
+            <span class="n">td_lambda</span><span class="o">=</span><span class="n">optax</span><span class="o">.</span><span class="n">constant_schedule</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">optax</span><span class="o">.</span><span class="n">exponential_decay</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">60_000</span><span class="p">,</span> <span class="n">decay_rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">),</span>
+        <span class="n">entropy</span><span class="o">=</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">count</span><span class="p">:</span> <span class="mf">1e-3</span> <span class="o">*</span> <span class="mf">0.1</span> <span class="o">**</span> <span class="p">(</span><span class="n">count</span> <span class="o">/</span> <span class="mi">80_000</span><span class="p">)</span> <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">80_000</span> <span class="k">else</span> <span class="o">-</span><span class="mf">1e-2</span>
+        <span class="p">),</span>
+        <span class="n">td_lambda</span><span class="o">=</span><span class="n">optax</span><span class="o">.</span><span class="n">polynomial_schedule</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">transition_steps</span><span class="o">=</span><span class="mi">60_000</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<figure class="lesson">
+<figcaption>Lesson 6</figcaption>
+<p>When doing <span class="caps">RL</span>, don&#8217;t write your model off before doing at least some parameter tuning. In particular, try varying your time differencing parameter early on&nbsp;(λ).</p>
+</figure>
+
+<h3 id="other-stuff-i-did-that-didnt-end-up-working">Other Stuff I Did That Didn&#8217;t End Up Working<a class="anchor-link" href="#other-stuff-i-did-that-didnt-end-up-working" title="Permanent link">&para;</a></h3>
+<p><strong>Predict only categories</strong>: I thought it would be more human-like to predict a category to go for and just take the keep actions that maximize expected score for that category (similar to the baseline agent). This did lead to somewhat faster training and the same final performance, but ultimately I knew that perfect play would be impossible with this, so I removed&nbsp;it.</p>
+<p><em>Don&#8217;t dumb down your environment, your agent will learn to deal with complication</em>.</p>
+<p><strong>Deterministic rolls</strong>: I figured it could help to give all agents in a game the same dice rolls, so they could explore different options without luck picking the winner. Nope. Made things&nbsp;worse.</p>
+<p><em>Don&#8217;t remove randomness if it&#8217;s an integral part of your&nbsp;task.</em></p>
+<p><strong>Tailored neural network architectures</strong>: Instead of a &#8220;dumb&#8221; single-head feed-forward network I tried other architectures that I thought would be more fitting for the structure of the game. For example, I put a layer with only 5 neurons (because there are 5 dice) before the keep actions output layer. There was no positive performance&nbsp;impact.</p>
+<p><em>No need to tinker too much with the architecture, an <span class="caps">MLP</span> will learn just&nbsp;fine.</em></p>
+<p><strong>JAXify everything</strong>: I wrote (almost) the whole turn logic in <span class="caps">JAX</span>, only to find that it was much slower than leaving it in NumPy. This is because games are played sequentially, so all arrays just contain a few dozen elements, which is not enough to amortize the overhead of using <span class="caps">JAX</span>.</p>
+<p><em>Stick to NumPy for small array&nbsp;operations.</em></p>
+<figure class="lesson">
+<figcaption>Lesson 7</figcaption>
+<p>Sometimes, less is&nbsp;more.</p>
+</figure>
+
+<h2 id="the-results-are-in">The Results Are In<a class="anchor-link" href="#the-results-are-in" title="Permanent link">&para;</a></h2>
+<h3 id="showmatch-time">Showmatch Time!<a class="anchor-link" href="#showmatch-time" title="Permanent link">&para;</a></h3>
+<p>Here, you can watch me play (and lose to)&nbsp;Yahtzotron.</p>
+<figure>
+  <script id="asciicast-kXQNIhZ0LlC9Mn11ZsHlPjrvH" src="https://asciinema.org/a/kXQNIhZ0LlC9Mn11ZsHlPjrvH.js" async data-cols="64" data-rows="32" data-theme="monokai"></script>
+  <figcaption>Yes, it rolled a Yatzy in the first round.</figcaption>
+</figure>
+
+<p>If you&#8217;re interested in playing against Yahtzotron yourself, <a href="https://github.com/dionhaefner/yahtzotron">here&#8217;s the code and the instructions</a>.</p>
+<h3 id="the-numbers">The Numbers<a class="anchor-link" href="#the-numbers" title="Permanent link">&para;</a></h3>
+<p>Let&#8217;s have a look at how the final agents&nbsp;perform.</p>
+<p>First up, we&#8217;ll have a four-way tournament across 10 000 games. This way, we can see what the average final score is. We will also test whether an agent trained with a winning bonus is better at winning than agents without&nbsp;it.</p>
+<div class="highlight"><pre><span></span><code>$ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n <span class="m">10000</span> --ruleset yahtzee
+
+<span class="m">100</span>%<span class="p">|</span>███████████████████████<span class="p">|</span> <span class="m">10000</span>/10000 <span class="o">[</span><span class="m">09</span>:34&lt;<span class="m">00</span>:00, <span class="m">17</span>.42it/s<span class="o">]</span>
+Agent <span class="c1">#1 (pretrained/yahtzee-score.pkl)</span>
+---------------------------------------
+ Rank <span class="m">1</span> <span class="p">|</span> ██████ <span class="m">2515</span>
+ Rank <span class="m">2</span> <span class="p">|</span> ██████ <span class="m">2550</span>
+ Rank <span class="m">3</span> <span class="p">|</span> ██████ <span class="m">2510</span>
+ Rank <span class="m">4</span> <span class="p">|</span> █████ <span class="m">2425</span>
+ ---
+ Final score: <span class="m">236</span>.2 ± <span class="m">59</span>.2
+
+... <span class="o">(</span>agent <span class="m">2</span> and <span class="m">3</span> similar to agent <span class="m">1</span><span class="o">)</span>
+
+Agent <span class="c1">#4 (pretrained/yahtzee-win.pkl)</span>
+-------------------------------------
+ Rank <span class="m">1</span> <span class="p">|</span> ██████ <span class="m">2581</span>
+ Rank <span class="m">2</span> <span class="p">|</span> █████ <span class="m">2446</span>
+ Rank <span class="m">3</span> <span class="p">|</span> █████ <span class="m">2463</span>
+ Rank <span class="m">4</span> <span class="p">|</span> ██████ <span class="m">2510</span>
+ ---
+ Final score: <span class="m">235</span>.8 ± <span class="m">59</span>.4
+</code></pre></div>
+
+<p><em>(ties are counted as the higher rank for both&nbsp;agents)</em></p>
+<p>As it turns out, we achieve mean scores of arond 236, and the play-to-win agent is indeed winning more often despite having a slightly lower mean score! (Of course, it is also coming last more often - riskier plays don&#8217;t always pay&nbsp;off.)</p>
+<p>Needless to say, the trained agent also consistently beats the <a href="#pre-training-via-advantage-look-up-table">greedy</a> and random baseline&nbsp;agents.</p>
+<div class="highlight"><pre><span></span><code><span class="gh">Agent #1 (pretrained/yahtzee-score.pkl)</span>
+<span class="gh">---------------------------------------</span>
+ Rank 1 | █████████████ 616
+ Rank 2 | ████████ 384
+ Rank 3 |  0
+ ---
+ Final score: 239.7 ± 62.2
+
+<span class="gh">Agent #2 (greedy)</span>
+<span class="gh">-----------------</span>
+ Rank 1 | ████████ 390
+ Rank 2 | █████████████ 610
+ Rank 3 |  0
+ ---
+ Final score: 218.7 ± 52.9
+
+<span class="gh">Agent #3 (random)</span>
+<span class="gh">-----------------</span>
+ Rank 1 |  0
+ Rank 2 |  0
+ Rank 3 | ████████████████████ 1000
+ ---
+ Final score: 44.2 ± 17.7
+</code></pre></div>
+
+<p>Still, 236 is not an optimal score (perfect play is around 254). The situation is better for Yatzy, where we get a mean score of 241 (perfect play is around&nbsp;248).</p>
+<p>I suspect that we see this gap because Yahtzee has some &#8220;weird&#8221; rules when rolling multiple Yahtzees in a game. More than, say, 3 Yahtzees should occur very rarely, so the agent has a hard time learning what to do. On the other hand, these unicorn games can lead to some very high final scores, thus having a (relatively) big impact on the mean&nbsp;score.</p>
+<p>For the typical game, these agents shold be reasonably close to&nbsp;optimal.</p>
+<h2 id="final-thoughts">Final Thoughts<a class="anchor-link" href="#final-thoughts" title="Permanent link">&para;</a></h2>
+<h3 id="why-was-this-so-hard">Why Was This So Hard?<a class="anchor-link" href="#why-was-this-so-hard" title="Permanent link">&para;</a></h3>
+<p>I&#8217;d like to take some time to reflect <em>why</em> Yahtzee is such a challenging problem for <span class="caps">RL</span>.</p>
+<p>Achieving perfect play in Yahtzee is challenging (impossible?) for <em>humans</em> because it requires perfectly calibrated probabilities. You will need a flawless mental model to evaluate the risk that is associated with each action. This is hard because it is more quantitative than our intuition can&nbsp;handle.</p>
+<p>On the other hand, machines are extremely quantitative, so learning quasi-perfectly calibrated probabilities should not be a problem. Here, the problems I&#8217;ve observed are&nbsp;two-fold:</p>
+<ol>
+<li>
+<p>Getting stuck in a local optimum. Easy to learn strategies like greedy play are too hard to beat by incremental&nbsp;improvements.</p>
+</li>
+<li>
+<p>Missing obvious best plays &#8212; obvious to humans, that is &#8212; because the situations when they are needed are too&nbsp;rare.</p>
+<p>One example are &#8220;hail mary&#8221; plays where the agent is hopelessly behind, and can only hope to win by gambling on getting a Yahtzee. Most of the time it won&#8217;t work, so the agent won&#8217;t learn that it is actually&nbsp;advantageous.</p>
+<p>I&#8217;m not sure how a <span class="caps">RL</span> agent can solve situations like these reliably. An obvious solution are Monte-Carlo tree search methods that actually play out the consequences of each decision, but then the learning process would be dependend on the game rules again &#8212; something I wanted to&nbsp;avoid.</p>
+</li>
+</ol>
+<p>Anyhow, it took me by surprise how fast this little side project essentially turned into a research problem. Reinforcement learning is&nbsp;hard!</p>
+<h3 id="human-learning-machine-teaching">Human learning &#8212; Machine Teaching<a class="anchor-link" href="#human-learning-machine-teaching" title="Permanent link">&para;</a></h3>
+<p>Remember the introduction, when I said that I wanted Yahtzotron to teach <em>me</em> to get better at the game? So far, we haven&#8217;t really done anything in this&nbsp;direction.</p>
+<p>Creating an agent that is good at a task is one thing. Another &#8212; and, in my opinion, much more valuable &#8212; thing is to <em>transfer that knowledge back to us humans</em>. This is what I call <strong>human learning</strong>.</p>
+<p>Achieving this is incredibly hard, and I don&#8217;t think there is a universal recipe for this&nbsp;yet.</p>
+<p>The way I approached this with Yahtzotron is to enable the agent to <em>&#8220;think out loud&#8221;</em>. For this, I trained another neural network that predicts the final (category) action taken after the first and second roll. I call this the <em>strategy network</em>.</p>
+<p>The strategy network gives you its best guess what Yahtzotron might be going for when picking dice to roll. Usually, this is quite&nbsp;convincing:</p>
+<blockquote>
+> My turn!<br>
+> Roll #1: [3, 3, 3, 5, 6].<br>
+> I think I should go for Threes, so I&#8217;m keeping [3, 3, 3].<br>
+> Roll #2: [3, 3, 3, 3, 4].<br>
+> I think I should go for Threes or Yatzy, so I&#8217;m keeping [3, 3, 3, 3].<br>
+> Roll #3: [1, 3, 3, 3, 3].<br>
+> I&#8217;ll pick the &#8220;Threes&#8221; category for that.
+</blockquote>
+
+<p>The lines starting with &#8220;I think I should go for&#8230;&#8221; are based on the output of the strategy&nbsp;network.</p>
+<p><em>(There is still a lot of luck involved, so the prediction isn&#8217;t always&nbsp;right.)</em></p>
+<p>With this in place, it becomes somewhat more transparent how Yahtzotron is making decisions. Of course, there&#8217;s still a long way to go towards a real <em>machine teacher</em>.</p>
+<hr>
+<p>I hope you have enjoyed this&nbsp;read.</p>
+<p>If you want to give Yahtzotron a try, <a href="https://github.com/dionhaefner/yahtzotron">just visit the repository</a> and follow the&nbsp;instructions.</p>
+<p>Good luck!&nbsp;🎲🎲🎲🎲🎲</p>
+<!-- article end -->
+
+<style>
+    .lesson {
+        border: 1px dashed #aaa;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .lesson figcaption {
+        font-size: 100% !important;
+        font-weight: 600;
+        font-style: normal !important;
+    }
+</style>
+  </article><!-- /.entry-content -->
+
+  <footer class="postmatter">
+      <div id="download-source">
+        <a href="https://dionhaefner.github.io/2021/01/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/index.source" download="yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic.md">Download article source</a>
+      </div>
+  </footer>
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/" target="_blank">Pelican</a>.
+&copy; Dion Häfner 2016-2021                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
