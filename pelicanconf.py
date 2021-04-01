@@ -44,6 +44,22 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {
+            'marker': '[TOC]',
+            'permalink': True,
+            'permalink_class': 'anchor-link',
+            'title': 'Contents',
+            'baselevel': 2,
+        },
+    },
+    'output_format': 'html5',
+}
+
 #
 # https://github.com/danielfrg/pelican-ipynb
 #

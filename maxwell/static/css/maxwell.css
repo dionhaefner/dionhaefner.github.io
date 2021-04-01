@@ -88,7 +88,7 @@ img {
 }
 
 figure {
-    margin: 1em 0;
+    margin: 3em 0;
     text-align: center;
 }
 
@@ -98,7 +98,7 @@ figcaption {
 
 pre, code, samp, kbd {
     font-family: monospace, monospace;
-    font-size: 85%;
+    font-size: 9.5pt;
 }
 
 pre, blockquote {
@@ -182,6 +182,7 @@ div.jp-OutputPrompt {
 /* Hide anchor links */
 a.anchor-link {
     opacity: .1;
+    margin-left: 0.4em;
 }
 
 a.anchor-link:hover {
@@ -212,23 +213,47 @@ a.anchor-link:hover {
     line-height: 1.8;
 }
 
+.entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6 {
+    line-height: 1.8;
+}
+
 .entry-content > :first-child {
-    margin-top: 1.5em;
+    margin-top: 2em;
 }
 
 .entry-content img, .entry-content video {
     border: 0;
     display: block;
-    max-width: 90%;
+    max-width: 80%;
     height: auto;
     margin: 45px auto;
     background: #fff;
+}
+
+.entry-content figure {
+    max-width: 80%;
+    margin: 2em auto;
+}
+
+.entry-content figure > img {
+    margin: 1em 10px;
+    display: inline;
+}
+
+.entry-content figure > figcaption {
+    font-style: italic;
+    font-size: 90%;
 }
 
 .entry-content pre, .entry-content code, .entry-content samp, .entry-content kbd {
     color: inherit;
 }
 
+.toctitle {
+    font-size: 120%;
+    font-weight: bold;
+    margin: 1em 0 0.5em 0;
+}
 
 /* Specific elements */
 
@@ -286,8 +311,8 @@ footer.body {
 }
 
 img#index-logo {
-    margin: 1em; 
-    max-height: 256px; 
+    margin: 1em;
+    max-height: 256px;
     max-width: 30%;
     float: right;
 }
@@ -323,7 +348,7 @@ ul#tag-list {
 
 h1.entry-title {
     font-size: 250%;
-    margin: 0.6em 0 0.4em 0;
+    margin: 1em 0 0.5em 0;
 }
 
 h1.entry-title a {
