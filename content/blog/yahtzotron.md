@@ -328,7 +328,7 @@ Let's have a look at how the final agents perform.
 
 First up, we'll have a four-way tournament across 10 000 games. This way, we can see what the average final score is. We will also test whether an agent trained with a winning bonus is better at winning than agents without it.
 
-```
+```rst
 $ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n 10000 --ruleset yahtzee
 
 100%|███████████████████████| 10000/10000 [09:34<00:00, 17.42it/s]
@@ -359,7 +359,7 @@ As it turns out, we achieve mean scores of arond 236, and the play-to-win agent 
 
 Needless to say, the trained agent also consistently beats the [greedy](#pre-training-via-advantage-look-up-table) and random baseline agents.
 
-```
+```rst
 Agent #1 (pretrained/yahtzee-score.pkl)
 ---------------------------------------
  Rank 1 | █████████████ 616
