@@ -269,28 +269,28 @@ One nice thing about &lt;span class="caps"&gt;JAX&lt;/span&gt; is how readable a
 &lt;h3 id="the-numbers"&gt;The Numbers&lt;a class="anchor-link" href="#the-numbers" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Let&amp;#8217;s have a look at how the final agents&amp;nbsp;perform.&lt;/p&gt;
 &lt;p&gt;First up, we&amp;#8217;ll have a four-way tournament across 10 000 games. This way, we can see what the average final score is. We will also test whether an agent trained with a winning bonus is better at winning than agents without&amp;nbsp;it.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n &lt;span class="m"&gt;10000&lt;/span&gt; --ruleset yahtzee
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n 10000 --ruleset yahtzee
 
-&lt;span class="m"&gt;100&lt;/span&gt;%&lt;span class="p"&gt;|&lt;/span&gt;███████████████████████&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;10000&lt;/span&gt;/10000 &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;09&lt;/span&gt;:34&amp;lt;&lt;span class="m"&gt;00&lt;/span&gt;:00, &lt;span class="m"&gt;17&lt;/span&gt;.42it/s&lt;span class="o"&gt;]&lt;/span&gt;
-Agent &lt;span class="c1"&gt;#1 (pretrained/yahtzee-score.pkl)&lt;/span&gt;
----------------------------------------
- Rank &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; ██████ &lt;span class="m"&gt;2515&lt;/span&gt;
- Rank &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; ██████ &lt;span class="m"&gt;2550&lt;/span&gt;
- Rank &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; ██████ &lt;span class="m"&gt;2510&lt;/span&gt;
- Rank &lt;span class="m"&gt;4&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; █████ &lt;span class="m"&gt;2425&lt;/span&gt;
+100%|███████████████████████| 10000/10000 [09:34&amp;lt;00:00, 17.42it/s]
+&lt;span class="gh"&gt;Agent #1 (pretrained/yahtzee-score.pkl)&lt;/span&gt;
+&lt;span class="gh"&gt;---------------------------------------&lt;/span&gt;
+ Rank 1 | ██████ 2515
+ Rank 2 | ██████ 2550
+ Rank 3 | ██████ 2510
+ Rank 4 | █████ 2425
  ---
- Final score: &lt;span class="m"&gt;236&lt;/span&gt;.2 ± &lt;span class="m"&gt;59&lt;/span&gt;.2
+ Final score: 236.2 ± 59.2
 
-... &lt;span class="o"&gt;(&lt;/span&gt;agent &lt;span class="m"&gt;2&lt;/span&gt; and &lt;span class="m"&gt;3&lt;/span&gt; similar to agent &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="cp"&gt;... (agent 2 and 3 similar to agent 1)&lt;/span&gt;
 
-Agent &lt;span class="c1"&gt;#4 (pretrained/yahtzee-win.pkl)&lt;/span&gt;
--------------------------------------
- Rank &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; ██████ &lt;span class="m"&gt;2581&lt;/span&gt;
- Rank &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; █████ &lt;span class="m"&gt;2446&lt;/span&gt;
- Rank &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; █████ &lt;span class="m"&gt;2463&lt;/span&gt;
- Rank &lt;span class="m"&gt;4&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; ██████ &lt;span class="m"&gt;2510&lt;/span&gt;
+&lt;span class="gh"&gt;Agent #4 (pretrained/yahtzee-win.pkl)&lt;/span&gt;
+&lt;span class="gh"&gt;-------------------------------------&lt;/span&gt;
+ Rank 1 | ██████ 2581
+ Rank 2 | █████ 2446
+ Rank 3 | █████ 2463
+ Rank 4 | ██████ 2510
  ---
- Final score: &lt;span class="m"&gt;235&lt;/span&gt;.8 ± &lt;span class="m"&gt;59&lt;/span&gt;.4
+ Final score: 235.8 ± 59.4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;(ties are counted as the higher rank for both&amp;nbsp;agents)&lt;/em&gt;&lt;/p&gt;

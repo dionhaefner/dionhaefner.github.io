@@ -355,28 +355,28 @@ One nice thing about <span class="caps">JAX</span> is how readable and &#8220;no
 <h3 id="the-numbers">The Numbers<a class="anchor-link" href="#the-numbers" title="Permanent link">&para;</a></h3>
 <p>Let&#8217;s have a look at how the final agents&nbsp;perform.</p>
 <p>First up, we&#8217;ll have a four-way tournament across 10 000 games. This way, we can see what the average final score is. We will also test whether an agent trained with a winning bonus is better at winning than agents without&nbsp;it.</p>
-<div class="highlight"><pre><span></span><code>$ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n <span class="m">10000</span> --ruleset yahtzee
+<div class="highlight"><pre><span></span><code>$ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n 10000 --ruleset yahtzee
 
-<span class="m">100</span>%<span class="p">|</span>███████████████████████<span class="p">|</span> <span class="m">10000</span>/10000 <span class="o">[</span><span class="m">09</span>:34&lt;<span class="m">00</span>:00, <span class="m">17</span>.42it/s<span class="o">]</span>
-Agent <span class="c1">#1 (pretrained/yahtzee-score.pkl)</span>
----------------------------------------
- Rank <span class="m">1</span> <span class="p">|</span> ██████ <span class="m">2515</span>
- Rank <span class="m">2</span> <span class="p">|</span> ██████ <span class="m">2550</span>
- Rank <span class="m">3</span> <span class="p">|</span> ██████ <span class="m">2510</span>
- Rank <span class="m">4</span> <span class="p">|</span> █████ <span class="m">2425</span>
+100%|███████████████████████| 10000/10000 [09:34&lt;00:00, 17.42it/s]
+<span class="gh">Agent #1 (pretrained/yahtzee-score.pkl)</span>
+<span class="gh">---------------------------------------</span>
+ Rank 1 | ██████ 2515
+ Rank 2 | ██████ 2550
+ Rank 3 | ██████ 2510
+ Rank 4 | █████ 2425
  ---
- Final score: <span class="m">236</span>.2 ± <span class="m">59</span>.2
+ Final score: 236.2 ± 59.2
 
-... <span class="o">(</span>agent <span class="m">2</span> and <span class="m">3</span> similar to agent <span class="m">1</span><span class="o">)</span>
+<span class="cp">... (agent 2 and 3 similar to agent 1)</span>
 
-Agent <span class="c1">#4 (pretrained/yahtzee-win.pkl)</span>
--------------------------------------
- Rank <span class="m">1</span> <span class="p">|</span> ██████ <span class="m">2581</span>
- Rank <span class="m">2</span> <span class="p">|</span> █████ <span class="m">2446</span>
- Rank <span class="m">3</span> <span class="p">|</span> █████ <span class="m">2463</span>
- Rank <span class="m">4</span> <span class="p">|</span> ██████ <span class="m">2510</span>
+<span class="gh">Agent #4 (pretrained/yahtzee-win.pkl)</span>
+<span class="gh">-------------------------------------</span>
+ Rank 1 | ██████ 2581
+ Rank 2 | █████ 2446
+ Rank 3 | █████ 2463
+ Rank 4 | ██████ 2510
  ---
- Final score: <span class="m">235</span>.8 ± <span class="m">59</span>.4
+ Final score: 235.8 ± 59.4
 </code></pre></div>
 
 <p><em>(ties are counted as the higher rank for both&nbsp;agents)</em></p>
