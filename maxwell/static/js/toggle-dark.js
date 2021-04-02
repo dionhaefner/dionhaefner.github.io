@@ -7,9 +7,15 @@ window.addEventListener('DOMContentLoaded', function() {
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     // Get the user's theme preference from local storage, if it's available
-    const currentTheme = localStorage.getItem("theme");
+    const storedTheme = localStorage.getItem("theme");
+    var initialTheme;
+    if (storedTheme == "dark" || (prefersDarkScheme.matches && initialTheme != "light")) {
+        initialTheme = "dark"
+    } else {
+        initialTheme = "light"
+    }
 
-    if ((prefersDarkScheme.matches && currentTheme != "light") || currentTheme == "dark") {
+    if (initialTheme == "dark") {
         btn.classList.add("fa-sun-o");
         document.body.classList.add("dark-theme");
     }
@@ -18,7 +24,7 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove("dark-theme");
     }
 
-    // Listen for a click on the button 
+    // Listen for a click on the button
     btn.addEventListener("click", function() {
         document.body.classList.toggle("dark-theme");
         var theme = document.body.classList.contains("dark-theme") ? "dark" : "light";
@@ -31,5 +37,17 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         // Finally, let's save the current preference to localStorage to keep using it
         localStorage.setItem("theme", theme);
+    });
+
+    addEventListener("message", event => {
+        if (event.origin !== "https://utteranc.es") {
+            return;
+        }
+        const message = {
+            type: "set-theme",
+            theme: initialTheme == "light" ? "github-light" : "github-dark",
+        };
+        const utterances = event.source;
+        utterances.postMessage(message, "https://utteranc.es");
     });
 });

@@ -103,5 +103,13 @@
       </div>
     {% endif %}
   </footer>
+
+  {% if MAXWELL_UTTERANCES_REPO %}
+  <footer class="comments">
+    <script src="https://utteranc.es/client.js" repo="{{ MAXWELL_UTTERANCES_REPO }}" issue-term="pathname"
+      theme="preferred-color-scheme" crossorigin="anonymous" async>
+      </script>
+  </footer>
+  {% endif %}
 </section>
 {% endblock %}

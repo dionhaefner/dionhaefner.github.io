@@ -100,3 +100,6 @@ EXTRA_PATH_METADATA = {
     "extra/robots.txt": {"path": "robots.txt"},
     "extra/README": {"path": "README.md"}
 }
+
+# Comments
+MAXWELL_UTTERANCES_REPO = "dionhaefner/blog-comments"
