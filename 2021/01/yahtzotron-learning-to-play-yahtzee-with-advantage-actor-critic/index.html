@@ -358,8 +358,8 @@ One nice thing about <span class="caps">JAX</span> is how readable and &#8220;no
 <div class="highlight"><pre><span></span><code>$ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n 10000 --ruleset yahtzee
 
 100%|███████████████████████| 10000/10000 [09:34&lt;00:00, 17.42it/s]
-<span class="gh">Agent #1 (pretrained/yahtzee-score.pkl)</span>
-<span class="gh">---------------------------------------</span>
+Agent #1 (pretrained/yahtzee-score.pkl)
+---------------------------------------
  Rank 1 | ██████ 2515
  Rank 2 | ██████ 2550
  Rank 3 | ██████ 2510
@@ -367,10 +367,10 @@ One nice thing about <span class="caps">JAX</span> is how readable and &#8220;no
  ---
  Final score: 236.2 ± 59.2
 
-<span class="cp">... (agent 2 and 3 similar to agent 1)</span>
+... (agent 2 and 3 similar to agent 1)
 
-<span class="gh">Agent #4 (pretrained/yahtzee-win.pkl)</span>
-<span class="gh">-------------------------------------</span>
+Agent #4 (pretrained/yahtzee-win.pkl)
+-------------------------------------
  Rank 1 | ██████ 2581
  Rank 2 | █████ 2446
  Rank 3 | █████ 2463
@@ -382,24 +382,24 @@ One nice thing about <span class="caps">JAX</span> is how readable and &#8220;no
 <p><em>(ties are counted as the higher rank for both&nbsp;agents)</em></p>
 <p>As it turns out, we achieve mean scores of arond 236, and the play-to-win agent is indeed winning more often despite having a slightly lower mean score! (Of course, it is also coming last more often - riskier plays don&#8217;t always pay&nbsp;off.)</p>
 <p>Needless to say, the trained agent also consistently beats the <a href="#pre-training-via-advantage-look-up-table">greedy</a> and random baseline&nbsp;agents.</p>
-<div class="highlight"><pre><span></span><code><span class="gh">Agent #1 (pretrained/yahtzee-score.pkl)</span>
-<span class="gh">---------------------------------------</span>
+<div class="highlight"><pre><span></span><code>Agent #1 (pretrained/yahtzee-score.pkl)
+---------------------------------------
  Rank 1 | █████████████ 616
  Rank 2 | ████████ 384
  Rank 3 |  0
  ---
  Final score: 239.7 ± 62.2
 
-<span class="gh">Agent #2 (greedy)</span>
-<span class="gh">-----------------</span>
+Agent #2 (greedy)
+-----------------
  Rank 1 | ████████ 390
  Rank 2 | █████████████ 610
  Rank 3 |  0
  ---
  Final score: 218.7 ± 52.9
 
-<span class="gh">Agent #3 (random)</span>
-<span class="gh">-----------------</span>
+Agent #3 (random)
+-----------------
  Rank 1 |  0
  Rank 2 |  0
  Rank 3 | ████████████████████ 1000
@@ -470,6 +470,12 @@ One nice thing about <span class="caps">JAX</span> is how readable and &#8220;no
       <div id="download-source">
         <a href="https://dionhaefner.github.io/2021/01/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/index.source" download="yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic.md">Download article source</a>
       </div>
+  </footer>
+
+  <footer class="comments">
+    <script src="https://utteranc.es/client.js" repo="dionhaefner/blog-comments" issue-term="pathname"
+      theme="preferred-color-scheme" crossorigin="anonymous" async>
+      </script>
   </footer>
 </section>
         <footer id="contentinfo" class="body">

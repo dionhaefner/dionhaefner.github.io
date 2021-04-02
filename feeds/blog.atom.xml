@@ -272,8 +272,8 @@ One nice thing about &lt;span class="caps"&gt;JAX&lt;/span&gt; is how readable a
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ yahtzotron evaluate pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-score.pkl pretrained/yahtzee-win.pkl -n 10000 --ruleset yahtzee
 
 100%|███████████████████████| 10000/10000 [09:34&amp;lt;00:00, 17.42it/s]
-&lt;span class="gh"&gt;Agent #1 (pretrained/yahtzee-score.pkl)&lt;/span&gt;
-&lt;span class="gh"&gt;---------------------------------------&lt;/span&gt;
+Agent #1 (pretrained/yahtzee-score.pkl)
+---------------------------------------
  Rank 1 | ██████ 2515
  Rank 2 | ██████ 2550
  Rank 3 | ██████ 2510
@@ -281,10 +281,10 @@ One nice thing about &lt;span class="caps"&gt;JAX&lt;/span&gt; is how readable a
  ---
  Final score: 236.2 ± 59.2
 
-&lt;span class="cp"&gt;... (agent 2 and 3 similar to agent 1)&lt;/span&gt;
+... (agent 2 and 3 similar to agent 1)
 
-&lt;span class="gh"&gt;Agent #4 (pretrained/yahtzee-win.pkl)&lt;/span&gt;
-&lt;span class="gh"&gt;-------------------------------------&lt;/span&gt;
+Agent #4 (pretrained/yahtzee-win.pkl)
+-------------------------------------
  Rank 1 | ██████ 2581
  Rank 2 | █████ 2446
  Rank 3 | █████ 2463
@@ -296,24 +296,24 @@ One nice thing about &lt;span class="caps"&gt;JAX&lt;/span&gt; is how readable a
 &lt;p&gt;&lt;em&gt;(ties are counted as the higher rank for both&amp;nbsp;agents)&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;As it turns out, we achieve mean scores of arond 236, and the play-to-win agent is indeed winning more often despite having a slightly lower mean score! (Of course, it is also coming last more often - riskier plays don&amp;#8217;t always pay&amp;nbsp;off.)&lt;/p&gt;
 &lt;p&gt;Needless to say, the trained agent also consistently beats the &lt;a href="#pre-training-via-advantage-look-up-table"&gt;greedy&lt;/a&gt; and random baseline&amp;nbsp;agents.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;Agent #1 (pretrained/yahtzee-score.pkl)&lt;/span&gt;
-&lt;span class="gh"&gt;---------------------------------------&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Agent #1 (pretrained/yahtzee-score.pkl)
+---------------------------------------
  Rank 1 | █████████████ 616
  Rank 2 | ████████ 384
  Rank 3 |  0
  ---
  Final score: 239.7 ± 62.2
 
-&lt;span class="gh"&gt;Agent #2 (greedy)&lt;/span&gt;
-&lt;span class="gh"&gt;-----------------&lt;/span&gt;
+Agent #2 (greedy)
+-----------------
  Rank 1 | ████████ 390
  Rank 2 | █████████████ 610
  Rank 3 |  0
  ---
  Final score: 218.7 ± 52.9
 
-&lt;span class="gh"&gt;Agent #3 (random)&lt;/span&gt;
-&lt;span class="gh"&gt;-----------------&lt;/span&gt;
+Agent #3 (random)
+-----------------
  Rank 1 |  0
  Rank 2 |  0
  Rank 3 | ████████████████████ 1000
