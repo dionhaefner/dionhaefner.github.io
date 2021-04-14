@@ -1,6 +1,6 @@
 Title: Learning to play Yahtzee with Advantage Actor-Critic (A2C)
 Slug: yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic
-Date: 01-04-2021
+Date: 2021-04-01
 Tags: Machine Learning, Reinforcement Learning, Python
 Author: Dion
 related_posts:

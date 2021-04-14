@@ -235,12 +235,12 @@ a.anchor-link:hover {
     margin: 2em auto;
 }
 
-.entry-content figure > img {
+.entry-content figure img {
     margin: 1em 10px;
     display: inline;
 }
 
-.entry-content figure > figcaption {
+.entry-content figure figcaption {
     font-style: italic;
     font-size: 90%;
 }

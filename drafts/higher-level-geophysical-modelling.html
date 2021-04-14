@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Higher-level geophysical modelling &mdash; (or: High-performance computing in Python) | dionhaefner.github.io</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="By Roman Nuterman, Dion Häfner, and Markus Jochum. This post is the display material for the vEGU 2021 abstract “Higher-level geophysical modelling” in session AS1.1 (Recent Developments in Numerical Earth System Modelling). Therefore, it is a bit more technical than my usual blog posts, and...">
+        <link rel="icon" href="https://dionhaefner.github.io/favicon.ico">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Higher-level geophysical modelling &mdash; (or: High-performance computing in Python) | dionhaefner.github.io" />
+        <meta property="og:url" content="https://dionhaefner.github.io/drafts/higher-level-geophysical-modelling.html" />
+        <meta property="og:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <meta property="og:description" content="By Roman Nuterman, Dion Häfner, and Markus Jochum. This post is the display material for the vEGU 2021 abstract “Higher-level geophysical modelling” in session AS1.1 (Recent Developments in Numerical Earth System Modelling). Therefore, it is a bit more technical than my usual blog posts, and..." />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2021-04-05T00:00:00+02:00" />
+  <meta property="article:author" content="Dion" />
+  <meta property="article:section" content="blog" />
+  <meta property="article:tag" content="Computing, Python, Science" />
+        <!-- /Open Graph -->
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="Higher-level geophysical modelling &mdash; (or: High-performance computing in Python) | dionhaefner.github.io" />
+          <meta name="twitter:site" content="@dionhaefner" />
+        <meta name="twitter:title" content="Higher-level geophysical modelling &mdash; (or: High-performance computing in Python) | dionhaefner.github.io" />
+        <meta name="twitter:description" content="By Roman Nuterman, Dion Häfner, and Markus Jochum. This post is the display material for the vEGU 2021 abstract “Higher-level geophysical modelling” in session AS1.1 (Recent Developments in Numerical Earth System Modelling). Therefore, it is a bit more technical than my usual blog posts, and..." />
+        <meta name="twitter:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <!-- /Twitter Card -->
+
+        <!-- Stylesheets -->
+        <link href="https://dionhaefner.github.io/theme/css/fonts.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/maxwell.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/pygments.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/font-awesome.css" rel="stylesheet">
+        <!-- /Stylesheets -->
+
+        <!-- JS -->
+        <script src="https://dionhaefner.github.io/theme/js/toggle-dark.js" language="javascript"></script>
+        
+<script data-goatcounter="https://dionhaefner.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+        <!-- /JS -->
+
+        <link href="https://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Full Atom Feed" />
+        <link href="https://dionhaefner.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="Science" />
+    <meta name="tags" content="Computing" />
+    <meta name="tags" content="Python" />
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": {
+        scale: 85,
+        styles: {".MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn": {color: "inherit"}},
+      }
+    });
+    </script>
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+          <a href="https://dionhaefner.github.io/"><span class="site-title">dionhaefner.github.io</span></a><span class="site-subtitle">Maximum entropy</span><a class="btn-toggle fa" alt="Toggle theme"></a>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <header class="post-info">
+    <div class="entry-metadata">
+      <time class="published" datetime="2021-04-05T00:00:00+02:00">
+        <span class="fa fa-calendar"></span> 2021-04-05
+      </time>
+      <div class="tags">
+          <span class="fa fa-tags"></span>
+              <a href="https://dionhaefner.github.io/tag/science.html">Science</a>,              <a href="https://dionhaefner.github.io/tag/computing.html">Computing</a>,              <a href="https://dionhaefner.github.io/tag/python.html">Python</a>      </div>
+    </div>
+    <h1 class="entry-title">
+      <a href="https://dionhaefner.github.io/drafts/higher-level-geophysical-modelling.html" rel="bookmark"
+         title="Permalink to Higher-level geophysical modelling">Higher-level geophysical&nbsp;modelling</a>
+    </h1>
+    <h2 class="entry-subtitle">(or: High-performance computing in Python)</h2>
+ 
+    <div class="header-underline"></div>
+  </header>
+
+  <article class="entry-content">
+    <div style="text-align: center;">By Roman Nuterman, <u>Dion Häfner</u>, and Markus Jochum.</div>
+
+<p><em>This post is the display material for the vEGU 2021 abstract <a href="https://meetingorganizer.copernicus.org/EGU21/EGU21-2127.html">&#8220;Higher-level geophysical modelling&#8221;</a> in session <a href="https://meetingorganizer.copernicus.org/EGU21/session/40846"><span class="caps">AS1</span>.1</a> (Recent Developments in Numerical Earth System&nbsp;Modelling).</em></p>
+<p><em>Therefore, it is a bit more technical than my usual blog posts, and assumes that you are somewhat familiar within numerical&nbsp;modelling.</em></p>
+<div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#a-paradigm-shift">A paradigm&nbsp;shift</a></li>
+<li><a href="#the-taxonomy-of-high-level-modelling">The taxonomy of high-level&nbsp;modelling</a></li>
+<li><a href="#lets-talk-about-performance">Let&#8217;s talk about&nbsp;performance</a></li>
+<li><a href="#high-performance-frameworks-for-python">High-performance frameworks for&nbsp;Python</a></li>
+<li><a href="#abstraction-is-key">Abstraction is&nbsp;key</a></li>
+<li><a href="#quo-vadis">Quo&nbsp;vadis?</a></li>
+</ul>
+</div>
+<h3 id="a-paradigm-shift">A paradigm shift<a class="anchor-link" href="#a-paradigm-shift" title="Permanent link">&para;</a></h3>
+<p>The year is 2021, but numerical modelling and high-performance computing are still bastions of low-level programming languages like Fortran or C, which have been around since the early days of&nbsp;computing.</p>
+<p>This is not surprising on the largest compute scales like the <span class="caps">CMIP</span> climate model ensembles, which run on the world&#8217;s largest supercomputers. In this case, even minor performance losses could end up consuming funding for several human positions. But this is an extreme example, and typically, human time tends to be <em>more</em> valuable than computer time. (Just think of your poor PhD student trying to get their setup to&nbsp;work.)</p>
+<p>On top of this, recent advances in <span class="caps">GPU</span> efficiency (in tandem with the machine learning boom) have lead to more heterogeneous compute architectures than ever. For example, Finland&#8217;s <span class="caps">LUMI</span> supercomputer <a href="https://www.lumi-supercomputer.eu/may-we-introduce-lumi/">will consist of 550 <span class="caps">PFLOP</span>/s worth of GPUs</a> (on top of about 200,000 <span class="caps">CPU</span>&nbsp;cores).</p>
+<p>We think that these two developments call for a new, flexible generation of geophysical&nbsp;models:</p>
+<ol>
+<li><strong>Flexible to run.</strong> The same code needs to be able to run on <span class="caps">CPU</span> and <span class="caps">GPU</span> hardware&nbsp;stacks.</li>
+<li><strong>Flexible to use.</strong> Simple to install and get&nbsp;started.</li>
+<li><strong>Flexible to modify.</strong> Readable code with helpful abstractions. Simple to&nbsp;re-build.</li>
+<li><strong>Flexible to integrate.</strong> Simple to interface with external libraries for plotting, post-processing, machine learning,&nbsp;&#8230;</li>
+</ol>
+<p>We call these flexible models &#8220;high-level&#8221;, because to fulfill these requirements, at least part of them needs to be implemented in a <em>high-level programming language</em>.</p>
+<h3 id="the-taxonomy-of-high-level-modelling">The taxonomy of high-level modelling<a class="anchor-link" href="#the-taxonomy-of-high-level-modelling" title="Permanent link">&para;</a></h3>
+<p>Essentially, high-level modelling comes in 3 different flavors. Each of these is a promising way forward and definitely a step up from the status&nbsp;quo.</p>
+<ul>
+<li>
+<p><strong>Type I: High-level frontend, low-level&nbsp;backend</strong></p>
+<p>A typical example is <a href="https://github.com/CliMT/climt">climt</a>, an atmospheric model that wraps modular computational kernels written in Fortran with a Python user interface, or <a href="https://wiki.cen.uni-hamburg.de/ifm/TO/pyOM2">PyOM2</a>, an ocean model with a similar&nbsp;structure.</p>
+<p>These models have great <span class="caps">CPU</span> performance out of the box, and don&#8217;t need to worry much about the code structure due to the restrictive nature of Fortran (more about this&nbsp;later).</p>
+<p>Our biggest concern with models of this type is the lack of <span class="caps">GPU</span> support. This would require a seperate backend implementation, for example in <span class="caps">CUDA</span>, to run on <span class="caps">GPU</span>. Maintaining 2 implementations of the same code is more than many open source projects can&nbsp;handle.</p>
+</li>
+<li>
+<p><strong>Type <span class="caps">II</span>: High-level model in a niche programming&nbsp;language</strong></p>
+<p>This is the approach pursued by the <a href="https://clima.caltech.edu/">Climate Modelling Alliance</a>&#8216;s <a href="https://github.com/CliMA/Oceananigans.jl">Oceananigans.jl</a> model, implemented in&nbsp;Julia.</p>
+<p>Julia in particular has excellent performance, first-class <span class="caps">GPU</span> support, and a growing scientific library ecosystem. Therefore, it has tremendous potential to become the dominant language for scientific&nbsp;computing.</p>
+<p>On the other hand, Julia&#8217;s focus on scientific applications is both blessing and curse. In this day and age, a lot of the progress in computing is driven by machine learning applications <em>outside</em> academia. Sticking to a programming language that is not yet established means that such synergies can&#8217;t be&nbsp;exploited.</p>
+</li>
+<li>
+<p><strong>Type <span class="caps">III</span>: High-level model in a widely used programming&nbsp;language</strong></p>
+<p>Currently, Python is the only programming language that fits this category. Python is being used extensively both inside and outside academia, and probably has the largest scientific library ecosystem of any programming&nbsp;language.</p>
+<p>An example for this type is our Python ocean model <a href="https://github.com/team-ocean/veros">Veros</a>.</p>
+<p><em>We argue that this is the most valuable type of model</em>, because it is easier to use / modify (more people are already familiar) and integrate (larger library ecosystem) than Type <span class="caps">II</span>&nbsp;models.</p>
+<p>If you need some evidence for that last statement, just look how easy it is to install and use Veros from a clean Linux&nbsp;environment:</p>
+<p><figure>
+    <script id="asciicast-BIpt5BcaIOWvoYqsRI0ag0j8V" src="https://asciinema.org/a/BIpt5BcaIOWvoYqsRI0ag0j8V.js" data-rows=24 async></script>
+    <figcaption>Installing and running Veros, starting from a fresh environment. Screencast in real time.</figcaption>
+</figure></p>
+<p><strong>Unfortunately, this type is also the hardest to get right.</strong> The main problem is finding the right trade-off between readability, performance, and&nbsp;abstraction.</p>
+</li>
+</ul>
+<p>For the remainder of the article, we will discuss about what it takes to build high-performance models in Python, and where we need to go as a community to make this a pleasant experience for developers and&nbsp;users.</p>
+<h3 id="lets-talk-about-performance">Let&#8217;s talk about performance<a class="anchor-link" href="#lets-talk-about-performance" title="Permanent link">&para;</a></h3>
+<p>Model performance is the elephant in the room whenever we discuss high-performance computing in high-level&nbsp;languages.</p>
+<p>As we argue in the introduction, human time is often more valuable than computer time, so we don&#8217;t think that it should be prioritized at all cost. However, there certainly is a threshold beyond which degraded model performance becomes unreasonable. On top of this, model performance <em>is part of the user experience</em>. A longer feedback loop between designing an experiment and examining its results is detrimental to overall&nbsp;productivity.</p>
+<p>Therefore, we <em>have</em> to care about performance. Luckily, this is largely a solved problem. <strong>It is already possible to match native Fortran performance in high-level languages</strong> (within&nbsp;±10%).</p>
+<p>For Type I models, this is almost self-evident since all expensive operations have a low-level implementation. But it is also true for Type <span class="caps">II</span> and Type <span class="caps">III</span>&nbsp;models.</p>
+<p>In the case of Type <span class="caps">II</span> models, Julia has excellent performance thanks to its powerful <span class="caps">JIT</span> (just-in-time) compiler. This is confirmed <a href="https://clima.github.io/OceananigansDocumentation/stable/benchmarks/">by the Oceananigans benchmarks</a>.</p>
+<p>In the case of Type <span class="caps">III</span> models, pure Python / NumPy performance is of course nowhere close to Fortran (in our experience, a model written in NumPy is about 5x slower).
+But fortunately, there is a rich library ecosystem to accelerate Python code. Most of these libraries are geared towards machine learning, but nothing prevents us from using them for scientific computing instead. (Remember when we talked about synergy as a major asset of Type <span class="caps">III</span>&nbsp;models?)</p>
+<p>The following plots are from <a href="https://github.com/dionhaefner/pyhpc-benchmarks">pyhpc-benchmarks</a>, a repository we created to compare the performance of various Python frameworks on subroutines of our ocean model&nbsp;Veros:</p>
+<figure style="max-width: 100%;">
+    <a href="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-equation_of_state-CPU.png">
+    <img src="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-equation_of_state-CPU.png" style="max-width: 300px;">
+    </a>
+    <a href="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-equation_of_state-GPU.png">
+    <img src="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-equation_of_state-GPU.png" style="max-width: 300px;">
+    </a>
+    <figcaption>Performance of various Python frameworks on <a href="http://www.teos-10.org/software.htm"><span class="caps">TEOS</span>-10</a> equation of state. Numba performance is similar to that of the underlying Fortran code.</figcaption>
+</figure>
+
+<figure style="max-width: 100%;">
+    <a href="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-isoneutral_mixing-CPU.png">
+    <img src="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-isoneutral_mixing-CPU.png" style="max-width: 300px;">
+    </a>
+    <a href="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-isoneutral_mixing-GPU.png">
+    <img src="https://dionhaefner.github.io/images/next-level-geophysical-modelling/bench-isoneutral_mixing-GPU.png" style="max-width: 300px;">
+    </a>
+    <figcaption>Performance of various Python frameworks on Veros isoneutral mixing subroutine. Numba performance is similar to that of the underlying Fortran code.</figcaption>
+</figure>
+
+<h3 id="high-performance-frameworks-for-python">High-performance frameworks for Python<a class="anchor-link" href="#high-performance-frameworks-for-python" title="Permanent link">&para;</a></h3>
+<p>There are two Python frameworks that show particularly strong performance, <a href="https://numba.pydata.org/">Numba</a> and <a href="https://jax.readthedocs.io/en/latest/"><span class="caps">JAX</span></a>. To give you an idea how this works, here is the same code snippet in Fortran, NumPy, Numba, and <span class="caps">JAX</span>:</p>
+<hr>
+<p><strong>Fortran</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">tke_surf_corr</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">do </span><span class="n">j</span><span class="o">=</span><span class="n">js_pe</span><span class="p">,</span><span class="n">je_pe</span>
+  <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="n">is_pe</span><span class="p">,</span><span class="n">ie_pe</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">tke</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">taup1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="p">)</span> <span class="k">then</span>
+<span class="k">      </span><span class="n">tke_surf_corr</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">tke</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">taup1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">dzw</span><span class="p">(</span><span class="n">ke</span><span class="p">))</span> <span class="o">/</span><span class="n">dt_tke</span>
+      <span class="n">tke</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">nz</span><span class="p">,</span><span class="n">taup1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">endif</span>
+  <span class="n">enddo</span>
+<span class="n">enddo</span>
+</code></pre></div>
+
+<p><strong>NumPy</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">mask</span> <span class="o">=</span> <span class="n">tke</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">taup1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.0</span>
+<span class="n">tke_surf_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">maskU</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">tke_surf_corr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span>
+    <span class="n">mask</span><span class="p">,</span>
+    <span class="o">-</span><span class="n">tke</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">taup1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dzw</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">dt_tke</span><span class="p">,</span>
+    <span class="mf">0.</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p><strong>Numba</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">tke_surf_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tke</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">taup1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">tke_surf_corr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">tke</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">taup1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">dzw</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">dt_tke</span>
+        <span class="n">tke</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">taup1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span>
+</code></pre></div>
+
+<p><strong><span class="caps">JAX</span></strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">mask</span> <span class="o">=</span> <span class="n">tke</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">taup1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.0</span>
+<span class="n">tke_surf_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">maskU</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">tke_surf_corr</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">index_update</span><span class="p">(</span>
+    <span class="n">tke_surf_corr</span><span class="p">,</span> <span class="n">jax</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">where</span><span class="p">(</span>
+        <span class="n">mask</span><span class="p">,</span>
+        <span class="o">-</span><span class="n">tke</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">taup1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dzw</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">dt_tke</span><span class="p">,</span>
+        <span class="mf">0.</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<hr>
+<p>See how the Numba implementation is basically translated Fortran, including the explicit loops? Numba&#8217;s <span class="caps">JIT</span> compiler is very efficient at transforming explicit loops like this one, essentially giving us the same performance as the Fortran code after&nbsp;compilation.</p>
+<p>Unfortunately, there is no way to use the same Numba code for both <span class="caps">CPU</span> and <span class="caps">GPU</span>, as efficient <span class="caps">GPU</span> code generation typically requires a vectorized approach instead of explicit&nbsp;loops.</p>
+<p><span class="caps">JAX</span> on the other hand is very similar to NumPy, but its <span class="caps">JIT</span> compiler generates code that is competitive with Numba / Fortran on <span class="caps">CPU</span> and has great performance on <span class="caps">GPU</span> (with speedups of 40x &#8212; 3000x over NumPy). The only major restrictions are that <span class="caps">JAX</span> arrays are immutable and all <span class="caps">JAX</span> functions have to be pure (i.e., have no side&nbsp;effects).</p>
+<p>We have therefore decided on <span class="caps">JAX</span> as the new computational backend for Veros. <strong>First benchmarks of the full model show that, with <span class="caps">JAX</span>, large setups are ~10% slower than Fortran on <span class="caps">CPU</span>, and about as fast as 50 Fortran CPUs on a single <span class="caps">GPU</span>.</strong></p>
+<p>We have not measured power consumption yet, but with some back-of-the-envelope math, this should yield a <span class="caps">GPU</span> model that is at least <em>2x more energy efficient</em> than its Fortran&nbsp;equivalent.</p>
+<p>We think that <span class="caps">JAX</span> shows exceptional promise to become the de-facto computational high-performance backend for Python (because of its user friendliness and consistently high performance on both <span class="caps">CPU</span> and <span class="caps">GPU</span>).</p>
+<h3 id="abstraction-is-key">Abstraction is key<a class="anchor-link" href="#abstraction-is-key" title="Permanent link">&para;</a></h3>
+<p><em>Surprisingly, the main problem with high-level models is not performance, but to find the right level of abstraction</em>.</p>
+<p>Just translating model code from Fortran to Python does not make it more&nbsp;readable.</p>
+<p>In fact, it can be significantly <em>less readable</em>, because there is now a delicate balance between performance and readability. The most readable way to write the code will not be performant, and the most performant way to write the code will not be&nbsp;readable.</p>
+<p>In our experience, finding the perfect middle ground is extremely hard, and the different performance characteristics of each computational framework make it so there is no universal answer to&nbsp;this.</p>
+<p>Additionally, people have been writing model code in Fortran since the 1970s, but are only starting to do so in Python / NumPy / <span class="caps">JAX</span>. This means that there are no established community standards on how to write&nbsp;models.</p>
+<p>More abstraction is needed at all levels of a Python&nbsp;model:</p>
+<ol>
+<li>
+<p>At the lowest level, to separate numerics from&nbsp;physics.</p>
+<p><code>dydx(salt, order=1)</code> represents the intent of the code much better than <code>(salt[1:] - salt[:-1]) / dx</code>. Numerical computations should also be aware of physical units and be able to perform conversions (e.g. via <a href="https://pint.readthedocs.io/en/stable/">pint</a>). Additionally, the code representing the physics should looks the same regardless of the computational backend used (NumPy or <span class="caps">JAX</span> or Fortran or something&nbsp;else).</p>
+</li>
+<li>
+<p>At the intermediate level, to encapsulate model state and define the data flow between model&nbsp;routines.</p>
+<p>There are several approaches to this, including <a href="https://github.com/mcgibbon/sympl">sympl</a>, <a href="https://xarray-simlab.readthedocs.io/en/latest/">xarray-simlab</a>, and <a href="https://climlab.readthedocs.io/en/latest/">climlab</a>, but neither has a significant user&nbsp;base.</p>
+</li>
+<li>
+<p>At the highest level, to provide a common interface for setup specification, introspection, and interactive data&nbsp;analysis.</p>
+<p>Ideally, running the model could happen in the same environment and use the same tools as post-processing of its output. For example, every physical model could expose its state as a self-describing <a href="http://xarray.pydata.org/en/stable/">xarray</a>&nbsp;dataset.</p>
+</li>
+</ol>
+<h3 id="quo-vadis">Quo vadis?<a class="anchor-link" href="#quo-vadis" title="Permanent link">&para;</a></h3>
+<p>It is only fair to mention that there is a movement to revive Fortran called <a href="https://www.manning.com/books/modern-fortran">&#8220;modern Fortran&#8221;</a>, which is an effort we applaud. Fortran is still immensely powerful and a good language to write performant <span class="caps">CPU</span> models&nbsp;in.</p>
+<p>But if the current trend continues, first-class <span class="caps">GPU</span> support will become more and more important. This alone means that there is no turning back to Fortran (besides the other usability&nbsp;issues).</p>
+<p>We are therefore convinced that Type <span class="caps">II</span> and Type <span class="caps">III</span> models will eventually take over, but there is a long way to go. We as a community still need to find a way to handle the increased complexity of more dynamical languages, but it can be&nbsp;done.</p>
+<p>The future of high-level modelling is&nbsp;bright.</p>
+<hr>
+<p>If you enjoyed this post, make sure to visit my <a href="(https://meetingorganizer.copernicus.org/EGU21/session/40846)">vPICO presentation during vEGU 2021</a> (Tue, 27 Apr), and join the discussion&nbsp;afterwards.</p>
+<p>If you can&#8217;t make it, I&#8217;m also happy to respond to your comments&nbsp;below.</p>
+  </article><!-- /.entry-content -->
+
+  <footer class="postmatter">
+      <div id="download-source">
+        <a href="https://dionhaefner.github.io/drafts/higher-level-geophysical-modelling.source" download="higher-level-geophysical-modelling.md">Download article source</a>
+      </div>
+  </footer>
+
+  <footer class="comments">
+    <script src="https://utteranc.es/client.js" repo="dionhaefner/blog-comments" issue-term="pathname"
+      theme="preferred-color-scheme" crossorigin="anonymous" async>
+      </script>
+  </footer>
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/" target="_blank">Pelican</a>.
+&copy; Dion Häfner 2016-2021                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
