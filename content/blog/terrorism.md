@@ -1,6 +1,6 @@
 Title: Why you should not be afraid of terrorism
 Slug: why-you-should-not-be-afraid-of-terrorism
-Date: 26-03-2016
+Date: 2016-03-26
 Tags: Thoughts, Psychology
 Author: Dion
 related_posts: beautiful-data-visualization-in-python-with-matplotlib
