@@ -349,6 +349,7 @@ ul#tag-list {
 h1.entry-title {
     font-size: 250%;
     margin: 1em 0 0.5em 0;
+    word-wrap: break-word; /* Sometimes titles don't fit on mobile screens */
 }
 
 h1.entry-title a {
