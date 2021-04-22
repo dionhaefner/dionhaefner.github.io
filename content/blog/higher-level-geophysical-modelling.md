@@ -206,7 +206,7 @@ We can address these points only through dialogue and collaboration. So if you h
 
 While we think that high-performance modelling in Python has several decisive advantages, the future is still unclear.
 
-It is only fair to mention that there is a movement to revive Fortran called ["modern Fortran"](https://www.manning.com/books/modern-fortran), which is an effort we applaud. Fortran is still immensely powerful and a good language to write performant CPU models in.
+To be fair, there is a movement to revive Fortran called ["modern Fortran"](https://www.manning.com/books/modern-fortran), and a modern LLVM-based Fortran compiler [LFortran](https://lfortran.org/), which are efforts we applaud. Fortran is still immensely powerful and a good language to write performant CPU models in.
 
 But if the current trend continues, first-class GPU support will become more and more important. This alone means that there is no turning back (usability issues aside).
 
