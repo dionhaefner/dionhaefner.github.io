@@ -15,7 +15,7 @@ By Roman Nuterman, <u>Dion Häfner</u>, and Markus Jochum.<br>
 
 [TOC]
 
-## A paradigm shift
+## Why we need higher-level models
 
 The year is 2021, but numerical modelling and high-performance computing are still bastions of low-level programming languages. Most (finite difference) models are written in Fortran or C, which have been around since the early days of computing.
 
