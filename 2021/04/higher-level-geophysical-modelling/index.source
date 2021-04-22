@@ -5,8 +5,8 @@ Author: Dion
 related_posts:
 
 <div style="text-align: center; padding-bottom: 1em;">
-By Roman Nuterman<sup>†</sup>, <u>Dion Häfner</u><sup>†</sup>, and Markus Jochum<sup>†</sup>.<br>
-<span style="font-size: 70%;">† Niels Bohr Institute, Copenhagen, Denmark</span>
+By Roman Nuterman, <u>Dion Häfner</u>, and Markus Jochum.<br>
+<span style="font-size: 75%;">(Niels Bohr Institute, Copenhagen, Denmark)</span>
 </div>
 
 *This post is the display material for the vEGU 2021 abstract ["Higher-level geophysical modelling"](https://meetingorganizer.copernicus.org/EGU21/EGU21-2127.html) in session [AS1.1](https://meetingorganizer.copernicus.org/EGU21/session/40846) (Recent Developments in Numerical Earth System Modelling).*
@@ -216,7 +216,7 @@ The future of high-level modelling is bright.
 
 ---
 
-If you enjoyed this post, make sure to visit my [vPICO presentation during vEGU 2021]((https://meetingorganizer.copernicus.org/EGU21/session/40846)) (Tue, 27 Apr), and join the discussion afterwards.
+If you enjoyed this post, make sure to visit my [vPICO presentation during vEGU 2021](https://meetingorganizer.copernicus.org/EGU21/session/40846) (Tue, 27 Apr), and join the discussion afterwards.
 
 I'm also happy to respond to your comments below.
 

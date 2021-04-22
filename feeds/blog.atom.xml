@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>dionhaefner.github.io - blog</title><link href="https://dionhaefner.github.io/" rel="alternate"></link><link href="https://dionhaefner.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://dionhaefner.github.io/</id><updated>2021-04-20T00:00:00+02:00</updated><subtitle>Maximum entropy</subtitle><entry><title>Higher-level geophysical modelling</title><link href="https://dionhaefner.github.io/2021/04/higher-level-geophysical-modelling/" rel="alternate"></link><published>2021-04-20T00:00:00+02:00</published><updated>2021-04-20T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-04-20:/2021/04/higher-level-geophysical-modelling/</id><summary type="html">&lt;div style="text-align: center; padding-bottom: 1em;"&gt;
-By Roman Nuterman&lt;sup&gt;†&lt;/sup&gt;, &lt;u&gt;Dion Häfner&lt;/u&gt;&lt;sup&gt;†&lt;/sup&gt;, and Markus Jochum&lt;sup&gt;†&lt;/sup&gt;.&lt;br&gt;
-&lt;span style="font-size: 70%;"&gt;† Niels Bohr Institute, Copenhagen, Denmark&lt;/span&gt;
+By Roman Nuterman, &lt;u&gt;Dion Häfner&lt;/u&gt;, and Markus Jochum.&lt;br&gt;
+&lt;span style="font-size: 75%;"&gt;(Niels Bohr Institute, Copenhagen, Denmark)&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;This post is the display material for the vEGU 2021 abstract &lt;a href="https://meetingorganizer.copernicus.org/EGU21/EGU21-2127.html"&gt;&amp;#8220;Higher-level geophysical modelling&amp;#8221;&lt;/a&gt; in session &lt;a href="https://meetingorganizer.copernicus.org/EGU21/session/40846"&gt;&lt;span class="caps"&gt;AS1&lt;/span&gt;.1&lt;/a&gt; (Recent Developments in Numerical Earth System&amp;nbsp;Modelling).&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Therefore, it is a bit more technical than my usual blog posts …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;div style="text-align: center; padding-bottom: 1em;"&gt;
-By Roman Nuterman&lt;sup&gt;†&lt;/sup&gt;, &lt;u&gt;Dion Häfner&lt;/u&gt;&lt;sup&gt;†&lt;/sup&gt;, and Markus Jochum&lt;sup&gt;†&lt;/sup&gt;.&lt;br&gt;
-&lt;span style="font-size: 70%;"&gt;† Niels Bohr Institute, Copenhagen, Denmark&lt;/span&gt;
+By Roman Nuterman, &lt;u&gt;Dion Häfner&lt;/u&gt;, and Markus Jochum.&lt;br&gt;
+&lt;span style="font-size: 75%;"&gt;(Niels Bohr Institute, Copenhagen, Denmark)&lt;/span&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;em&gt;This post is the display material for the vEGU 2021 abstract &lt;a href="https://meetingorganizer.copernicus.org/EGU21/EGU21-2127.html"&gt;&amp;#8220;Higher-level geophysical modelling&amp;#8221;&lt;/a&gt; in session &lt;a href="https://meetingorganizer.copernicus.org/EGU21/session/40846"&gt;&lt;span class="caps"&gt;AS1&lt;/span&gt;.1&lt;/a&gt; (Recent Developments in Numerical Earth System&amp;nbsp;Modelling).&lt;/em&gt;&lt;/p&gt;
@@ -171,7 +171,7 @@ In our experience, finding the perfect middle ground is extremely hard, and the 
 &lt;p&gt;We are therefore convinced that Type &lt;span class="caps"&gt;II&lt;/span&gt; and Type &lt;span class="caps"&gt;III&lt;/span&gt; models will eventually take over, but there is still a long way to go. We as a community need to find a way to handle the increased complexity of more dynamical languages, but it can be&amp;nbsp;done.&lt;/p&gt;
 &lt;p&gt;The future of high-level modelling is&amp;nbsp;bright.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;If you enjoyed this post, make sure to visit my &lt;a href="(https://meetingorganizer.copernicus.org/EGU21/session/40846)"&gt;vPICO presentation during vEGU 2021&lt;/a&gt; (Tue, 27 Apr), and join the discussion&amp;nbsp;afterwards.&lt;/p&gt;
+&lt;p&gt;If you enjoyed this post, make sure to visit my &lt;a href="https://meetingorganizer.copernicus.org/EGU21/session/40846"&gt;vPICO presentation during vEGU 2021&lt;/a&gt; (Tue, 27 Apr), and join the discussion&amp;nbsp;afterwards.&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;m also happy to respond to your comments&amp;nbsp;below.&lt;/p&gt;
 &lt;p&gt;&lt;a id="comments"&gt;&lt;/p&gt;</content><category term="blog"></category><category term="Science"></category><category term="Computing"></category><category term="Python"></category></entry><entry><title>Learning to play Yahtzee with Advantage Actor-Critic (A2C)</title><link href="https://dionhaefner.github.io/2021/04/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/" rel="alternate"></link><published>2021-04-01T00:00:00+02:00</published><updated>2021-04-01T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-04-01:/2021/04/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/</id><summary type="html">&lt;p&gt;My in-laws are really into the dice game &lt;a href="https://en.wikipedia.org/wiki/Yatzy"&gt;Yatzy&lt;/a&gt; (the Scandinavian version of&amp;nbsp;Yahtzee).&lt;/p&gt;
 &lt;p&gt;If you&amp;#8217;re unfamiliar with the game, here&amp;#8217;s a brief summary of the rules &lt;a href="https://en.wikipedia.org/wiki/Yatzy#Gameplay"&gt;from Wikipedia&lt;/a&gt;:&lt;/p&gt;
