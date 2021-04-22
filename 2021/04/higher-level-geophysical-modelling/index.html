@@ -96,14 +96,14 @@ By Roman Nuterman, <u>Dion Häfner</u>, and Markus Jochum.<br>
 <p><em>This post is the display material for the vEGU 2021 abstract <a href="https://meetingorganizer.copernicus.org/EGU21/EGU21-2127.html">&#8220;Higher-level geophysical modelling&#8221;</a> in session <a href="https://meetingorganizer.copernicus.org/EGU21/session/40846"><span class="caps">AS1</span>.1</a> (Recent Developments in Numerical Earth System&nbsp;Modelling).</em></p>
 <p><em>Therefore, it is a bit more technical than my usual blog posts, and assumes that you are somewhat familiar within the field of numerical&nbsp;modelling.</em></p>
 <div class="toc"><span class="toctitle">Contents</span><ul>
-<li><a href="#a-paradigm-shift">A paradigm&nbsp;shift</a></li>
+<li><a href="#why-we-need-higher-level-models">Why we need higher-level&nbsp;models</a></li>
 <li><a href="#the-taxonomy-of-high-level-modelling">The taxonomy of high-level&nbsp;modelling</a></li>
 <li><a href="#lets-talk-about-performance">Let&#8217;s talk about&nbsp;performance</a></li>
 <li><a href="#abstraction-is-key">Abstraction is&nbsp;key</a></li>
 <li><a href="#quo-vadis">Quo&nbsp;vadis?</a></li>
 </ul>
 </div>
-<h3 id="a-paradigm-shift">A paradigm shift<a class="anchor-link" href="#a-paradigm-shift" title="Permanent link">&para;</a></h3>
+<h3 id="why-we-need-higher-level-models">Why we need higher-level models<a class="anchor-link" href="#why-we-need-higher-level-models" title="Permanent link">&para;</a></h3>
 <p>The year is 2021, but numerical modelling and high-performance computing are still bastions of low-level programming languages. Most (finite difference) models are written in Fortran or C, which have been around since the early days of&nbsp;computing.</p>
 <p>This is not surprising on the very largest compute scales like the <span class="caps">CMIP</span> climate model ensembles, which run on the world&#8217;s largest supercomputers. In this case, even small performance drops could end up consuming funding for several human positions. But this is an extreme example, and typically, human time tends to be <em>more</em> valuable than computer time. (Just think of your poor PhD students trying to compile the model code or get their setup to&nbsp;work.)</p>
 <p>On top of this, the efficiency of GPUs has increased dramatically in tandem with the recent machine learning boom. This has also lead to more heterogeneous compute architectures than ever. For example, Finland&#8217;s <span class="caps">LUMI</span> supercomputer <a href="https://www.lumi-supercomputer.eu/may-we-introduce-lumi/">will consist of 550 <span class="caps">PFLOP</span>/s worth of GPUs</a> (on top of about 200,000 <span class="caps">CPU</span>&nbsp;cores).</p>
