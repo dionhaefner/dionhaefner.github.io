@@ -8,3 +8,4 @@
 __pycache__/
 .ipynb-checkpoints/
 *.pid
+.DS_Store
