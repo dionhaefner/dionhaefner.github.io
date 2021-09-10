@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dionhaefner.github.io - blog</title><link href="https://dionhaefner.github.io/" rel="alternate"></link><link href="https://dionhaefner.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://dionhaefner.github.io/</id><updated>2021-04-20T00:00:00+02:00</updated><subtitle>Maximum entropy</subtitle><entry><title>Higher-level geophysical modelling</title><link href="https://dionhaefner.github.io/2021/04/higher-level-geophysical-modelling/" rel="alternate"></link><published>2021-04-20T00:00:00+02:00</published><updated>2021-04-20T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-04-20:/2021/04/higher-level-geophysical-modelling/</id><summary type="html">&lt;div style="text-align: center; padding-bottom: 1em;"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dionhaefner.github.io - blog</title><link href="https://dionhaefner.github.io/" rel="alternate"></link><link href="https://dionhaefner.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://dionhaefner.github.io/</id><updated>2021-09-10T00:00:00+02:00</updated><subtitle>Maximum entropy</subtitle><entry><title>Creating a better science conference poster</title><link href="https://dionhaefner.github.io/2021/09/creating-a-better-science-conference-poster/" rel="alternate"></link><published>2021-09-10T00:00:00+02:00</published><updated>2021-09-10T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-09-10:/2021/09/creating-a-better-science-conference-poster/</id><summary type="html">&lt;figure&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-thumb.png" style="max-width: 200px;"&gt;
+    &lt;/a&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/veros-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/veros-poster-thumb.png" style="max-width: 200px;"&gt;
+    &lt;/a&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/wise-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/wise-poster-thumb.png" style="max-width: 200px;"&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;My recent posters that I describe in this blog post. (click for higher resolution)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="good-and-bad-posters"&gt;Good and bad posters&lt;a class="anchor-link" href="#good-and-bad-posters" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;By far the most popular post on this blog is this one: &lt;a href="https://dionhaefner.github.io/2015/07/creating-a-science-conference-poster-with-inkscape/"&gt;Creating a Science Conference Poster with Inkscape&lt;/a&gt;. I have had mixed feelings about this for a while, because by now …&lt;/p&gt;</summary><content type="html">&lt;figure&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-thumb.png" style="max-width: 200px;"&gt;
+    &lt;/a&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/veros-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/veros-poster-thumb.png" style="max-width: 200px;"&gt;
+    &lt;/a&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/wise-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/wise-poster-thumb.png" style="max-width: 200px;"&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;My recent posters that I describe in this blog post. (click for higher resolution)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="good-and-bad-posters"&gt;Good and bad posters&lt;a class="anchor-link" href="#good-and-bad-posters" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;By far the most popular post on this blog is this one: &lt;a href="https://dionhaefner.github.io/2015/07/creating-a-science-conference-poster-with-inkscape/"&gt;Creating a Science Conference Poster with Inkscape&lt;/a&gt;. I have had mixed feelings about this for a while, because by now I think that the poster is &lt;em&gt;not very good&lt;/em&gt;:&lt;/p&gt;
+&lt;figure id="old-poster"&gt;
+    &lt;img src="https://dionhaefner.github.io/images/poster-lowres.png" style="max-width: 350px;"&gt;
+    &lt;figcaption&gt;Yikes. So much text!&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Don&amp;#8217;t get me wrong, I still think it looks decent. But I made this as a part of a class project during my Master&amp;#8217;s, before I had ever been to a conference (yet alone presented a poster). This has the effect that it &lt;em&gt;just doesn&amp;#8217;t work&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;But let&amp;#8217;s take a step back. What are science posters supposed to do? Here&amp;#8217;s what I came up&amp;nbsp;with:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Attract initial&amp;nbsp;attention.&lt;/li&gt;
+&lt;li&gt;Ensure that people register your main finding, even if they just walk&amp;nbsp;by.&lt;/li&gt;
+&lt;li&gt;Tell a clear story of your&amp;nbsp;research.&lt;/li&gt;
+&lt;li&gt;Contain enough detail so you can use it to have a nuanced discussion during the poster&amp;nbsp;session.&lt;/li&gt;
+&lt;li&gt;Promote your&amp;nbsp;publications.&lt;/li&gt;
+&lt;li&gt;After the conference is over, act as eyecandy in the hallways of your&amp;nbsp;institute.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I think the poster above does well in some of these points &amp;#8212; it certainly catches attention, and it contains a lot of (too much) detail &amp;#8212; but it does a terrible job at promoting the main results. Let&amp;#8217;s fix&amp;nbsp;that.&lt;/p&gt;
+&lt;h3 id="betterposter-less-is-more"&gt;#betterposter — Less is more&lt;a class="anchor-link" href="#betterposter-less-is-more" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;#betterposter&lt;/code&gt; is a movement advocating for a new style of posters, sparked by &lt;a href="https://twitter.com/mikemorrison/status/1110191245035479041?lang=en"&gt;this tweet&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote class="twitter-tweet" data-dnt="true"&gt;&lt;p lang="en" dir="ltr"&gt;Let&amp;#39;s fix academic posters! Prepping a poster for &lt;a href="https://twitter.com/hashtag/SIOP19?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#&lt;span class="caps"&gt;SIOP19&lt;/span&gt;&lt;/a&gt; and sick of the old &amp;#8220;wall-of-text&amp;#8221; poster design? Watch this cartoon to see a new, faster approach to designing research posters. Includes templates. &lt;a href="https://twitter.com/hashtag/betterposter?src=hash&amp;amp;ref_src=twsrc%5Etfw"&gt;#betterposter&lt;/a&gt;&lt;a href="https://t.co/wyXhiP5CKl"&gt;https://t.co/wyXhiP5CKl&lt;/a&gt; &lt;a href="https://t.co/UBYB2GzIv9"&gt;pic.twitter.com/UBYB2GzIv9&lt;/a&gt;&lt;/p&gt;&amp;mdash; Mike Morrison (@mikemorrison) &lt;a href="https://twitter.com/mikemorrison/status/1110191245035479041?ref_src=twsrc%5Etfw"&gt;March 25, 2019&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;It also comes with this&amp;nbsp;template:&lt;/p&gt;
+&lt;figure&gt;
+    &lt;img src="https://dionhaefner.github.io/images/better-posters/betterposter.jpg" style="max-width: 350px;"&gt;
+    &lt;figcaption&gt;A prototypical #betterposter&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Now while I don&amp;#8217;t think this is perfect, it does get &lt;em&gt;so much right&lt;/em&gt;. Putting your main finding at the most prominent part of the poster is immensely helpful to promote your research to others, even if they just stroll by, and it helps you to tell a clear story in your&amp;nbsp;poster.&lt;/p&gt;
+&lt;p&gt;Inspired by this, I designed these 2 posters (presented at the virtual &lt;a href="https://www.egu21.eu/"&gt;&lt;span class="caps"&gt;EGU&lt;/span&gt; general assembly 2021&lt;/a&gt;):&lt;/p&gt;
+&lt;figure&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-thumb.png"&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;#betterposter 1: Real-world rogue wave probabilities. (click for higher resolution)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/veros-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/veros-poster-thumb.png"&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;#betterposter 2: &lt;a href="https://dionhaefner.github.io/2021/04/higher-level-geophysical-modelling/"&gt;Higher-level geophysical modelling&lt;/a&gt;. (click for higher resolution)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Keep in mind that this was a virtual conference, so these posters are optimized for screen reading rather than printing. For example, this means that they are in 16:9 aspect ratio (1.77 rather than 1.42 like A0 paper), and they contain less detail than I would put on a physical poster (because I only had a couple of minutes to show the&amp;nbsp;poster).&lt;/p&gt;
+&lt;p&gt;Both posters worked great, and I had the feeling that people were generally engaged in the discussions. For the first poster I actually won an &amp;#8220;Outstanding Student and PhD candidate Presentation&amp;#8221; award at &lt;span class="caps"&gt;EGU&lt;/span&gt; 2021, so it seems like it served its purpose&amp;nbsp;well.&lt;/p&gt;
+&lt;h3 id="so-you-like-fancier-posters"&gt;So you like fancier posters?&lt;a class="anchor-link" href="#so-you-like-fancier-posters" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Alright, I get it. Sometimes you need to feast your eye on something&amp;nbsp;pretty.&lt;/p&gt;
+&lt;p&gt;For a recent physical conference I wanted to see whether I could salvage the &lt;a href="https://dionhaefner.github.io/2015/07/creating-a-science-conference-poster-with-inkscape/"&gt;poster from my previous blog post&lt;/a&gt;. This is what I came up&amp;nbsp;with:&lt;/p&gt;
+&lt;figure&gt;
+    &lt;a href="https://dionhaefner.github.io/images/better-posters/wise-poster-large.png"&gt;
+        &lt;img src="https://dionhaefner.github.io/images/better-posters/wise-poster-thumb.png"&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;Visual poster: Inferring the causes of real-world rogue waves. (click for higher resolution, or &lt;a href="https://sid.erda.dk/share_redirect/frJV5mdOGa"&gt;download &lt;span class="caps"&gt;PDF&lt;/span&gt; version&lt;/a&gt;)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This is closer to what people typically think of when they hear the term &amp;#8220;poster&amp;#8221;: Something that is nice to look at, and where the visual impact helps to drive the message&amp;nbsp;home.&lt;/p&gt;
+&lt;p&gt;Compared to its &lt;a href="#old-poster"&gt;previous iteration&lt;/a&gt;, this design has undergone significant changes. I removed all text boxes across the borders to let the design breathe and put the focus on the important parts. I personally think that the figures should do most of the talking, so all text on the poster just serves to explain what&amp;#8217;s shown in the&amp;nbsp;figures.&lt;/p&gt;
+&lt;p&gt;This time, I decided not to use a main finding as the title, simply because this is research in progress, so I don&amp;#8217;t &lt;em&gt;have&lt;/em&gt; a main finding yet. This was for a smaller conference with a higher ratio of experts among the attendees, so I think a bigger focus on details is fine in this&amp;nbsp;case.&lt;/p&gt;
+&lt;p&gt;Unfortunately I couldn&amp;#8217;t attend the conference, so I don&amp;#8217;t know how it was received, but I am really satisfied with this&amp;nbsp;design.&lt;/p&gt;
+&lt;h3 id="which-tool-should-i-use"&gt;Which tool should I use?&lt;a class="anchor-link" href="#which-tool-should-i-use" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;My original post was about making posters in Inkscape, but I think that you can make great posters with any vector&amp;nbsp;tool.&lt;/p&gt;
+&lt;p&gt;You can use Inkscape, the Adobe suite (Illustrator / InDesign), or a presentation tool like PowerPoint or Keynote. Actually, I made all posters above in Keynote, and it worked&amp;nbsp;great.&lt;/p&gt;
+&lt;p&gt;My only piece of advice is: &lt;em&gt;for the love of God, do not use LaTeX&lt;/em&gt;. I know there are some people who hate the thought of having to use PowerPoint for science. But LaTeX is just not a very good tool to make great posters. Posters have to work &lt;em&gt;visually&lt;/em&gt;, which is super hard to get right with the edit-compile-review workflow. And things that LaTeX is great at (like page layouts) just don&amp;#8217;t matter for&amp;nbsp;posters.&lt;/p&gt;
+&lt;p&gt;Do yourself a favor and use a tool where you can drag a box around until it &lt;em&gt;just looks right&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id="now-go-and-make-your-own"&gt;Now go and make your own!&lt;a class="anchor-link" href="#now-go-and-make-your-own" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Feel free to use my designs to make your own poster, and let me know if you want to show off your work or have anything else to add (e.g. in the comments or &lt;a href="https://twitter.com/dionhaefner"&gt;on Twitter&lt;/a&gt;).&lt;/p&gt;</content><category term="blog"></category><category term="Design"></category><category term="Science"></category></entry><entry><title>Higher-level geophysical modelling</title><link href="https://dionhaefner.github.io/2021/04/higher-level-geophysical-modelling/" rel="alternate"></link><published>2021-04-20T00:00:00+02:00</published><updated>2021-04-20T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-04-20:/2021/04/higher-level-geophysical-modelling/</id><summary type="html">&lt;div style="text-align: center; padding-bottom: 1em;"&gt;
 By Roman Nuterman, &lt;u&gt;Dion Häfner&lt;/u&gt;, and Markus Jochum.&lt;br&gt;
 &lt;span style="font-size: 75%;"&gt;(Niels Bohr Institute, Copenhagen, Denmark)&lt;/span&gt;
 &lt;/div&gt;
@@ -24661,8 +24754,10 @@ AAAAAElFTkSuQmCC
 &lt;p&gt;A terrorist probably has the immediate goal to kill as many people has possible. The actual goals with this action are diverse; on one hand, they may want to fulfill some kind of sacred mission and become a hero by killing non-believers. On the other hand, they want to create awareness for their cause and provoke the western society into making mistakes. The more violent the West&amp;#8217;s reaction on a terroristic attack is, the more people the terrorists will be able to recruit. The main goal behind a terroristic attack is to cause fear, chaos, and mayhem. Don&amp;#8217;t let them&amp;nbsp;win.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;sup&gt;1&lt;/sup&gt; Of course, there are indeed situations where playing the lottery can be a quite a good idea. For example, if you happen to live by the credo &amp;#8220;get rich or die trying&amp;#8221;, i.e., you consider your life a complete failure in case you don&amp;#8217;t have six figures on your account by the time you die. In this case, playing the lottery might be an appropriate - though a little desperate -&amp;nbsp;strategy.&lt;/p&gt;
-&lt;p&gt;&lt;sup&gt;2&lt;/sup&gt; I won&amp;#8217;t call my analysis unbiased, since there is no such thing when humans are&amp;nbsp;involved.&lt;/p&gt;</content><category term="blog"></category><category term="Thoughts"></category><category term="Psychology"></category></entry><entry><title>Creating a Science Conference Poster with Inkscape</title><link href="https://dionhaefner.github.io/2015/07/creating-a-science-conference-poster-with-inkscape/" rel="alternate"></link><published>2015-07-17T00:00:00+02:00</published><updated>2015-07-17T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2015-07-17:/2015/07/creating-a-science-conference-poster-with-inkscape/</id><summary type="html">&lt;h3 id="first-things-first"&gt;First things first&lt;a class="anchor-link" href="#first-things-first" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;This poster design is heavily based on the poster template provided by &lt;a href="http://blog.felixbreuer.net/2010/10/24/poster.html"&gt;Felix Breuer&lt;/a&gt;. Many thanks to him for creating such a beautiful and unusual poster from scratch, and even publishing the template for others to use. Accordingly, this modification is published under the &lt;a href="http://creativecommons.org/licenses/by-sa/3.0/"&gt;Creative Commons Attribution-ShareAlike …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;h3 id="first-things-first"&gt;First things first&lt;a class="anchor-link" href="#first-things-first" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;sup&gt;2&lt;/sup&gt; I won&amp;#8217;t call my analysis unbiased, since there is no such thing when humans are&amp;nbsp;involved.&lt;/p&gt;</content><category term="blog"></category><category term="Thoughts"></category><category term="Psychology"></category></entry><entry><title>Creating a science conference poster with Inkscape</title><link href="https://dionhaefner.github.io/2015/07/creating-a-science-conference-poster-with-inkscape/" rel="alternate"></link><published>2015-07-17T00:00:00+02:00</published><updated>2015-07-17T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2015-07-17:/2015/07/creating-a-science-conference-poster-with-inkscape/</id><summary type="html">&lt;p&gt;&lt;strong&gt;Update (Sep 2021):&lt;/strong&gt; There is now &lt;a href="https://dionhaefner.github.io/2021/09/creating-a-better-science-conference-poster/"&gt;an updated version&lt;/a&gt; of this blog post with more recent advice on how I would design a poster today. Make sure to check it out if this post appeals to&amp;nbsp;you!&lt;/p&gt;
+&lt;h3 id="first-things-first"&gt;First things first&lt;a class="anchor-link" href="#first-things-first" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This poster design is heavily based on the poster template …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Update (Sep 2021):&lt;/strong&gt; There is now &lt;a href="https://dionhaefner.github.io/2021/09/creating-a-better-science-conference-poster/"&gt;an updated version&lt;/a&gt; of this blog post with more recent advice on how I would design a poster today. Make sure to check it out if this post appeals to&amp;nbsp;you!&lt;/p&gt;
+&lt;h3 id="first-things-first"&gt;First things first&lt;a class="anchor-link" href="#first-things-first" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This poster design is heavily based on the poster template provided by &lt;a href="http://blog.felixbreuer.net/2010/10/24/poster.html"&gt;Felix Breuer&lt;/a&gt;. Many thanks to him for creating such a beautiful and unusual poster from scratch, and even publishing the template for others to use. Accordingly, this modification is published under the &lt;a href="http://creativecommons.org/licenses/by-sa/3.0/"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt; as well, which means that you are free to use and modify this template in any fashion you would like, as long as you give credit to the original authors and publish your modification as a template,&amp;nbsp;too.&lt;/p&gt;
 &lt;h3 id="our-poster"&gt;Our poster&lt;a class="anchor-link" href="#our-poster" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;!-- PELICAN_BEGIN_SUMMARY --&gt;

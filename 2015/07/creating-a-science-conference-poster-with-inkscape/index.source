@@ -1,8 +1,11 @@
-Title: Creating a Science Conference Poster with Inkscape
+Title: Creating a science conference poster with Inkscape
 Date: 2015-07-17
 Tags: Design, Science
 Author: Dion
-related_posts:
+Slug: creating-a-science-conference-poster-with-inkscape
+related_posts: creating-a-better-science-conference-poster
+
+**Update (Sep 2021):** There is now [an updated version]({filename}/blog/better-posters.md) of this blog post with more recent advice on how I would design a poster today. Make sure to check it out if this post appeals to you!
 
 ## First things first
 

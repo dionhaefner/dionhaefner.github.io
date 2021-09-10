@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // Get the user's theme preference from local storage, if it's available
     const storedTheme = localStorage.getItem("theme");
     var initialTheme;
-    if (storedTheme == "dark" || (prefersDarkScheme.matches && initialTheme != "light")) {
+    if (storedTheme == "dark" || (prefersDarkScheme.matches && storedTheme != "light")) {
         initialTheme = "dark"
     } else {
         initialTheme = "light"
