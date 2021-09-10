@@ -238,6 +238,7 @@ a.anchor-link:hover {
 .entry-content figure img {
     margin: 1em 10px;
     display: inline;
+    max-width: 100%;
 }
 
 .entry-content figure figcaption {
