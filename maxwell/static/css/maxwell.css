@@ -235,7 +235,7 @@ a.anchor-link:hover {
     margin: 2em auto;
 }
 
-.entry-content figure img {
+.entry-content figure img, .entry-content figure video {
     margin: 1em 10px;
     display: inline;
     max-width: 100%;
