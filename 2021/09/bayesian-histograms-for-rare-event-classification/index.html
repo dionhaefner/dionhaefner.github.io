@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>Bayesian histograms for rare event classification | dionhaefner.github.io</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Contents Extreme events call for extreme measures The problem with histograms for rare events Bayes to the rescue Significant bins only! It works™ Bayesian histograms are a stupidly fast, simple, and nonparametric way to find how rare event probabilities depend on a variable...">
+        <link rel="icon" href="https://dionhaefner.github.io/favicon.ico">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="Bayesian histograms for rare event classification | dionhaefner.github.io" />
+        <meta property="og:url" content="https://dionhaefner.github.io/2021/09/bayesian-histograms-for-rare-event-classification/index.html" />
+        <meta property="og:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <meta property="og:description" content="Contents Extreme events call for extreme measures The problem with histograms for rare events Bayes to the rescue Significant bins only! It works™ Bayesian histograms are a stupidly fast, simple, and nonparametric way to find how rare event probabilities depend on a variable..." />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2021-09-23T00:00:00+02:00" />
+  <meta property="article:author" content="Dion" />
+  <meta property="article:section" content="blog" />
+  <meta property="article:tag" content="Machine Learning, Python, Science" />
+        <!-- /Open Graph -->
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="Bayesian histograms for rare event classification | dionhaefner.github.io" />
+          <meta name="twitter:site" content="@dionhaefner" />
+        <meta name="twitter:title" content="Bayesian histograms for rare event classification | dionhaefner.github.io" />
+        <meta name="twitter:description" content="Contents Extreme events call for extreme measures The problem with histograms for rare events Bayes to the rescue Significant bins only! It works™ Bayesian histograms are a stupidly fast, simple, and nonparametric way to find how rare event probabilities depend on a variable..." />
+        <meta name="twitter:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <!-- /Twitter Card -->
+
+        <!-- Stylesheets -->
+        <link href="https://dionhaefner.github.io/theme/css/fonts.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/maxwell.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/pygments.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/font-awesome.css" rel="stylesheet">
+        <!-- /Stylesheets -->
+
+        <!-- JS -->
+        <script src="https://dionhaefner.github.io/theme/js/toggle-dark.js" language="javascript"></script>
+        
+<script data-goatcounter="https://dionhaefner.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+        <!-- /JS -->
+
+        <link href="https://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Full Atom Feed" />
+        <link href="https://dionhaefner.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="Machine Learning" />
+    <meta name="tags" content="Python" />
+    <meta name="tags" content="Science" />
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": {
+        scale: 85,
+        styles: {".MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn": {color: "inherit"}},
+      }
+    });
+    </script>
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+          <a href="https://dionhaefner.github.io/"><span class="site-title">dionhaefner.github.io</span></a><span class="site-subtitle">Maximum entropy</span><a class="btn-toggle fa" alt="Toggle theme"></a>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <header class="post-info">
+    <div class="entry-metadata">
+      <time class="published" datetime="2021-09-23T00:00:00+02:00">
+        <span class="fa fa-calendar"></span> 2021-09-23
+      </time>
+      <div class="tags">
+          <span class="fa fa-tags"></span>
+              <a href="https://dionhaefner.github.io/tag/machine-learning.html">Machine Learning</a>,              <a href="https://dionhaefner.github.io/tag/python.html">Python</a>,              <a href="https://dionhaefner.github.io/tag/science.html">Science</a>      </div>
+    </div>
+    <h1 class="entry-title">
+      <a href="https://dionhaefner.github.io/2021/09/bayesian-histograms-for-rare-event-classification/" rel="bookmark"
+         title="Permalink to Bayesian histograms for rare event classification">Bayesian histograms for rare event&nbsp;classification</a>
+    </h1>
+ 
+    <div class="header-underline"></div>
+  </header>
+
+  <article class="entry-content">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#extreme-events-call-for-extreme-measures">Extreme events call for extreme&nbsp;measures</a></li>
+<li><a href="#the-problem-with-histograms-for-rare-events">The problem with histograms for rare&nbsp;events</a></li>
+<li><a href="#bayes-to-the-rescue">Bayes to the&nbsp;rescue</a></li>
+<li><a href="#significant-bins-only">Significant bins&nbsp;only!</a></li>
+<li><a href="#it-workstm">It&nbsp;works™</a></li>
+</ul>
+</div>
+<p>Bayesian histograms are a stupidly fast, simple, and nonparametric way to find how rare event probabilities depend on a variable (with&nbsp;uncertainties!).</p>
+<p>My implementation of Bayesian histograms is available as the <a href="https://github.com/dionhaefner/bayesian-histograms">Python package <code>bayeshist</code></a>. So if you think this could be useful, just install the package and try it&nbsp;out:</p>
+<div class="highlight"><pre><span></span><code>$ pip install bayeshist
+</code></pre></div>
+
+<h3 id="extreme-events-call-for-extreme-measures">Extreme events call for extreme measures<a class="anchor-link" href="#extreme-events-call-for-extreme-measures" title="Permanent link">&para;</a></h3>
+<figure style="max-width: 100%">
+    <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/samples.png" style="max-width: 300px;">
+    →
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/bayesian-histogram-pruned.png" style="max-width: 300px;">
+    </div>
+    <figcaption>(1) 1 million samples containing a binary rare event \(y\), depending on a parameter \(x\). This is what the model sees. (2) Bayesian histogram estimate of event rate \(p(y=1 \mid x)\)</figcaption>
+</figure>
+
+<p>Suppose you want to estimate how the risk of some rare event depends on certain factors. For example, given some variables about a person, you want to know how likely it is they will develop a rare disease, or fail to pay back their&nbsp;mortgage.</p>
+<p>In both cases, the probability that this will happen is probably very small, no matter how predisposed someone is, which makes it a <em>rare event</em>. Additionally, the probability of such an event to happen is <em>always larger than zero</em>.
+In machine learning, we say that the data is not <em>separable</em>: The distributions of positive and negative labels overlap, so there will be no decision boundary &#8212; no matter how complicated &#8212; that will separate them&nbsp;perfectly.</p>
+<p>This is a hard problem that most machine learning algorithms are not equipped to solve. Most classification models assume that the data is separable, or output badly calibrated probabilities, which is a no-go for rare events (because probabilities are what we are interested in). On top of this, we often have a massive amount of data points, but only few interesting&nbsp;ones.</p>
+<p><a href="https://www.nature.com/articles/s41598-021-89359-1">I came across this problem during my own research on extreme ocean waves (rogue waves)</a>. There is always a small probability to encounter a rogue wave, but how does this probability vary in different conditions? And do we even have <em>enough data</em> to tell&nbsp;anything?</p>
+<p>To answer these questions, I use something that I call <strong>Bayesian histograms</strong>, which tell us how the probability of a rare event changes, and how certain we are in this estimate. In short, they help us to estimate event rates from samples (as in the figure&nbsp;above).</p>
+<p>In this post I will introduce the idea behind the method and explain how it works. <a href="#it-workstm">If you&#8217;re just interested in the results, feel free to skip ahead</a>.</p>
+<h3 id="the-problem-with-histograms-for-rare-events">The problem with histograms for rare events<a class="anchor-link" href="#the-problem-with-histograms-for-rare-events" title="Permanent link">&para;</a></h3>
+<p>We are given a dataset of binary samples \(y\) and a parameter \(x\), and our task is to find out how the probability of \(y=1\) changes with \(x\), i.e., \(p(y=1 \mid x)\) (we call this the <em>event rate</em>). We decide to plot your samples up in a scatter plot, and what we get is&nbsp;this:</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/samples.png" style="max-width: 350px;">
+    <figcaption>1 million binary samples. With only 1000 positive samples, \(y=1\) is a rare event.</figcaption>
+</figure>
+
+<p>Unfortunately, this tells us nothing about \(p(y=1 \mid x)\). We can see that there are less positive samples for more extreme values of x, but there are also less <em>negative</em> samples. To see what&#8217;s going on, we make a histogram&nbsp;next:</p>
+<figure style="max-width: 100%">
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/histograms.png" style="max-width: 300px;">
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/histograms-normalized.png" style="max-width: 300px;">
+    <figcaption>Histograms of positive and negative samples, raw counts (left) and normalized (right).</figcaption>
+</figure>
+
+<p>Now we see that there are always a lot more negative than positive samples, and we also see that there seem to be some local peaks in the distribution of \(y=1\). But what we actually want is the frequency of \(y=1\) <em>relative to</em> \(y=0\). We can get a first estimate of \(p(y=1 \mid x)\) by computing the <em>ratio</em> of the 2&nbsp;histograms:</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/histogram-rate.png" style="max-width: 350px;">
+    <figcaption>A first estimate of the event rate \(p(y=1 \mid x)\).</figcaption>
+</figure>
+
+<p>This is pretty useful already: It looks like the event rate is higher towards negative values of x, and there seem to be 2 local peaks. But there are still some problems with this approach. For example, do we even have enough data to determine the event rate for every bin? What about bins with no positive samples? And how many bins should we&nbsp;choose?</p>
+<h3 id="bayes-to-the-rescue">Bayes to the rescue<a class="anchor-link" href="#bayes-to-the-rescue" title="Permanent link">&para;</a></h3>
+<p>Bayesian histograms address these issues by adding <em>uncertainties</em> to \(p(y=1 \mid x)\). For this, we need to make some assumptions about the data generating&nbsp;processes.</p>
+<p>We assume that, within each bin \(i\), the number of positive samples \(n^+_i\) is drawn independently with fixed probability \(p_i\) (this is what we want to estimate) and number of negative samples \(n^-_i\). Then, \(n^+_i\) follows a <a href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial distribution</a>:</p>
+<p>$$ n^+_i \sim \operatorname{Binom}(n^-_i, p_i)&nbsp;$$</p>
+<p>Our goal is to estimate \(p_i\) via Bayesian inference. For this, we still need a <em>prior</em> for the variable \(p\), which encodes our belief of what \(p\) is <em>before measuring any data</em> (this also takes care of empty bins). A convenient choice is a <a href="https://en.wikipedia.org/wiki/Beta_distribution">beta distributed</a> prior with 2 parameters \(\alpha_0,&nbsp;\beta_0\):</p>
+<p>$$ p(y=1) \sim \operatorname{Beta}(\alpha_0, \beta_0)&nbsp;$$</p>
+<p>There are many ways to choose the prior parameters. Popular choices are complete ignorance (\(\alpha_0 = \beta_0 = 0\); all values of \(p\) are equally likely) and <a href="https://en.wikipedia.org/wiki/Jeffreys_prior">Jeffrey&#8217;s prior</a> (\(\alpha_0 = \beta_0 = 1/2\)). In <code>bayeshist</code>, we use a weakly informative prior by default that ensures that the prediction of an empty bin is the global mean event rate with a big&nbsp;uncertainty.</p>
+<p>Now we are ready to compute the posterior distribution of \(p_i\). According to Bayes&#8217; theorem, it is given by the normalized product of (beta) prior and (binomial) likelihood. A neat property of the beta prior is that it is <em>conjugate</em> to the binomial likelihood, so the posterior is a beta distribution,&nbsp;too:</p>
+<p>$$ p(y=1 \mid n^+_i, n^-_i) \sim \operatorname{Beta}(n^+_i + \alpha_0, n^-_i + \beta_0) \tag{1}&nbsp;$$</p>
+<p>To get uncertainties on our event rate estimates, all we need to do is to compute a credible interval of the posterior (1) via its quantiles. In Python this looks like&nbsp;this:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># compute number of positive and negative samples per bin</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">n_plus</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">n_minus</span> <span class="o">=</span> <span class="mi">10_000_000</span>
+
+<span class="c1"># Jeffrey&#39;s prior</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">alpha_0</span> <span class="o">=</span> <span class="n">beta_0</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># define posterior</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p_posterior</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="p">(</span><span class="n">n_plus</span> <span class="o">+</span> <span class="n">alpha_0</span><span class="p">,</span> <span class="n">n_minus</span> <span class="o">+</span> <span class="n">beta_0</span><span class="p">)</span>
+
+<span class="c1"># evaluate posterior mean</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p_posterior</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="mf">1.0499988450012706e-06</span>
+
+<span class="c1"># 98% credible interval</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p_posterior</span><span class="o">.</span><span class="n">ppf</span><span class="p">([</span><span class="mf">1e-2</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1e-2</span><span class="p">])</span>
+<span class="n">array</span><span class="p">([</span><span class="mf">4.44859565e-07</span><span class="p">,</span> <span class="mf">1.94660572e-06</span><span class="p">])</span>
+</code></pre></div>
+
+<p>This tells us that, with 98% certainty, the event rate for this sample lies between \(4.5 \cdot 10^{-7}\) and \(1.9 \cdot 10^{-6}\), with a mean value of \(1.0 \cdot&nbsp;10^{-6}\).</p>
+<p>Computing quantiles of a beta distribution is very fast, so we can perform this calculation for every histogram bin with almost no additional compute cost. This is what <code>bayeshist</code> does to compute a Bayesian&nbsp;histogram.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">bayeshist</span> <span class="kn">import</span> <span class="n">bayesian_histogram</span><span class="p">,</span> <span class="n">plot_bayesian_histogram</span>
+
+<span class="n">bins</span><span class="p">,</span> <span class="n">bin_posterior</span> <span class="o">=</span> <span class="n">bayesian_histogram</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pruning_method</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">plot_bayesian_histogram</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">bin_posterior</span><span class="p">)</span>
+</code></pre></div>
+
+<figure>
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/bayesian-histogram-rate.png" style="max-width: 350px;">
+    <figcaption>Bayesian histogram estimate of event rate \(p(y=1 \mid x)\).</figcaption>
+</figure>
+
+<p>Now we have an estimate for all bins (even empty ones), and we can see that we have enough data to say that the variation we see for \(|x| \leq 2\) is statistically&nbsp;significant.</p>
+<p>But there is still one major open question: <strong>How many bins should we&nbsp;use?</strong></p>
+<ul>
+<li>If we use <em>too many</em> bins, the sample size per bin will be tiny, so our uncertainties will be&nbsp;huge.</li>
+<li>If we use <em>too few</em> bins, there will be a considerable variation of \(p(y=1 \mid x)\) within each bin, which means that one of our main assumptions (that the event rate is constant) is&nbsp;violated.</li>
+</ul>
+<p>We address this in the next&nbsp;section.</p>
+<h3 id="significant-bins-only">Significant bins only!<a class="anchor-link" href="#significant-bins-only" title="Permanent link">&para;</a></h3>
+<p>If we can come up with a way to determine whether 2 bins are significantly different, we could start with a high number of bins and merge non-significant bins until we are left with an optimal binning. This is the main idea behind <em>histogram pruning</em>.</p>
+<p>Imagine that we want to compare 2 bins with samples \((n_1^+, n_1^-)\) and \((n_2^+, n_2^-)\). We formulate the following&nbsp;hypotheses:</p>
+<ul>
+<li>
+<p><strong>H1</strong>: Sample 1 is drawn from bin 1 with $$ p_1 \sim \operatorname{Beta}(\alpha_1 = n_1^+ + \alpha_0, \beta_1 = n_1^- + \beta_0) $$ and sample 2 is drawn from bin 2 with $$ p_2 \sim \operatorname{Beta}(\alpha_2 = n_2^+ + \alpha_0, \beta_2 = n_2^- + \beta_0)&nbsp;$$</p>
+</li>
+<li>
+<p><strong>H0</strong>: Both samples are drawn from the merged version of both bins with $$ p_{tot}
+\sim \operatorname{Beta}(\alpha_{tot} = n_1^+ + n_2^+ + \alpha_0, \beta_{tot} = n_1^- + n_2^- + \beta_0)&nbsp;$$</p>
+</li>
+</ul>
+<p>Now we want to know: <em>how much more likely is it to measure the samples under H1 compared to H0?</em> To answer this, we have to compute the likelihood of each sample, while accounting for every possible value of the unknown event rate \(p\) (the result is also called a <a href="https://en.wikipedia.org/wiki/Bayes_factor">Bayes factor</a>). This is typically done by integrating out unknown parameters from the posterior (marginalization). In our case of a binomial likelihood with beta-distributed event rate, the result is a <a href="https://en.wikipedia.org/wiki/Beta-binomial_distribution">Beta-binomial distribution</a>:</p>
+<p>$$ n^+_i \sim \operatorname{Betabinom}(n^-_i, \alpha_i, \beta_i)&nbsp;$$</p>
+<p>Now we can evaluate the likelihood of each sample under H1 and H0, and compute the ratio (Bayes factor). In Python code, this looks like&nbsp;this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample_log_likelihood</span><span class="p">(</span><span class="n">n_plus</span><span class="p">,</span> <span class="n">n_minus</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Probability to measure `n_plus` positive and `n_minus` negative events&quot;&quot;&quot;</span>
+    <span class="n">sample_posterior</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">betabinom</span><span class="p">(</span>
+        <span class="n">n_plus</span> <span class="o">+</span> <span class="n">n_minus</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample_posterior</span><span class="o">.</span><span class="n">logpmf</span><span class="p">(</span><span class="n">n_plus</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sample_bayes_factor</span><span class="p">(</span><span class="n">n_plus_1</span><span class="p">,</span> <span class="n">n_minus_1</span><span class="p">,</span> <span class="n">n_plus_2</span><span class="p">,</span> <span class="n">n_minus_2</span><span class="p">,</span> <span class="n">alpha_0</span><span class="p">,</span> <span class="n">beta_0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Bayes factor to decide between separate and merged bins</span>
+
+<span class="sd">    (higher values -&gt; splitting more favorable)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">alpha_1</span> <span class="o">=</span> <span class="n">n_plus_1</span> <span class="o">+</span> <span class="n">alpha_0</span>
+    <span class="n">beta_1</span> <span class="o">=</span> <span class="n">n_minus_1</span> <span class="o">+</span> <span class="n">beta_0</span>
+
+    <span class="n">alpha_2</span> <span class="o">=</span> <span class="n">n_plus_2</span> <span class="o">+</span> <span class="n">alpha_0</span>
+    <span class="n">beta_2</span> <span class="o">=</span> <span class="n">n_minus_2</span> <span class="o">+</span> <span class="n">beta_0</span>
+
+    <span class="n">alpha_tot</span> <span class="o">=</span> <span class="n">n_plus_1</span> <span class="o">+</span> <span class="n">n_plus_2</span> <span class="o">+</span> <span class="n">alpha_0</span>
+    <span class="n">beta_tot</span> <span class="o">=</span> <span class="n">n_minus_1</span> <span class="o">+</span> <span class="n">n_minus_2</span> <span class="o">+</span> <span class="n">beta_0</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+        <span class="n">sample_log_likelihood</span><span class="p">(</span><span class="n">n_plus_1</span><span class="p">,</span> <span class="n">n_minus_1</span><span class="p">,</span> <span class="n">alpha_1</span><span class="p">,</span> <span class="n">beta_1</span><span class="p">)</span>
+        <span class="o">+</span> <span class="n">sample_log_likelihood</span><span class="p">(</span><span class="n">n_plus_2</span><span class="p">,</span> <span class="n">n_minus_2</span><span class="p">,</span> <span class="n">alpha_2</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">)</span>
+        <span class="o">-</span> <span class="n">sample_log_likelihood</span><span class="p">(</span><span class="n">n_plus_1</span><span class="p">,</span> <span class="n">n_minus_1</span><span class="p">,</span> <span class="n">alpha_tot</span><span class="p">,</span> <span class="n">beta_tot</span><span class="p">)</span>
+        <span class="o">-</span> <span class="n">sample_log_likelihood</span><span class="p">(</span><span class="n">n_plus_2</span><span class="p">,</span> <span class="n">n_minus_2</span><span class="p">,</span> <span class="n">alpha_tot</span><span class="p">,</span> <span class="n">beta_tot</span><span class="p">)</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p><strong>With this we can finally find the optimal number of bins!</strong> The algorithm works like&nbsp;this:</p>
+<ol>
+<li>Start with a relatively high number of bins (for example&nbsp;100).</li>
+<li>Compare a neighboring pair of bins with samples \((n_1^+, n_1^-)\) and \((n_2^+, n_2^-)\). If the data is at least \(\epsilon\) times more likely under H1, we do nothing. Otherwise, we <em>revert the split by merging the 2 bins</em>, and replace them by a single bin with \((n_1^+ + n_2^+, n_1^- +&nbsp;n_2^-)\).</li>
+<li>Proceed with the next pair, or start over with the first pair when reaching the end of the&nbsp;domain.</li>
+<li>Stop when no more neighbors can be&nbsp;merged.</li>
+</ol>
+<p>This is how this looks in&nbsp;action:</p>
+<figure>
+    <video controls>
+        <source src="https://dionhaefner.github.io/images/bayesian-histograms/bayes-pruning.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <figcaption>Bayesian histogram pruning.</figcaption>
+</figure>
+
+<p><em>(If you prefer a Frequentist method, <code>bayeshist</code> also supports <a href="https://en.wikipedia.org/wiki/Fisher%27s_exact_test">Fisher&#8217;s exact test</a> to test whether the Beta distributions of neighboring bins differ significantly. The results are very&nbsp;similar.)</em></p>
+<h3 id="it-workstm">It works™<a class="anchor-link" href="#it-workstm" title="Permanent link">&para;</a></h3>
+<p>Before I show you an example of a case where Bayesian histograms work well, let me warn you loud and clear: <strong>You can only trust Bayesian histograms if their underlying assumptions are fulfilled.</strong> That is, events must occur independently, and \(p(y=1)\) must be approximately constant within every bin. <em>Histogram pruning</em> can help with finding a partition that satisfies the latter condition, but comes with another caveat: <em>the resulting bins are only reasonable if the parameter space is well resolved</em>. If you have big gaps in your data coverage that miss a lot of variability of \(p(y=1 \mid x)\), bins will be merged too aggressively. So in practice, it can be a good idea to use both pruned and unpruned Bayesian&nbsp;histograms.</p>
+<p>With that out of the way, here is the result on the example above, and the true event rate that the samples are generated&nbsp;from:</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/bayesian-histogram-comp.png" style="max-width: 350px;">
+    <figcaption>In this case, a pruned Bayesian histogram is a good representation of the true event rate.</figcaption>
+</figure>
+
+<p>See how bins get smaller the more variability there is in the true event rate? This is the effect of histogram pruning. If we had more samples, we could also resolve the oscillations towards the edges of the figure, but at this level of significance they are grouped into a single bin. Pruned Bayesian histograms are especially good at resolving local maxima in the event rate, which are often the most interesting regions &#8212; they even manage to get the full peak height right (within the&nbsp;uncertainty).</p>
+<p>We can also compare pruned and unpruned histograms on this&nbsp;task:</p>
+<figure style="max-width: 100%;">
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/bayeshist-comparison.png">
+    <figcaption>Output of pruned and unpruned Bayesian histograms on the same task.</figcaption>
+</figure>
+
+<p>Unpruned histograms are a bit more faithful when it comes to regions with very little data close to the edges of the figure (they show accurately where there are gaps in the data coverage with huge uncertainty). But pruned histograms are much better at resolving small-scale features with reasonable&nbsp;confidence.</p>
+<p>Finally, we can compare the performance of <code>bayeshist</code> to the Python package <a href="https://github.com/guillermo-navas-palencia/optbinning"><code>optbinning</code></a>. <code>optbinning</code> is much more powerful and does a lot more than estimating binary event rates. But on this particular task, it looks like Bayesian histograms work&nbsp;better:</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/bayesian-histograms/optbinning-comparison.png" style="max-width: 350px;">
+    <figcaption>Compared to optbinning, Bayesian histograms are able to resolve both local peaks at full height.</figcaption>
+</figure>
+
+<p>So why don&#8217;t you <a href="https://github.com/dionhaefner/bayesian-histograms">give <code>bayeshist</code> a try</a>, and let me know what you&nbsp;think!</p>
+  </article><!-- /.entry-content -->
+
+  <footer class="postmatter">
+      <div id="download-source">
+        <a href="https://dionhaefner.github.io/2021/09/bayesian-histograms-for-rare-event-classification/index.source" download="bayesian-histograms-for-rare-event-classification.md">Download article source</a>
+      </div>
+  </footer>
+
+  <footer class="comments">
+    <script src="https://utteranc.es/client.js" repo="dionhaefner/blog-comments" issue-term="pathname"
+      theme="preferred-color-scheme" crossorigin="anonymous" async>
+      </script>
+  </footer>
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/" target="_blank">Pelican</a>.
+&copy; Dion Häfner 2016-2021                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
