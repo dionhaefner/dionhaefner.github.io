@@ -256,6 +256,13 @@ a.anchor-link:hover {
     margin: 1em 0 0.5em 0;
 }
 
+.toc {
+    font-size: small;
+    display: table;
+    width: auto;
+}
+
+
 /* Specific elements */
 
 header#banner {

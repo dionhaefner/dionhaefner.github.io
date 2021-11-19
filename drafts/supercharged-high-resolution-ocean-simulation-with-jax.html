@@ -7,16 +7,16 @@
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="description" content="The turbulent ocean.">
+        <meta name="description" content="Our Python ocean model Veros (which I maintain) now fully supports JAX as its computational backend. As a result, Veros has much better performance than before on both CPU and GPU, while all model code is still written in Python. In fact, we can now do high-resolution ocean simulations on …">
         <link rel="icon" href="https://dionhaefner.github.io/favicon.ico">
 
         <!-- Open Graph -->
         <meta property="og:title" content="Supercharged high-resolution ocean simulation with JAX | dionhaefner.github.io" />
         <meta property="og:url" content="https://dionhaefner.github.io/drafts/supercharged-high-resolution-ocean-simulation-with-jax.html" />
         <meta property="og:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
-        <meta property="og:description" content="The turbulent ocean." />
+        <meta property="og:description" content="Our Python ocean model Veros (which I maintain) now fully supports JAX as its computational backend. As a result, Veros has much better performance than before on both CPU and GPU, while all model code is still written in Python. In fact, we can now do high-resolution ocean simulations on …" />
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2021-08-12T00:00:00+02:00" />
+  <meta property="article:published_time" content="2021-11-10T00:00:00+01:00" />
   <meta property="article:author" content="Dion" />
   <meta property="article:section" content="blog" />
   <meta property="article:tag" content="Computing, Python, Science" />
@@ -26,7 +26,7 @@
         <meta name="twitter:card" content="Supercharged high-resolution ocean simulation with JAX | dionhaefner.github.io" />
           <meta name="twitter:site" content="@dionhaefner" />
         <meta name="twitter:title" content="Supercharged high-resolution ocean simulation with JAX | dionhaefner.github.io" />
-        <meta name="twitter:description" content="The turbulent ocean." />
+        <meta name="twitter:description" content="Our Python ocean model Veros (which I maintain) now fully supports JAX as its computational backend. As a result, Veros has much better performance than before on both CPU and GPU, while all model code is still written in Python. In fact, we can now do high-resolution ocean simulations on …" />
         <meta name="twitter:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
         <!-- /Twitter Card -->
 
@@ -72,8 +72,8 @@
 <section id="content" class="body">
   <header class="post-info">
     <div class="entry-metadata">
-      <time class="published" datetime="2021-08-12T00:00:00+02:00">
-        <span class="fa fa-calendar"></span> 2021-08-12
+      <time class="published" datetime="2021-11-10T00:00:00+01:00">
+        <span class="fa fa-calendar"></span> 2021-11-10
       </time>
       <div class="tags">
           <span class="fa fa-tags"></span>
@@ -88,13 +88,194 @@
   </header>
 
   <article class="entry-content">
-    <figure style="max-width: 100%;">
-    <img src="https://dionhaefner.github.io/images/veros-jax/01deg-surface-speed.png" style="max-width: 100%;">
-    <figcaption>The turbulent ocean.</figcaption>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<p>Our Python ocean model <a href="https://github.com/team-ocean/veros">Veros</a> (which I maintain) now fully supports <a href="https://github.com/google/jax"><span class="caps">JAX</span></a> as its computational backend. As a result, Veros has much better performance than before on both <span class="caps">CPU</span> and <span class="caps">GPU</span>, while all model code is still written in Python.
+In fact, we can now do high-resolution ocean simulations on a handful of GPUs, with the performance of entire <span class="caps">CPU</span>&nbsp;clusters!</p>
+<figure style="max-width: 90%;">
+    <img src="https://dionhaefner.github.io/images/veros-jax/01deg-surface-speed.png">
+    <figcaption>The turbulent ocean. This high-resolution (0.1°) snapshot of the ocean was simulated with Veros on 16 A100 GPUs on a single Google Cloud <span class="caps">VM</span>, faster than 2000 CPUs running a Fortran model.</figcaption>
 </figure>
+
+<p>So, what does this mean, and how did we pull this off? In this blog post I will give you an <a href="#modelling">introduction to high-performance ocean modelling</a>, show you how <a href="#jax-hpc"><span class="caps">JAX</span> fits into the picture</a>, and <a href="#benchmarks">show some benchmarks</a> to prove to you that Python code can be competitive with hand-written Fortran (while also having great <span class="caps">GPU</span>&nbsp;performance).</p>
+<p>If you want to know all the details, you should make sure to also check out our article <a href="">&#8220;Fast, cheap, <span class="amp">&amp;</span> turbulent &#8212; Global ocean modelling with <span class="caps">GPU</span> acceleration in Python&#8221;</a> that was published in the Journal of Advances in Earth System Modelling (<span class="caps">JAMES</span>)&nbsp;today.</p>
+<p><a id="modelling"></a></p>
+<h3 id="ocean-modelling-in-a-nutshell">Ocean modelling in a nutshell<a class="anchor-link" href="#ocean-modelling-in-a-nutshell" title="Permanent link">&para;</a></h3>
+<p>Ocean models simulate how the oceans react to external forcings, like irradiation from the sun, wind patterns, or freshwater influx from rivers and glaciers. As such, they are a major component of every climate model (other parts being for example atmosphere, ice, and land models), and help us understand the complex processes taking place in the real&nbsp;oceans.</p>
+<p>In the following sections I will show you how oceans can be modelled mathematically, and how we can solve these equations with computers, before we dive deeper into <a href="#jax-hpc">using <span class="caps">JAX</span> for high-performance computing</a>.</p>
+<h4 id="the-primitive-equations">The primitive equations<a class="anchor-link" href="#the-primitive-equations" title="Permanent link">&para;</a></h4>
+<p>The starting point for almost all fluid dynamics are the <a href="https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations">Navier-Stokes and continuity equations</a>, which are derived from momentum and mass conservation inside the fluid. In their most general form these equations are too unwieldy for ocean modelling, but after a few reasonable approximations (like assuming a constant background density and small vertical velocities), we arrive at the so-called <em>primitive equations</em>.</p>
+<p>I won&#8217;t go into too much detail here, but I think it is still nice to show the equations in full so you can get an idea of the complexity of the problem we are trying to solve. They can be <a href="https://mitgcm.readthedocs.io/en/latest/overview/eqn_motion_ocn.html#compressible-non-divergent-equations">written like this</a>:</p>
+<p>$$ \frac{\partial \vec{v}_h}{\partial t} + (\vec{v} \cdot \nabla) \vec{v}_h + f \hat{k} \times \vec{v}_h + \frac{1}{\rho_0} \nabla_h p&#8217; = \vec{\mathcal{F}} $$
+$$ \nabla_h \cdot \vec{v}_h + \frac{\partial w}{\partial z} = 0 $$
+$$ \frac{\partial p&#8217;}{\partial z} = -g \rho&#8217; $$
+$$ \rho&#8217; = \rho(\theta, S, p_0(z)) - \rho_0 $$
+$$ \frac{\partial \theta}{\partial t} + (\vec{v} \cdot \nabla) \theta = \mathcal{Q}_\theta $$
+$$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&nbsp;$$</p>
+<p>This is a set of 6 coupled, nonlinear partial differential equations. The primitive equations describe the evolution of velocity \(\vec{v} = (u, v, w)\) (\(\vec{v_h} = (u, v)\)), pressure \(p\), density \(\rho\), temperature \(\theta\), and salinity \(S\) in time \(t\) and space \((x, y, z)\). \(f, \rho_0\), and \(g\) are constants; and \(\vec{\mathcal{F}}\), \(\mathcal{Q}_\theta\), and \(\mathcal{Q}_S\) represent dissipation and forcings (which are usually quite complex terms,&nbsp;too).</p>
+<p>So how can we even solve complex equations like these on a computer? One of the simplest ways is to discretize them using a <a href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference method</a>.</p>
+<p><a id="discretization"></a></p>
+<h4 id="discretization">Discretization<a class="anchor-link" href="#discretization" title="Permanent link">&para;</a></h4>
+<p>The basic idea is to define all quantities (like pressure and velocity) at fixed locations on a <em>computational grid</em>. This implies that we are now dealing with discrete quantities \((y_0, y_1, \ldots, y_N)\) instead of their true continuous versions \(y(x)\). If you are familiar with calculus, you probably know that a derivative can be written as a difference between neighboring grid cells, divided by a small step&nbsp;size:</p>
+<p>$$ \left. \frac{\partial y}{\partial x} \right|_{x_i} \quad \sim \quad \frac{y_{i+1} - y_i}{\Delta x}&nbsp;$$</p>
+<p>This converges to the &#8220;true&#8221; value in the limit of smaller and smaller \(\Delta x\). Writing gradients like this is the central idea of finite difference discretizations, and although there are many different ways to write these discrete gradients &#8212; with different numerical accuracies and stability properties &#8212; the principle is always the&nbsp;same.</p>
+<p>For time derivatives, we typically use a <a href="https://en.wikipedia.org/wiki/Linear_multistep_method">multi-step method</a>:</p>
+<p>$$ \frac{\partial y}{\partial t} = f(t, y) \quad \sim \quad \frac{y^{n+1}-y^n}{\Delta t} = \frac{3}{2} f(t^{n}, y^{n}) - \frac{1}{2} f(t^{n-1}, y^{n-1})&nbsp;$$</p>
+<p>This requires us to store the solution at different time steps, but is otherwise not more difficult than a simple forward&nbsp;difference.</p>
+<p>By replacing all gradients in the primitive equations through their discrete counterparts, we arrive at a set of discrete equations that can be stepped forward in time. To solve them on a computer, all we need to do is to define our physical variables as arrays (where array indices correspond to grid locations), and perform the right finite difference operations. For example, in vectorized Python code, we can write a gradient operation like the one above through <em>index shifts</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># discrete version of ∂y/∂x</span>
+<span class="c1">#</span>
+<span class="c1">#             y_{i+1}   y_{i}</span>
+<span class="c1">#                |        |</span>
+<span class="n">dy_dx</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span>
+</code></pre></div>
+
+<p>For this to work, we need to pad all arrays by 1 extra element along each dimension (so the original data is <code>y[1:-1]</code>). Then, we can compute finite differences by shifting slices. The extra elements <code>y[0]</code> and <code>y[-1]</code> are called &#8220;ghost cells&#8221; or&nbsp;&#8220;overlap&#8221;.</p>
+<h4 id="parallelization">Parallelization<a class="anchor-link" href="#parallelization" title="Permanent link">&para;</a></h4>
+<p>Solving the primitive equations is very computationally expensive. Our model domain is typically the whole globe, and the non-linear nature of the primitive equations impose tight constraints on the largest time steps we can take. To make things worse, the ocean has a long memory of hundreds of years, so we need to run very long simulations until they reach a steady state &#8212; it&#8217;s not uncommon that a setup runs for more than 1 million time&nbsp;steps.</p>
+<p>Because of this, even relatively low-resolution models like 3×3° (with about 600,000 grid elements) should be run on more than one process, unless you are willing to wait on results for months. High-resolution setups typically run on thousands of processes (<span class="caps">CPU</span> cores) across dozens of computational&nbsp;nodes.</p>
+<p>The basic idea to execute the model in parallel is a simple <em>domain decomposition</em>. Every process takes ownership of a chunk of the total domain, and iterates it forward in time. Of course, neighboring processes need to exchange information from time to time, e.g. by sending messages through <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface"><span class="caps">MPI</span> (Message Passing Interface)</a>. Luckily, we can re-use our overlap cells for this! So by filling the ghost cells of each chunk with the current solution from the process neighbor we can ensure that the final solution is identical to that of the sequential model. This process is also called <em>halo exchange</em>.</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/veros-jax/halo-exchange.png" style="max-width: 250px;">
+    <figcaption>Distributed modelling via halo exchange. Each process (P1-P9) owns a chunk of the total domain and exchanges information with its neighbors. Received information is written into the chunk&#8217;s overlap cells.</figcaption>
+</figure>
+
+<p>How often communications need to happen depends on how far each index is shifted, and the size of the overlap region. An overlap of 2 on each edge gives us enough leeway to execute 2 forward operations on the same array before having to&nbsp;communicate.</p>
+<p>Now we are ready solve the primitive equations on an arbitrary number of processes with vectorized array operations. <span class="caps">JAX</span> is an excellent fit for this task, as we will see in the next&nbsp;section.</p>
+<p><a id="jax-hpc"></a></p>
+<h3 id="jax-for-high-performance-computing"><span class="caps">JAX</span> for high-performance computing<a class="anchor-link" href="#jax-for-high-performance-computing" title="Permanent link">&para;</a></h3>
+<p>Even though most people use <span class="caps">JAX</span> for machine learning, it is actually a great choice for high-performance computing. Through its just-in-time (<span class="caps">JIT</span>) compiler, <span class="caps">JAX</span> has <a href="https://github.com/dionhaefner/pyhpc-benchmarks">good all-round performance on <span class="caps">CPU</span> and <span class="caps">GPU</span></a>, and the <span class="caps">API</span> is close enough to NumPy to make it easy to port existing&nbsp;code.</p>
+<p>To demonstrate how this works in practice, I will show you how to implement the time stepping for a simple partial differential equation in <span class="caps">JAX</span>. Here is the equation, and the resulting <span class="caps">JAX</span>&nbsp;code:</p>
+<p>$$ \frac{\partial h}{\partial t} = - \frac{\partial f_e}{\partial x} - \frac{\partial f_n}{\partial y}&nbsp;$$</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># compile function with jit for speed</span>
+<span class="nd">@jax</span><span class="o">.</span><span class="n">jit</span>
+<span class="k">def</span> <span class="nf">update_h</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">dh</span><span class="p">,</span> <span class="n">fe</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Step h forward in time.&quot;&quot;&quot;</span>
+
+    <span class="c1"># compute right hand side</span>
+    <span class="n">dh_new</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+        <span class="o">-</span><span class="p">(</span><span class="n">fe</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">fe</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="n">dx</span>
+        <span class="o">-</span> <span class="p">(</span><span class="n">fn</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">fn</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">dy</span>
+    <span class="p">)</span>
+
+    <span class="c1"># step in time via multistep integration</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="n">dt</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">dh_new</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dh</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="p">)</span>
+
+    <span class="c1"># enforce cyclic boundaries and handle inter-process communication</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">enforce_boundaries</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h</span>
+</code></pre></div>
+
+<p>Applying this function to a model state with variables {<code>h, dh, fe, fn</code>} yields a new state, with <code>h</code> stepped forward in time by <code>dt</code>. And because we can write finite difference operations in a fully vectorized way with <span class="caps">JAX</span> (via <a href="#discretization">index shifts</a>), the implementation ends up clean and&nbsp;fast.</p>
+<p>The only big obstacle left to figure out is <a href="#parallelization">communication between processes</a> &#8212; i.e., what happens inside <code>enforce_boundaries</code>. In functions decorated with <code>@jax.jit</code>, arrays can only be manipulated through transformations that are known to the underlying compiler, <span class="caps">XLA</span>. This means that we would have to break control flow at every communication operation to leave <span class="caps">JIT</span>, perform the operation, and then re-enter a <span class="caps">JIT</span> block. This is ugly: it complicates the code structure, and we are leaving performance on the table by applying <span class="caps">JIT</span> to smaller blocks at a&nbsp;time.</p>
+<p>To solve this problem I co-developed <a href="https://github.com/mpi4jax/mpi4jax"><code>mpi4jax</code></a>, which registers <span class="caps">MPI</span> operations with <span class="caps">XLA</span>, so we can use them within <span class="caps">JIT</span> blocks. Here is a simplified implementation of <code>enforce_boundaries</code>, where we use <code>mpi4jax.sendrecv</code> to exchange&nbsp;information:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@jax</span><span class="o">.</span><span class="n">jit</span>
+<span class="k">def</span> <span class="nf">enforce_boundaries</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">grid</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exchange overlap between processes.&quot;&quot;&quot;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">send_order</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;west&quot;</span><span class="p">,</span> <span class="s2">&quot;east&quot;</span><span class="p">)</span>
+    <span class="n">recv_order</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;east&quot;</span><span class="p">,</span> <span class="s2">&quot;west&quot;</span><span class="p">)</span>
+
+    <span class="c1"># loop over neighbors</span>
+    <span class="k">for</span> <span class="n">send_dir</span><span class="p">,</span> <span class="n">recv_dir</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">send_order</span><span class="p">,</span> <span class="n">recv_order</span><span class="p">):</span>
+        <span class="c1"># determine neighboring processes</span>
+        <span class="n">send_proc</span> <span class="o">=</span> <span class="n">proc_neighbors</span><span class="p">[</span><span class="n">send_dir</span><span class="p">]</span>
+        <span class="n">recv_proc</span> <span class="o">=</span> <span class="n">proc_neighbors</span><span class="p">[</span><span class="n">recv_dir</span><span class="p">]</span>
+
+        <span class="c1"># determine data to send</span>
+        <span class="n">send_idx</span> <span class="o">=</span> <span class="n">overlap_slices_send</span><span class="p">[</span><span class="n">send_dir</span><span class="p">]</span>
+        <span class="n">send_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">send_idx</span><span class="p">]</span>
+
+        <span class="c1"># determine where to place received data</span>
+        <span class="n">recv_idx</span> <span class="o">=</span> <span class="n">overlap_slices_recv</span><span class="p">[</span><span class="n">recv_dir</span><span class="p">]</span>
+        <span class="n">recv_arr</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">recv_idx</span><span class="p">])</span>
+
+        <span class="c1"># execute send-receive operation through mpi4jax</span>
+        <span class="n">recv_arr</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="n">mpi4jax</span><span class="o">.</span><span class="n">sendrecv</span><span class="p">(</span>
+            <span class="n">send_arr</span><span class="p">,</span>
+            <span class="n">recv_arr</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">recv_proc</span><span class="p">,</span>
+            <span class="n">dest</span><span class="o">=</span><span class="n">send_proc</span><span class="p">,</span>
+            <span class="n">comm</span><span class="o">=</span><span class="n">mpi_comm</span><span class="p">,</span>
+            <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+      <span class="p">)</span>
+
+        <span class="c1"># update array with received data</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">recv_idx</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">recv_arr</span><span class="p">)</span>
+
+      <span class="k">return</span> <span class="n">arr</span>
+</code></pre></div>
+
+<p>(for a full, working example see <a href="https://github.com/mpi4jax/mpi4jax/blob/master/examples/shallow_water.py">the mpi4jax repository</a>)</p>
+<p>With this in place, we can do fully distributed simulations on <span class="caps">CPU</span> and <span class="caps">GPU</span>, with just a few lines of Python&nbsp;code.</p>
+<h3 id="veros-jax-in-action">Veros + <span class="caps">JAX</span> in action<a class="anchor-link" href="#veros-jax-in-action" title="Permanent link">&para;</a></h3>
+<p>Because the whole model is written in Python, getting started with Veros is pretty easy. For example, if you already have a working Python installation and current <span class="caps">CUDA</span> drivers, the following screencast shows you all you need to do&nbsp;to:</p>
+<ol>
+<li>Install Veros and all&nbsp;dependencies</li>
+<li>Run a <a href="https://veros.readthedocs.io/en/latest/reference/setup-gallery.html#realistic-configurations">global 1x1° setup</a> on <span class="caps">GPU</span></li>
+</ol>
+<figure style="max-width: 100%">
+    <script id="asciicast-khT9j1IPsw9p4wQn5PxyCmTY0" data-speed="2" data-theme="monokai" data-cols="84" data-rows="24" src="https://asciinema.org/a/khT9j1IPsw9p4wQn5PxyCmTY0.js" async></script>
+    <figcaption>From an empty environment to running Veros on <span class="caps">GPU</span> in a handful of commands. Screencast in 2x speed.</figcaption>
+</figure>
+
+<p>Leaving this setup running on a high-end <span class="caps">GPU</span> for about 24 hours finally leads to output like this, which shows us all the major ocean&nbsp;circulations:</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/veros-jax/1deg.png" style="max-width: 400px">
+    <figcaption>Output of the global 1x1° setup. Barotropic streamfunction after 10 model years. The ocean circulation runs along the plotted streamlines.</figcaption>
+</figure>
+
+<p>Similarly, we can run Veros on multiple <span class="caps">CPU</span> cores (in this case 4) like&nbsp;this:</p>
+<div class="highlight"><pre><span></span><code>$ mpirun -n <span class="m">4</span> veros run global_1deg -b jax -n <span class="m">2</span> <span class="m">2</span>
+</code></pre></div>
+
+<p>(after installing <span class="caps">MPI</span>, mpi4py, and&nbsp;mpi4jax)</p>
+<p><a id="benchmarks"></a></p>
+<h3 id="turns-out-its-pretty-fast">Turns out it&#8217;s pretty fast<a class="anchor-link" href="#turns-out-its-pretty-fast" title="Permanent link">&para;</a></h3>
+<p>Now we can finally run some benchmarks of the new <span class="caps">JAX</span> backend. Because the dynamical core of Veros is a one-to-one translation of a <a href="https://wiki.cen.uni-hamburg.de/ifm/TO/pyOM2">Fortran model</a> to Python, we can also do a direct comparison between <span class="caps">JAX</span> and the original Fortran&nbsp;code.</p>
+<p>First up, we compare the performance on a single computer with 24 <span class="caps">CPU</span> cores and a Tesla P100 <span class="caps">GPU</span>. This benchmark shows you how the computational efficiency depends on the number of grid&nbsp;elements:</p>
+<figure style="max-width: 100%;">
+    <img src="https://dionhaefner.github.io/images/veros-jax/fig-scaling-size.png">
+    <figcaption><span class="caps">JAX</span> performance is very close to Fortran, both with and without multiprocessing (via <span class="caps">MPI</span>), while a single <span class="caps">GPU</span> easily outperforms 24 CPUs. Shown are full model benchmarks on a single machine with a varying number of grid elements.</figcaption>
+</figure>
+
+<p>We can see that single-process NumPy is 3-4x slower than single-process Fortran, while <span class="caps">JAX</span> is a bit faster (mostly because <span class="caps">JAX</span> has some thread parallelism under the hood). On all 24 <span class="caps">CPU</span> cores, <span class="caps">JAX</span> is marginally slower than Fortran, while <span class="caps">JAX</span> on <span class="caps">GPU</span> outperforms&nbsp;everything.</p>
+<p>But this is only what we get on a single computational node. Realistic ocean models need to run much faster than that, so we have to study how Veros scales to multiple nodes in a compute cluster. For <span class="caps">CPU</span>, we measured&nbsp;this:</p>
+<figure style="max-width: 100%;">
+    <img src="https://dionhaefner.github.io/images/veros-jax/fig-scaling-nproc.png">
+    <figcaption><span class="caps">JAX</span> performance is very close to Fortran, even when using hundreds of <span class="caps">CPU</span> cores. Shown are full model benchmarks on a <span class="caps">CPU</span> cluster with fixed number of grid elements (6M) and varying number of processes.</figcaption>
+</figure>
+
+<p>Again, <span class="caps">JAX</span> is only slightly slower than Fortran or breaks even, with NumPy far behind. This means that we are able to match the performance of Fortran, a highly optimized language <em>made</em> for high-performance computing, with our pure Python model + the <span class="caps">JAX</span> compiler, without any of the baggage that comes with Fortran&nbsp;models.</p>
+<p>But the real star is this benchmark, where we see how Veros / <span class="caps">JAX</span> scales to multiple&nbsp;GPUs:</p>
+<figure style="max-width: 100%;">
+    <img src="https://dionhaefner.github.io/images/veros-jax/fig-scaling-gpu.png">
+    <figcaption>For big problems that completely fill each <span class="caps">GPU</span>, scaling to multiple GPUs is almost perfect. Shown are full model benchmarks on a <code>a2-megagpu-16g</code> Google Cloud instance with 16 <span class="caps">NVIDIA</span> A100 GPUs. Fixed number of grid elements (weak scaling; left) and fixed number of grid elements <em>per <span class="caps">GPU</span></em> (strong scaling; right). x-axis shows number of GPUs.</figcaption>
+</figure>
+
+<p>These results are a bit difficult to unpack, but the gist is this: If we can decompose the computational domain in such a way that every <span class="caps">GPU</span> is fully utilized, scaling to more devices is almost perfect. This is what allowed us to run a very high resolution simulation (global 0.1°) on a single Google Cloud instance with 16 GPUs &#8212; which people typically run on at least 2000 Fortran processes. You could already see the result at the start of this article, but here it is&nbsp;again:</p>
+<figure style="max-width: 90%;">
+    <img src="https://dionhaefner.github.io/images/veros-jax/01deg-surface-speed.png">
+    <figcaption>The turbulent ocean. This high-resolution (0.1°) snapshot of the ocean was simulated with Veros on 16 A100 GPUs on a single Google Cloud <span class="caps">VM</span>, faster than 2000 CPUs running a Fortran model.</figcaption>
+</figure>
+
+<p><a id="outlook"></a></p>
+<h3 id="differentiable-physics">Differentiable physics<a class="anchor-link" href="#differentiable-physics" title="Permanent link">&para;</a></h3>
+<p>Now that we have a fast ocean model in Python, what&#8217;s next? Most of all, I hope that people will simply find Veros enjoyable to work with, and use it to understand our earth and&nbsp;climate.</p>
+<p>But there is one more new, interesting direction, namely the integration of machine learning models into the physical simulation. This is possible because <span class="caps">JAX</span> offers more than just a <span class="caps">JIT</span> compiler: <span class="caps">JAX</span> functions are also <a href="https://en.wikipedia.org/wiki/Differentiable_programming">differentiable</a>, which opens up a whole new of possibilities (Veros is not fully differentiable yet, but could be with some more&nbsp;effort).</p>
+<p>In particular, there is an emerging field of <a href="https://physicsbaseddeeplearning.org">physics-based deep learning</a> that integrates machine learning with physical modelling. In case of a differentiable physical model, these &#8220;hybrid&#8221; systems can be trained end-to-end, which tends to make training much more efficient. There are already differentiable models for fluid dynamics in <span class="caps">JAX</span> (namely <a href="https://github.com/tum-pbs/PhiFlow">PhiFlow</a> and <a href="https://github.com/google/jax-cfd">jax-cfd</a>), but &#8212; as far as I know &#8212; Veros is the first that supports realistic ocean&nbsp;setups.</p>
+<p>Finally, I hope that I managed to share some of my excitement about working on modern physical models. If so, you are <a href="https://github.com/team-ocean/veros">welcome to contribute</a>.</p>
   </article><!-- /.entry-content -->
 
   <footer class="postmatter">
+        <h3>Related posts</h3>
+        <dl>
+            <dt>2021-04-20</dt>
+            <dd><a href="https://dionhaefner.github.io/2021/04/higher-level-geophysical-modelling/">Higher-level geophysical&nbsp;modelling </a></dd>
+        </dl>
       <div id="download-source">
         <a href="https://dionhaefner.github.io/drafts/supercharged-high-resolution-ocean-simulation-with-jax.source" download="supercharged-high-resolution-ocean-simulation-with-jax.md">Download article source</a>
       </div>
