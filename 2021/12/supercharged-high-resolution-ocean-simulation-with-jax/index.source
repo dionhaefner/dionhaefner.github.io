@@ -29,7 +29,7 @@ In the following sections I will show you how oceans can be modelled mathematica
 
 ### The primitive equations
 
-The starting point for almost all fluid dynamics are the [Navier-Stokes and continuity equations](https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations), which are derived from momentum and mass conservation inside the fluid. In their most general form these equations are too unwieldy for ocean modelling, but after a few reasonable approximations (like assuming a constant background density and small vertical velocities), we arrive at the so-called *primitive equations*.
+The starting point for almost all fluid dynamics are the [Navier-Stokes and continuity equations](https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations), which are derived from momentum and mass conservation within the fluid. In their most general form these equations are too unwieldy for ocean modelling, but after a few reasonable approximations (like assuming a constant background density and small vertical velocities), we arrive at the so-called *primitive equations*.
 
 I won't go into too much detail here, but I think it is still nice to show the equations in full so you can get an idea of the complexity of the problem we are trying to solve. They can be [written like this](https://mitgcm.readthedocs.io/en/latest/overview/eqn_motion_ocn.html#compressible-non-divergent-equations):
 
@@ -40,7 +40,7 @@ $$ \rho' = \rho(\theta, S, p_0(z)) - \rho_0 $$
 $$ \frac{\partial \theta}{\partial t} + (\vec{v} \cdot \nabla) \theta = \mathcal{Q}_\theta $$
 $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S $$
 
-This is a set of 6 coupled, nonlinear partial differential equations. The primitive equations describe the evolution of velocity \\(\vec{v} = (u, v, w)\\) (\\(\vec{v\_h} = (u, v)\\)), pressure \\(p\\), density \\(\rho\\), temperature \\(\theta\\), and salinity \\(S\\) in time \\(t\\) and space \\((x, y, z)\\). \\(f, \rho\_0\\), and \\(g\\) are constants; and \\(\vec{\mathcal{F}}\\), \\(\mathcal{Q}_\theta\\), and \\(\mathcal{Q}_S\\) represent dissipation and forcings (which are usually quite complex terms, too).
+This is a set of 7 coupled, nonlinear partial differential equations. The primitive equations describe the evolution of velocity \\(\vec{v} = (u, v, w)\\) (\\(\vec{v\_h} = (u, v)\\)), pressure \\(p\\), density \\(\rho\\), temperature \\(\theta\\), and salinity \\(S\\) in time \\(t\\) and space \\((x, y, z)\\). \\(f, \rho\_0\\), and \\(g\\) are constants; and \\(\vec{\mathcal{F}}\\), \\(\mathcal{Q}_\theta\\), and \\(\mathcal{Q}_S\\) represent dissipation and forcings (which are usually quite complex terms, too).
 
 So how can we even solve complex equations like these on a computer? One of the simplest ways is to discretize them using a [finite difference method](https://en.wikipedia.org/wiki/Finite_difference_method).
 
@@ -244,4 +244,4 @@ But there is one more new, interesting direction, namely the integration of mach
 
 In particular, there is an emerging field of [physics-based deep learning](https://physicsbaseddeeplearning.org) that integrates machine learning with physical modelling. In case of a differentiable physical model, these "hybrid" systems can be trained end-to-end, which tends to make training much more efficient. There are already differentiable models for fluid dynamics in JAX (namely [PhiFlow](https://github.com/tum-pbs/PhiFlow) and [jax-cfd](https://github.com/google/jax-cfd)), but -- as far as I know -- Veros is the first that supports realistic ocean setups.
 
-Finally, I hope that I managed to share some of my excitement about working on modern physical models. If so, you are [welcome to contribute](https://github.com/team-ocean/veros).
+Finally, I hope that I managed to share some of my excitement about working on modern physical models! If so, you are [welcome to contribute](https://github.com/team-ocean/veros).
