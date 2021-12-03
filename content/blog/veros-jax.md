@@ -1,9 +1,8 @@
 Title: Supercharged high-resolution ocean simulation with JAX
-Date: 2021-11-10
+Date: 2021-12-3
 Tags: Science, Computing, Python
 Author: Dion
 related_posts: higher-level-geophysical-modelling
-Status: draft
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -18,7 +17,7 @@ In fact, we can now do high-resolution ocean simulations on a handful of GPUs, w
 
 So, what does this mean, and how did we pull this off? In this blog post I will give you an [introduction to high-performance ocean modelling](#modelling), show you how [JAX fits into the picture](#jax-hpc), and [show some benchmarks](#benchmarks) to prove to you that Python code can be competitive with hand-written Fortran (while also having great GPU performance).
 
-If you want to know all the details, you should make sure to also check out our article ["Fast, cheap, & turbulent -- Global ocean modelling with GPU acceleration in Python"]() that was published in the Journal of Advances in Earth System Modelling (JAMES) today.
+If you want to know all the details, you should make sure to also check out our article ["Fast, cheap, & turbulent — Global ocean modelling with GPU acceleration in Python"](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002717) that was published in the Journal of Advances in Earth System Modelling (JAMES) today.
 
 <a id="modelling"></a>
 
