@@ -12,11 +12,11 @@
 
         <!-- Open Graph -->
         <meta property="og:title" content="Supercharged high-resolution ocean simulation with JAX | dionhaefner.github.io" />
-        <meta property="og:url" content="https://dionhaefner.github.io/drafts/supercharged-high-resolution-ocean-simulation-with-jax.html" />
+        <meta property="og:url" content="https://dionhaefner.github.io/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/index.html" />
         <meta property="og:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
         <meta property="og:description" content="Our Python ocean model Veros (which I maintain) now fully supports JAX as its computational backend. As a result, Veros has much better performance than before on both CPU and GPU, while all model code is still written in Python. In fact, we can now do high-resolution ocean simulations on …" />
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2021-11-10T00:00:00+01:00" />
+  <meta property="article:published_time" content="2021-12-03T00:00:00+01:00" />
   <meta property="article:author" content="Dion" />
   <meta property="article:section" content="blog" />
   <meta property="article:tag" content="Computing, Python, Science" />
@@ -72,15 +72,15 @@
 <section id="content" class="body">
   <header class="post-info">
     <div class="entry-metadata">
-      <time class="published" datetime="2021-11-10T00:00:00+01:00">
-        <span class="fa fa-calendar"></span> 2021-11-10
+      <time class="published" datetime="2021-12-03T00:00:00+01:00">
+        <span class="fa fa-calendar"></span> 2021-12-03
       </time>
       <div class="tags">
           <span class="fa fa-tags"></span>
               <a href="https://dionhaefner.github.io/tag/science.html">Science</a>,              <a href="https://dionhaefner.github.io/tag/computing.html">Computing</a>,              <a href="https://dionhaefner.github.io/tag/python.html">Python</a>      </div>
     </div>
     <h1 class="entry-title">
-      <a href="https://dionhaefner.github.io/drafts/supercharged-high-resolution-ocean-simulation-with-jax.html" rel="bookmark"
+      <a href="https://dionhaefner.github.io/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/" rel="bookmark"
          title="Permalink to Supercharged high-resolution ocean simulation with JAX">Supercharged high-resolution ocean simulation with <span class="caps">JAX</span></a>
     </h1>
  
@@ -99,7 +99,7 @@ In fact, we can now do high-resolution ocean simulations on a handful of GPUs, w
 </figure>
 
 <p>So, what does this mean, and how did we pull this off? In this blog post I will give you an <a href="#modelling">introduction to high-performance ocean modelling</a>, show you how <a href="#jax-hpc"><span class="caps">JAX</span> fits into the picture</a>, and <a href="#benchmarks">show some benchmarks</a> to prove to you that Python code can be competitive with hand-written Fortran (while also having great <span class="caps">GPU</span>&nbsp;performance).</p>
-<p>If you want to know all the details, you should make sure to also check out our article <a href="">&#8220;Fast, cheap, <span class="amp">&amp;</span> turbulent &#8212; Global ocean modelling with <span class="caps">GPU</span> acceleration in Python&#8221;</a> that was published in the Journal of Advances in Earth System Modelling (<span class="caps">JAMES</span>)&nbsp;today.</p>
+<p>If you want to know all the details, you should make sure to also check out our article <a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002717">&#8220;Fast, cheap, <span class="amp">&amp;</span> turbulent — Global ocean modelling with <span class="caps">GPU</span> acceleration in Python&#8221;</a> that was published in the Journal of Advances in Earth System Modelling (<span class="caps">JAMES</span>)&nbsp;today.</p>
 <p><a id="modelling"></a></p>
 <h3 id="ocean-modelling-in-a-nutshell">Ocean modelling in a nutshell<a class="anchor-link" href="#ocean-modelling-in-a-nutshell" title="Permanent link">&para;</a></h3>
 <p>Ocean models simulate how the oceans react to external forcings, like irradiation from the sun, wind patterns, or freshwater influx from rivers and glaciers. As such, they are a major component of every climate model (other parts being for example atmosphere, ice, and land models), and help us understand the complex processes taking place in the real&nbsp;oceans.</p>
@@ -277,7 +277,7 @@ $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&nbsp
             <dd><a href="https://dionhaefner.github.io/2021/04/higher-level-geophysical-modelling/">Higher-level geophysical&nbsp;modelling </a></dd>
         </dl>
       <div id="download-source">
-        <a href="https://dionhaefner.github.io/drafts/supercharged-high-resolution-ocean-simulation-with-jax.source" download="supercharged-high-resolution-ocean-simulation-with-jax.md">Download article source</a>
+        <a href="https://dionhaefner.github.io/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/index.source" download="supercharged-high-resolution-ocean-simulation-with-jax.md">Download article source</a>
       </div>
   </footer>
 
