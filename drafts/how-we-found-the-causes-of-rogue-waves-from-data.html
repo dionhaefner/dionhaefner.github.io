@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>How we found the causes of rogue waves from data | dionhaefner.github.io</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Recreation of Hokusai’s “Great wave off Kanagawa” in a wave tank. From McAllister et al., 2018. Most of what I describe in this blog post is published in the peer-reviewed articles Real-world rogue wave probabilities and FOWD: A Free Ocean Wave Dataset for Data Mining and Machine Learning. Rogue …">
+        <link rel="icon" href="https://dionhaefner.github.io/favicon.ico">
+
+        <!-- Open Graph -->
+        <meta property="og:title" content="How we found the causes of rogue waves from data | dionhaefner.github.io" />
+        <meta property="og:url" content="https://dionhaefner.github.io/drafts/how-we-found-the-causes-of-rogue-waves-from-data.html" />
+        <meta property="og:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <meta property="og:description" content="Recreation of Hokusai’s “Great wave off Kanagawa” in a wave tank. From McAllister et al., 2018. Most of what I describe in this blog post is published in the peer-reviewed articles Real-world rogue wave probabilities and FOWD: A Free Ocean Wave Dataset for Data Mining and Machine Learning. Rogue …" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2021-07-17T00:00:00+02:00" />
+  <meta property="article:author" content="Dion" />
+  <meta property="article:section" content="blog" />
+  <meta property="article:tag" content="Geophysics, Machine Learning, Python, Science" />
+        <!-- /Open Graph -->
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="How we found the causes of rogue waves from data | dionhaefner.github.io" />
+          <meta name="twitter:site" content="@dionhaefner" />
+        <meta name="twitter:title" content="How we found the causes of rogue waves from data | dionhaefner.github.io" />
+        <meta name="twitter:description" content="Recreation of Hokusai’s “Great wave off Kanagawa” in a wave tank. From McAllister et al., 2018. Most of what I describe in this blog post is published in the peer-reviewed articles Real-world rogue wave probabilities and FOWD: A Free Ocean Wave Dataset for Data Mining and Machine Learning. Rogue …" />
+        <meta name="twitter:image" content="https://dionhaefner.github.io/images/logo-bright.png" />
+        <!-- /Twitter Card -->
+
+        <!-- Stylesheets -->
+        <link href="https://dionhaefner.github.io/theme/css/fonts.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/maxwell.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/pygments.css" rel="stylesheet">
+        <link href="https://dionhaefner.github.io/theme/css/font-awesome.css" rel="stylesheet">
+        <!-- /Stylesheets -->
+
+        <!-- JS -->
+        <script src="https://dionhaefner.github.io/theme/js/toggle-dark.js" language="javascript"></script>
+        
+<script data-goatcounter="https://dionhaefner.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+        <!-- /JS -->
+
+        <link href="https://dionhaefner.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Full Atom Feed" />
+        <link href="https://dionhaefner.github.io/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="dionhaefner.github.io Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="Science" />
+    <meta name="tags" content="Machine Learning" />
+    <meta name="tags" content="Geophysics" />
+    <meta name="tags" content="Python" />
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": {
+        scale: 90,
+        styles: {".MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn": {color: "inherit"}},
+      }
+    });
+    </script>
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+          <a href="https://dionhaefner.github.io/"><span class="site-title">dionhaefner.github.io</span></a><span class="site-subtitle">Maximum entropy</span><a class="btn-toggle fa" alt="Toggle theme"></a>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <header class="post-info">
+    <div class="entry-metadata">
+      <time class="published" datetime="2021-07-17T00:00:00+02:00">
+        <span class="fa fa-calendar"></span> 2021-07-17
+      </time>
+      <div class="tags">
+          <span class="fa fa-tags"></span>
+              <a href="https://dionhaefner.github.io/tag/science.html">Science</a>,              <a href="https://dionhaefner.github.io/tag/machine-learning.html">Machine Learning</a>,              <a href="https://dionhaefner.github.io/tag/geophysics.html">Geophysics</a>,              <a href="https://dionhaefner.github.io/tag/python.html">Python</a>      </div>
+    </div>
+    <h1 class="entry-title">
+      <a href="https://dionhaefner.github.io/drafts/how-we-found-the-causes-of-rogue-waves-from-data.html" rel="bookmark"
+         title="Permalink to How we found the causes of rogue waves from data">How we found the causes of rogue waves from&nbsp;data</a>
+    </h1>
+ 
+    <div class="header-underline"></div>
+  </header>
+
+  <article class="entry-content">
+    <figure>
+    <img src="https://dionhaefner.github.io/images/rogue-waves/hokusai.jpg" style="max-width: 250px; margin: 0;">
+    <img src="https://dionhaefner.github.io/images/rogue-waves/rogue.jpg" style="max-width: 250px; margin: 0;">
+    <figcaption>Recreation of Hokusai&#8217;s &#8220;Great wave off Kanagawa&#8221; in a wave tank. From <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/laboratory-recreation-of-the-draupner-wave-and-the-role-of-breaking-in-crossing-seas/65EA3294DAFD97A50C8046140B45F759">McAllister et al., 2018</a>.</figcaption>
+</figure>
+
+<p><em>Most of what I describe in this blog post is published in the peer-reviewed articles <a href="https://www.nature.com/articles/s41598-021-89359-1">Real-world rogue wave probabilities</a> and <a href="https://journals.ametsoc.org/view/journals/atot/aop/JTECH-D-20-0185.1/JTECH-D-20-0185.1.xml"><span class="caps">FOWD</span>: A Free Ocean Wave Dataset for Data Mining and Machine Learning</a>.</em></p>
+<h3 id="rogue-waves">Rogue waves<a class="anchor-link" href="#rogue-waves" title="Permanent link">&para;</a></h3>
+<p>Imagine&nbsp;this:</p>
+<blockquote>
+<p>You are standing on the main deck of a ship, 4m above the water, on a voyage across the Atlantic. The sea is pretty calm, the waves are long and regular, and seem to be gently stroking the hull of the ship, well below your vantage point. But then you need to hop backwards. Your wet feet and the retreating water on the deck are the only sign left of the wave that just washed over the railing, and disappeared as fast as it&nbsp;came.</p>
+</blockquote>
+<p>Or&nbsp;this:</p>
+<blockquote>
+<p>Your ship is navigating through a storm, and the sea is rough - waves are piling up, reaching heights of 8m and more. You are on the bridge, the highest point of the ship, 20m above the water. After every crest it feels like the vessel is dropping into a hole in the sea. Suddenly, you feel weightless for far too long. As the wall of water ahead smashes the bridge windows, you are enveloped by the cold&nbsp;sea.</p>
+</blockquote>
+<p>What do both events have in common? They are examples of encounters with <em>rogue waves</em>.</p>
+<p>A rogue wave is, by definition, any wave that is at least twice as high as the significant wave height (which is roughly the average wave height a trained human observer would report). This is what I set out to study for my PhD at the University of&nbsp;Copenhagen.</p>
+<p>When I began to get into the research literature about them, I was stunned: Every study seemed to focus on something&nbsp;different! </p>
+<p>Now, a couple of years down the road, it seems like we have succeeded to shine some light on some of these processes.
+<strong>So, in this blog post, I&#8217;ll walk you through how we used machine learning to find the physics behind rogue&nbsp;waves.</strong></p>
+<p>Basically, the goal is that you will understand this poster of&nbsp;mine:</p>
+<figure>
+    <a href="https://dionhaefner.github.io/images/rogue-waves/egu-rogue-wave-poster.png">
+        <img src="https://dionhaefner.github.io/images/rogue-waves/egu-rogue-wave-poster-thumbnail.png">
+    </a>
+    <figcaption>Poster <a href="https://meetingorganizer.copernicus.org/EGU21/EGU21-1189.html">from a presentation I held at the General Assembly of the European Geophysical Union 2021<a>. (click for larger version)</figcaption>
+</figure>
+
+<p><em>This post is mostly about statistics and machine learning, so I won&#8217;t get into too much detail about the rogue wave phenomenon. If you want to learn more about that, this description by <a href="https://oceanservice.noaa.gov/facts/roguewaves.html"><span class="caps">NOAA</span></a> is a good start, or this article in <a href="https://www.quantamagazine.org/the-grand-unified-theory-of-rogue-waves-20200205/">Quanta magazine</a> that is really well written. And the <a href="https://en.wikipedia.org/wiki/Rogue_wave">Rogue wave Wikipedia article</a> goes a bit more in depth on the various theories surrounding rogue wave&nbsp;formation.</em></p>
+<h3 id="big-data-and-little-data">Big data and little data<a class="anchor-link" href="#big-data-and-little-data" title="Permanent link">&para;</a></h3>
+<p>Rogue waves are rare, but not as rare as you might think. About 1 in 10,000 waves is a rogue wave, which means that we find about 1 of them per day at any given location. (This might sound scary, but keep in mind that a 2m wave in a 1m sea is also counted as a rogue wave, even though it isn&#8217;t&nbsp;dangerous.)</p>
+<p>Extreme events like rogue waves are <em>big data</em> and <em>little data</em> problems at the same time. You need to collect a lot of raw data, but you will usually have only few interesting events to work with. This means that you will need to use methods that scale well <em>and</em> are robust to sample size effects &#8212; we will return to this in a&nbsp;bit.</p>
+<p>First up, we need data. Lots of&nbsp;it.</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/rogue-waves/cdip.png" style="max-width: 400px;">
+    <figcaption>Locations of the 150+ <span class="caps">CDIP</span> measurement stations. Screenshot from <a href="https://cdip.ucsd.edu/m/deployment/station_view/">the <span class="caps">CDIP</span> station view</a>.</figcaption>
+</figure>
+
+<p>We decided to scrape the entire <a href="https://cdip.ucsd.edu"><span class="caps">CDIP</span> buoy database</a>, which contains data from over 150 locations across the <span class="caps">US</span> and its overseas territories.  his is hundreds of Gigabytes of data &#8212; in total, it contains over 700 years of time series, sampled every 0.78 seconds. It is just based on the up and down motion of the buoys on the waves, and looks something like&nbsp;this:</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/rogue-waves/timeseries.png" style="max-width: 250px;">
+    <figcaption>An example timeseries. Shaded region indicates significant wave height.</figcaption>
+</figure>
+
+<p>Now it is straightforward to just go through every wave in this dataset and record its height. We can also compute the significant wave height, and find all rogue waves in the dataset. But that is only half of the story: now we know which waves were rogue waves, but how do we identify patterns in this&nbsp;data?</p>
+<p><a href="https://journals.ametsoc.org/view/journals/atot/aop/JTECH-D-20-0185.1/JTECH-D-20-0185.1.xml">Our first paper</a> is about how we can transform these time series measurements into something that allows us to characterize the sea state. We find over 4 billion waves in total, and compute dozens of characteristic sea state parameters that describe the conditions in which each wave occurred (over a Terabyte of data). So now that we have that, we can proceed with the&nbsp;analysis.</p>
+<p>Now, remember how I said that we need to account for sample size effects? Why would that be the case when we have billions of data&nbsp;points?</p>
+<p>Well, it&#8217;s complicated. For one, rogue waves are rare, so we only have about 100,000 <em>positive</em> events (where a rogue wave occurred). That is a lot less than 1 billion (but luckily we can also learn something from the cases when a rogue wave did <em>not</em> occur). Secondly, we are interested in how the rogue wave risk varies with various parameter, so we will have to look at conditional probabilities. If we don&#8217;t test for significance, how are we going to know whether we have enough data in a physical regime to make a statement? The next section describes how we approached this&nbsp;problem.</p>
+<h3 id="real-world-rogue-wave-probabilities">Real-world rogue wave probabilities<a class="anchor-link" href="#real-world-rogue-wave-probabilities" title="Permanent link">&para;</a></h3>
+<p>Now, the goal is to learn how the probability of encountering a rogue wave (<span class="math">\(p\)</span>) depends on the sea state (<span class="math">\(X\)</span>). But we don&#8217;t have access to <span class="math">\(p\)</span>, only to observations <span class="math">\(y\)</span> which can be 1 (rogue wave) or 0 (no rogue&nbsp;wave). </p>
+<p>The requirements for our machine learning algorithm&nbsp;are:</p>
+<ol>
+<li>Must be able to handle a 10,000 to 1 class imbalance in non-separable&nbsp;data.</li>
+<li>It should output well-calibrated probabilities, to make sure that we stay in a physically meaningful regime. For example, a prediction of <span class="math">\(p = 0.5\)</span> would be nonsensical, because rogue waves are outliers by definition &#8212; every second wave being a rogue is&nbsp;impossible.</li>
+<li>It has to deliver some sort of uncertainty estimate so we know whether we have enough&nbsp;data.</li>
+<li>The goal isn&#8217;t really to predict rogue waves, but to learn <em>why</em> they occur, so we need something&nbsp;interpretable.</li>
+<li>Has to scale to billions of data&nbsp;points.</li>
+</ol>
+<p>To make things worse, we have no idea how <span class="math">\(p\)</span> depends on <span class="math">\(X\)</span> &#8212; is it a linear dependency? Are there jumps? Is there any dependence at&nbsp;all?</p>
+<p>This is a tough list, and we couldn&#8217;t really find anything that ticks all boxes, so we came up with our own method. The basic idea is to split every parameter into a number of bins <span class="math">\(x_i\)</span>, and assume that <span class="math">\(p\)</span> is constant within each bin (this is basically a glorified histogram, and takes care of the fact that we don&#8217;t have a functional form for <span class="math">\(p\)</span>). </p>
+<p>Then, we find <span class="math">\(p(x_i)\)</span> with some Bayesian data analysis. Assuming that the number of rogue wave measurements follows a binomial distribution, we find that <span class="math">\(p\)</span> is Beta&nbsp;distributed:</p>
+<div class="math">$$p(x_i) \sim \text{Beta}(n^+ + \alpha_0, n^- + \beta_0)$$</div>
+<p>where <span class="math">\(n^+\)</span> is the number of rogue measurements within <span class="math">\(x_i\)</span>, <span class="math">\(n^-\)</span> the number of non-rogue measurements, and <span class="math">\(\alpha_0\)</span> and <span class="math">\(\beta_0\)</span> represent a prior that ensures that we stay within the right probability&nbsp;range.</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/rogue-waves/pred-power-all-merged.png">
+    <figcaption></figcaption>
+</figure>
+
+<h3 id="the-hunt-for-the-white-whale">The hunt for the white whale<a class="anchor-link" href="#the-hunt-for-the-white-whale" title="Permanent link">&para;</a></h3>
+<p>So far, our analysis only looked at 1 parameter at a time, so we still don&#8217;t know how high the maximum rogue wave risk gets. What if all parameters can align with each other to create &#8220;hot corners&#8221; of feature space where we find significantly more rogue waves than so&nbsp;far?</p>
+<p>Finding these regions in 12 dimensions is hard. In high-dimensional settings, histograms are useless, because the data is spread out too&nbsp;much. </p>
+<p>The basic idea is something like&nbsp;this:</p>
+<figure style="max-width: 100%;">
+    <img src="https://dionhaefner.github.io/images/rogue-waves/clustering.png" style="max-width: 400px;">
+    <figcaption></figcaption>
+</figure>
+
+<p>We take the raw measurements and fit a random forest classifier on it with a fixed number of samples per leaf (say, 100,000, i.e., about 10 rogue waves on&nbsp;average). </p>
+<figure style="max-width: 100%;">
+    <img src="https://dionhaefner.github.io/images/rogue-waves/cluster-kde-all.png">
+    <figcaption></figcaption>
+</figure>
+
+<h3 id="from-association-to-causation">From association to causation<a class="anchor-link" href="#from-association-to-causation" title="Permanent link">&para;</a></h3>
+<p>We now have good evidence that crest-trough correlation is a very important predictive parameter for rogue waves. But that doesn&#8217;t really tell us anything about the <em>causes</em> of rogue waves yet. How are we supposed to know whether a high crest-trough correlation is a direct cause of rogue waves, or whether we are looking at confounding? In fact, many of the parameters are correlated to each&nbsp;other:</p>
+<figure>
+    <img src="https://dionhaefner.github.io/images/rogue-waves/correlation-matrix.png" style="max-width: 400px;">
+    <figcaption>Correlation matrix of sea state parameters</figcaption>
+</figure>
+
+<h3 id="outlook">Outlook<a class="anchor-link" href="#outlook" title="Permanent link">&para;</a></h3>
+<p>Now you should have understood the main message of our paper &#8212; that real-world rogue waves do seem to be caused mainly by linear superposition, and that crest-trough correlation is the best parameter to predict&nbsp;them.</p>
+<p>There are some other things we studied in our paper, like the role of kurtosis (a measure for extremeness of a sea state), and how things are looking for rogue <em>crests</em>, but that would be too much to go into&nbsp;here.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </article><!-- /.entry-content -->
+
+  <footer class="postmatter">
+      <div id="download-source">
+        <a href="https://dionhaefner.github.io/drafts/how-we-found-the-causes-of-rogue-waves-from-data.source" download="how-we-found-the-causes-of-rogue-waves-from-data.md">Download article source</a>
+      </div>
+  </footer>
+
+  <footer class="comments">
+    <script src="https://utteranc.es/client.js" repo="dionhaefner/blog-comments" issue-term="pathname"
+      theme="preferred-color-scheme" crossorigin="anonymous" async>
+      </script>
+  </footer>
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/" target="_blank">Pelican</a>.
+&copy; Dion Häfner 2016-2021                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

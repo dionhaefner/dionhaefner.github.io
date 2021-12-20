@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dionhaefner.github.io</title><link href="https://dionhaefner.github.io/" rel="alternate"></link><link href="https://dionhaefner.github.io/feeds/all.atom.xml" rel="self"></link><id>https://dionhaefner.github.io/</id><updated>2021-12-03T00:00:00+01:00</updated><subtitle>Maximum entropy</subtitle><entry><title>Supercharged high-resolution ocean simulation with JAX</title><link href="https://dionhaefner.github.io/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/" rel="alternate"></link><published>2021-12-03T00:00:00+01:00</published><updated>2021-12-03T00:00:00+01:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-12-03:/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/</id><summary type="html">&lt;script src="https://polyfill.io/v3/polyfill.min.js?features=es6"&gt;&lt;/script&gt;
-&lt;script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"&gt;&lt;/script&gt;
-
-&lt;p&gt;Our Python ocean model &lt;a href="https://github.com/team-ocean/veros"&gt;Veros&lt;/a&gt; (which I maintain) now fully supports &lt;a href="https://github.com/google/jax"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt;&lt;/a&gt; as its computational backend. As a result, Veros has much better performance than before on both &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;, while all model code is still written in Python.
-In fact, we can now do high-resolution ocean simulations on …&lt;/p&gt;</summary><content type="html">&lt;script src="https://polyfill.io/v3/polyfill.min.js?features=es6"&gt;&lt;/script&gt;
-&lt;script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"&gt;&lt;/script&gt;
-
-&lt;p&gt;Our Python ocean model &lt;a href="https://github.com/team-ocean/veros"&gt;Veros&lt;/a&gt; (which I maintain) now fully supports &lt;a href="https://github.com/google/jax"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt;&lt;/a&gt; as its computational backend. As a result, Veros has much better performance than before on both &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;, while all model code is still written in Python.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dionhaefner.github.io</title><link href="https://dionhaefner.github.io/" rel="alternate"></link><link href="https://dionhaefner.github.io/feeds/all.atom.xml" rel="self"></link><id>https://dionhaefner.github.io/</id><updated>2021-12-03T00:00:00+01:00</updated><subtitle>Maximum entropy</subtitle><entry><title>Supercharged high-resolution ocean simulation with JAX</title><link href="https://dionhaefner.github.io/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/" rel="alternate"></link><published>2021-12-03T00:00:00+01:00</published><updated>2021-12-03T00:00:00+01:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-12-03:/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/</id><summary type="html">&lt;p&gt;Our Python ocean model &lt;a href="https://github.com/team-ocean/veros"&gt;Veros&lt;/a&gt; (which I maintain) now fully supports &lt;a href="https://github.com/google/jax"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt;&lt;/a&gt; as its computational backend. As a result, Veros has much better performance than before on both &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;, while all model code is still written in Python.
+In fact, we can now do high-resolution ocean simulations on …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Our Python ocean model &lt;a href="https://github.com/team-ocean/veros"&gt;Veros&lt;/a&gt; (which I maintain) now fully supports &lt;a href="https://github.com/google/jax"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt;&lt;/a&gt; as its computational backend. As a result, Veros has much better performance than before on both &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;, while all model code is still written in Python.
 In fact, we can now do high-resolution ocean simulations on a handful of GPUs, with the performance of entire &lt;span class="caps"&gt;CPU&lt;/span&gt;&amp;nbsp;clusters!&lt;/p&gt;
 &lt;figure style="max-width: 90%;"&gt;
     &lt;img src="https://dionhaefner.github.io/images/veros-jax/01deg-surface-speed.png"&gt;
@@ -22,21 +16,21 @@ In fact, we can now do high-resolution ocean simulations on a handful of GPUs, w
 &lt;h4 id="the-primitive-equations"&gt;The primitive equations&lt;a class="anchor-link" href="#the-primitive-equations" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;The starting point for almost all fluid dynamics are the &lt;a href="https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations"&gt;Navier-Stokes and continuity equations&lt;/a&gt;, which are derived from momentum and mass conservation within the fluid. In their most general form these equations are too unwieldy for ocean modelling, but after a few reasonable approximations (like assuming a constant background density and small vertical velocities), we arrive at the so-called &lt;em&gt;primitive equations&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;I won&amp;#8217;t go into too much detail here, but I think it is still nice to show the equations in full so you can get an idea of the complexity of the problem we are trying to solve. They can be &lt;a href="https://mitgcm.readthedocs.io/en/latest/overview/eqn_motion_ocn.html#compressible-non-divergent-equations"&gt;written like this&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;$$ \frac{\partial \vec{v}_h}{\partial t} + (\vec{v} \cdot \nabla) \vec{v}_h + f \hat{k} \times \vec{v}_h + \frac{1}{\rho_0} \nabla_h p&amp;#8217; = \vec{\mathcal{F}} $$
-$$ \nabla_h \cdot \vec{v}_h + \frac{\partial w}{\partial z} = 0 $$
-$$ \frac{\partial p&amp;#8217;}{\partial z} = -g \rho&amp;#8217; $$
-$$ \rho&amp;#8217; = \rho(\theta, S, p_0(z)) - \rho_0 $$
-$$ \frac{\partial \theta}{\partial t} + (\vec{v} \cdot \nabla) \theta = \mathcal{Q}_\theta $$
-$$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ \frac{\partial \vec{v}_h}{\partial t} + (\vec{v} \cdot \nabla) \vec{v}_h + f \hat{k} \times \vec{v}_h + \frac{1}{\rho_0} \nabla_h p' = \vec{\mathcal{F}} \\
+ \nabla_h \cdot \vec{v}_h + \frac{\partial w}{\partial z} = 0 $$&lt;/div&gt;
+&lt;div class="math"&gt;$$ \frac{\partial p'}{\partial z} = -g \rho' $$&lt;/div&gt;
+&lt;div class="math"&gt;$$ \rho' = \rho(\theta, S, p_0(z)) - \rho_0 $$&lt;/div&gt;
+&lt;div class="math"&gt;$$ \frac{\partial \theta}{\partial t} + (\vec{v} \cdot \nabla) \theta = \mathcal{Q}_\theta $$&lt;/div&gt;
+&lt;div class="math"&gt;$$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S $$&lt;/div&gt;
 &lt;p&gt;This is a set of 7 coupled, nonlinear partial differential equations. The primitive equations describe the evolution of velocity \(\vec{v} = (u, v, w)\) (\(\vec{v_h} = (u, v)\)), pressure \(p\), density \(\rho\), temperature \(\theta\), and salinity \(S\) in time \(t\) and space \((x, y, z)\). \(f, \rho_0\), and \(g\) are constants; and \(\vec{\mathcal{F}}\), \(\mathcal{Q}_\theta\), and \(\mathcal{Q}_S\) represent dissipation and forcings (which are usually quite complex terms,&amp;nbsp;too).&lt;/p&gt;
 &lt;p&gt;So how can we even solve complex equations like these on a computer? One of the simplest ways is to discretize them using a &lt;a href="https://en.wikipedia.org/wiki/Finite_difference_method"&gt;finite difference method&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a id="discretization"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id="discretization"&gt;Discretization&lt;a class="anchor-link" href="#discretization" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;The basic idea is to define all quantities (like pressure and velocity) at fixed locations on a &lt;em&gt;computational grid&lt;/em&gt;. This implies that we are now dealing with discrete quantities \((y_0, y_1, \ldots, y_N)\) instead of their true continuous versions \(y(x)\). If you are familiar with calculus, you probably know that a derivative can be written as a difference between neighboring grid cells, divided by a small step&amp;nbsp;size:&lt;/p&gt;
-&lt;p&gt;$$ \left. \frac{\partial y}{\partial x} \right|_{x_i} \quad \sim \quad \frac{y_{i+1} - y_i}{\Delta x}&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ \left. \frac{\partial y}{\partial x} \right|_{x_i} \quad \sim \quad \frac{y_{i+1} - y_i}{\Delta x} $$&lt;/div&gt;
 &lt;p&gt;This converges to the &amp;#8220;true&amp;#8221; value in the limit of smaller and smaller \(\Delta x\). Writing gradients like this is the central idea of finite difference discretizations, and although there are many different ways to write these discrete gradients &amp;#8212; with different numerical accuracies and stability properties &amp;#8212; the principle is always the&amp;nbsp;same.&lt;/p&gt;
 &lt;p&gt;For time derivatives, we typically use a &lt;a href="https://en.wikipedia.org/wiki/Linear_multistep_method"&gt;multi-step method&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;$$ \frac{\partial y}{\partial t} = f(t, y) \quad \sim \quad \frac{y^{n+1}-y^n}{\Delta t} = \frac{3}{2} f(t^{n}, y^{n}) - \frac{1}{2} f(t^{n-1}, y^{n-1})&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ \frac{\partial y}{\partial t} = f(t, y) \quad \sim \quad \frac{y^{n+1}-y^n}{\Delta t} = \frac{3}{2} f(t^{n}, y^{n}) - \frac{1}{2} f(t^{n-1}, y^{n-1}) $$&lt;/div&gt;
 &lt;p&gt;This requires us to store the solution at different time steps, but is otherwise not more difficult than a simple forward&amp;nbsp;difference.&lt;/p&gt;
 &lt;p&gt;By replacing all gradients in the primitive equations through their discrete counterparts, we arrive at a set of discrete equations that can be stepped forward in time. To solve them on a computer, all we need to do is to define our physical variables as arrays (where array indices correspond to grid locations), and perform the right finite difference operations. For example, in vectorized Python code, we can write a gradient operation like the one above through &lt;em&gt;index shifts&lt;/em&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# discrete version of ∂y/∂x&lt;/span&gt;
@@ -62,7 +56,7 @@ $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&amp;
 &lt;h3 id="jax-for-high-performance-computing"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt; for high-performance computing&lt;a class="anchor-link" href="#jax-for-high-performance-computing" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Even though most people use &lt;span class="caps"&gt;JAX&lt;/span&gt; for machine learning, it is actually a great choice for high-performance computing. Through its just-in-time (&lt;span class="caps"&gt;JIT&lt;/span&gt;) compiler, &lt;span class="caps"&gt;JAX&lt;/span&gt; has &lt;a href="https://github.com/dionhaefner/pyhpc-benchmarks"&gt;good all-round performance on &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;&lt;/a&gt;, and the &lt;span class="caps"&gt;API&lt;/span&gt; is close enough to NumPy to make it easy to port existing&amp;nbsp;code.&lt;/p&gt;
 &lt;p&gt;To demonstrate how this works in practice, I will show you how to implement the time stepping for a simple partial differential equation in &lt;span class="caps"&gt;JAX&lt;/span&gt;. Here is the equation, and the resulting &lt;span class="caps"&gt;JAX&lt;/span&gt;&amp;nbsp;code:&lt;/p&gt;
-&lt;p&gt;$$ \frac{\partial h}{\partial t} = - \frac{\partial f_e}{\partial x} - \frac{\partial f_n}{\partial y}&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ \frac{\partial h}{\partial t} = - \frac{\partial f_e}{\partial x} - \frac{\partial f_n}{\partial y} $$&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# compile function with jit for speed&lt;/span&gt;
 &lt;span class="nd"&gt;@jax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jit&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;update_h&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dh&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fe&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fn&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -182,10 +176,69 @@ $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&amp;
 &lt;p&gt;Now that we have a fast ocean model in Python, what&amp;#8217;s next? Most of all, I hope that people will simply find Veros enjoyable to work with, and use it to understand our earth and&amp;nbsp;climate.&lt;/p&gt;
 &lt;p&gt;But there is one more new, interesting direction, namely the integration of machine learning models into the physical simulation. This is possible because &lt;span class="caps"&gt;JAX&lt;/span&gt; offers more than just a &lt;span class="caps"&gt;JIT&lt;/span&gt; compiler: &lt;span class="caps"&gt;JAX&lt;/span&gt; functions are also &lt;a href="https://en.wikipedia.org/wiki/Differentiable_programming"&gt;differentiable&lt;/a&gt;, which opens up a whole new of possibilities (Veros is not fully differentiable yet, but could be with some more&amp;nbsp;effort).&lt;/p&gt;
 &lt;p&gt;In particular, there is an emerging field of &lt;a href="https://physicsbaseddeeplearning.org"&gt;physics-based deep learning&lt;/a&gt; that integrates machine learning with physical modelling. In case of a differentiable physical model, these &amp;#8220;hybrid&amp;#8221; systems can be trained end-to-end, which tends to make training much more efficient. There are already differentiable models for fluid dynamics in &lt;span class="caps"&gt;JAX&lt;/span&gt; (namely &lt;a href="https://github.com/tum-pbs/PhiFlow"&gt;PhiFlow&lt;/a&gt; and &lt;a href="https://github.com/google/jax-cfd"&gt;jax-cfd&lt;/a&gt;), but &amp;#8212; as far as I know &amp;#8212; Veros is the first that supports realistic ocean&amp;nbsp;setups.&lt;/p&gt;
-&lt;p&gt;Finally, I hope that I managed to share some of my excitement about working on modern physical models! If so, you are &lt;a href="https://github.com/team-ocean/veros"&gt;welcome to contribute&lt;/a&gt;.&lt;/p&gt;</content><category term="blog"></category><category term="Science"></category><category term="Computing"></category><category term="Python"></category></entry><entry><title>Bayesian histograms for rare event classification</title><link href="https://dionhaefner.github.io/2021/09/bayesian-histograms-for-rare-event-classification/" rel="alternate"></link><published>2021-09-23T00:00:00+02:00</published><updated>2021-09-23T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-09-23:/2021/09/bayesian-histograms-for-rare-event-classification/</id><summary type="html">&lt;script src="https://polyfill.io/v3/polyfill.min.js?features=es6"&gt;&lt;/script&gt;
-&lt;script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"&gt;&lt;/script&gt;
+&lt;p&gt;Finally, I hope that I managed to share some of my excitement about working on modern physical models! If so, you are &lt;a href="https://github.com/team-ocean/veros"&gt;welcome to contribute&lt;/a&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
 
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Contents&lt;/span&gt;&lt;ul&gt;
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="blog"></category><category term="Science"></category><category term="Computing"></category><category term="Python"></category></entry><entry><title>Bayesian histograms for rare event classification</title><link href="https://dionhaefner.github.io/2021/09/bayesian-histograms-for-rare-event-classification/" rel="alternate"></link><published>2021-09-23T00:00:00+02:00</published><updated>2021-09-23T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-09-23:/2021/09/bayesian-histograms-for-rare-event-classification/</id><summary type="html">&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#extreme-events-call-for-extreme-measures"&gt;Extreme events call for extreme&amp;nbsp;measures&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#the-problem-with-histograms-for-rare-events"&gt;The problem with histograms for rare&amp;nbsp;events&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#bayes-to-the-rescue"&gt;Bayes to the&amp;nbsp;rescue&lt;/a&gt;&lt;/li&gt;
@@ -194,10 +247,7 @@ $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&amp;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;p&gt;Bayesian histograms are a stupidly fast, simple, and nonparametric way to find how rare event probabilities depend on a variable (with&amp;nbsp;uncertainties!).&lt;/p&gt;
-&lt;p&gt;My implementation of Bayesian histograms …&lt;/p&gt;</summary><content type="html">&lt;script src="https://polyfill.io/v3/polyfill.min.js?features=es6"&gt;&lt;/script&gt;
-&lt;script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"&gt;&lt;/script&gt;
-
-&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Contents&lt;/span&gt;&lt;ul&gt;
+&lt;p&gt;My implementation of Bayesian histograms …&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Contents&lt;/span&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#extreme-events-call-for-extreme-measures"&gt;Extreme events call for extreme&amp;nbsp;measures&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#the-problem-with-histograms-for-rare-events"&gt;The problem with histograms for rare&amp;nbsp;events&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#bayes-to-the-rescue"&gt;Bayes to the&amp;nbsp;rescue&lt;/a&gt;&lt;/li&gt;
@@ -251,12 +301,12 @@ In machine learning, we say that the data is not &lt;em&gt;separable&lt;/em&gt;:
 &lt;h3 id="bayes-to-the-rescue"&gt;Bayes to the rescue&lt;a class="anchor-link" href="#bayes-to-the-rescue" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Bayesian histograms address these issues by adding &lt;em&gt;uncertainties&lt;/em&gt; to \(p(y=1 \mid x)\). For this, we need to make some assumptions about the data generating&amp;nbsp;processes.&lt;/p&gt;
 &lt;p&gt;We assume that, within each bin \(i\), the number of positive samples \(n^+_i\) is drawn independently with fixed probability \(p_i\) (this is what we want to estimate) and number of negative samples \(n^-_i\). Then, \(n^+_i\) follows a &lt;a href="https://en.wikipedia.org/wiki/Binomial_distribution"&gt;binomial distribution&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;$$ n^+_i \sim \operatorname{Binom}(n^-_i, p_i)&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ n^+_i \sim \operatorname{Binom}(n^-_i, p_i) $$&lt;/div&gt;
 &lt;p&gt;Our goal is to estimate \(p_i\) via Bayesian inference. For this, we still need a &lt;em&gt;prior&lt;/em&gt; for the variable \(p\), which encodes our belief of what \(p\) is &lt;em&gt;before measuring any data&lt;/em&gt; (this also takes care of empty bins). A convenient choice is a &lt;a href="https://en.wikipedia.org/wiki/Beta_distribution"&gt;beta distributed&lt;/a&gt; prior with 2 parameters \(\alpha_0,&amp;nbsp;\beta_0\):&lt;/p&gt;
-&lt;p&gt;$$ p(y=1) \sim \operatorname{Beta}(\alpha_0, \beta_0)&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ p(y=1) \sim \operatorname{Beta}(\alpha_0, \beta_0) $$&lt;/div&gt;
 &lt;p&gt;There are many ways to choose the prior parameters. Popular choices are complete ignorance (\(\alpha_0 = \beta_0 = 0\); all values of \(p\) are equally likely) and &lt;a href="https://en.wikipedia.org/wiki/Jeffreys_prior"&gt;Jeffrey&amp;#8217;s prior&lt;/a&gt; (\(\alpha_0 = \beta_0 = 1/2\)). In &lt;code&gt;bayeshist&lt;/code&gt;, we use a weakly informative prior by default that ensures that the prediction of an empty bin is the global mean event rate with a big&amp;nbsp;uncertainty.&lt;/p&gt;
 &lt;p&gt;Now we are ready to compute the posterior distribution of \(p_i\). According to Bayes&amp;#8217; theorem, it is given by the normalized product of (beta) prior and (binomial) likelihood. A neat property of the beta prior is that it is &lt;em&gt;conjugate&lt;/em&gt; to the binomial likelihood, so the posterior is a beta distribution,&amp;nbsp;too:&lt;/p&gt;
-&lt;p&gt;$$ p(y=1 \mid n^+_i, n^-_i) \sim \operatorname{Beta}(n^+_i + \alpha_0, n^-_i + \beta_0) \tag{1}&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ p(y=1 \mid n^+_i, n^-_i) \sim \operatorname{Beta}(n^+_i + \alpha_0, n^-_i + \beta_0) \tag{1} $$&lt;/div&gt;
 &lt;p&gt;To get uncertainties on our event rate estimates, all we need to do is to compute a credible interval of the posterior (1) via its quantiles. In Python this looks like&amp;nbsp;this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# compute number of positive and negative samples per bin&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;n_plus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
@@ -302,15 +352,17 @@ In machine learning, we say that the data is not &lt;em&gt;separable&lt;/em&gt;:
 &lt;p&gt;Imagine that we want to compare 2 bins with samples \((n_1^+, n_1^-)\) and \((n_2^+, n_2^-)\). We formulate the following&amp;nbsp;hypotheses:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;H1&lt;/strong&gt;: Sample 1 is drawn from bin 1 with $$ p_1 \sim \operatorname{Beta}(\alpha_1 = n_1^+ + \alpha_0, \beta_1 = n_1^- + \beta_0) $$ and sample 2 is drawn from bin 2 with $$ p_2 \sim \operatorname{Beta}(\alpha_2 = n_2^+ + \alpha_0, \beta_2 = n_2^- + \beta_0)&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;H1&lt;/strong&gt;: Sample 1 is drawn from bin 1 with &lt;div class="math"&gt;$$ p_1 \sim \operatorname{Beta}(\alpha_1 = n_1^+ + \alpha_0, \beta_1 = n_1^- + \beta_0) $$&lt;/div&gt; and sample 2 is drawn from bin 2 with &lt;div class="math"&gt;$$ p_2 \sim \operatorname{Beta}(\alpha_2 = n_2^+ + \alpha_0, \beta_2 = n_2^- + \beta_0) $$&lt;/div&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;H0&lt;/strong&gt;: Both samples are drawn from the merged version of both bins with $$ p_{tot}
-\sim \operatorname{Beta}(\alpha_{tot} = n_1^+ + n_2^+ + \alpha_0, \beta_{tot} = n_1^- + n_2^- + \beta_0)&amp;nbsp;$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;H0&lt;/strong&gt;: Both samples are drawn from the merged version of both bins with &lt;div class="math"&gt;$$ p_{tot}
+\sim \operatorname{Beta}(\alpha_{tot} = n_1^+ + n_2^+ + \alpha_0, \beta_{tot} = n_1^- + n_2^- + \beta_0) $$&lt;/div&gt;
+&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Now we want to know: &lt;em&gt;how much more likely is it to measure the samples under H1 compared to H0?&lt;/em&gt; To answer this, we have to compute the likelihood of each sample, while accounting for every possible value of the unknown event rate \(p\) (the result is also called a &lt;a href="https://en.wikipedia.org/wiki/Bayes_factor"&gt;Bayes factor&lt;/a&gt;). This is typically done by integrating out unknown parameters from the posterior (marginalization). In our case of a binomial likelihood with beta-distributed event rate, the result is a &lt;a href="https://en.wikipedia.org/wiki/Beta-binomial_distribution"&gt;Beta-binomial distribution&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;$$ n^+_i \sim \operatorname{Betabinom}(n^-_i, \alpha_i, \beta_i)&amp;nbsp;$$&lt;/p&gt;
+&lt;div class="math"&gt;$$ n^+_i \sim \operatorname{Betabinom}(n^-_i, \alpha_i, \beta_i) $$&lt;/div&gt;
 &lt;p&gt;Now we can evaluate the likelihood of each sample under H1 and H0, and compute the ratio (Bayes factor). In Python code, this looks like&amp;nbsp;this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sample_log_likelihood&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_plus&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_minus&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;beta&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Probability to measure `n_plus` positive and `n_minus` negative events&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
@@ -380,7 +432,69 @@ In machine learning, we say that the data is not &lt;em&gt;separable&lt;/em&gt;:
     &lt;figcaption&gt;Compared to optbinning, Bayesian histograms are able to resolve both local peaks at full height.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;So why don&amp;#8217;t you &lt;a href="https://github.com/dionhaefner/bayesian-histograms"&gt;give &lt;code&gt;bayeshist&lt;/code&gt; a try&lt;/a&gt;, and let me know what you&amp;nbsp;think!&lt;/p&gt;</content><category term="blog"></category><category term="Machine Learning"></category><category term="Python"></category><category term="Science"></category></entry><entry><title>Creating a better science conference poster</title><link href="https://dionhaefner.github.io/2021/09/creating-a-better-science-conference-poster/" rel="alternate"></link><published>2021-09-10T00:00:00+02:00</published><updated>2021-09-10T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-09-10:/2021/09/creating-a-better-science-conference-poster/</id><summary type="html">&lt;figure&gt;
+&lt;p&gt;So why don&amp;#8217;t you &lt;a href="https://github.com/dionhaefner/bayesian-histograms"&gt;give &lt;code&gt;bayeshist&lt;/code&gt; a try&lt;/a&gt;, and let me know what you&amp;nbsp;think!&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="blog"></category><category term="Machine Learning"></category><category term="Python"></category><category term="Science"></category></entry><entry><title>Creating a better science conference poster</title><link href="https://dionhaefner.github.io/2021/09/creating-a-better-science-conference-poster/" rel="alternate"></link><published>2021-09-10T00:00:00+02:00</published><updated>2021-09-10T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-09-10:/2021/09/creating-a-better-science-conference-poster/</id><summary type="html">&lt;figure&gt;
     &lt;a href="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-large.png"&gt;
         &lt;img src="https://dionhaefner.github.io/images/better-posters/egu-rogue-poster-thumb.png" style="max-width: 200px;"&gt;
     &lt;/a&gt;
@@ -528,7 +642,7 @@ By Roman Nuterman, &lt;u&gt;Dion Häfner&lt;/u&gt;, and Markus Jochum.&lt;br&gt;
 &lt;p&gt;Although we have the highest respect for Type I and &lt;span class="caps"&gt;II&lt;/span&gt; projects, &lt;em&gt;we argue that Type &lt;span class="caps"&gt;III&lt;/span&gt; is the most valuable type of model&lt;/em&gt;, because it is easier to use / modify (more people are already familiar with the language and ecosystem) and integrate (larger library support) than the other&amp;nbsp;types.&lt;/p&gt;
 &lt;p&gt;If you need some evidence for that last statement, just look how easy it is to install and use Veros from a clean Linux&amp;nbsp;environment:&lt;/p&gt;
 &lt;p&gt;&lt;figure style="max-width: 550px;"&gt;
-    &lt;script id="asciicast-BIpt5BcaIOWvoYqsRI0ag0j8V" src="https://asciinema.org/a/BIpt5BcaIOWvoYqsRI0ag0j8V.js" data-rows=20 data-theme="monokai" async&gt;&lt;/script&gt;
+    &lt;script id="asciicast-BIpt5BcaIOWvoYqsRI0ag0j8V" src="https://asciinema.org/a/BIpt5BcaIOWvoYqsRI0ag0j8V.js" data-cols="84" data-rows="24" data-theme="monokai" async&gt;&lt;/script&gt;
     &lt;figcaption&gt;Installing and running Veros, starting from a fresh environment. Screencast in real time.&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Unfortunately, this type is also the hardest to get right.&lt;/strong&gt; The main problem is finding the right trade-off between readability, performance, and&amp;nbsp;abstraction.&lt;/p&gt;
@@ -646,7 +760,7 @@ In our experience, finding the perfect middle ground is extremely hard, and the 
 &lt;hr&gt;
 &lt;p&gt;If you enjoyed this post, make sure to visit my &lt;a href="https://meetingorganizer.copernicus.org/EGU21/session/40846"&gt;vPICO presentation during vEGU 2021&lt;/a&gt; (Tue, 27 Apr), and join the discussion&amp;nbsp;afterwards.&lt;/p&gt;
 &lt;p&gt;I&amp;#8217;m also happy to respond to your comments&amp;nbsp;below.&lt;/p&gt;
-&lt;p&gt;&lt;a id="comments"&gt;&lt;/p&gt;</content><category term="blog"></category><category term="Science"></category><category term="Computing"></category><category term="Python"></category></entry><entry><title>Learning to play Yahtzee with Advantage Actor-Critic (A2C)</title><link href="https://dionhaefner.github.io/2021/04/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/" rel="alternate"></link><published>2021-04-01T00:00:00+02:00</published><updated>2021-04-01T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-04-01:/2021/04/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/</id><summary type="html">&lt;p&gt;My in-laws are really into the dice game &lt;a href="https://en.wikipedia.org/wiki/Yatzy"&gt;Yatzy&lt;/a&gt; (the Scandinavian version of&amp;nbsp;Yahtzee).&lt;/p&gt;
+&lt;p&gt;&lt;a id="comments"&gt;&lt;/p&gt;</content><category term="blog"></category><category term="Science"></category><category term="Computing"></category><category term="Geophysics"></category><category term="Python"></category></entry><entry><title>Learning to play Yahtzee with Advantage Actor-Critic (A2C)</title><link href="https://dionhaefner.github.io/2021/04/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/" rel="alternate"></link><published>2021-04-01T00:00:00+02:00</published><updated>2021-04-01T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-04-01:/2021/04/yahtzotron-learning-to-play-yahtzee-with-advantage-actor-critic/</id><summary type="html">&lt;p&gt;My in-laws are really into the dice game &lt;a href="https://en.wikipedia.org/wiki/Yatzy"&gt;Yatzy&lt;/a&gt; (the Scandinavian version of&amp;nbsp;Yahtzee).&lt;/p&gt;
 &lt;p&gt;If you&amp;#8217;re unfamiliar with the game, here&amp;#8217;s a brief summary of the rules &lt;a href="https://en.wikipedia.org/wiki/Yatzy#Gameplay"&gt;from Wikipedia&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Players take turns rolling five dice. After each roll, the player chooses which dice to keep, and which to …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;My in-laws are really into the dice game &lt;a href="https://en.wikipedia.org/wiki/Yatzy"&gt;Yatzy&lt;/a&gt; (the Scandinavian version of&amp;nbsp;Yahtzee).&lt;/p&gt;

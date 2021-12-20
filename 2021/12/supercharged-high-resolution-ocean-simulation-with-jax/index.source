@@ -4,9 +4,6 @@ Tags: Science, Computing, Python
 Author: Dion
 related_posts: higher-level-geophysical-modelling
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 Our Python ocean model [Veros](https://github.com/team-ocean/veros) (which I maintain) now fully supports [JAX](https://github.com/google/jax) as its computational backend. As a result, Veros has much better performance than before on both CPU and GPU, while all model code is still written in Python.
 In fact, we can now do high-resolution ocean simulations on a handful of GPUs, with the performance of entire CPU clusters!
 
@@ -33,14 +30,14 @@ The starting point for almost all fluid dynamics are the [Navier-Stokes and cont
 
 I won't go into too much detail here, but I think it is still nice to show the equations in full so you can get an idea of the complexity of the problem we are trying to solve. They can be [written like this](https://mitgcm.readthedocs.io/en/latest/overview/eqn_motion_ocn.html#compressible-non-divergent-equations):
 
-$$ \frac{\partial \vec{v}\_h}{\partial t} + (\vec{v} \cdot \nabla) \vec{v}\_h + f \hat{k} \times \vec{v}\_h + \frac{1}{\rho_0} \nabla_h p' = \vec{\mathcal{F}} $$
-$$ \nabla_h \cdot \vec{v}\_h + \frac{\partial w}{\partial z} = 0 $$
+$$ \frac{\partial \vec{v}_h}{\partial t} + (\vec{v} \cdot \nabla) \vec{v}_h + f \hat{k} \times \vec{v}_h + \frac{1}{\rho_0} \nabla_h p' = \vec{\mathcal{F}} \\
+ \nabla_h \cdot \vec{v}_h + \frac{\partial w}{\partial z} = 0 $$
 $$ \frac{\partial p'}{\partial z} = -g \rho' $$
 $$ \rho' = \rho(\theta, S, p_0(z)) - \rho_0 $$
 $$ \frac{\partial \theta}{\partial t} + (\vec{v} \cdot \nabla) \theta = \mathcal{Q}_\theta $$
 $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S $$
 
-This is a set of 7 coupled, nonlinear partial differential equations. The primitive equations describe the evolution of velocity \\(\vec{v} = (u, v, w)\\) (\\(\vec{v\_h} = (u, v)\\)), pressure \\(p\\), density \\(\rho\\), temperature \\(\theta\\), and salinity \\(S\\) in time \\(t\\) and space \\((x, y, z)\\). \\(f, \rho\_0\\), and \\(g\\) are constants; and \\(\vec{\mathcal{F}}\\), \\(\mathcal{Q}_\theta\\), and \\(\mathcal{Q}_S\\) represent dissipation and forcings (which are usually quite complex terms, too).
+This is a set of 7 coupled, nonlinear partial differential equations. The primitive equations describe the evolution of velocity \\(\vec{v} = (u, v, w)\\) (\\(\vec{v_h} = (u, v)\\)), pressure \\(p\\), density \\(\rho\\), temperature \\(\theta\\), and salinity \\(S\\) in time \\(t\\) and space \\((x, y, z)\\). \\(f, \rho_0\\), and \\(g\\) are constants; and \\(\vec{\mathcal{F}}\\), \\(\mathcal{Q}_\theta\\), and \\(\mathcal{Q}_S\\) represent dissipation and forcings (which are usually quite complex terms, too).
 
 So how can we even solve complex equations like these on a computer? One of the simplest ways is to discretize them using a [finite difference method](https://en.wikipedia.org/wiki/Finite_difference_method).
 
@@ -50,7 +47,7 @@ So how can we even solve complex equations like these on a computer? One of the 
 
 The basic idea is to define all quantities (like pressure and velocity) at fixed locations on a *computational grid*. This implies that we are now dealing with discrete quantities \\((y_0, y_1, \ldots, y_N)\\) instead of their true continuous versions \\(y(x)\\). If you are familiar with calculus, you probably know that a derivative can be written as a difference between neighboring grid cells, divided by a small step size:
 
-$$ \left. \frac{\partial y}{\partial x} \right|\_{x_i} \quad \sim \quad \frac{y_{i+1} - y_i}{\Delta x} $$
+$$ \left. \frac{\partial y}{\partial x} \right|_{x_i} \quad \sim \quad \frac{y_{i+1} - y_i}{\Delta x} $$
 
 This converges to the "true" value in the limit of smaller and smaller \\(\Delta x\\). Writing gradients like this is the central idea of finite difference discretizations, and although there are many different ways to write these discrete gradients -- with different numerical accuracies and stability properties -- the principle is always the same.
 
@@ -97,7 +94,7 @@ Even though most people use JAX for machine learning, it is actually a great cho
 
 To demonstrate how this works in practice, I will show you how to implement the time stepping for a simple partial differential equation in JAX. Here is the equation, and the resulting JAX code:
 
-$$ \frac{\partial h}{\partial t} = - \frac{\partial f\_e}{\partial x} - \frac{\partial f\_n}{\partial y} $$
+$$ \frac{\partial h}{\partial t} = - \frac{\partial f_e}{\partial x} - \frac{\partial f_n}{\partial y} $$
 
 ```python
 # compile function with jit for speed

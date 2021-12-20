@@ -58,7 +58,7 @@
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       "HTML-CSS": {
-        scale: 85,
+        scale: 90,
         styles: {".MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn": {color: "inherit"}},
       }
     });
@@ -88,10 +88,7 @@
   </header>
 
   <article class="entry-content">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<p>Our Python ocean model <a href="https://github.com/team-ocean/veros">Veros</a> (which I maintain) now fully supports <a href="https://github.com/google/jax"><span class="caps">JAX</span></a> as its computational backend. As a result, Veros has much better performance than before on both <span class="caps">CPU</span> and <span class="caps">GPU</span>, while all model code is still written in Python.
+    <p>Our Python ocean model <a href="https://github.com/team-ocean/veros">Veros</a> (which I maintain) now fully supports <a href="https://github.com/google/jax"><span class="caps">JAX</span></a> as its computational backend. As a result, Veros has much better performance than before on both <span class="caps">CPU</span> and <span class="caps">GPU</span>, while all model code is still written in Python.
 In fact, we can now do high-resolution ocean simulations on a handful of GPUs, with the performance of entire <span class="caps">CPU</span>&nbsp;clusters!</p>
 <figure style="max-width: 90%;">
     <img src="https://dionhaefner.github.io/images/veros-jax/01deg-surface-speed.png">
@@ -107,21 +104,21 @@ In fact, we can now do high-resolution ocean simulations on a handful of GPUs, w
 <h4 id="the-primitive-equations">The primitive equations<a class="anchor-link" href="#the-primitive-equations" title="Permanent link">&para;</a></h4>
 <p>The starting point for almost all fluid dynamics are the <a href="https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations">Navier-Stokes and continuity equations</a>, which are derived from momentum and mass conservation within the fluid. In their most general form these equations are too unwieldy for ocean modelling, but after a few reasonable approximations (like assuming a constant background density and small vertical velocities), we arrive at the so-called <em>primitive equations</em>.</p>
 <p>I won&#8217;t go into too much detail here, but I think it is still nice to show the equations in full so you can get an idea of the complexity of the problem we are trying to solve. They can be <a href="https://mitgcm.readthedocs.io/en/latest/overview/eqn_motion_ocn.html#compressible-non-divergent-equations">written like this</a>:</p>
-<p>$$ \frac{\partial \vec{v}_h}{\partial t} + (\vec{v} \cdot \nabla) \vec{v}_h + f \hat{k} \times \vec{v}_h + \frac{1}{\rho_0} \nabla_h p&#8217; = \vec{\mathcal{F}} $$
-$$ \nabla_h \cdot \vec{v}_h + \frac{\partial w}{\partial z} = 0 $$
-$$ \frac{\partial p&#8217;}{\partial z} = -g \rho&#8217; $$
-$$ \rho&#8217; = \rho(\theta, S, p_0(z)) - \rho_0 $$
-$$ \frac{\partial \theta}{\partial t} + (\vec{v} \cdot \nabla) \theta = \mathcal{Q}_\theta $$
-$$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&nbsp;$$</p>
+<div class="math">$$ \frac{\partial \vec{v}_h}{\partial t} + (\vec{v} \cdot \nabla) \vec{v}_h + f \hat{k} \times \vec{v}_h + \frac{1}{\rho_0} \nabla_h p' = \vec{\mathcal{F}} \\
+ \nabla_h \cdot \vec{v}_h + \frac{\partial w}{\partial z} = 0 $$</div>
+<div class="math">$$ \frac{\partial p'}{\partial z} = -g \rho' $$</div>
+<div class="math">$$ \rho' = \rho(\theta, S, p_0(z)) - \rho_0 $$</div>
+<div class="math">$$ \frac{\partial \theta}{\partial t} + (\vec{v} \cdot \nabla) \theta = \mathcal{Q}_\theta $$</div>
+<div class="math">$$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S $$</div>
 <p>This is a set of 7 coupled, nonlinear partial differential equations. The primitive equations describe the evolution of velocity \(\vec{v} = (u, v, w)\) (\(\vec{v_h} = (u, v)\)), pressure \(p\), density \(\rho\), temperature \(\theta\), and salinity \(S\) in time \(t\) and space \((x, y, z)\). \(f, \rho_0\), and \(g\) are constants; and \(\vec{\mathcal{F}}\), \(\mathcal{Q}_\theta\), and \(\mathcal{Q}_S\) represent dissipation and forcings (which are usually quite complex terms,&nbsp;too).</p>
 <p>So how can we even solve complex equations like these on a computer? One of the simplest ways is to discretize them using a <a href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference method</a>.</p>
 <p><a id="discretization"></a></p>
 <h4 id="discretization">Discretization<a class="anchor-link" href="#discretization" title="Permanent link">&para;</a></h4>
 <p>The basic idea is to define all quantities (like pressure and velocity) at fixed locations on a <em>computational grid</em>. This implies that we are now dealing with discrete quantities \((y_0, y_1, \ldots, y_N)\) instead of their true continuous versions \(y(x)\). If you are familiar with calculus, you probably know that a derivative can be written as a difference between neighboring grid cells, divided by a small step&nbsp;size:</p>
-<p>$$ \left. \frac{\partial y}{\partial x} \right|_{x_i} \quad \sim \quad \frac{y_{i+1} - y_i}{\Delta x}&nbsp;$$</p>
+<div class="math">$$ \left. \frac{\partial y}{\partial x} \right|_{x_i} \quad \sim \quad \frac{y_{i+1} - y_i}{\Delta x} $$</div>
 <p>This converges to the &#8220;true&#8221; value in the limit of smaller and smaller \(\Delta x\). Writing gradients like this is the central idea of finite difference discretizations, and although there are many different ways to write these discrete gradients &#8212; with different numerical accuracies and stability properties &#8212; the principle is always the&nbsp;same.</p>
 <p>For time derivatives, we typically use a <a href="https://en.wikipedia.org/wiki/Linear_multistep_method">multi-step method</a>:</p>
-<p>$$ \frac{\partial y}{\partial t} = f(t, y) \quad \sim \quad \frac{y^{n+1}-y^n}{\Delta t} = \frac{3}{2} f(t^{n}, y^{n}) - \frac{1}{2} f(t^{n-1}, y^{n-1})&nbsp;$$</p>
+<div class="math">$$ \frac{\partial y}{\partial t} = f(t, y) \quad \sim \quad \frac{y^{n+1}-y^n}{\Delta t} = \frac{3}{2} f(t^{n}, y^{n}) - \frac{1}{2} f(t^{n-1}, y^{n-1}) $$</div>
 <p>This requires us to store the solution at different time steps, but is otherwise not more difficult than a simple forward&nbsp;difference.</p>
 <p>By replacing all gradients in the primitive equations through their discrete counterparts, we arrive at a set of discrete equations that can be stepped forward in time. To solve them on a computer, all we need to do is to define our physical variables as arrays (where array indices correspond to grid locations), and perform the right finite difference operations. For example, in vectorized Python code, we can write a gradient operation like the one above through <em>index shifts</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># discrete version of ∂y/∂x</span>
@@ -147,7 +144,7 @@ $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&nbsp
 <h3 id="jax-for-high-performance-computing"><span class="caps">JAX</span> for high-performance computing<a class="anchor-link" href="#jax-for-high-performance-computing" title="Permanent link">&para;</a></h3>
 <p>Even though most people use <span class="caps">JAX</span> for machine learning, it is actually a great choice for high-performance computing. Through its just-in-time (<span class="caps">JIT</span>) compiler, <span class="caps">JAX</span> has <a href="https://github.com/dionhaefner/pyhpc-benchmarks">good all-round performance on <span class="caps">CPU</span> and <span class="caps">GPU</span></a>, and the <span class="caps">API</span> is close enough to NumPy to make it easy to port existing&nbsp;code.</p>
 <p>To demonstrate how this works in practice, I will show you how to implement the time stepping for a simple partial differential equation in <span class="caps">JAX</span>. Here is the equation, and the resulting <span class="caps">JAX</span>&nbsp;code:</p>
-<p>$$ \frac{\partial h}{\partial t} = - \frac{\partial f_e}{\partial x} - \frac{\partial f_n}{\partial y}&nbsp;$$</p>
+<div class="math">$$ \frac{\partial h}{\partial t} = - \frac{\partial f_e}{\partial x} - \frac{\partial f_n}{\partial y} $$</div>
 <div class="highlight"><pre><span></span><code><span class="c1"># compile function with jit for speed</span>
 <span class="nd">@jax</span><span class="o">.</span><span class="n">jit</span>
 <span class="k">def</span> <span class="nf">update_h</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">dh</span><span class="p">,</span> <span class="n">fe</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
@@ -268,6 +265,68 @@ $$ \frac{\partial S}{\partial t} + (\vec{v} \cdot \nabla) S = \mathcal{Q}_S&nbsp
 <p>But there is one more new, interesting direction, namely the integration of machine learning models into the physical simulation. This is possible because <span class="caps">JAX</span> offers more than just a <span class="caps">JIT</span> compiler: <span class="caps">JAX</span> functions are also <a href="https://en.wikipedia.org/wiki/Differentiable_programming">differentiable</a>, which opens up a whole new of possibilities (Veros is not fully differentiable yet, but could be with some more&nbsp;effort).</p>
 <p>In particular, there is an emerging field of <a href="https://physicsbaseddeeplearning.org">physics-based deep learning</a> that integrates machine learning with physical modelling. In case of a differentiable physical model, these &#8220;hybrid&#8221; systems can be trained end-to-end, which tends to make training much more efficient. There are already differentiable models for fluid dynamics in <span class="caps">JAX</span> (namely <a href="https://github.com/tum-pbs/PhiFlow">PhiFlow</a> and <a href="https://github.com/google/jax-cfd">jax-cfd</a>), but &#8212; as far as I know &#8212; Veros is the first that supports realistic ocean&nbsp;setups.</p>
 <p>Finally, I hope that I managed to share some of my excitement about working on modern physical models! If so, you are <a href="https://github.com/team-ocean/veros">welcome to contribute</a>.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </article><!-- /.entry-content -->
 
   <footer class="postmatter">

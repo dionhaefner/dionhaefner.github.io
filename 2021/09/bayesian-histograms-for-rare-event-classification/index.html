@@ -58,7 +58,7 @@
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       "HTML-CSS": {
-        scale: 85,
+        scale: 90,
         styles: {".MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn": {color: "inherit"}},
       }
     });
@@ -88,10 +88,7 @@
   </header>
 
   <article class="entry-content">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<div class="toc"><span class="toctitle">Contents</span><ul>
+    <div class="toc"><span class="toctitle">Contents</span><ul>
 <li><a href="#extreme-events-call-for-extreme-measures">Extreme events call for extreme&nbsp;measures</a></li>
 <li><a href="#the-problem-with-histograms-for-rare-events">The problem with histograms for rare&nbsp;events</a></li>
 <li><a href="#bayes-to-the-rescue">Bayes to the&nbsp;rescue</a></li>
@@ -145,12 +142,12 @@ In machine learning, we say that the data is not <em>separable</em>: The distrib
 <h3 id="bayes-to-the-rescue">Bayes to the rescue<a class="anchor-link" href="#bayes-to-the-rescue" title="Permanent link">&para;</a></h3>
 <p>Bayesian histograms address these issues by adding <em>uncertainties</em> to \(p(y=1 \mid x)\). For this, we need to make some assumptions about the data generating&nbsp;processes.</p>
 <p>We assume that, within each bin \(i\), the number of positive samples \(n^+_i\) is drawn independently with fixed probability \(p_i\) (this is what we want to estimate) and number of negative samples \(n^-_i\). Then, \(n^+_i\) follows a <a href="https://en.wikipedia.org/wiki/Binomial_distribution">binomial distribution</a>:</p>
-<p>$$ n^+_i \sim \operatorname{Binom}(n^-_i, p_i)&nbsp;$$</p>
+<div class="math">$$ n^+_i \sim \operatorname{Binom}(n^-_i, p_i) $$</div>
 <p>Our goal is to estimate \(p_i\) via Bayesian inference. For this, we still need a <em>prior</em> for the variable \(p\), which encodes our belief of what \(p\) is <em>before measuring any data</em> (this also takes care of empty bins). A convenient choice is a <a href="https://en.wikipedia.org/wiki/Beta_distribution">beta distributed</a> prior with 2 parameters \(\alpha_0,&nbsp;\beta_0\):</p>
-<p>$$ p(y=1) \sim \operatorname{Beta}(\alpha_0, \beta_0)&nbsp;$$</p>
+<div class="math">$$ p(y=1) \sim \operatorname{Beta}(\alpha_0, \beta_0) $$</div>
 <p>There are many ways to choose the prior parameters. Popular choices are complete ignorance (\(\alpha_0 = \beta_0 = 0\); all values of \(p\) are equally likely) and <a href="https://en.wikipedia.org/wiki/Jeffreys_prior">Jeffrey&#8217;s prior</a> (\(\alpha_0 = \beta_0 = 1/2\)). In <code>bayeshist</code>, we use a weakly informative prior by default that ensures that the prediction of an empty bin is the global mean event rate with a big&nbsp;uncertainty.</p>
 <p>Now we are ready to compute the posterior distribution of \(p_i\). According to Bayes&#8217; theorem, it is given by the normalized product of (beta) prior and (binomial) likelihood. A neat property of the beta prior is that it is <em>conjugate</em> to the binomial likelihood, so the posterior is a beta distribution,&nbsp;too:</p>
-<p>$$ p(y=1 \mid n^+_i, n^-_i) \sim \operatorname{Beta}(n^+_i + \alpha_0, n^-_i + \beta_0) \tag{1}&nbsp;$$</p>
+<div class="math">$$ p(y=1 \mid n^+_i, n^-_i) \sim \operatorname{Beta}(n^+_i + \alpha_0, n^-_i + \beta_0) \tag{1} $$</div>
 <p>To get uncertainties on our event rate estimates, all we need to do is to compute a credible interval of the posterior (1) via its quantiles. In Python this looks like&nbsp;this:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># compute number of positive and negative samples per bin</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">n_plus</span> <span class="o">=</span> <span class="mi">10</span>
@@ -196,15 +193,17 @@ In machine learning, we say that the data is not <em>separable</em>: The distrib
 <p>Imagine that we want to compare 2 bins with samples \((n_1^+, n_1^-)\) and \((n_2^+, n_2^-)\). We formulate the following&nbsp;hypotheses:</p>
 <ul>
 <li>
-<p><strong>H1</strong>: Sample 1 is drawn from bin 1 with $$ p_1 \sim \operatorname{Beta}(\alpha_1 = n_1^+ + \alpha_0, \beta_1 = n_1^- + \beta_0) $$ and sample 2 is drawn from bin 2 with $$ p_2 \sim \operatorname{Beta}(\alpha_2 = n_2^+ + \alpha_0, \beta_2 = n_2^- + \beta_0)&nbsp;$$</p>
+<p><strong>H1</strong>: Sample 1 is drawn from bin 1 with <div class="math">$$ p_1 \sim \operatorname{Beta}(\alpha_1 = n_1^+ + \alpha_0, \beta_1 = n_1^- + \beta_0) $$</div> and sample 2 is drawn from bin 2 with <div class="math">$$ p_2 \sim \operatorname{Beta}(\alpha_2 = n_2^+ + \alpha_0, \beta_2 = n_2^- + \beta_0) $$</div>
+</p>
 </li>
 <li>
-<p><strong>H0</strong>: Both samples are drawn from the merged version of both bins with $$ p_{tot}
-\sim \operatorname{Beta}(\alpha_{tot} = n_1^+ + n_2^+ + \alpha_0, \beta_{tot} = n_1^- + n_2^- + \beta_0)&nbsp;$$</p>
+<p><strong>H0</strong>: Both samples are drawn from the merged version of both bins with <div class="math">$$ p_{tot}
+\sim \operatorname{Beta}(\alpha_{tot} = n_1^+ + n_2^+ + \alpha_0, \beta_{tot} = n_1^- + n_2^- + \beta_0) $$</div>
+</p>
 </li>
 </ul>
 <p>Now we want to know: <em>how much more likely is it to measure the samples under H1 compared to H0?</em> To answer this, we have to compute the likelihood of each sample, while accounting for every possible value of the unknown event rate \(p\) (the result is also called a <a href="https://en.wikipedia.org/wiki/Bayes_factor">Bayes factor</a>). This is typically done by integrating out unknown parameters from the posterior (marginalization). In our case of a binomial likelihood with beta-distributed event rate, the result is a <a href="https://en.wikipedia.org/wiki/Beta-binomial_distribution">Beta-binomial distribution</a>:</p>
-<p>$$ n^+_i \sim \operatorname{Betabinom}(n^-_i, \alpha_i, \beta_i)&nbsp;$$</p>
+<div class="math">$$ n^+_i \sim \operatorname{Betabinom}(n^-_i, \alpha_i, \beta_i) $$</div>
 <p>Now we can evaluate the likelihood of each sample under H1 and H0, and compute the ratio (Bayes factor). In Python code, this looks like&nbsp;this:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sample_log_likelihood</span><span class="p">(</span><span class="n">n_plus</span><span class="p">,</span> <span class="n">n_minus</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Probability to measure `n_plus` positive and `n_minus` negative events&quot;&quot;&quot;</span>
@@ -275,6 +274,68 @@ In machine learning, we say that the data is not <em>separable</em>: The distrib
 </figure>
 
 <p>So why don&#8217;t you <a href="https://github.com/dionhaefner/bayesian-histograms">give <code>bayeshist</code> a try</a>, and let me know what you&nbsp;think!</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
   </article><!-- /.entry-content -->
 
   <footer class="postmatter">
