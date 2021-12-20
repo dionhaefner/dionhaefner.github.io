@@ -1,6 +1,6 @@
 Title: Higher-level geophysical modelling
 Date: 2021-04-20
-Tags: Science, Computing, Python
+Tags: Science, Computing, Geophysics, Python
 Author: Dion
 related_posts:
 
