@@ -63,7 +63,7 @@ Essentially, high-level modelling comes in 3 different flavors. Each of these is
     If you need some evidence for that last statement, just look how easy it is to install and use Veros from a clean Linux environment:
 
     <figure style="max-width: 550px;">
-        <script id="asciicast-BIpt5BcaIOWvoYqsRI0ag0j8V" src="https://asciinema.org/a/BIpt5BcaIOWvoYqsRI0ag0j8V.js" data-rows=20 data-theme="monokai" async></script>
+        <script id="asciicast-BIpt5BcaIOWvoYqsRI0ag0j8V" src="https://asciinema.org/a/BIpt5BcaIOWvoYqsRI0ag0j8V.js" data-cols="84" data-rows="24" data-theme="monokai" async></script>
         <figcaption>Installing and running Veros, starting from a fresh environment. Screencast in real time.</figcaption>
     </figure>
 
