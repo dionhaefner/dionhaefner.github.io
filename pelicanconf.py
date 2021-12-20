@@ -65,7 +65,7 @@ MARKDOWN = {
 #
 MARKUP = ("md", "ipynb")
 PLUGIN_PATHS = ["./plugins"]
-PLUGINS = ["related_posts", nb_markup]
+PLUGINS = ["related_posts", "render_math", nb_markup]
 
 IGNORE_FILES = [".ipynb_checkpoints"]
 

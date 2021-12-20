@@ -38,6 +38,7 @@ pandocfilters==1.4.3
 parso==0.8.1
 pelican==4.6.0
 pelican-jupyter==0.10.0
+pelican-render-math==1.0.3
 pexpect==4.8.0
 pickleshare==0.7.5
 prometheus-client==0.9.0
