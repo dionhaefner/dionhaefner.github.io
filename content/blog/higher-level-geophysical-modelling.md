@@ -127,7 +127,7 @@ enddo
 ```python
 mask = tke[2:-2, 2:-2, -1, taup1] < 0.0
 tke_surf_corr = np.zeros_like(maskU[..., -1])
-tke_surf_corr[2:-2, 2:-2] = where(
+tke_surf_corr[2:-2, 2:-2] = np.where(
     mask,
     -tke[2:-2, 2:-2, -1, taup1] * 0.5 * dzw[-1] / dt_tke,
     0.
@@ -150,10 +150,9 @@ for i in range(2, nx-2):
 
 ```python
 mask = tke[2:-2, 2:-2, -1, taup1] < 0.0
-tke_surf_corr = np.zeros_like(maskU[..., -1])
-tke_surf_corr = jax.ops.index_update(
-    tke_surf_corr, jax.ops.index[2:-2, 2:-2],
-    where(
+tke_surf_corr = jnp.zeros_like(maskU[..., -1])
+tke_surf_corr = tke_surf_corr.at[2:-2, 2:-2].set(
+    jnp.where(
         mask,
         -tke[2:-2, 2:-2, -1, taup1] * 0.5 * dzw[-1] / dt_tke,
         0.
