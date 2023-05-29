@@ -2,7 +2,7 @@ Title: Hey!
 Status: hidden
 Save_as:
 
-I'm Dion, a [researcher](https://simulation.science/), open source developer, and tech enthusiast.
+I'm Dion, a [research engineer](https://simulation.science/), open source developer, and tech enthusiast.
 If you want to learn more about me:
 
 - have a look at my code projects on <a href="https://github.com/dionhaefner" target="_blank">GitHub</a> <span class="fa fa-github"></span>
