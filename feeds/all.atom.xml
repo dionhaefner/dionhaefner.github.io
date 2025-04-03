@@ -1,5 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>dionhaefner.github.io</title><link href="https://dionhaefner.github.io/" rel="alternate"></link><link href="https://dionhaefner.github.io/feeds/all.atom.xml" rel="self"></link><id>https://dionhaefner.github.io/</id><updated>2021-12-03T00:00:00+01:00</updated><subtitle>Maximum entropy</subtitle><entry><title>Supercharged high-resolution ocean simulation with JAX</title><link href="https://dionhaefner.github.io/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/" rel="alternate"></link><published>2021-12-03T00:00:00+01:00</published><updated>2021-12-03T00:00:00+01:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-12-03:/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/</id><summary type="html">&lt;p&gt;Our Python ocean model &lt;a href="https://github.com/team-ocean/veros"&gt;Veros&lt;/a&gt; (which I maintain) now fully supports &lt;a href="https://github.com/google/jax"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt;&lt;/a&gt; as its computational backend. As a result, Veros has much better performance than before on both &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;, while all model code is still written in Python.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>dionhaefner.github.io</title><link href="https://dionhaefner.github.io/" rel="alternate"></link><link href="https://dionhaefner.github.io/feeds/all.atom.xml" rel="self"></link><id>https://dionhaefner.github.io/</id><updated>2025-04-02T00:00:00+02:00</updated><subtitle>Maximum entropy</subtitle><entry><title>The totally reasonable effectiveness of execution-driven science</title><link href="https://dionhaefner.github.io/2025/04/the-totally-reasonable-effectiveness-of-execution-driven-science/" rel="alternate"></link><published>2025-04-02T00:00:00+02:00</published><updated>2025-04-02T00:00:00+02:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2025-04-02:/2025/04/the-totally-reasonable-effectiveness-of-execution-driven-science/</id><summary type="html">&lt;p&gt;This post has originally been published on &lt;a href="https://pasteurlabs.ai/insights/execution-driven-science"&gt;&lt;strong&gt;Pasteur Labs Insights&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;At Pasteur Labs, we work every day to uplift simulation workflows to the machine age. Concretely, this means we turn bleeding-edge research and technology (&lt;a href="https://arxiv.org/abs/2112.03235"&gt;Simulation Intelligence&lt;/a&gt;) into real-world&amp;nbsp;capabilities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We implement and modify recently published &lt;span class="caps"&gt;AI&lt;/span&gt; methods to work at …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;This post has originally been published on &lt;a href="https://pasteurlabs.ai/insights/execution-driven-science"&gt;&lt;strong&gt;Pasteur Labs Insights&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;At Pasteur Labs, we work every day to uplift simulation workflows to the machine age. Concretely, this means we turn bleeding-edge research and technology (&lt;a href="https://arxiv.org/abs/2112.03235"&gt;Simulation Intelligence&lt;/a&gt;) into real-world&amp;nbsp;capabilities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We implement and modify recently published &lt;span class="caps"&gt;AI&lt;/span&gt; methods to work at industrial scales with real &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; simulated&amp;nbsp;data.&lt;/li&gt;
+&lt;li&gt;We measure how experimental differentiable physics routines hold up in end-to-end applications (in &lt;a href="https://cdfam.com/differentiable-physics-in-digital-engineering/"&gt;computational engineering&lt;/a&gt;, for&amp;nbsp;example).&lt;/li&gt;
+&lt;li&gt;We build simulators that are data-driven, &lt;span class="caps"&gt;GPU&lt;/span&gt;-native, and &lt;a href="https://pasteurlabs.ai/insights/jax"&gt;automatically differentiable&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;We automate the definition, training, evaluation, and deployment of hybrid &lt;span class="caps"&gt;AI&lt;/span&gt;&amp;nbsp;simulators.&lt;/li&gt;
+&lt;li&gt;All the while, we favor robust, general workflows over one-off&amp;nbsp;solutions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This particular mix &amp;mdash; where science meets engineering, technology enthusiasm meets sobering reality, pie-in-the-sky meets down-to-earth thinking &amp;mdash; provides many opportunities but also unique challenges. Scientists and engineers at Pasteur Labs are constantly faced with compromise: How do we answer fundamental questions in a way that leads to measurable impact without getting lost in details that don&amp;#8217;t matter, nor providing superficial solutions that don&amp;#8217;t hold up in the real world? We believe part of the answer lies in two paradigms that are pervasive in everything we do, namely, use-inspired science and execution-driven&amp;nbsp;science.&lt;/p&gt;
+&lt;h4 id="use-inspired-science-the-what-covered-elsewhere"&gt;&lt;strong&gt;Use-inspired science&lt;/strong&gt; &amp;mdash; the &lt;strong&gt;what&lt;/strong&gt;. &lt;em&gt;(covered elsewhere)&lt;/em&gt;&lt;a class="anchor-link" href="#use-inspired-science-the-what-covered-elsewhere" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Use-inspired science encodes the fact that neither application-ignorant basic science nor singular-purpose applied science is sufficient to solve classes of fundamental, real-world problems. This is ingrained in Pasteur Labs at the deepest level (including the &lt;a href="https://en.wikipedia.org/wiki/Pasteur%27s_quadrant"&gt;name of our company&lt;/a&gt;).&lt;/p&gt;
+&lt;h4 id="execution-driven-science-the-how-covered-here"&gt;&lt;strong&gt;Execution-driven science&lt;/strong&gt; &amp;mdash; the &lt;strong&gt;how&lt;/strong&gt;. &lt;em&gt;(covered here!)&lt;/em&gt;&lt;a class="anchor-link" href="#execution-driven-science-the-how-covered-here" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Execution-driven science is the art of navigating complexity by scoping, iterating on, surgically modifying, and stacking existing solutions, and failing fast when encountering dead ends. In particular, execution-driven science allows us to build end-to-end systems of non-trivial complexity &amp;mdash; emphasizing execution makes the immense challenges and combinatorial search spaces we are faced with tractable. It helps us guide our day-to-day work towards what is possible, feasible, and&amp;nbsp;worthwhile.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;how&lt;/em&gt; of research is typically much less clearly defined than the &lt;em&gt;what&lt;/em&gt;, although it is at least as important. Execution-driven science is a particularly powerful way to define this process when faced with the need to build systems that withstand the complexities of the real world. And in the moment, it&amp;#8217;s a valuable reminder to the individual researcher facing an overwhelming or constantly-moving research&amp;nbsp;problem.&lt;/p&gt;
+&lt;h3 id="simulating-the-world"&gt;Simulating the world&lt;a class="anchor-link" href="#simulating-the-world" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I clearly remember the moment I fell in love with physics. It was the moment I realized it made reality &lt;em&gt;computable&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Suddenly, I looked at the world with fresh eyes, computing the time it would take for objects to fall or trains to stop or elevators to arrive. How could a simple mathematical equation like &lt;span class="math"&gt;\(t=\sqrt{2 s / a}\)&lt;/span&gt; generate predictions that we can observe in the real&amp;nbsp;world?&lt;/p&gt;
+&lt;p&gt;I later realized that it wasn&amp;#8217;t so easy, and that the simplified physical laws we learn in school don&amp;#8217;t always hold up to the complexity of the real world. A second revelation came when I saw we could model complex physical systems by creating approximate solutions, solved by computers. Later still, I decided to write a &lt;a href="https://veros.readthedocs.io/en/latest/"&gt;simulator&lt;/a&gt; to forecast ocean dynamics (see &lt;a href="#ocean"&gt;Fig. 1&lt;/a&gt;).&lt;/p&gt;
+&lt;figure id="ocean"&gt;
+
+&lt;img src="https://dionhaefner.github.io/images/execution-driven-science/ocean.png" alt="Ocean simulation" /&gt;
+
+&lt;figcaption&gt;Fig. 1: A high-resolution ocean simulation, executed on a single high-end workstation about the size of an &lt;span class="caps"&gt;AC&lt;/span&gt; unit. From &lt;a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002717"&gt;https://agupubs.onlinelibrary.wiley.com/doi/10.1029/&lt;span class="caps"&gt;2021MS002717&lt;/span&gt;&lt;/a&gt;.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The ocean is home to a range of complex physical phenomena, like mesoscale turbulence (the vortices or “eddies” most visible around the equator), boundary currents (like the Gulf Stream), an entire zoo of internal and surface waves, and an all-encompassing overturning circulation. Yet it is governed by only 8 so-called primitive&amp;nbsp;equations.&lt;/p&gt;
+&lt;p&gt;After deriving them from first principles, we can easily write down the mathematical rules that generate the entire wealth of observed ocean dynamics. To actually simulate them, we need to conjure an unholy stack of tricks, approximations, numerical hacks, heuristics, and empirical laws, adding up to well above ten thousand lines of&amp;nbsp;code.&lt;/p&gt;
+&lt;p&gt;As a grad student, seeing an ocean simulation unfold on a supercomputer in real time was sublime. For the longest time, I believed that science was inherently about simplicity: finding the most concise explanation for a phenomenon, or an elegant theory that predicts observations. Today I know there are many ways to do science. One of them is building systems &amp;mdash; like climate models, fusion reactors, and space telescopes &amp;mdash; via execution-driven science, bridging the gap between research lab and real world. Execution-driven science still emphasizes simplicity (or rather, &lt;a href="https://en.wikipedia.org/wiki/Occam%27s_razor"&gt;parsimony&lt;/a&gt;), but introduces &lt;em&gt;compounding&lt;/em&gt; as an additional guiding&amp;nbsp;principle.&lt;/p&gt;
+&lt;h3 id="science-thats-more-than-the-sum-of-its-parts"&gt;Science that&amp;#8217;s more than the sum of its parts&lt;a class="anchor-link" href="#science-thats-more-than-the-sum-of-its-parts" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Execution-driven science is about standing on the shoulders of giants and making sure they&amp;#8217;re all standing up straight. It&amp;#8217;s about taking the pieces others have built, polishing them, and stacking them in a way that pushes the boundaries of what&amp;#8217;s possible. And then adding some new pieces where they matter the most, and shatter&amp;nbsp;records.&lt;/p&gt;
+&lt;figure id="neuralgcm"&gt;
+
+&lt;img src="https://dionhaefner.github.io/images/execution-driven-science/neuralgcm.png" alt="NeuralGCM architecture" /&gt;
+
+&lt;figcaption&gt;Fig. 2: A prime example of execution-driven science: NeuralGCM, an &lt;span class="caps"&gt;AI&lt;/span&gt;-enabled system for climate modelling that is on par with some of the best traditional climate models and orders of magnitude faster. Each of the depicted boxes is unremarkable in isolation, but in combination they create something revolutionary. From &lt;a href="https://arxiv.org/pdf/2311.07222"&gt;https://arxiv.org/pdf/2311.07222&lt;/a&gt;.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href="https://arxiv.org/pdf/2311.07222"&gt;NeuralGCM&lt;/a&gt; is an &lt;span class="caps"&gt;AI&lt;/span&gt;-driven system for atmospheric simulations (the atmosphere is typically the most computationally expensive component of a climate model). Taken at face value, each of its parts seems unremarkable (&lt;a href="#neuralgcm"&gt;Fig. 2&lt;/a&gt;): a simple encoder-decoder architecture; a differentiable dynamical core (that is, hand-written traditional simulator) in Python; a feed-forward neural network to machine-learn a data-driven correction; and an off-the-rack solver for ordinary differential equations (ODEs). But acting together, this is the first system that demonstrates that &lt;span class="caps"&gt;AI&lt;/span&gt; can aid with simulations on climatic time scales, consisting of tens of thousands to millions of iterations, at an efficiency that has never been seen&amp;nbsp;before:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;For both weather and climate, our approach offers orders of magnitude computational savings over conventional GCMs&lt;/em&gt; &lt;a href="https://arxiv.org/abs/2311.07222"&gt;(Kochkov et al. 2023)&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The point here is &lt;em&gt;not&lt;/em&gt; that all it took was to combine some existing methods and reap the benefits. What actually happened is much more subtle, where success came from a combination of different&amp;nbsp;factors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A rock solid understanding of the problem, to focus on what matters.&lt;/strong&gt; That is, using &lt;span class="caps"&gt;AI&lt;/span&gt; to speed up computations, while keeping existing knowledge around in the form of a differentiable dynamical core, iterative &lt;span class="caps"&gt;ODE&lt;/span&gt; solver, and structure of the problem. This particular combination of methods fixes many existing shortcomings of pure-&lt;span class="caps"&gt;AI&lt;/span&gt; and pure-simulator&amp;nbsp;systems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pragmatic, high-quality execution.&lt;/strong&gt; All code is implemented in the high-performance Python framework &lt;span class="caps"&gt;JAX&lt;/span&gt; and executed on accelerators (Tensor Processing Units, &lt;span class="caps"&gt;TPU&lt;/span&gt;). This is not just computationally efficient. &amp;mdash; keeping things entirely in Python also allows for rapid experimentation. This combination is likely close to Pareto-optimal: Yes, the system could potentially run faster if painstakingly optimized, at a huge expense in terms of human time. Or it could be much easier to develop, but not be nearly as powerful. Finding the right trade-off is precisely what it takes to iterate fast and&amp;nbsp;effectively.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Unprecedented scale.&lt;/strong&gt; A resource-efficient implementation allows researchers to scale up aggressively and reach real-world scales. At its finest resolution, NeuralGCM is trained for 3 weeks on 256 &lt;span class="caps"&gt;TPU&lt;/span&gt; devices, which is way beyond the norm in &lt;span class="caps"&gt;AI&lt;/span&gt; for climate, and &lt;a href="https://www.youtube.com/watch?v=BItseOa1DcM"&gt;&lt;span class="caps"&gt;AI&lt;/span&gt; in general&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is an example of execution-driven science at its best, and demonstrates several techniques on how to wield it to push the envelope. There are many more examples like it throughout science and industry, and they follow similar patterns; for&amp;nbsp;example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://arxiv.org/pdf/1609.08621"&gt;&lt;span class="caps"&gt;PKDGRAV3&lt;/span&gt;&lt;/a&gt;, a massive-scale simulator for astrophysics that leverages GPUs and advances in numerical methods to achieve unseen&amp;nbsp;efficiency.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://arxiv.org/abs/2305.01582"&gt;PySR&lt;/a&gt;, which made symbolic regression widely accessible through a high-performance Julia backend and a Python&amp;nbsp;frontend.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.nature.com/articles/nature16961"&gt;AlphaGo&lt;/a&gt;, a breakthrough in reinforcement learning that pushed the boundaries of what&amp;#8217;s possible with &lt;span class="caps"&gt;AI&lt;/span&gt;, based around a relatively simple but efficient tree search&amp;nbsp;algorithm.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(Everything we build at Pasteur Labs to realize the platform for Simulation&amp;nbsp;Intelligence.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;💡 Notice how some of those examples are clearly use-inspired, while others are not? This illustrates how use-inspired science and execution-driven science act along two different dimensions &amp;mdash; you can have one without the other, or be neither use-inspired nor&amp;nbsp;execution-driven.&lt;/p&gt;
+&lt;h3 id="explore-violently-fail-fast-be-pragmatic"&gt;Explore violently, fail fast, be pragmatic&lt;a class="anchor-link" href="#explore-violently-fail-fast-be-pragmatic" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Let&amp;#8217;s take a closer look at what it takes to apply execution-driven science in practice to solve hard, real-world&amp;nbsp;problems.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Get really good at executing stuff.&lt;/strong&gt; Good execution relies on top-notch technical skills, and a deep understanding of the fundamentals. &lt;em&gt;(No one said this was easy,&amp;nbsp;sorry!)&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Build end-to-end as early as possible.&lt;/strong&gt; Prefer to build the first prototype that has all major parts of the final system as soon as you possibly can. Ideally, this computes data that looks like the final outputs all the way from the initial inputs. That prototype will probably perform horribly! But it allows you to see the system in its entirety, and makes it crystal clear whether you missed something important. It will also provide you a performance baseline, so you can start monitoring whether your changes make things better straight&amp;nbsp;away.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fail fast when things don&amp;#8217;t work out.&lt;/strong&gt; This is a tricky one. How do we decide that things won&amp;#8217;t work out, considering all the situations when we just need to keep at it a little longer? For me the best visualization of a good heuristic comes from the &lt;a href="https://en.wikipedia.org/wiki/A*_search_algorithm"&gt;A* algorithm&lt;/a&gt; for pathfinding (see Fig. 3). Rather than going down rabbit holes indefinitely, we alternate between explore and exploit, pursue strategies that work, but stay flexible and switch things up once hitting a wall. This is true to the spirit of execution-driven science: the value is in the system we build to solve problems, not sticking with any particular component, and always keeping sight on the true objective (like the A*&amp;nbsp;heuristic).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure id="astar"&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/CgW0HPHqFE8?si=25iQM_oBx_E7mde3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;figcaption&gt;Fig. 3: Illustration of the A* algorithm navigating major cities (Chicago and Rome). A healthy mix of doubling down on promising routes and switching lanes when getting stuck allows the algorithm to navigate a massive search space without falling back to random exploration nor mindless exploitation.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Refine the things that matter, always.&lt;/strong&gt; To navigate complexity with combinatorial search spaces (that arise from stacking many different components) we must be selective about the battles we pick. Don&amp;#8217;t sink time into devising a clever solution to a problem that doesn&amp;#8217;t manifest. And remember, a major benefit to building end-to-end prototypes early in the process is the ability to measure actual bottlenecks right away. Make use of&amp;nbsp;it!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Consider scaling up.&lt;/strong&gt; Good execution allows you to do more within the same budget (of people, compute, time, …). Spend some of your efficiency gains on more processed data, bigger models, and more powerful pipelines where it provides the largest&amp;nbsp;benefit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Demonstrate it works.&lt;/strong&gt; It&amp;#8217;s easy to get confused in complex systems. Ensure you have proper end-to-end testing in place, so that there can be no ambiguity whether problems are actually solved (and remember that it&amp;#8217;s easiest to fool&amp;nbsp;oneself).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And in the end, no amount of good advice will replace your best judgment, so don&amp;#8217;t be afraid to use&amp;nbsp;it.&lt;/p&gt;
+&lt;h3 id="science-or-engineering"&gt;Science or engineering?&lt;a class="anchor-link" href="#science-or-engineering" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;People ask us sometimes: is this really science, or is it engineering? We don&amp;#8217;t believe the distinction is a useful one &amp;mdash; there&amp;#8217;s certainly a lot of both, often in synergistic ways. Regardless, well-conducted execution-driven and use-inspired science exhibits many of the core values of the scientific&amp;nbsp;method:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;It aims to provide fundamental solutions to a class of (real-world) problems, rather than specific instances of&amp;nbsp;them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It depends on a thorough understanding of the problem at hand, involved components, and resulting system, to navigate complexity and identify minimally invasive changes with maximum&amp;nbsp;impact.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It is reproducible, transparent, and extensible, allowing other researchers to build on top of&amp;nbsp;results.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="execution-driven-science-in-the-wild"&gt;Execution-driven science in the wild&lt;a class="anchor-link" href="#execution-driven-science-in-the-wild" title="Permanent link"&gt;&amp;para;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;At Pasteur Labs, the journey towards next-gen simulation continues &amp;mdash; we&amp;#8217;re still far away from humanity&amp;#8217;s dream to simulate everything. Models need to become orders of magnitude faster, cheaper, more accurate, grounded in reality and causality. Today, we believe that data-driven, &lt;span class="caps"&gt;AI&lt;/span&gt;-infused methods are a central piece to compute the parts of reality that elude classical approaches, and to tackle problems that do not have a concise mathematical representation. Execution-driven science has proven to be a powerful tool in this quest, and we&amp;#8217;re excited to see where it will take us&amp;nbsp;next.&lt;/p&gt;
+&lt;p&gt;And while the musings above are my earned insights, they are in great part realized because of the shared pursuits, rigor, continous support, and lived examples of top-notch use-inspired and execution-driven research from my teammates at Pasteur&amp;nbsp;Labs.&lt;/p&gt;
+&lt;p&gt;Eager to help? 👉 &lt;a href="https://pasteurlabs.ai/careers"&gt;pasteurlabs.ai/careers&lt;/a&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="blog"></category><category term="Science"></category></entry><entry><title>Supercharged high-resolution ocean simulation with JAX</title><link href="https://dionhaefner.github.io/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/" rel="alternate"></link><published>2021-12-03T00:00:00+01:00</published><updated>2021-12-03T00:00:00+01:00</updated><author><name>Dion</name></author><id>tag:dionhaefner.github.io,2021-12-03:/2021/12/supercharged-high-resolution-ocean-simulation-with-jax/</id><summary type="html">&lt;p&gt;Our Python ocean model &lt;a href="https://github.com/team-ocean/veros"&gt;Veros&lt;/a&gt; (which I maintain) now fully supports &lt;a href="https://github.com/google/jax"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt;&lt;/a&gt; as its computational backend. As a result, Veros has much better performance than before on both &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;, while all model code is still written in Python.
 In fact, we can now do high-resolution ocean simulations on …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Our Python ocean model &lt;a href="https://github.com/team-ocean/veros"&gt;Veros&lt;/a&gt; (which I maintain) now fully supports &lt;a href="https://github.com/google/jax"&gt;&lt;span class="caps"&gt;JAX&lt;/span&gt;&lt;/a&gt; as its computational backend. As a result, Veros has much better performance than before on both &lt;span class="caps"&gt;CPU&lt;/span&gt; and &lt;span class="caps"&gt;GPU&lt;/span&gt;, while all model code is still written in Python.
 In fact, we can now do high-resolution ocean simulations on a handful of GPUs, with the performance of entire &lt;span class="caps"&gt;CPU&lt;/span&gt;&amp;nbsp;clusters!&lt;/p&gt;
 &lt;figure style="max-width: 90%;"&gt;
