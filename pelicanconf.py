@@ -87,8 +87,8 @@ MAXWELL_SINGLEAUTHOR = True
 if MAXWELL_SINGLEAUTHOR:
     AUTHOR_SAVE_AS = ""
 
-MAXWELL_SITE_DESCRIPTION = "Dion Häfner • About me • Maximum entropy blog"
-MAXWELL_COPYRIGHT = "&copy; Dion Häfner 2016-2021"
+MAXWELL_SITE_DESCRIPTION = "Dion Häfner • About me • Blog"
+MAXWELL_COPYRIGHT = "&copy; Dion Häfner 2016-2025"
 
 # Metadata
 MAXWELL_META_IMAGE = "images/logo-bright.png"
