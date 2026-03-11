@@ -8,7 +8,7 @@ THEME = "maxwell"
 AUTHOR = "Dion Häfner"
 SITENAME = "dionhaefner.github.io"
 SITEURL = ""
-SITESUBTITLE = "Maximum entropy"
+SITESUBTITLE = ""
 
 PATH = "content"
 
@@ -88,7 +88,7 @@ if MAXWELL_SINGLEAUTHOR:
     AUTHOR_SAVE_AS = ""
 
 MAXWELL_SITE_DESCRIPTION = "Dion Häfner • About me • Blog"
-MAXWELL_COPYRIGHT = "&copy; Dion Häfner 2016-2025"
+MAXWELL_COPYRIGHT = "&copy; Dion Häfner 2016&ndash;Inf"
 
 # Metadata
 MAXWELL_META_IMAGE = "images/logo-bright.png"

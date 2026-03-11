@@ -1,10 +1,12 @@
-Title: Personal Philosophy
+Title: My Personal Philosophy
 Date: 2026-01-19
 Tags: Thoughts
 Author: Dion
 related_posts:
 
 I've seen other people write about their personal philosophies, and I thought it would be fun to write mine down too. I don't have a grand unifying theory of life, and I don't really think it's possible to have one (which I guess is a philosophical statement on its own). Anyhow, here's a collection of loosely held beliefs and values that guide me.
+
+---
 
 **No single philosophy works when taken whole.** Every sufficiently simple system contains insight and overreach in equal measure. What follows isn’t a doctrine or an optimization strategy; it’s a working description of how I move through the world, shaped by uncertainty, beauty, and the fact that this all ends.
 

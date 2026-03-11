@@ -2,7 +2,8 @@ Title: Hey!
 Status: hidden
 Save_as:
 
-I'm Dion, a [research engineer](https://simulation.science/), open source developer, and tech enthusiast. I develop systems that help humans to understand and navigate the physical world.
+I'm Dion, a scientific programmer, programming scientist, open source developer, and tech enthusiast. I develop systems that help humans understand and navigate the physical world.
+
 If you want to learn more about me:
 
 - Have a look at my code projects on <a href="https://github.com/dionhaefner" target="_blank">GitHub</a> <span class="fa fa-github"></span>
