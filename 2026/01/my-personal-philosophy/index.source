@@ -1,4 +1,4 @@
-Title: My Personal Philosophy
+Title: My personal philosophy
 Date: 2026-01-19
 Tags: Thoughts
 Author: Dion

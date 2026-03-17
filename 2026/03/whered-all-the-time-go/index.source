@@ -4,17 +4,17 @@ Tags: Thoughts
 Author: Dion
 related_posts:
 
-Some people talk about how life has *seasons*, but I prefer the term *phase transitions*. Ice melts and turns into liquid – boom! The same substance suddenly *feels* completely different.
+Some people talk about how life has seasons. I prefer the term phase transitions. Ice melts and turns into liquid – boom! The same substance suddenly feels completely different.
 
 That choice of words is no accident. To me, "it feels different" is the most poignant, perhaps only truly correct, description of what makes a phase transition. You can't even verbalize what *it* is without sounding preachy, or full of it, or eye-roll-inducing cheesy. You just have to live *it*, and then *it* makes sense and all the good advice comes too late, too bad. I'll try anyway.
 
-There's another reason why I like *phase transitions* more than *seasons*. Unlike seasons, which come and go in a fixed sequence, phase transitions can come in any order, at any time, which also means we have control over them, at least sometimes. I suppose this is the real reason why I'm writing this article, to remind me and everyone else that phase transitions are a thing and life can feel completely different one moment to the next, for better and worse (there's the cheese, don't say I didn't warn you).
+There's another reason why I like "phase transitions" more than "seasons". Unlike seasons, which come and go in a fixed sequence, phase transitions can come in any order, at any time, which also means we have control over them, at least sometimes. I suppose one reason why I'm writing this article is to remind me and everyone else that phase transitions are a thing and life can feel completely different one moment to the next, for better and worse (there's the cheese, don't say I didn't warn you). It's also a reminder that it's up to us to set ourselves up for the phase transitions we want, and to prepare for (or counteract) the ones we don't.
 
-For me, the most impactful phase transitions of my adult life have been becoming a parent and transitioning together with an early startup into a not quite so early startup. I'm mentioning those in the same breath not because they matter equally much, but because they happened roughly around the same time, and because the quality of the phase transitions is so similar it's impossible for me to separate them.
+The most impactful phase transitions of my adult life have been becoming a parent and transitioning together with an early startup into a not quite so early startup. I'm mentioning those in the same breath not because they matter equally much, but because they happened roughly around the same time, and because the quality of the phase transitions is so similar it's impossible for me to separate them.
 
-It's no secret that children, like companies, undergo phase transitions left and right. That's not what I'm talking about. To me, the unexpected part is the phase transition that is forced upon the people going along for the ride, that is, the parent or engineer who suddenly has names below them in the org chart and has something to say about everything because they helped build everything.
+It's no secret that children, like companies, undergo phase transitions left and right. That's not what I'm talking about. To me, the less expected part is the phase transition that is forced upon the people going along for the ride, that is, the freshly baked parent or engineer who suddenly has names below them in the org chart and has something to say about everything because they helped build everything.
 
-Did you guess yet what the phase transition is? It's **going from having nothing but time to having no time at all**, personally as well as professionally. Since this is a (mostly) professional blog I'll try and stick to the professional side of things.
+Did you guess yet what both phase transitions have in common? It's **going from having nothing but time to having no time at all**, personally and professionally. Since this is a (mostly) professional blog I'll try and stick to the professional side of things.
 
 ## The curse: There's disappointment everywhere
 
@@ -40,11 +40,11 @@ Before the phase transition I perceived time as hairless and undifferentiated. I
 
 After the phase transition, time develops texture. There's work time, family time, chore time. Each has its own character and constraints, and some of these boundaries are sharper than others. I can't process a technical problem while reading a bedtime story, and I owe others being present during quality time. 
 
-This is not to say I don't think through a design decision while going on a walk or folding laundry or, to hell with it, kicking a ball in the park. The daily chores (and sometimes boredom) of parenting make for decent background processing time. What's changed is that the transitions between modes are more abrupt, the context switches are harder, and their bite stings a little more.
+This is not to say I don't think through a design decision while going on a walk or folding laundry or, to hell with it, kicking a ball in the park. The daily chores (and, let's be honest, frequent boredom) of parenting make for decent background processing time. What's changed is that the transitions between modes are more abrupt, the context switches are harder, and their bite stings a little more.
 
 ## Leverage becomes everything
 
-When you can't do all the work yourself, you become obsessed with leverage. To me this means constantly zooming out when most others are zooming in. The team is losing too much time manually bumping dependencies? Let me quietly write a bot on my own time that cuts that friction in half, then roll it out once it's ready. Just explained a difficult concept to a colleague and I like the ring of my own words? Put it into a blog post and share it with the team.
+When you can't do all the work yourself, you become obsessed with leverage. To me this means constantly zooming out when others are zooming in. The team is losing too much time manually bumping dependencies? Let me quietly write a bot on my own time that cuts that friction in half, then roll it out once it's ready. Just explained a difficult concept to a colleague and I like the ring of my own words? Put it into a blog post and share it with the team.
 
 This is where the transition from individual contributor to leader becomes most palpable. You stop engaging with every problem and start creating environments where problems get solved without you. Your individual contributions matter less than your ability to multiply the contributions of others. The technical skills that got you here are still there when you need them, but you catch yourself reaching for a different skillset more often: communication, prioritization, creating clarity.
 
